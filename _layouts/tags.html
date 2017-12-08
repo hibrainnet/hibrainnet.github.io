@@ -1,0 +1,10 @@
+---
+layout: default
+---
+<h1>Posts Tags</h1>
+{% for tag in page.tags %}
+    <a href="/tags/{{ tag }}">{{ tag }}</a>
+{% endfor %}
+
+
+{% include archive.html %}
