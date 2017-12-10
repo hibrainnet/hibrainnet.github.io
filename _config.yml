@@ -24,6 +24,9 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: jekyllrb
 github_username:  jekyll
 
+#dis shortname
+disqus : hibrainnet-github-io-jekyll-and-hybe
+
 # Build settings
 markdown: kramdown
 theme: minima
