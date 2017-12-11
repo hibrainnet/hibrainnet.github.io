@@ -1,6 +1,5 @@
 ---
 layout: default
-comments : true
 ---
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
@@ -38,10 +37,9 @@ category :
     {{ content }}
   </div>
 
-    <div class="fb-comments" data-href="https://nefritis.github.io{{ page.url }}" data-width="100%" ></div>
-   
-    {% include comments.html %}
- 
+  {% if site.disqus.shortname %}
+    {% include disqus_comments.html %}
+  {% endif %}
 </article>
 
 
