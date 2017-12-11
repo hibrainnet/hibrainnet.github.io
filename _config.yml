@@ -29,6 +29,21 @@ markdown: kramdown
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-paginate-v2
+
+# pagetype = 페이징 방법 { numbering || simple }
+# limit_page = 한 화면에 보여줄 페이지 수
+limit_page: 5
+pagetype: "numbering"
+
+# jekyll-patinate-v2 플러그인에서 사용하는 변수
+pagination:
+    enabled: true
+    per_page: 2
+    permalink: '/page/:num/'
+    limit: 0
+    sort_field: "date"
+    sort_reverse: true
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
