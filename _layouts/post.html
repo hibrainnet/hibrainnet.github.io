@@ -14,12 +14,23 @@ layout: default
         • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>
       {% endif %}</p>
 
+tag: 
 <span>[
   {% for tag in page.tags %}
     {% capture tag_name %}{{ tag }}{% endcapture %}
-    <a href="/tags/{{ tag_name }}"><code class=""><nobr>{{ tag_name }}</nobr></code>&nbsp;</a>
+  <a href="/tags/{{ tag_name }}"><code class=""><nobr>{{ tag_name }}</nobr></code>&nbsp;</a>
   {% endfor %}
 ]</span>
+
+<br>
+category : 
+<span>[
+  {% for category in page.categories %}
+    {% capture category_name %}{{ category }}{% endcapture %}
+   <a href="/category/{{ category_name }}"><code class=""><nobr>{{ category_name }}</nobr></code>&nbsp;</a>
+  {% endfor %}
+]</span>
+
   </header>
 
   <div class="post-content" itemprop="articleBody">
