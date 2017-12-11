@@ -3,3 +3,23 @@
 ---
 
 @import "minima";
+
+paginate{
+  margin: 0;
+  padding: 1em;
+  text-align: center;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+
+    // display: inline-block; // an inline-block will allow you to use it with other contents
+  }
+
+  li {
+    display: inline;
+  }
+
+}
