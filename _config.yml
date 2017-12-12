@@ -30,6 +30,10 @@ theme: minima
 plugins:
   - jekyll-feed
   - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-redirect-from
+  - jekyll-compose
+  - jekyll-seo-tag
 
 # pagetype = 페이징 방법 { numbering || simple }
 # limit_page = 한 화면에 보여줄 페이지 수
@@ -51,3 +55,11 @@ paginate_path: '/page/:num/'
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+exclude:
+  - vendor
+  - Gemfile
+  - Geffile.lock
+  - LICENSE
+  - README.md
+  - Rakefile
