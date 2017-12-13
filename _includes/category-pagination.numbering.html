@@ -1,0 +1,56 @@
+<!-- 첫번째 페이지 계산 -->
+{% assign temp-page = paginator.page | minus: 1 %}
+{% assign page-set = temp-page | divided_by: site.limit_page %}
+{% assign first = page-set | times: site.limit_page | plus: 1 %}
+
+
+<!-- 마지막 페이지 계산 -->
+{% assign temp-last = first| minus: 1 | plus: site.limit_page %}
+{% if temp-last <= paginator.total_pages %}
+  {% assign last = temp-last %}
+{% else %}
+  {% assign last = paginator.total_pages %}
+{% endif %}
+  
+
+
+
+
+
+<paginate>
+<div class="pagination">
+  {% if paginator.page != 1 %}
+    <a href="{{ paginator.first_page_path}}">&#60;&#60;</a>
+  {% else %}
+    <span class="previous">&#60;&#60;</span>
+  {% endif %}
+  {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path }}" class="previous">&#60;</a>
+  {% else %}
+    <span class="previous">&#60;</span>
+  {% endif %}
+  {% for count in (first..last) %}
+    {% if count == paginator.page %}
+     <li><span class="active">{{ count }}</span></li>
+    {% else %}
+      {% if count == 1%}
+        <li><a href="/{{page.purl}}">{{ count}}</a></li>
+      {% else %}
+	{% assign purl = "{{page.purl}}"%}
+        <li><a href="/{{page.purl}}/page/{{ count }}"| prepend: purl >{{ count }}</a></li>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+
+  {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path }}" class="next">&#62;</a>
+  {% else %}
+    <span class="next ">&#62;</span>
+  {% endif %}
+  {% if paginator.page != paginator.total_pages %}
+    <a href="{{ paginator.last_page_path }}">&#62;&#62;</a>
+  {% elsif paginator.pate == paginator.tota_pages %}
+    <span class="next ">&#62;&#62;</span>
+  {% endif %}
+</div>
+</paginate>
