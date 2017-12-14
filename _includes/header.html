@@ -24,20 +24,15 @@
             my_page.autogen is populated by the pagination logic for all pages
                             that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
           -->
-          {% if my_page.title and my_page.autogen == nil %}
+        {% assign my_page = site.pages | where: "path", path | first %}
+        {% assign tag_name = my_page.title | split: ": " %}
+
+    {% if my_page.title and my_page.autogen == nil and tag_name.first != "Posts" and tag_name.first != "Tag" and tag_name.first != "Category" %}
           <a class="page-link" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
           {% endif %}
         {% endfor %}
 
 
-         <!-- {% for path in page_paths %}
-            {% assign my_page = site.pages | where: "path", path | first %}
-            {% assign tag_name = my_page.title | split: ": " %}
-            {% if my_page.title %}
-            <a class="page-link" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
-            {% endif %}
-          {% endfor %}-->
-        </div>
       </nav>
     {% endif %}
   </div>

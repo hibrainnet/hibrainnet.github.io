@@ -1,8 +1,8 @@
 ---
-permalink: "/about/"
+permalink: "/guestbook/"
 layout: page
 comments : true
-title:  "방명록"
+title:  "guest"
 ---
 
 
