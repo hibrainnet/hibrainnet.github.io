@@ -20,7 +20,7 @@ class CategoryPage < Page
       @site = site
       @base = base
       @dir = dir
-      @name = 'feed.xml'
+      @name = 'indexs.xml'
 
       self.process(@name)
       self.read_yaml(File.join(base, '_layouts'), 'categories.html')
