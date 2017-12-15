@@ -25,7 +25,7 @@ twitter_username: hibrainapps
 github_username:  hibrainnet
 
 disqus:
-  shortname: hibrainappsblog
+     shortname: hibrainappsblog
 
 # Build settings
 markdown: kramdown
