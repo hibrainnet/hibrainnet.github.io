@@ -32,7 +32,7 @@ markdown: kramdown
 theme: minima
 plugins:
   - jekyll-feed
-  - jekyll-paginate
+  - jekyll-paginate-v2
   - jekyll-sitemap
   - jekyll-redirect-from
   - jekyll-compose
@@ -44,8 +44,23 @@ limit_page: 5
 pagetype: "numbering"
 
 # jekyll-patinate-v2 플러그인에서 사용하는 변수
-paginate: 1
-paginate_path: '/page/:num/'
+pagination:
+    enabled: true
+    per_page: 1
+    permalink: '/page/:num'
+    limit: 0
+    sort_field: "date"
+    sort_reverse: true
+    cate_link: '/category/:cname'
+    tag_link: '/tags/:tname'
+    tmp_page_link: '/page/'
+
+
+
+# jekyll-patinate 플러그인에서 사용하는 변수
+#paginate: 1
+#paginate_path: '/page/:num/'
+
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
