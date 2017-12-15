@@ -27,6 +27,8 @@ github_username:  hibrainnet
 disqus:
   shortname: hibrainappsblog
 
+
+
 # Build settings
 markdown: kramdown
 theme: minima
