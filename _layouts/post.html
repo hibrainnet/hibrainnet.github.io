@@ -15,6 +15,9 @@ comments: true
         • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>
       {% endif %}</p>
 
+
+
+{% if page.tags.size > 0 %}
 tag: 
 <span>[
   {% for tag in page.tags %}
@@ -22,7 +25,10 @@ tag:
   <a href="/tags/{{ tag_name }}"><code class=""><nobr>{{ tag_name }}</nobr></code>&nbsp;</a>
   {% endfor %}
 ]</span>
+{% endif %}
 
+
+{% if page.categories.size > 0 %}
 <br>
 category : 
 <span>[
@@ -31,6 +37,9 @@ category :
    <a href="/category/{{ category_name }}"><code class=""><nobr>{{ category_name }}</nobr></code>&nbsp;</a>
   {% endfor %}
 ]</span>
+{% endif %}
+
+
 
   </header>
 
