@@ -1,5 +1,6 @@
 ---
 layout: default
+comments: true
 ---
 <article class="post">
 
@@ -10,9 +11,6 @@ layout: default
   <div class="post-content">
     {{ content }}
   </div>
-
- <div class="fb-comments" data-href="{{site.url}}{{ page.url }}" data-width="100%" ></div>
- 
  {% include comments.html %}
 
 </article>
