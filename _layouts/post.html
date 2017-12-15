@@ -18,7 +18,7 @@ tag:
 <span>[
   {% for tag in page.tags %}
     {% capture tag_name %}{{ tag }}{% endcapture %}
-  <a href="{{ site.shortname }}/tags/{{ tag_name }}"><code class=""><nobr>{{ tag_name }}</nobr></code>&nbsp;</a>
+  <a href="{{ site.baseurl }}/tags/{{ tag_name }}"><code class=""><nobr>{{ tag_name }}</nobr></code>&nbsp;</a>
   {% endfor %}
 ]</span>
 
@@ -27,7 +27,7 @@ category :
 <span>[
   {% for category in page.categories %}
     {% capture category_name %}{{ category }}{% endcapture %}
-   <a href="{{ site.shortname }}/category/{{ category_name }}"><code class=""><nobr>{{ category_name }}</nobr></code>&nbsp;</a>
+   <a href="{{ site.baseurl }}/category/{{ category_name }}"><code class=""><nobr>{{ category_name }}</nobr></code>&nbsp;</a>
   {% endfor %}
 ]</span>
 

@@ -25,7 +25,7 @@
     <span class="previous">&#60;&#60;</span>
   {% endif %}
   {% if paginator.previous_page %}
-    <a href="{{ site.baseurl }}/{{ paginator.previous_page_path }}" class="previous">&#60;</a>
+    <a href="{{ site.baseurl }}{{ paginator.previous_page_path }}" class="previous">&#60;</a>
   {% else %}
     <span class="previous">&#60;</span>
   {% endif %}
@@ -35,7 +35,7 @@
     {% else %}
     {%assign ppurl = page.purl | prepend: "/" | append: "/page/" | replace: "//", "/" %}
       {% if count == 1%}
-        <li><a href="{{ site.baseurl }}/page/{{ count }}">{{ count}}</a></li>
+        <li><a href="{{ site.baseurl }}/">{{ count}}</a></li>
       {% else %}
         <li><a href="{{ site.baseurl }}/page/{{ count }}">{{ count }}</a></li>
       {% endif %}
@@ -43,7 +43,7 @@
   {% endfor %}
 
   {% if paginator.next_page %}
-    <a href="{{ site.baseurl }}/{{ paginator.next_page_path }}" class="next">&#62;</a>
+    <a href="{{ site.baseurl }}{{ paginator.next_page_path }}" class="next">&#62;</a>
   {% else %}
     <span class="next ">&#62;</span>
   {% endif %}
