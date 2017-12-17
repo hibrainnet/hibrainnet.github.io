@@ -10,7 +10,7 @@ pagination:
 <div id="archive">
   <ul class="archive-post-list">
   {%for post in paginator.posts %}
-      <li><time>{{ post.date | date:"%b %d, %Y" }}</time> » <a href="{{ site.baseurl }}/{{ post.url }}">{{ post.title }}</a></li>
+      <li><time>{{ post.date | date:"%b %d, %Y" }}</time> » <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
   {% endfor %}
   </ul>
 </div>

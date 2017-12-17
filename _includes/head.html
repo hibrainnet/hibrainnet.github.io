@@ -1,4 +1,82 @@
+<script language='javascript'>
+
+var paramName = new Array();
+var paramValue = new Array();
+var url = '{{site.url}}'+'{{site.baseurl}}'+'{{pagination.page_type}}'
+var postTitle = new Array();
+var postUrl = new Array();
+var pageNum = -1;
+
+{% for page in site.posts %}
+postTitle.push('{{ page.title }}')
+postUrl.push('{{page.url}}')
+{% endfor %}
+
+function getQueryString(){
+
+    var hash;
+    var queryString= [];
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++) {
+        hash = hashes[i].split('=');
+        if(hash[0] == '{{ site.page_num}}'){
+          pageNum = hash[1];
+          console.log(pageNum)
+        }
+        paramName.push(hash[0]);
+        paramValue.push(hash[1]);
+    }
+    return queryString;
+}
+
+
+function makeUrl() {
+
+  for(var i=0; i < paramName.length; i++) {
+    if(paramName[i] == '{{ site.page_type }}') {
+      window.location.replace(url + '/' + paramValue[i]);
+    }
+
+    else if(paramName[i] == '{{ site.post_title }}') {
+      for(var j=0; j < postTitle.length; j++) {
+        if(decodeURI(paramValue[i]) == postTitle[j]) {
+          window.location.replace(url + postUrl[j]);
+        }
+      }
+    }
+
+    else if(paramName[i] == '{{ site.category_param }}') {
+      if(pageNum != "-1"){
+          window.location.replace(url + '/category/' + paramValue[i] + '/page/' + pageNum);
+      }
+      else {
+          window.location.replace(url + '/category/' + paramValue[i]);
+      }
+
+    }
+
+    else if(paramName[i] == '{{ site.tag_param }}') {
+      if(pageNum != "-1") {
+          window.location.replace(url + '/tags/' + paramValue[i] + '/page/' + pageNum);
+      }
+      else {
+          window.location.replace(url + '/tags/' + paramValue[i]);
+      }
+
+    }
+
+  }
+
+}
+
+
+getQueryString();
+makeUrl();
+</script>
 <head>
+
+
+
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,7 +87,7 @@
   <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ "/feed.xml" | relative_url }}">
-  
+
   {% if jekyll.environment == 'production' and site.google_analytics %}
   {% include google-analytics.html %}
   {% endif %}
