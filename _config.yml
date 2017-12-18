@@ -48,7 +48,12 @@ paginate: 2
 paginate_path: '/page/:num/'
 
 # hooks에서 사용하는 master 계정 변수
-ADMIN_EMAIL: rkgp05151@gmail.com 
+
+git:
+  admin-git-email: rkgp05151@gmail.com
+
+
+ 
 
 
 
