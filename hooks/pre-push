@@ -1,15 +1,7 @@
 remote="$1"
 url="$2"
 
-REPO=git@github.com:hibrainnet/jekyll-and-hybe.git
-BRANCH=$(git rev-parse --abbrev-ref HEAD)
+path=$(pwd)
 
-if [ $remote = "origin" ]
-then
-	if [ $BRANCH = "master" ]
-	then
-    	git push --mirror $REPO
-	fi
-fi
+$path/hooks/push-github.sh $remote $url
 
-exit $?
