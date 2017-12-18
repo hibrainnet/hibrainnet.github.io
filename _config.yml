@@ -47,7 +47,7 @@ comments:
 
 ## 페이징 설정
 pagination:
-  type: simple
+  type: numbering
   limit: 15
   enabled: true
   per_page: 1
