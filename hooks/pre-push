@@ -1,15 +1,8 @@
-remote="$1"
-url="$2"
 
-REPO=git@github.com:hibrainnet/jekyll-and-hybe.git
-BRANCH=$(git rev-parse --abbrev-ref HEAD)
+#!/bin/sh
 
-if [ $remote = "origin" ]
-then
-	if [ $BRANCH = "master" ]
-	then
-    	git push --mirror $REPO
-	fi
-fi
 
-exit $?
+PWD=$(pwd)
+
+# 사용자에 따라 push 권한 생성 
+"$PWD"/.git/hooks/push-block.sh
