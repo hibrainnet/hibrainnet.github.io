@@ -1,33 +1,80 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
-
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
+## 사이트 설정
 title: 하이브레인넷 부설연구소
 email: apps@hibrain.net
-description: >- # this means to ignore newlines until "baseurl:"
+description: >- 
   Write an awesome description for your new site here. You can edit this
   line in _config.yml. It will appear in your document head meta (for
   Google search results) and in your feed.xml site description.
-baseurl: "/jekyll-and-hybe" # the subpath of your site, e.g. /blog
-url: "https://hibrainnet.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: hibrainapps
-github_username:  hibrainnet
+baseurl: "/jekyll-and-hybe" 
+url: "https://hibrainnet.github.io"
 
-disqus:
-     shortname: hibrainappsblog
+## git 설정
+git:
+  admins: ## admins에 등록된 사용자만 master에 commit, merge, push를 진행할 수 있음
+    - sksong@hibrain.net
+    - saltfactory@gmail.com
 
-# Build settings
+## github 설정
+github_page:
+  remote_url: git@bitbucket.org:hibrainnet/jekyll-and-hybe.git
+  remote_name: github
+  branch: source
+  builder: travis
+  # remote_name: ?? 이건 왜 필요한건지?
+
+## travis를 이용한 github page 빌드 설정
+travis:
+  github_token: ${GIHUB_TOKEN}
+  target_branch: master
+  source_branch: source
+
+## 소셜 서비스 계정
+sns:
+  twitter: hibrainapps
+  github: hibrainnet
+  medium: hibrainapps
+
+# twitter_username: hibrainapps
+# github_username:  hibrainnet
+
+## 댓글 계정
+comments:
+  disqus:
+    shortname: hibrainappsblog
+  facebook:
+    admin_id: "" #facebook 관리자 아이디
+    app_id: "" #facebook 앱 아이디
+
+## 페이징 설정 
+pagination:
+  type: numbering
+  limit: 15
+  enabled: true
+  per_page: 1
+  permalink: '/page/:num'
+  limit: 0
+  sort_field: "date"
+  sort_reverse: true
+
+  #카테고리, 태그 페이징 숫자에 할당될 주소 형식 
+  cate_link: '/category/:cname'
+  tag_link: '/tags/:tname'
+  tmp_page_link: '/page/'
+
+# pagetype = 페이징 방법 { numbering || simple }
+# limit_page = 한 화면에 보여줄 페이지 수
+# limit_page: 5
+# pagetype: "numbering"
+
+#query string에 사용할 변수명
+# tag_param: 'tags'
+# category_param: 'cate'
+# page_type: 'type'
+# post_title: 'title'
+# page_num: 'page'
+
+
+# Jekyll 설정
 markdown: kramdown
 theme: minima
 plugins:
@@ -40,53 +87,9 @@ plugins:
 
 
 
-# pagetype = 페이징 방법 { numbering || simple }
-# limit_page = 한 화면에 보여줄 페이지 수
-limit_page: 5
-pagetype: "numbering"
-
-#query string에 사용할 변수명
-tag_param: 'tags'
-category_param: 'cate'
-page_type: 'type'
-post_title: 'title'
-page_num: 'page'
-
-# jekyll-patinate-v2 플러그인에서 사용하는 변수
-pagination:
-    enabled: true
-    per_page: 1
-    permalink: '/page/:num'
-    limit: 0
-    sort_field: "date"
-    sort_reverse: true
-
-    #카테고리, 태그 페이징 숫자에 할당될 주소 형식
-    cate_link: '/category/:cname'
-    tag_link: '/tags/:tname'
-    tmp_page_link: '/page/'
-
-
-
-
-
-
 # jekyll-patinate 플러그인에서 사용하는 변수
 #paginate: 1
 #paginate_path: '/page/:num/'
-
-
-# Exclude from processing.
-# The following items will not be processed, by default. Create a custom list
-# to override the default setting.
-# exclude:
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
 
 exclude:
   - vendor

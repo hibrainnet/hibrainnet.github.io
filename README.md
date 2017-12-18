@@ -7,7 +7,8 @@ Jekyll & Hybe는 프로젝트 관련 기술을 제공 및 공유하는 블로그
 
 ## Getting Started
 
-
+특정 사용자 master commit, push 사용하기 
+- hooks 디렉토리에 있는 pre-commit, pre-push, push-block.sh 파일을 .git/hooks 디렉토리에 옮겨준다. 
 
 
 
