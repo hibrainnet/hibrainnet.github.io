@@ -14,8 +14,8 @@ pagination:
   {% endfor %}
   </ul>
 </div>
-{% if site.pagination.pagetype == 'simple' %}
+{% if site.pagination.type == 'simple' %}
   {% include pagination-simple.html %}
-{% elsif site.pagination.pagetype == 'numbering' %}
+{% elsif site.pagination.type == 'numbering' %}
   {% include pagination-numbering.html %}
 {% endif %}

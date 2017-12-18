@@ -1,11 +1,11 @@
 ## 사이트 설정
 title: 하이브레인넷 부설연구소
 email: apps@hibrain.net
-description: >- 
+description: >-
   Write an awesome description for your new site here. You can edit this
   line in _config.yml. It will appear in your document head meta (for
   Google search results) and in your feed.xml site description.
-baseurl: "/jekyll-and-hybe" 
+baseurl: "/jekyll-and-hybe"
 url: "https://hibrainnet.github.io"
 
 ## git 설정
@@ -45,9 +45,9 @@ comments:
     admin_id: "" #facebook 관리자 아이디
     app_id: "" #facebook 앱 아이디
 
-## 페이징 설정 
+## 페이징 설정
 pagination:
-  type: numbering
+  type: simple
   limit: 15
   enabled: true
   per_page: 1
@@ -56,7 +56,7 @@ pagination:
   sort_field: "date"
   sort_reverse: true
 
-  #카테고리, 태그 페이징 숫자에 할당될 주소 형식 
+  #카테고리, 태그 페이징 숫자에 할당될 주소 형식
   cate_link: '/category/:cname'
   tag_link: '/tags/:tname'
   tmp_page_link: '/page/'
@@ -106,6 +106,3 @@ exclude:
 githubURL: git@github.com:hibrainnet/jekyll-and-hybe.git
 githubBranch: source
 remoteName: github
-
-
-
