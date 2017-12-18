@@ -13,14 +13,14 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: 하이브레인넷 부설연구소 
+title: 하이브레인넷 부설연구소
 email: apps@hibrain.net
 description: >- # this means to ignore newlines until "baseurl:"
   Write an awesome description for your new site here. You can edit this
   line in _config.yml. It will appear in your document head meta (for
   Google search results) and in your feed.xml site description.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/jekyll-and-hybe" # the subpath of your site, e.g. /blog
+url: "https://hibrainnet.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: hibrainapps
 github_username:  hibrainnet
 
@@ -32,20 +32,49 @@ markdown: kramdown
 theme: minima
 plugins:
   - jekyll-feed
-  - jekyll-paginate
+  - jekyll-paginate-v2
   - jekyll-sitemap
   - jekyll-redirect-from
   - jekyll-compose
   - jekyll-seo-tag
+
+
 
 # pagetype = 페이징 방법 { numbering || simple }
 # limit_page = 한 화면에 보여줄 페이지 수
 limit_page: 5
 pagetype: "numbering"
 
+#query string에 사용할 변수명
+tag_param: 'tags'
+category_param: 'cate'
+page_type: 'type'
+post_title: 'title'
+page_num: 'page'
+
 # jekyll-patinate-v2 플러그인에서 사용하는 변수
-paginate: 2
-paginate_path: '/page/:num/'
+pagination:
+    enabled: true
+    per_page: 1
+    permalink: '/page/:num'
+    limit: 0
+    sort_field: "date"
+    sort_reverse: true
+
+    #카테고리, 태그 페이징 숫자에 할당될 주소 형식
+    cate_link: '/category/:cname'
+    tag_link: '/tags/:tname'
+    tmp_page_link: '/page/'
+
+
+
+
+
+
+# jekyll-patinate 플러그인에서 사용하는 변수
+#paginate: 1
+#paginate_path: '/page/:num/'
+
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
@@ -66,3 +95,13 @@ exclude:
   - LICENSE
   - README.md
   - Rakefile
+
+#pre-push hook 변수
+#githubURL=소스코드를 push할 URL
+#githubBranch=소스코트를 push할 Branch
+#remoteName=소스코드를 보낼 remote 이름
+githubURL: git@github.com:hibrainnet/jekyll-and-hybe.git
+githubBranch: source
+remoteName: github
+
+
