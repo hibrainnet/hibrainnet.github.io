@@ -20,7 +20,6 @@ github_page:
   remote_name: github
   branch: source
   builder: travis
-  # remote_name: ?? 이건 왜 필요한건지?
 
 ## travis를 이용한 github page 빌드 설정
 travis:
@@ -99,12 +98,5 @@ exclude:
   - README.md
   - Rakefile
 
-#pre-push hook 변수
-#githubURL=소스코드를 push할 URL
-#githubBranch=소스코트를 push할 Branch
-#remoteName=소스코드를 보낼 remote 이름
-githubURL: git@github.com:hibrainnet/jekyll-and-hybe.git
-githubBranch: source
-remoteName: github
 
 
