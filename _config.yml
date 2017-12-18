@@ -76,6 +76,17 @@ pagination:
 #paginate_path: '/page/:num/'
 
 
+# hooks에서 사용하는 master 계정 변수
+
+git:
+  admin-git-email: rkgp05151@gmail.com
+
+
+ 
+
+
+
+
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
