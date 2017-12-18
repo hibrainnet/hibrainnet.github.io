@@ -2,3 +2,5 @@ _site
 .sass-cache
 .jekyll-metadata
 .DS_Store
+_posts/*-tmp-test-*.md
+_posts/*-tmp-test-*.markdown

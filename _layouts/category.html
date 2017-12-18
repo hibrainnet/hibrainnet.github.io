@@ -1,13 +1,19 @@
 ---
 layout: default
+pagination:
+  enabled: true
 ---
 <h1>category: {{ page.category }}</h1>
 
 <div id="archive">
   <ul class="archive-post-list">
-  {%for post in site.categories[page.category] %}
-      <li><time>{{ post.date | date:"%b %d, %Y" }}</time> » <a href="{{ post.url }}">{{ post.title }}</a></li>
+  {%for post in paginator.posts %}
+      <li><time>{{ post.date | date:"%b %d, %Y" }}</time> » <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
   {% endfor %}
   </ul>
 </div>
-
+{% if site.pagetype == 'simple' %}
+  {% include pagination-simple.html %}
+{% elsif site.pagetype == 'numbering' %}
+{% include pagination-numbering.html %}
+{% endif %}
