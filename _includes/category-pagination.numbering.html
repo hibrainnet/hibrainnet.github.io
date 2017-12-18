@@ -1,17 +1,17 @@
 <!-- 첫번째 페이지 계산 -->
 {% assign temp-page = paginator.page | minus: 1 %}
-{% assign page-set = temp-page | divided_by: site.limit_page %}
-{% assign first = page-set | times: site.limit_page | plus: 1 %}
+{% assign page-set = temp-page | divided_by: site.pagination.limit %}
+{% assign first = page-set | times: site.pagination.limit | plus: 1 %}
 
 
 <!-- 마지막 페이지 계산 -->
-{% assign temp-last = first| minus: 1 | plus: site.limit_page %}
+{% assign temp-last = first| minus: 1 | plus: site.pagination.limit %}
 {% if temp-last <= paginator.total_pages %}
   {% assign last = temp-last %}
 {% else %}
   {% assign last = paginator.total_pages %}
 {% endif %}
-  
+
 
 
 

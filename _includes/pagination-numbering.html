@@ -1,15 +1,25 @@
 <!-- 첫번째 페이지 계산 -->
-{% assign temp-page = paginator.page | minus: 1 %}
-{% assign page-set = temp-page | divided_by: site.limit_page %}
-{% assign first = page-set | times: site.limit_page | plus: 1 %}
+{% if site.pagination.limit != 0 %}
+  {% assign temp-page = paginator.page | minus: 1 %}
+  {% assign page-set = temp-page | divided_by: 1 %}
+  {% assign first = page-set | times: site.pagination.limit | plus: 1 %}
+{% else %}
+  {% assign first = 1 %}
+{% endif %}
 
 
 <!-- 마지막 페이지 계산 -->
-{% assign temp-last = first| minus: 1 | plus: site.limit_page %}
-{% if temp-last <= paginator.total_pages %}
-  {% assign last = temp-last %}
+{% if site.pagination.limit != 0 %}
+
+  {% assign temp-last = first| minus: 1 | plus: site.pagination.limit %}
+  {% if temp-last <= paginator.total_pages %}
+    {% assign last = temp-last %}
+  {% else %}
+    {% assign last = paginator.total_pages %}
+  {% endif %}
+
 {% else %}
-  {% assign last = paginator.total_pages %}
+{% assign last = paginator.last_page %}
 {% endif %}
 
 
@@ -46,7 +56,7 @@
     {% else %}
     {%assign ppurl = page.purl | prepend: "/" | append: "/page/" | replace: "//", "/" %}
       {% if count == 1%}
-        <li><a href="{{ site.baseurl }}{{ page_path | replace: "/page/:num", "" }}">{{ count}}</a></li>
+        <li><a href="{{ site.baseurl }}{{ page_path | replace: "/page/:num", "/" }}">{{ count}}</a></li>
       {% else %}
         <li><a href="{{ site.baseurl }}{{ page_path | replace: ":num", count }}">{{ count }}</a></li>
       {% endif %}

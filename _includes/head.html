@@ -1,77 +1,42 @@
 <script language='javascript'>
+var url = '{{site.url}}'+'{{site.baseurl}}'
+var pageType = '-1';
+var typeValue = '-1';
 
-var paramName = new Array();
-var paramValue = new Array();
-var url = '{{site.url}}'+'{{site.baseurl}}'+'{{pagination.page_type}}'
-var postTitle = new Array();
-var postUrl = new Array();
-var pageNum = -1;
+function getTypeValue(){
 
-{% for page in site.posts %}
-postTitle.push('{{ page.title }}')
-postUrl.push('{{page.url}}')
-{% endfor %}
+    var hashes = window.location.href.slice(0, window.location.href.indexOf('?')).split('/');
+    var pageNum = getParameter('page');
 
-function getQueryString(){
-
-    var hash;
-    var queryString= [];
-    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-    for(var i = 0; i < hashes.length; i++) {
-        hash = hashes[i].split('=');
-        if(hash[0] == '{{ site.page_num}}'){
-          pageNum = hash[1];
-          console.log(pageNum)
-        }
-        paramName.push(hash[0]);
-        paramValue.push(hash[1]);
-    }
-    return queryString;
-}
-
-
-function makeUrl() {
-
-  for(var i=0; i < paramName.length; i++) {
-    if(paramName[i] == '{{ site.page_type }}') {
-      window.location.replace(url + '/' + paramValue[i]);
+    if(hashes.length == 7 && ( hashes[4] == 'tags' || hashes[4] == 'category' ) && pageNum != undefined) {
+      pageType = hashes[4];
+      typeValue = hashes[5];
+      window.location.replace(url + '/' + pageType + '/' + typeValue + '/page/' + pageNum);
     }
 
-    else if(paramName[i] == '{{ site.post_title }}') {
-      for(var j=0; j < postTitle.length; j++) {
-        if(decodeURI(paramValue[i]) == postTitle[j]) {
-          window.location.replace(url + postUrl[j]);
-        }
-      }
+    if(hashes.length == 5 && pageNum != undefined) {
+      pageType = hashes[4];
+      typeValue = hashes[5];
+      window.location.replace(url + '/page/' + pageNum);
     }
-
-    else if(paramName[i] == '{{ site.category_param }}') {
-      if(pageNum != "-1"){
-          window.location.replace(url + '/category/' + paramValue[i] + '/page/' + pageNum);
-      }
-      else {
-          window.location.replace(url + '/category/' + paramValue[i]);
-      }
-
-    }
-
-    else if(paramName[i] == '{{ site.tag_param }}') {
-      if(pageNum != "-1") {
-          window.location.replace(url + '/tags/' + paramValue[i] + '/page/' + pageNum);
-      }
-      else {
-          window.location.replace(url + '/tags/' + paramValue[i]);
-      }
-
-    }
-
-  }
 
 }
 
 
-getQueryString();
-makeUrl();
+function getParameter(param) {
+    var returnValue;
+    var url = location.href;
+    var parameters = (url.slice(url.indexOf('?') + 1, url.length)).split('&');
+    for (var i = 0; i < parameters.length; i++) {
+        var varName = parameters[i].split('=')[0];
+        if (varName.toUpperCase() == param.toUpperCase()) {
+            returnValue = parameters[i].split('=')[1];
+            return decodeURIComponent(returnValue);
+        }
+    }
+};
+
+getTypeValue();
 </script>
 <head>
 
