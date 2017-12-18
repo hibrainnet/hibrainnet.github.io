@@ -1,0 +1,111 @@
+## 사이트 설정
+title: 하이브레인넷 부설연구소
+email: apps@hibrain.net
+description: >- 
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
+baseurl: "/jekyll-and-hybe" 
+url: "https://hibrainnet.github.io"
+
+## git 설정
+git:
+  admins: ## admins에 등록된 사용자만 master에 commit, merge, push를 진행할 수 있음
+    - sksong@hibrain.net
+    - saltfactory@gmail.com
+
+## github 설정
+github_page:
+  remote_url: git@bitbucket.org:hibrainnet/jekyll-and-hybe.git
+  remote_name: github
+  branch: source
+  builder: travis
+  # remote_name: ?? 이건 왜 필요한건지?
+
+## travis를 이용한 github page 빌드 설정
+travis:
+  github_token: ${GIHUB_TOKEN}
+  target_branch: master
+  source_branch: source
+
+## 소셜 서비스 계정
+sns:
+  twitter: hibrainapps
+  github: hibrainnet
+  medium: hibrainapps
+
+# twitter_username: hibrainapps
+# github_username:  hibrainnet
+
+## 댓글 계정
+comments:
+  disqus:
+    shortname: hibrainappsblog
+  facebook:
+    admin_id: "" #facebook 관리자 아이디
+    app_id: "" #facebook 앱 아이디
+
+## 페이징 설정 
+pagination:
+  type: numbering
+  limit: 15
+  enabled: true
+  per_page: 1
+  permalink: '/page/:num'
+  limit: 0
+  sort_field: "date"
+  sort_reverse: true
+
+  #카테고리, 태그 페이징 숫자에 할당될 주소 형식 
+  cate_link: '/category/:cname'
+  tag_link: '/tags/:tname'
+  tmp_page_link: '/page/'
+
+# pagetype = 페이징 방법 { numbering || simple }
+# limit_page = 한 화면에 보여줄 페이지 수
+# limit_page: 5
+# pagetype: "numbering"
+
+#query string에 사용할 변수명
+# tag_param: 'tags'
+# category_param: 'cate'
+# page_type: 'type'
+# post_title: 'title'
+# page_num: 'page'
+
+
+# Jekyll 설정
+markdown: kramdown
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-paginate-v2
+  - jekyll-sitemap
+  - jekyll-redirect-from
+  - jekyll-compose
+  - jekyll-seo-tag
+
+
+
+# jekyll-patinate 플러그인에서 사용하는 변수
+#paginate: 1
+#paginate_path: '/page/:num/'
+
+exclude:
+  - vendor
+  - Gemfile
+  - Geffile.lock
+  - LICENSE
+  - README.md
+  - Rakefile
+
+#pre-push hook 변수
+#githubURL=소스코드를 push할 URL
+#githubBranch=소스코트를 push할 Branch
+#remoteName=소스코드를 보낼 remote 이름
+githubURL: git@github.com:hibrainnet/jekyll-and-hybe.git
+githubBranch: source
+remoteName: github
+
+
+
