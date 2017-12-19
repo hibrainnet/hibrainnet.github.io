@@ -42,8 +42,8 @@ comments:
   disqus:
     shortname: hibrainappsblog
   facebook:
-    admin_id: "" #facebook 관리자 아이디
-    app_id: "" #facebook 앱 아이디
+    admin_id: 1481493355297914
+    app_id: 153422825428832
 
 ## 페이징 설정
 

@@ -1,15 +1,4 @@
-{% assign facebook = "facebook" %}
-{% assign disqus = "disqus" %}
-
-{% if page.comments == facebook %}
-<div class="fb-comments" data-href="{{ site.url }}{{ page.url }}" data-width="100%" ></div>
-
-{% elsif page.comments == disqus %}
-<div id="disqus_thread"></div>
-<script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript
->
-{% elsif page.comments %}
+{% if page.comments == true %}
 <div class="fb-comments" data-href="{{ site.url }}{{ page.url }}" data-width="100%" ></div>
 
 <div id="disqus_thread"></div>
