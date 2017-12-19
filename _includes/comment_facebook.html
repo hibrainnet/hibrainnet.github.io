@@ -1,4 +1,5 @@
-/*
- * facebook comments
- */
+{% assign facebook = "facebook" %}
 
+{% if page.comments == facebook %}
+<div class="fb-comments" data-href="{{ site.url }}{{ page.url }}" data-width="100%" ></div>
+{% endif %}
