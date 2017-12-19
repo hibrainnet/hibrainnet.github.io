@@ -49,9 +49,10 @@ This project is licensed under the MIT License - see the LICENSE.md file for det
 Bitbucket저장소에서 master브런치로 push할 때, Github저장소의 source브런치에 push작업이 실행되도록 설정한다.
 
 1. _config.yml파일에서 pre-push hook변수에 자신의 환경설정에 맞는 값으로 설정한다.
-	githubURL : 소스코드를 push 할 저장소의 URL
-	githubBranch : 소스코드를 push 할 저장소의 Branch 이름
-	remoteName : 소스코드를 push 할 remote 이름
+	github_page : 
+		remote_url : 소스코드를 push 할 저장소의 URL
+		remote_name : 등록되는 url의 remote 이름(default 값은 github로 설정)
+		branch : 소스코드를 push 할 저장소의 branch 이름
 
 2. 저장소/hooks 디렉토리에 있는 pre-push파일을 hook설정 디렉토리에 복사한다.
 	cp 저장소/hooks 저장소/.git/hooks
