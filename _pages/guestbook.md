@@ -1,8 +1,8 @@
 ---
 permalink: "/guestbook/"
 layout: page
-comments : true
-title:  "guest"
+comments : disqus
+title:  "guestbook"
 ---
 
 

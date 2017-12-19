@@ -42,8 +42,8 @@ comments:
   disqus:
     shortname: hibrainappsblog
   facebook:
-    admin_id: 1481493355297914
-    app_id: 153422825428832
+    admin_id: 100001627773972
+    app_id: 147895112528926
 
 ## 페이징 설정
 
@@ -66,6 +66,8 @@ plugins:
   - jekyll-redirect-from
   - jekyll-compose
   - jekyll-seo-tag
+
+include: ['_pages']
 
 exclude:
   - vendor
