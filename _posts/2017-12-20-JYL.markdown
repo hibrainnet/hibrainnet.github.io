@@ -132,6 +132,18 @@ image_path는 shell에서 입력한 이미지 경로를 매개변수로 받아�
 
 <br>
 
+![2](http://res.cloudinary.com/degxeqfok/image/upload/v1513757344/wlgzte0gt5r6fo4pqiup.png)
+
+<pre><code>
+
+ruby cloudinary-upload.rb 로컬이미지경로
+
+</code></pre>
+
+위의 명령어를 치면 결과값으로 호스팅 된 이미지 url이 나오는 것을 확인
+
+
+
 ### 2. 참고자료
 
 1. https://www.ruby-lang.org/ko/, ruby-korea, accessed 2017-12-20
