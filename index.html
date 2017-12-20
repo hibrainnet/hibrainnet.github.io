@@ -8,24 +8,33 @@ pagination:
 
   <h1 class="page-heading">Posts</h1>
 
-
   <ul class="post-list">
     {% for post in paginator.posts %}
+
       <li>
         {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
+
+        {% for auth in site.authors %}
+          {% if post.author == auth.name %}
+            {% assign author = auth %}
+          {% endif %}
+        {% endfor %}
+
         <span class="post-meta">{{ post.date | date: date_format }}</span>
 
         <h2>
           <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+          <a class="post-meta" href="{{ site.baseurl }}/authors/{{ post.author }}">posted by {{ author.title }}</a>
         </h2>
       </li>
+
     {% endfor %}
   </ul>
 
   {% if site.pagination.type == 'simple' %}
   	{% include pagination-simple.html %}
   {% elsif site.pagination.type == 'numbering' %}
-	{% include pagination-numbering.html %}
+	  {% include pagination-numbering.html %}
   {% endif %}
 
 

@@ -56,6 +56,19 @@ pagination:
   sort_field: "date"
   sort_reverse: true
 
+# 작성자 설정 (콜렉션)
+collections:
+  authors:
+    output: true #독립적인 파일로 생성 하고 싶은경우 true
+    permalink: /authors/:path #독릭적입 파일로 생겼을때 url
+
+# 작성자 콜렉션에 대한 메타데이터
+defaults:
+  - scope:
+      path: ''
+      type: authors
+    values:
+      layout: author
 # Jekyll 설정
 markdown: kramdown
 theme: minima
