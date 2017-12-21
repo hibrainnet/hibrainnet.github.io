@@ -29,8 +29,18 @@ Bitbucket저장소에서 master브런치로 push할 때, Github저장소의 sour
 github pages에서 제공해주는 무료 호스팅을 사용한다.  
 
 
-## Posts Paging
+## Built With
+* [Jekyll](http://https://jekyllrb.com/)
+* [git](https://github.com/)
+* [Ruby](https://www.ruby-lang.org/ko/)
 
+
+
+## Versioning
+We use [Keep a CHANGELOG](http://keepachangelog.com/en/0.3.0/) for versioning.
+- see the CHANGELOG.md file for details
+
+## Posts Paging
 
 페이징 관련 변수는 _config.yml에 다음과 같이 존재한다.
 
@@ -70,21 +80,6 @@ numbering - 설정값에 따라 페이징 넘버 제공
 **sort_field** - _posts에 작성된 게시물을 정렬할 기준 정의  
 
 **sort_reverse** - 역순으로 정렬할지 여부 정의  
-
-
-
-
-
-## Built With
-* [Jekyll](http://https://jekyllrb.com/)
-* [git](https://github.com/)
-* [Ruby](https://www.ruby-lang.org/ko/)
-
-
-
-## Versioning
-We use [Keep a CHANGELOG](http://keepachangelog.com/en/0.3.0/) for versioning.
-- see the CHANGELOG.md file for details
 
 
 
