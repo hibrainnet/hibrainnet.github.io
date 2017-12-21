@@ -50,7 +50,7 @@ comments:
 pagination:
   type: numbering
   enabled: true
-  per_page: 2 # 한 화면에 보여줄 post 갯수
+  per_page: 1 # 한 화면에 보여줄 post 갯수
   permalink: '/page/:num'
   limit: 0 # 한번에 보여줄 페이징 숫자
   sort_field: "date"

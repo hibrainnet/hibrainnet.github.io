@@ -30,5 +30,9 @@ layout: default
 
       {% endfor %}
     </ul>
-
+    {% if site.pagination.type == 'simple' %}
+    	{% include pagination-simple.html %}
+    {% elsif site.pagination.type == 'numbering' %}
+  	  {% include pagination-numbering.html %}
+    {% endif %}
 </div>
