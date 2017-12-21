@@ -1,8 +1,10 @@
 #!/bin/bash
 
 branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
-USER_EMAIL=$(git log -1 --format=format:%ae HEAD)
-USER_NAME=$(git log -1 --format=format:%an HEAD)
+# USER_EMAIL=$(git log -1 --format=format:%ae HEAD)
+# USER_NAME=$(git log -1 --format=format:%an HEAD)
+USER_EMAIL=$(git config user.email)
+USER_NAME=$(git config user.name)
 
 #echo $PWD
 ADMIN_LENGTH=$(ruby -r "$PWD"/script/config.rb -e "puts @admin_length")
