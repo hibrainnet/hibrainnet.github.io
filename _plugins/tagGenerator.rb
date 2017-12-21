@@ -11,7 +11,8 @@ class TagIndex < Page
       self.read_yaml(File.join(base, '_layouts'), 'tag.html')
       self.data['tag'] = tag
       self.data['title'] = "Tag: "+tag.capitalize+""
-    
+      
+
     end
   end
 
@@ -41,9 +42,7 @@ class TagIndex < Page
       end
 
         end
-     
+
     end
 
   end
-
-

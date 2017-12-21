@@ -7,6 +7,46 @@ Jekyll & Hybe는 GitHub 를 사용하여 GitHub Pages로 퍼블리싱하는 기�
 
 `_config.yml` 파일에서 `github_pages:` 를 설정한다.
 
+## Getting Started
+
+특정 사용자 master commit, push 사용하기
+- hooks 디렉토리에 있는 pre-commit, pre-push, push-block.sh 파일을 .git/hooks 디렉토리에 옮겨준다.
+
+
+Bitbucket저장소에서 master브런치로 push할 때, Github저장소의 source브런치에 push작업이 실행되도록 설정한다.
+- _config.yml파일에서 pre-push hook변수에 자신의 환경설정에 맞는 값으로 설정한다.
+    github_page :
+        remote_url : 소스코드를 push 할 저장소의 URL
+        remote_name : 등록되는 url의 remote 이름(default 값은 github로 설정)
+        branch : 소스코드를 push 할 저장소의 branch 이름
+
+- 저장소/hooks 디렉토리에 있는 pre-push파일을 hook설정 디렉토리에 복사한다.
+    cp 저장소/hooks 저장소/.git/hooks
+
+
+## Deployment
+
+데이터베이스가 필요없고, 마크다운형태로 정적 HTML을 만들어내는 jekyll을 이용해서 개발한다.
+
+github pages에서 제공해주는 무료 호스팅을 사용한다.  
+
+
+## Built With
+* [Jekyll](http://https://jekyllrb.com/)
+* [git](https://github.com/)
+* [Ruby](https://www.ruby-lang.org/ko/)
+
+
+
+## Versioning
+We use [Keep a CHANGELOG](http://keepachangelog.com/en/0.3.0/) for versioning.
+- see the CHANGELOG.md file for details
+
+## Posts Paging
+
+페이징 관련 변수는 _config.yml에 다음과 같이 존재한다.
+
+_config.yml
 ```
 github_pages :
   remote_url : 소스코드를 push 할 저장소의 URL
@@ -23,7 +63,7 @@ github_pages:
   branch: source
 ```
 
-## git 관리자 설정 
+## git 관리자 설정
 
 Jekyll & Hybe 에서는 소스코드 관리를 제한하기 위해 git 관리자만 master 브랜치에 commit과 push 를 할 수 있는 기능을 가지고 있다. 이 기능을 같이 작업하는 다른 사용자가 소스코드를 master에 적용할 수 없도록 제한하여 소스코드의 품질을 관리할 때 필요한 기능이다. 이 기능을 사용하기 위해서는 다음과 같이 크게 두가지 설정을 해야한다.
 
@@ -47,20 +87,20 @@ Jekyll & Hybe는 다른 외부 블로그 서비스에서 글을 Import 하는 �
 - [Atlassian Confluence](https://www.atlassian.com/software/confluence)
 
 ### Medium to Jekyll & Hibye
-**Medium to Jekyll & Hybe** 는 Medium의 글을 Jekyll & Hybe의 글로 임포트하는 기능이다. 
+**Medium to Jekyll & Hybe** 는 Medium의 글을 Jekyll & Hybe의 글로 임포트하는 기능이다.
 
 ```
 jb import -from medium -uri https://medium.com/@hibrainapps/hello-world -doc _posts/2017-12-25-helloworkd.md
 ```
 
 ## Export 기능
-Jekyll & Hybe는 다른 외부 블로그 서비스로 내가 쓴 글을 export 할 수 있는 기능을 가지고 있다. Export 할 수 있는 서비스는 다음과 같다. 
- 
+Jekyll & Hybe는 다른 외부 블로그 서비스로 내가 쓴 글을 export 할 수 있는 기능을 가지고 있다. Export 할 수 있는 서비스는 다음과 같다.
+
 - [Medium](https://www.medium.com)
 - [Atlassian Confluence](https://www.atlassian.com/software/confluence)
 
 ### Jekyll & Hybe to Medium (Medium 에 export하기)
-FrontMatter에 Medium 글 발행에 필요한 정보를 추가한다. 
+FrontMatter에 Medium 글 발행에 필요한 정보를 추가한다.
 - **publication** : Medium 컬렉션 이름
 - **license** : all-rights-reserved, cc-40-by, cc-40-by-nd, cc-40-by-sa, cc-40-by-nc, cc-40-by-nc-nd, cc-40-by-nc-sa, cc-40-zero, public-domain
 
@@ -82,5 +122,46 @@ FrontMatter 설정 후 다음 명령어를 실행한다. token은 [Medium Settin
 jb export -to medium -doc  _posts/2017-12-25-hello-world.md
 ```
 ​
+## Posts Paging
+
+페이징 관련 변수는 config.yml에 다음과 같이 존재한다.
+
+config.yml
+```
+  pagination:
+    type: numbering
+    enabled: true
+    per_page: 2
+    permalink: '/page/:num'
+    limit: 0
+    sort_field: "date"
+    sort_reverse: true
+```
+
+**type** - 페이징 방법을 정의
+>simple - 이전 / 다음 버튼만 제공
+numbering - 설정값에 따라 페이징 넘버 제공    
+
+**enabled** - 페이징 기능을 사용할지 여부 정의 (true | false)  
+
+**per_page** - 한 페이지에 보여줄 게시물의 개수  
+
+**permalink** - 각 페이지가 가지는 url형식 정의  
+> :num에 페이지 값이 할당
+
+>permalink: '/page/:num' 인경우
+3 페이지 = /page/3
+
+>permalink: '/page:num' 인경우
+3 페이지 = /page3
+
+**limit** - 한 화면에 나타낼 페이질 개수 정의
+> 0일 경우 unlimit (모든 페이징을 한 화면에 보여준다 )
+ 5인 경우 한 화면에 1~5, 6~10 처럼 5단위로 보여준다
+
+**sort_field** - posts에 작성된 게시물을 정렬할 기준 정의  
+
+**sort_reverse** - 역순으로 정렬할지 여부 정의  
+
 ## License
 This project is licensed under the MIT License - see the LICENSE.md file for details
