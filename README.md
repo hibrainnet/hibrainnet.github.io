@@ -5,20 +5,21 @@
 ## GitHub Pages 퍼블리싱 설정
 Jekyll & Hybe는 GitHub 를 사용하여 GitHub Pages로 퍼블리싱하는 기능을 가지고 있다. github 가 아닌 다른 git 저장소에서 GitHub 로 자동으로 소스코드를 디플로이하여 GitHub Pages를 퍼블리싱할 수 있다.
 
-`_config.yml` 파일에서 `github_pages:` 를 설정한다.
+- `hooks/` 디렉토리 안의 파일을 `.git/hooks/`  디렙토리 안으로 복사한다. 
+- `_config.yml` 파일에서 `github_pages:` 를 설정한다.
 ```
 github_pages :
-  remote_url : 소스코드를 push 할 저장소의 URL
-  remote_name : 등록되는 url의 remote 이름(default 값은 github로 설정)
-  branch : 소스코드를 push 할 저장소의 branch 이름
+  remote_url : 접근하고자 하는 저장소의 /username/repository_name.git
+  branchi : 소스코드를 push 할 저장소의 branch 이름
+  token : 접근하고자 하는 저장소의 personal access token [github API](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/) 참고
 ```
 
 예)
 ```
 github_pages:
-  remote_url : git@github.com/hibrainnet/jekyll-and-hybe.git
-  remote_name : github
+  remote_url : /hibrainnet/jekyll-and-hybe.git
   branch: source
+  token : **************************************** 
 ```
 
 ## git 관리자 설정
