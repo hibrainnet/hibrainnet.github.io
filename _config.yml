@@ -16,11 +16,10 @@ git:
 
 ## github 설정
 github_page:
-  remote_url: git@bitbucket.org:hibrainnet/jekyll-and-hybe.git
-  remote_name: github
+  remote_url: /hibrainnet/jekyll-and-hybe.git
   branch: source
+  token: personal_access_token 
   builder: travis
-  # remote_name: ?? 이건 왜 필요한건지?
 
 ## travis를 이용한 github page 빌드 설정
 travis:

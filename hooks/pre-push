@@ -10,4 +10,4 @@ PWD=$(pwd)
 "$PWD"/.git/hooks/push-block.sh
 
 #github로 push작업
-$PWD/hooks/push-github.sh $remote $url
+$PWD/.git/hooks/push-github.sh $remote $url
