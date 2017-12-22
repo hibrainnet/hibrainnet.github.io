@@ -1,0 +1,573 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="https://hibrainnet.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hibrainnet.github.io/" rel="alternate" type="text/html" /><updated>2017-12-22T13:28:06+09:00</updated><id>https://hibrainnet.github.io/</id><title type="html">하이브레인넷 부설연구소</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Composite Pattern</title><link href="https://hibrainnet.github.io/%EB%94%94%EC%9E%90%EC%9D%B8%ED%8C%A8%ED%84%B4/2017/12/21/jh.heo.html" rel="alternate" type="text/html" title="Composite Pattern" /><published>2017-12-21T11:11:11+09:00</published><updated>2017-12-21T11:11:11+09:00</updated><id>https://hibrainnet.github.io/%EB%94%94%EC%9E%90%EC%9D%B8%ED%8C%A8%ED%84%B4/2017/12/21/jh.heo</id><content type="html" xml:base="https://hibrainnet.github.io/%EB%94%94%EC%9E%90%EC%9D%B8%ED%8C%A8%ED%84%B4/2017/12/21/jh.heo.html">&lt;h1 id=&quot;1-연구내용&quot;&gt;1. 연구내용&lt;/h1&gt;
+&lt;hr /&gt;
+&lt;h2 id=&quot;composite-pattern&quot;&gt;Composite Pattern&lt;/h2&gt;
+&lt;h3 id=&quot;정의&quot;&gt;정의&lt;/h3&gt;
+&lt;p&gt;위키백과에서는 Composite Pattern을 객체들의 관계를 트리 구조로 구성하여 부분 - 전체 계층을 표현하는 패턴, 사용자가 단일 객체와 복합 객체 모두 동일하고 다루도록 하는 패턴이라고 정의하고 있다.&lt;/p&gt;
+
+&lt;p&gt;단일 객체이던 객체들의 집합이던 같은 방법으로 취급하는 경우 사용할수 있다.&lt;/p&gt;
+
+&lt;p&gt;예를 들어 컴퓨터 파일시스템에서 디렉토리 구조를 보면 크게 디렉토리와 파일로 이루어져 있다.
+디렉토리는 하위에 다른 디렉토리 또는 파일을 가질수 있고 파일은 하위에 파일이나 디렉토리를 가지지 못한다.&lt;/p&gt;
+
+&lt;p&gt;파일시스템의 전체 구조를 모른다고 했을때 전체구조를 파악하기 위해서 모든 디렉토리 혹은 파일 경로를 방문하여 조사하여야 한다. 조사 대상은 디렉토리가 될수도 있고 파일이 될수도 있다.
+따라서 파일시스템의 파일이나 디렉토리를 하나의 구조로 보고 조사하여야 한다.
+그래서 파일, 디렉토리를 묶어 디렉토리 엔트리라고 표현하기도 한다.&lt;/p&gt;
+
+&lt;p&gt;파일시스템 처럼 객체와 객체들의 집합을 동일하게 다루고 싶은 경우 Composite 패턴을 사용하게 된다.
+&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;예제&quot;&gt;예제&lt;/h3&gt;
+&lt;p&gt;예제 프로그램은 위에서 설명한 파일과 디렉토리를 묶어 디렉토리 엔트리로 다루는 코드이다.&lt;/p&gt;
+
+&lt;p&gt;아래의 표는 예제 프로그램에서 사용하는 클래스들을 정리한 표이다&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;이름&lt;/th&gt;
+      &lt;th&gt;설명&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Entry&lt;/td&gt;
+      &lt;td&gt;File과 Directory를 동일시 하기위한 추상클래스&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;File&lt;/td&gt;
+      &lt;td&gt;파일을 나타내기 위한 클래스&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Directory&lt;/td&gt;
+      &lt;td&gt;디렉토리를 나타내기 위한 클래스&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;FileTreatmentException&lt;/td&gt;
+      &lt;td&gt;파일이 엔트리를 추가하려고 할때 발생하는 예외 클래스&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Main&lt;/td&gt;
+      &lt;td&gt;예제 프로그램 동작용 클래스&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;아래의 그림은 클래스 uml을 표현한 그림이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://image.ibb.co/fDrAkR/image.png&quot; alt=&quot;uml 사진&quot; /&gt;
+&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;entry-클래스&quot;&gt;Entry 클래스&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public abstract class Entry {
+    public abstract String getName();
+    public abstract int getSize();
+
+    public Entry add(Entry entry) throws FileTreatmentException {
+        throw new FileTreatmentException();
+    }
+
+    public void printList() {
+        printList(&quot;&quot;);
+    }
+
+    protected abstract void printList(String prefix);
+
+    public String toString() {
+        return getName() + &quot; (&quot; + getSize() + &quot;)&quot;;
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;
+Entry 클래스는 추상 클래스에서 디렉토리 엔트리를 표현한 것이다. File과 Directory가 이 추상클래스를 상속받게 된다. 상속을 통해 같은 방법(메소드)으로 취급할수 있다.&lt;/p&gt;
+
+&lt;p&gt;add 메소드는 엔트리 안에 엔트리를 만드는 메소드로 디렉토리 안에 파일이나 디렉토리를 생성하는 것을 표현 한것이다. 그런데 파일은 하위 엔트리를 가질수 없다. 이런 표현 방법은 여러가지가 있을수 있지만 여기서는 기본적으로 add 메소드가 예외를 발생시키고  하위 엔트리를 추가할수 있는 Directory 클래스가 오버라이딩 하는 방법으로 표현하였다. 파일이 add 메소드를 사용할경우 (하위에 엔트리를 추가하는 행동) 오버라이딩을 하지 않아 예외를 발생시키게 된다.&lt;/p&gt;
+
+&lt;p&gt;printList는 리스트를 출력하는 메소드로 문자열 하나를 받는 메소드와 파라미터가 없는 메소드가 존재 한다. 파일이나 디렉토리의 경로를 출력하는 것을 담당한다.
+&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;file-클래스&quot;&gt;File 클래스&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class File extends Entry {
+    private String name;
+    private int size;
+
+    public File(String name, int size) {
+        this.name = name;
+        this.size = size;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    protected void printList(String prefix) {
+        System.out.println(prefix + &quot;/&quot; + this);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;
+File 클래스는 Entry 클래스를 상속 받고 파일을 표현한 클래스이다. 파일의 이름과 사이즈를 의미하는 name과 size 두개의 필드가 존재한다.&lt;/p&gt;
+
+&lt;p&gt;생성자는 파일의 name과 size를 받아 생성하도록 되어있다.&lt;/p&gt;
+
+&lt;p&gt;getName과 getSize는 파일의 이름과 사이즈를 반환하는 getter 메소드 이다.&lt;/p&gt;
+
+&lt;p&gt;printList는 접두사 prefix를 입력받아 현재 경로와 파일의 이름을 출력하는 메소드이다.
+&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;directory-클래스&quot;&gt;Directory 클래스&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import java.util.Iterator;
+import java.util.Vector;
+
+public class Directory extends Entry {
+    private String name;
+    private Vector directory = new Vector();
+
+    public Directory(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getSize() {
+        int size = 0;
+        Iterator it = directory.iterator();
+        while (it.hasNext()) {
+            Entry entry = (Entry)it.next();
+            size += entry.getSize();
+        }
+        return size;
+    }
+
+    public Entry add(Entry entry) {
+        directory.add(entry);
+        return this;
+    }
+
+    protected void printList(String prefix) {
+        System.out.println(prefix + &quot;/&quot; + this);
+        Iterator it = directory.iterator();
+        while (it.hasNext()) {
+            Entry entry = (Entry)it.next();
+            entry.printList(prefix + &quot;/&quot; + name);
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;
+Directory 클래스는 Entry를 상속 하고 디렉토리를 표현한 클래스이다. 디렉토리의 name과 디렉토리 안에 있는 엔트리들의 정보를 담고 있는 directory 벡터 필드를 가지고 있다.&lt;/p&gt;
+
+&lt;p&gt;생성자는 디렉토리 이름을 가지고 생성한다.&lt;/p&gt;
+
+&lt;p&gt;getName과 getSize는 디렉토리으 이름과 사이즈를 반환하는 getter 메소드이다.&lt;/p&gt;
+
+&lt;p&gt;디렉토리는 사이즈를 가지고 있지 않지만 디렉토리에는 사이즈가 있는 파일이 존재할수 있고 디렉토리가 존재할수도 있다. 그리고 하위 디렉토리 하위에 또다른 파일이 존재할 수도 있다. 그러므로 하위의 모든 파일의 사이즈를 계산하여 리턴해주어야 한다. File과 Directory 모두 Entry를 상속 받으므로 getSize 메소드를 사용할수 있다. 그래서 하위 엔트리를 객체를 담고 있는 directory 벡터, iterator를 활용하여 재귀적으로 getSize를 호출할수 있다.
+&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;main-클래스&quot;&gt;Main 클래스&lt;/h4&gt;
+
+&lt;p&gt;Main 클래스에서는 아래와 같은 디렉토리 계층을 만들어 사용해 본다
+root 디렉토리가 존재하고 하위 디렉토리로 bin, tmp, usr 디렉토리를 가진다. 그리고 vi, latex라는 파일은 bin 디렉토리 하위에 생성한다&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ㅡroot
+    |ㅡbin
+    |   |ㅡvi
+    |   |ㅡlatex
+    |
+    |ㅡtmp
+    |ㅡusr
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;그 후 usr 디렉토리 하위에 kim, lee, kang이라는 파일을 생성한다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ㅡroot
+    |ㅡbin
+    |   |ㅡvi
+    |   |ㅡlatex
+    |
+    |ㅡtmp
+    |ㅡusr
+        |
+        |ㅡkimg
+        |   |ㅡdiary.html
+        |   |ㅡcomposite.java
+        |
+        |ㅡlee
+        |   |ㅡmemo.text
+        |
+        |ㅡkang
+            |ㅡgame.docs
+            |ㅡbattleground.exe
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;
+위의 엔트리들을 코드로 표현하면 다음과 같다.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class Main {
+    public static void main(String[] args) {
+        try {
+            System.out.println(&quot;Making root entries...&quot;);
+            Directory rootDir = new Directory(&quot;root&quot;);
+            Directory bindDir = new Directory(&quot;bind&quot;);
+            Directory tmpDir = new Directory(&quot;tmp&quot;);
+            Directory usrDir = new Directory(&quot;usr&quot;);
+            rootDir.add(bindDir);
+            rootDir.add(tmpDir);
+            rootDir.add(usrDir);
+            bindDir.add(new File(&quot;vi&quot;, 10000));
+            bindDir.add(new File(&quot;latex&quot;, 20000));
+            rootDir.printList();
+
+            System.out.println(&quot;&quot;);
+            System.out.println(&quot;Making user entries...&quot;);
+            Directory kim = new Directory(&quot;Kim&quot;);
+            Directory lee = new Directory(&quot;Lee&quot;);
+            Directory kang = new Directory(&quot;Kang&quot;);
+            usrDir.add(kim);
+            usrDir.add(lee);
+            usrDir.add(kang);
+            kim.add(new File(&quot;diary.html&quot;, 100));
+            kim.add(new File(&quot;composite.java&quot;, 200));
+            lee.add(new File(&quot;memo.text&quot;, 300));
+            kang.add(new File(&quot;game.doc&quot;, 400));
+            kang.add(new File(&quot;battleground.exe&quot;, 500));
+            rootDir.printList();
+
+
+        } catch (FileTreatmentException e) {
+            e.printStackTrace();
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;이후 실행 결과는 다음과 같다
+실행 결과는 파일이나 디렉토리의 경로 그리고 파일인 경우 사이즈가 출력된다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://image.ibb.co/jyhYN6/image.png&quot; alt=&quot;실행 결과&quot; /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;2-참고자료&quot;&gt;2. 참고자료&lt;/h1&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;composite pattern, https://ko.wikipedia.org/wiki/%EC%BB%B4%ED%8F%AC%EC%A7%80%ED%8A%B8_%ED%8C%A8%ED%84%B4&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;컴포지트 패턴, http://jdm.kr/blog/228&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;java 언어로 배우는 디자인 패턴, 유키 히로시, 영진닷컴&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</content><author><name>jh.heo</name></author><category term="연구노트" /><category term="인턴십" /><summary type="html">1. 연구내용 Composite Pattern 정의 위키백과에서는 Composite Pattern을 객체들의 관계를 트리 구조로 구성하여 부분 - 전체 계층을 표현하는 패턴, 사용자가 단일 객체와 복합 객체 모두 동일하고 다루도록 하는 패턴이라고 정의하고 있다. 단일 객체이던 객체들의 집합이던 같은 방법으로 취급하는 경우 사용할수 있다. 예를 들어 컴퓨터 파일시스템에서 디렉토리 구조를 보면 크게 디렉토리와 파일로 이루어져 있다. 디렉토리는 하위에 다른 디렉토리 또는 파일을 가질수 있고 파일은 하위에 파일이나 디렉토리를 가지지 못한다. 파일시스템의 전체 구조를 모른다고 했을때 전체구조를 파악하기 위해서 모든 디렉토리 혹은 파일 경로를 방문하여 조사하여야 한다. 조사 대상은 디렉토리가 될수도 있고 파일이 될수도 있다. 따라서 파일시스템의 파일이나 디렉토리를 하나의 구조로 보고 조사하여야 한다. 그래서 파일, 디렉토리를 묶어 디렉토리 엔트리라고 표현하기도 한다. 파일시스템 처럼 객체와 객체들의 집합을 동일하게 다루고 싶은 경우 Composite 패턴을 사용하게 된다. 예제 예제 프로그램은 위에서 설명한 파일과 디렉토리를 묶어 디렉토리 엔트리로 다루는 코드이다. 아래의 표는 예제 프로그램에서 사용하는 클래스들을 정리한 표이다 이름 설명 Entry File과 Directory를 동일시 하기위한 추상클래스 File 파일을 나타내기 위한 클래스 Directory 디렉토리를 나타내기 위한 클래스 FileTreatmentException 파일이 엔트리를 추가하려고 할때 발생하는 예외 클래스 Main 예제 프로그램 동작용 클래스 아래의 그림은 클래스 uml을 표현한 그림이다. Entry 클래스 public abstract class Entry { public abstract String getName(); public abstract int getSize(); public Entry add(Entry entry) throws FileTreatmentException { throw new FileTreatmentException(); } public void printList() { printList(&quot;&quot;); } protected abstract void printList(String prefix); public String toString() { return getName() + &quot; (&quot; + getSize() + &quot;)&quot;; } } Entry 클래스는 추상 클래스에서 디렉토리 엔트리를 표현한 것이다. File과 Directory가 이 추상클래스를 상속받게 된다. 상속을 통해 같은 방법(메소드)으로 취급할수 있다. add 메소드는 엔트리 안에 엔트리를 만드는 메소드로 디렉토리 안에 파일이나 디렉토리를 생성하는 것을 표현 한것이다. 그런데 파일은 하위 엔트리를 가질수 없다. 이런 표현 방법은 여러가지가 있을수 있지만 여기서는 기본적으로 add 메소드가 예외를 발생시키고 하위 엔트리를 추가할수 있는 Directory 클래스가 오버라이딩 하는 방법으로 표현하였다. 파일이 add 메소드를 사용할경우 (하위에 엔트리를 추가하는 행동) 오버라이딩을 하지 않아 예외를 발생시키게 된다. printList는 리스트를 출력하는 메소드로 문자열 하나를 받는 메소드와 파라미터가 없는 메소드가 존재 한다. 파일이나 디렉토리의 경로를 출력하는 것을 담당한다. File 클래스 public class File extends Entry { private String name; private int size; public File(String name, int size) { this.name = name; this.size = size; } public String getName() { return name; } public int getSize() { return size; } protected void printList(String prefix) { System.out.println(prefix + &quot;/&quot; + this); } } File 클래스는 Entry 클래스를 상속 받고 파일을 표현한 클래스이다. 파일의 이름과 사이즈를 의미하는 name과 size 두개의 필드가 존재한다. 생성자는 파일의 name과 size를 받아 생성하도록 되어있다. getName과 getSize는 파일의 이름과 사이즈를 반환하는 getter 메소드 이다. printList는 접두사 prefix를 입력받아 현재 경로와 파일의 이름을 출력하는 메소드이다. Directory 클래스 import java.util.Iterator; import java.util.Vector; public class Directory extends Entry { private String name; private Vector directory = new Vector(); public Directory(String name) { this.name = name; } public String getName() { return name; } public int getSize() { int size = 0; Iterator it = directory.iterator(); while (it.hasNext()) { Entry entry = (Entry)it.next(); size += entry.getSize(); } return size; } public Entry add(Entry entry) { directory.add(entry); return this; } protected void printList(String prefix) { System.out.println(prefix + &quot;/&quot; + this); Iterator it = directory.iterator(); while (it.hasNext()) { Entry entry = (Entry)it.next(); entry.printList(prefix + &quot;/&quot; + name); } } } Directory 클래스는 Entry를 상속 하고 디렉토리를 표현한 클래스이다. 디렉토리의 name과 디렉토리 안에 있는 엔트리들의 정보를 담고 있는 directory 벡터 필드를 가지고 있다. 생성자는 디렉토리 이름을 가지고 생성한다. getName과 getSize는 디렉토리으 이름과 사이즈를 반환하는 getter 메소드이다. 디렉토리는 사이즈를 가지고 있지 않지만 디렉토리에는 사이즈가 있는 파일이 존재할수 있고 디렉토리가 존재할수도 있다. 그리고 하위 디렉토리 하위에 또다른 파일이 존재할 수도 있다. 그러므로 하위의 모든 파일의 사이즈를 계산하여 리턴해주어야 한다. File과 Directory 모두 Entry를 상속 받으므로 getSize 메소드를 사용할수 있다. 그래서 하위 엔트리를 객체를 담고 있는 directory 벡터, iterator를 활용하여 재귀적으로 getSize를 호출할수 있다. Main 클래스 Main 클래스에서는 아래와 같은 디렉토리 계층을 만들어 사용해 본다 root 디렉토리가 존재하고 하위 디렉토리로 bin, tmp, usr 디렉토리를 가진다. 그리고 vi, latex라는 파일은 bin 디렉토리 하위에 생성한다 ㅡroot |ㅡbin | |ㅡvi | |ㅡlatex | |ㅡtmp |ㅡusr 그 후 usr 디렉토리 하위에 kim, lee, kang이라는 파일을 생성한다. ㅡroot |ㅡbin | |ㅡvi | |ㅡlatex | |ㅡtmp |ㅡusr | |ㅡkimg | |ㅡdiary.html | |ㅡcomposite.java | |ㅡlee | |ㅡmemo.text | |ㅡkang |ㅡgame.docs |ㅡbattleground.exe 위의 엔트리들을 코드로 표현하면 다음과 같다. public class Main { public static void main(String[] args) { try { System.out.println(&quot;Making root entries...&quot;); Directory rootDir = new Directory(&quot;root&quot;); Directory bindDir = new Directory(&quot;bind&quot;); Directory tmpDir = new Directory(&quot;tmp&quot;); Directory usrDir = new Directory(&quot;usr&quot;); rootDir.add(bindDir); rootDir.add(tmpDir); rootDir.add(usrDir); bindDir.add(new File(&quot;vi&quot;, 10000)); bindDir.add(new File(&quot;latex&quot;, 20000)); rootDir.printList(); System.out.println(&quot;&quot;); System.out.println(&quot;Making user entries...&quot;); Directory kim = new Directory(&quot;Kim&quot;); Directory lee = new Directory(&quot;Lee&quot;); Directory kang = new Directory(&quot;Kang&quot;); usrDir.add(kim); usrDir.add(lee); usrDir.add(kang); kim.add(new File(&quot;diary.html&quot;, 100)); kim.add(new File(&quot;composite.java&quot;, 200)); lee.add(new File(&quot;memo.text&quot;, 300)); kang.add(new File(&quot;game.doc&quot;, 400)); kang.add(new File(&quot;battleground.exe&quot;, 500)); rootDir.printList(); } catch (FileTreatmentException e) { e.printStackTrace(); } } } 이후 실행 결과는 다음과 같다 실행 결과는 파일이나 디렉토리의 경로 그리고 파일인 경우 사이즈가 출력된다. 2. 참고자료 composite pattern, https://ko.wikipedia.org/wiki/%EC%BB%B4%ED%8F%AC%EC%A7%80%ED%8A%B8_%ED%8C%A8%ED%84%B4 컴포지트 패턴, http://jdm.kr/blog/228 java 언어로 배우는 디자인 패턴, 유키 히로시, 영진닷컴</summary></entry><entry><title type="html">2017-12-10-박가혜</title><link href="https://hibrainnet.github.io/2017/12/20/%EB%B0%95%EA%B0%80%ED%98%9C.html" rel="alternate" type="text/html" title="2017-12-10-박가혜" /><published>2017-12-20T17:58:11+09:00</published><updated>2017-12-20T17:58:11+09:00</updated><id>https://hibrainnet.github.io/2017/12/20/%EB%B0%95%EA%B0%80%ED%98%9C</id><content type="html" xml:base="https://hibrainnet.github.io/2017/12/20/%EB%B0%95%EA%B0%80%ED%98%9C.html">&lt;h3 id=&quot;연구내용&quot;&gt;연구내용&lt;/h3&gt;
+
+&lt;h4 id=&quot;medium-blog-마크다운형태로-저장하기&quot;&gt;Medium blog 마크다운형태로 저장하기&lt;/h4&gt;
+&lt;p&gt;Node.js의 medium exporter패키지를 이용하므로, node.js가 설치되어있어야 함&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;medium exporter패키지 설치
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://github.com/xdamman/mediumexporter&quot;&gt;Medium Exporter github URL&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;npm install -g mediumexporter
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ol&gt;
+  &lt;li&gt;yaml frontmatter를 자동으로 추가하기 위해, /mediumexporter/index.js 파일을 /usr/lib/node_modules/mediumexporter/에 추가 (기존 index.js 삭제)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;layout&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;post&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;600bdec36593&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;https://medium.com/@robbinscm/mayor-bill-de-blasio-gothamist-dnainfo-interview-cbce444ca421&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Wed Dec 20 2017 00:28:23 GMT+0900 (DST)&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;tags&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;New York&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;Mayor Bill De Blasio&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;Sanctuary Cities&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;Journalism&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;Inequality&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;사용방법
+마크다운 파일을 받을 디렉토리에서 명령어 실행&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt; mediumexporter &lt;span class=&quot;nt&quot;&gt;--headers&lt;/span&gt; Medium 주소 &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; medium_post.md
+&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; mediumexporter &lt;span class=&quot;nt&quot;&gt;--headers&lt;/span&gt; https://medium.com/@xdamman/my-10-day-meditation-retreat-in-silence-71abda54940e &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; medium_post.md
+&lt;span class=&quot;go&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;도움말은 mediumexporter -h 을 이용&lt;/p&gt;
+
+&lt;h4 id=&quot;payload&quot;&gt;payload&lt;/h4&gt;
+&lt;p&gt;사용에 있어서 전송되는 데이터를 의미, 전송의 근본적인 목적이 되는 데이터의 일부분으로 데이터와 함께 전송되는 헤더와 메타데이터와 같은 데이터는 제외된다. 데이터 덩어리 중 흥미있는 데이터를 의미한다.&lt;/p&gt;
+
+&lt;h4 id=&quot;javascript의-object를-다루는-몇가지-팁&quot;&gt;Javascript의 Object를 다루는 몇가지 팁&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;Object의 key를 변수로 받기&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;person&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;neko&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;gender&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;male&quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;gender&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;요소의 갯수 알아내기&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// object의 요소 갯수가 반환됩니다.&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// Object.keys()만 돌리게 되면 해당 Object의 value값만 배열로 반환이 됩니다.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Object의 value 알아내기&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'bar'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;baz&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;42&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// ['bar', 42]&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// array like object&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'a'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'b'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'c'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// ['a', 'b', 'c']&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;참고자료&quot;&gt;참고자료&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/xdamman/mediumexporter&quot;&gt;Medium Exporter github URL&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://ko.wikipedia.org/wiki/%ED%8E%98%EC%9D%B4%EB%A1%9C%EB%93%9C&quot;&gt;payload&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://blog.nekoromancer.kr/2014/07/03/javascript%EC%9D%98-object%EB%A5%BC-%EB%8B%A4%EB%A3%A8%EB%8A%94-%EB%AA%87%EA%B0%80%EC%A7%80-%ED%8C%81%EB%93%A4/&quot;&gt;Javascript의 Object를 다루는 몇가지 팁들&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/values&quot;&gt;Object.values()&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>ghpark15</name></author><category term="연구노트" /><category term="인턴십" /><summary type="html">연구내용 Medium blog 마크다운형태로 저장하기 Node.js의 medium exporter패키지를 이용하므로, node.js가 설치되어있어야 함 medium exporter패키지 설치 Medium Exporter github URL npm install -g mediumexporter yaml frontmatter를 자동으로 추가하기 위해, /mediumexporter/index.js 파일을 /usr/lib/node_modules/mediumexporter/에 추가 (기존 index.js 삭제) --- layout: post author: 600bdec36593 url: https://medium.com/@robbinscm/mayor-bill-de-blasio-gothamist-dnainfo-interview-cbce444ca421 date: Wed Dec 20 2017 00:28:23 GMT+0900 (DST) tags: [New York, Mayor Bill De Blasio, Sanctuary Cities, Journalism, Inequality ] --- 사용방법 마크다운 파일을 받을 디렉토리에서 명령어 실행 $ mediumexporter --headers Medium 주소 &amp;gt; medium_post.md $&amp;gt; mediumexporter --headers https://medium.com/@xdamman/my-10-day-meditation-retreat-in-silence-71abda54940e &amp;gt; medium_post.md 도움말은 mediumexporter -h 을 이용 payload 사용에 있어서 전송되는 데이터를 의미, 전송의 근본적인 목적이 되는 데이터의 일부분으로 데이터와 함께 전송되는 헤더와 메타데이터와 같은 데이터는 제외된다. 데이터 덩어리 중 흥미있는 데이터를 의미한다. Javascript의 Object를 다루는 몇가지 팁 Object의 key를 변수로 받기 var person = { name : &quot;neko&quot;, gender : &quot;male&quot; }; console.log( person.name, person.gender ); 요소의 갯수 알아내기 var object = { ... }; var length = Object.keys( object ).length; console.log( length ); // object의 요소 갯수가 반환됩니다. // Object.keys()만 돌리게 되면 해당 Object의 value값만 배열로 반환이 됩니다. Object의 value 알아내기 var obj = { foo: 'bar', baz: 42 }; console.log(Object.values(obj)); // ['bar', 42] // array like object var obj = { 0: 'a', 1: 'b', 2: 'c' }; console.log(Object.values(obj)); // ['a', 'b', 'c'] 참고자료 Medium Exporter github URL payload Javascript의 Object를 다루는 몇가지 팁들 Object.values()</summary></entry><entry><title type="html">2017-12-20 정예린</title><link href="https://hibrainnet.github.io/2017/12/20/JYL.html" rel="alternate" type="text/html" title="2017-12-20 정예린" /><published>2017-12-20T00:00:00+09:00</published><updated>2017-12-20T00:00:00+09:00</updated><id>https://hibrainnet.github.io/2017/12/20/JYL</id><content type="html" xml:base="https://hibrainnet.github.io/2017/12/20/JYL.html">&lt;h1 id=&quot;1-연구노트&quot;&gt;1. 연구노트&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;이미지를 클라우드에 올려 url을 가져오는 이미지 호스팅 작업을 진행&lt;/p&gt;
+
+  &lt;p&gt;사용자가 원하는 이미지 파일을 올리면 호스팅 된 이미지 url을 반환&lt;/p&gt;
+
+  &lt;p&gt;Cloudinary 클라우드와 ruby언어를 사용하여 구축&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;1-1-cloudinary-api&quot;&gt;1-1. Cloudinary API&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;클라우드 기반의 이미지 관리 솔루션&lt;/li&gt;
+  &lt;li&gt;이미지 업로드뿐만 아니라 그와 관련된 태그,  이름변경 등의 옵션을 두어 여러가지 기능을 제공&lt;/li&gt;
+  &lt;li&gt;Rails, PHP, .NET, Java, Django, Javascript(jQuery, Node.js, React, Angular), IOS, Android, Scala 등의 언어를 지원&lt;/li&gt;
+  &lt;li&gt;이미지 뿐만 아니라 비디오와 API도 제공&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://res.cloudinary.com/degxeqfok/image/upload/v1513749352/mb6cqv2ntfmqh2c3n2ph.png&quot; alt=&quot;1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://cloudinary.com/documentation&quot;&gt;Cloudinary 사이트&lt;/a&gt;에서 Ruby on Rails를 참고하여 구축&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;1-2-ruby-on-rails&quot;&gt;1-2. Ruby on Rails&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;루비로 작성 된 MVC패턴을 이용하는 오픈 소스 웹 프레임워크&lt;/li&gt;
+  &lt;li&gt;rails는 트위터, github, airbnb 등 여러 회사에서 사용 중&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;간략한 문법&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.ruby-lang.org/ko/&quot;&gt;Ruby on Rails 사이트 참조&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;1-3-cloudinary--ruby-이미지-호스팅-url-가져오기&quot;&gt;1-3. Cloudinary + Ruby 이미지 호스팅 URL 가져오기&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;준비사항&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Cloudinary 계정&lt;/li&gt;
+  &lt;li&gt;Ruby&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;1-3-1-cloudinary-계정생성-및-key값-확인&quot;&gt;1-3-1. Cloudinary 계정생성 및 key값 확인&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://res.cloudinary.com/degxeqfok/image/upload/v1513750419/s7hrkueeap0qj5p23wcj.png&quot; alt=&quot;2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://cloudinary.com/&quot;&gt;Cloudinary 사이트&lt;/a&gt;에 접속하여 SIGN UP FOR FREE 버튼을 눌러 계정을 생성&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://res.cloudinary.com/degxeqfok/image/upload/v1513750686/henzwdap4teiavvmxpv8.jpg&quot; alt=&quot;3&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;생성한 계정으로 로그인하여 Media Library탭에 들어가면 위와 같은 저장소가 보임&lt;/p&gt;
+
+&lt;p&gt;최초 로그인 시 sample 이미지가 보이며, 오른쪽 상단에는 사용자의 cloud이름과 사용자 이름이 보임&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://res.cloudinary.com/degxeqfok/image/upload/v1513751010/pbvi2kq6hjosjjurnzxp.png&quot; alt=&quot;4&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;화면에서 Setting -&amp;gt; Security -&amp;gt; Access 로 들어가면 API Key와 API Secret값을 볼 수 있음&lt;/p&gt;
+
+&lt;p&gt;default로 상태는 활성화(Active)로 설정된 것을 확인&lt;/p&gt;
+
+&lt;p&gt;API Secret값은 ‘‘***'’로 처리된 부분을 클릭하면 값이 보임&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;1-3-2-ruby언어로-cloudinary-file-upload-api사용하기&quot;&gt;1-3-2. ruby언어로 Cloudinary file upload API사용하기&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;gem install cloudinary&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;cloudinary를 사용하기 위해서 ruby gem으로 설치&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;require 'cloudinary'
+
+Cloudinary.config do |config|
+  config.cloud_name = 'cloud_name'
+  config.api_key = '*******************'
+  config.api_secret = '*************'
+end&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;cloudinary를 import시켜 준 후 1-3-1에서 확인했던 API Key와 API Secret값을 넣어줌&lt;/p&gt;
+
+&lt;p&gt;clound_name에는 오른쪽 상단에 위치한 이름을 넣어줌(기본값 : degxeqfok)&lt;/p&gt;
+
+&lt;p&gt;위의 설정은 ruby코드 파일 내에서 해주는 방법이며, yml파일을 이용한 방법은 &lt;a href=&quot;https://cloudinary.com/documentation/rails_integration#rails_getting_started_guide&quot;&gt;yml파일 설정&lt;/a&gt;을 참조&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;image_path = ARGV
+
+result = Cloudinary::Uploader.upload(image_path[0])		//cloudinary로 upload
+
+url = result['url']		//결과값에서 url와 파일이름 추출
+file_name = result['original_filename']
+
+puts &quot;&lt;pre&gt; ![#{file_name}](#{url})&lt;/pre&gt;&quot;		//호스팅 된 url결과값 출력
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;image_path는 shell에서 입력한 이미지 경로를 매개변수로 받아옴&lt;/p&gt;
+
+&lt;p&gt;실제 Cloudinary에 이미지를 입로드 한 후 성공한 *결과값을 받아옴&lt;/p&gt;
+
+&lt;p&gt;호스팅 된 URL와 파일이름을 가지고와서 markdown이미지 문법 결과값을 출력&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;*결과값 result는 다음과 같은 값을 return&lt;/strong&gt;	&lt;img src=&quot;http://res.cloudinary.com/degxeqfok/image/upload/v1513751879/nokvprh1y1gksdufshzr.png&quot; alt=&quot;5&quot; /&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;구분&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;설명&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;url&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;호스팅 URL&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;secure_url&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;public_id&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;업로드 된 이미지에 접근하는데 필요한 식별자(사용자가 지정 가능)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;version&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;이미지를 변환할 때 이용한 프로그램 버전(Aspose 문서 변환)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;format&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;이미지 확장자&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;width&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;이미지 넓이&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;height&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;이미지 높이&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;bytes&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;이미지 크기&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://res.cloudinary.com/degxeqfok/image/upload/v1513757344/wlgzte0gt5r6fo4pqiup.png&quot; alt=&quot;2&quot; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+
+ruby cloudinary-upload.rb 로컬이미지경로
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;위의 명령어를 치면 결과값으로 호스팅 된 이미지 url이 나오는 것을 확인&lt;/p&gt;
+
+&lt;h3 id=&quot;2-참고자료&quot;&gt;2. 참고자료&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;https://www.ruby-lang.org/ko/, ruby-korea, accessed 2017-12-20&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;https://cloudinary.com/documentation/rails_integration#rails_getting_started_guide, cloudinary, accessed 2017-12-20&lt;/p&gt;
+
+    &lt;p&gt;​&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</content><author><name></name></author><summary type="html">1. 연구노트</summary></entry><entry><title type="html">이미지 업로드 없음</title><link href="https://hibrainnet.github.io/soccer/2017/12/19/tmp-test-image-post.html" rel="alternate" type="text/html" title="이미지 업로드 없음" /><published>2017-12-19T11:11:11+09:00</published><updated>2017-12-19T11:11:11+09:00</updated><id>https://hibrainnet.github.io/soccer/2017/12/19/tmp-test-image-post</id><content type="html" xml:base="https://hibrainnet.github.io/soccer/2017/12/19/tmp-test-image-post.html">&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;\/ /| |\/| |
+/ / | |  | |__
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://image.ibb.co/n4m8Km/image.png&quot; alt=&quot;jekyll-talk&quot; /&gt;
+&lt;img src=&quot;&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;</content><author><name>jh.heo</name></author><category term="soccer" /><summary type="html">\/ /| |\/| | / / | | | |__</summary></entry><entry><title type="html">soccer4</title><link href="https://hibrainnet.github.io/soccer/2017/12/15/tmp-test-file12003.html" rel="alternate" type="text/html" title="soccer4" /><published>2017-12-15T11:11:11+09:00</published><updated>2017-12-15T11:11:11+09:00</updated><id>https://hibrainnet.github.io/soccer/2017/12/15/tmp-test-file12003</id><content type="html" xml:base="https://hibrainnet.github.io/soccer/2017/12/15/tmp-test-file12003.html">&lt;p&gt;difjioejoijef&lt;/p&gt;
+
+&lt;p&gt;oiejfoiejfio&lt;/p&gt;
+
+&lt;p&gt;efojeofijei&lt;/p&gt;</content><author><name>yl.jung</name></author><category term="soccer" /><summary type="html">difjioejoijef oiejfoiejfio efojeofijei</summary></entry><entry><title type="html">soccer3</title><link href="https://hibrainnet.github.io/soccer/2017/12/15/tmp-test-file12002.html" rel="alternate" type="text/html" title="soccer3" /><published>2017-12-15T11:11:11+09:00</published><updated>2017-12-15T11:11:11+09:00</updated><id>https://hibrainnet.github.io/soccer/2017/12/15/tmp-test-file12002</id><content type="html" xml:base="https://hibrainnet.github.io/soccer/2017/12/15/tmp-test-file12002.html">&lt;p&gt;difjioejoijef&lt;/p&gt;
+
+&lt;p&gt;oiejfoiejfio&lt;/p&gt;
+
+&lt;p&gt;efojeofijei&lt;/p&gt;</content><author><name>yl.jung</name></author><category term="soccer" /><summary type="html">difjioejoijef oiejfoiejfio efojeofijei</summary></entry><entry><title type="html">soccer2</title><link href="https://hibrainnet.github.io/baseball/2017/12/15/tmp-test-file12001.html" rel="alternate" type="text/html" title="soccer2" /><published>2017-12-15T11:11:11+09:00</published><updated>2017-12-15T11:11:11+09:00</updated><id>https://hibrainnet.github.io/baseball/2017/12/15/tmp-test-file12001</id><content type="html" xml:base="https://hibrainnet.github.io/baseball/2017/12/15/tmp-test-file12001.html">&lt;p&gt;difjioejoijef&lt;/p&gt;
+
+&lt;p&gt;oiejfoiejfio&lt;/p&gt;
+
+&lt;p&gt;efojeofijei&lt;/p&gt;</content><author><name>yl.jung</name></author><category term="baseball" /><summary type="html">difjioejoijef oiejfoiejfio efojeofijei</summary></entry><entry><title type="html">soccer</title><link href="https://hibrainnet.github.io/basketball/2017/12/15/tmp-test-file12000.html" rel="alternate" type="text/html" title="soccer" /><published>2017-12-15T11:11:11+09:00</published><updated>2017-12-15T11:11:11+09:00</updated><id>https://hibrainnet.github.io/basketball/2017/12/15/tmp-test-file12000</id><content type="html" xml:base="https://hibrainnet.github.io/basketball/2017/12/15/tmp-test-file12000.html">&lt;p&gt;difjioejoijef&lt;/p&gt;
+
+&lt;p&gt;oiejfoiejfio&lt;/p&gt;
+
+&lt;p&gt;efojeofijei&lt;/p&gt;</content><author><name>yl.jung</name></author><category term="basketball" /><summary type="html">difjioejoijef oiejfoiejfio efojeofijei</summary></entry><entry><title type="html">카테고리 없음</title><link href="https://hibrainnet.github.io/2017/12/15/tmp-test-file1200.html" rel="alternate" type="text/html" title="카테고리 없음" /><published>2017-12-15T11:11:11+09:00</published><updated>2017-12-15T11:11:11+09:00</updated><id>https://hibrainnet.github.io/2017/12/15/tmp-test-file1200</id><content type="html" xml:base="https://hibrainnet.github.io/2017/12/15/tmp-test-file1200.html">&lt;p&gt;difjioejoijef&lt;/p&gt;
+
+&lt;p&gt;oiejfoiejfio&lt;/p&gt;
+
+&lt;p&gt;efojeofijei&lt;/p&gt;</content><author><name>yl.jung</name></author><category term="jekyll" /><summary type="html">difjioejoijef oiejfoiejfio efojeofijei</summary></entry><entry><title type="html">파일3-2</title><link href="https://hibrainnet.github.io/update/jekyll/2017/12/15/tmp-test-file120.html" rel="alternate" type="text/html" title="파일3-2" /><published>2017-12-15T11:11:11+09:00</published><updated>2017-12-15T11:11:11+09:00</updated><id>https://hibrainnet.github.io/update/jekyll/2017/12/15/tmp-test-file120</id><content type="html" xml:base="https://hibrainnet.github.io/update/jekyll/2017/12/15/tmp-test-file120.html">&lt;p&gt;difjioejoijef&lt;/p&gt;
+
+&lt;p&gt;oiejfoiejfio&lt;/p&gt;
+
+&lt;p&gt;efojeofijei&lt;/p&gt;</content><author><name>jh.heo</name></author><category term="jekyll" /><summary type="html">difjioejoijef oiejfoiejfio efojeofijei</summary></entry></feed>

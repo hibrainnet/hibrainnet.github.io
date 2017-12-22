@@ -56,7 +56,7 @@ getTypeValue();
   <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search resu...">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="https://hibrainnet.github.io/">
+  <link rel="canonical" href="https://hibrainnet.github.io/category/update/indexs.xml">
   <link rel="alternate" type="application/rss+xml" title="하이브레인넷 부설연구소" href="/feed.xml">
 
   
@@ -497,164 +497,51 @@ getTypeValue();
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <div class="home">
+        <h1>Posts Categorys</h1>
 
-  <h1 class="page-heading">Posts</h1>
-
-  <ul class="post-list">
-    
-
-      <li>
-        
-
-        
-
-        <span class="post-meta">Dec 21, 2017</span>
-
-        <h2>
-          <a class="post-link" href="/%EB%94%94%EC%9E%90%EC%9D%B8%ED%8C%A8%ED%84%B4/2017/12/21/jh.heo.html">Composite Pattern</a>
-          <a class="post-meta" href="/authors/jh.heo">posted by 허주한</a>
-        </h2>
-      </li>
-
-    
-  </ul>
-
-  
-	  <!-- 첫번째 페이지 계산 -->
+    <a href="/category/update">update</a>
 
 
-
-<!-- 마지막 페이지 계산 -->
-
-
-
-<!-- 페이지 넘버 링크 생성 (카테고리/태그/일반 별 링크 다름) -->
-
-
-
-
-
-
-
-<paginate>
-<div class="pagination">
-  
-    <span class="previous">&#60;&#60;</span>
-  
-  
-    <span class="previous">&#60;</span>
-  
-  
-    
-     <li><span class="active">1</span></li>
-    
-  
+  <div>
     
     
-      
-        <li><a href="/page/2">2</a></li>
-      
+     <span class="site-tag">
+        <a href="baseball">
+                baseball (1)
+        </a>
+    </span>
     
-  
+     <span class="site-tag">
+        <a href="basketball">
+                basketball (1)
+        </a>
+    </span>
     
+     <span class="site-tag">
+        <a href="jekyll">
+                jekyll (5)
+        </a>
+    </span>
     
-      
-        <li><a href="/page/3">3</a></li>
-      
+     <span class="site-tag">
+        <a href="soccer">
+                soccer (3)
+        </a>
+    </span>
     
-  
+     <span class="site-tag">
+        <a href="update">
+                update (5)
+        </a>
+    </span>
     
+     <span class="site-tag">
+        <a href="디자인패턴">
+                디자인패턴 (1)
+        </a>
+    </span>
     
-      
-        <li><a href="/page/4">4</a></li>
-      
-    
-  
-    
-    
-      
-        <li><a href="/page/5">5</a></li>
-      
-    
-  
-    
-    
-      
-        <li><a href="/page/6">6</a></li>
-      
-    
-  
-    
-    
-      
-        <li><a href="/page/7">7</a></li>
-      
-    
-  
-    
-    
-      
-        <li><a href="/page/8">8</a></li>
-      
-    
-  
-    
-    
-      
-        <li><a href="/page/9">9</a></li>
-      
-    
-  
-    
-    
-      
-        <li><a href="/page/10">10</a></li>
-      
-    
-  
-    
-    
-      
-        <li><a href="/page/11">11</a></li>
-      
-    
-  
-    
-    
-      
-        <li><a href="/page/12">12</a></li>
-      
-    
-  
-    
-    
-      
-        <li><a href="/page/13">13</a></li>
-      
-    
-  
-    
-    
-      
-        <li><a href="/page/14">14</a></li>
-      
-    
-  
-
-  
-    <a href="/page/2.html" class="next">&#62;</a>
-  
-  
-    <a href="/page/14.html">&#62;&#62;</a>
-  
-</div>
-</paginate>
-
-  
-
-
-</div>
+    </div>
 
       </div>
     </main>
