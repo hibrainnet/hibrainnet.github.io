@@ -1,4 +1,7 @@
 *.rb
 *.sh
 *.md
+*-tmp-test-*.markdown
+*-tmp-test-*.md
+
 
