@@ -2,7 +2,7 @@
 <html lang="en">
 
   <script language='javascript'>
-var url = 'https://hibrainnet.github.io'+''
+var url = 'https://hibrainnet.github.io'+'/jekyll-and-hybe'
 var pageType = '-1';
 var typeValue = '-1';
 
@@ -55,9 +55,9 @@ getTypeValue();
   <title>하이브레인넷 부설연구소</title>
   <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search resu...">
 
-  <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="https://hibrainnet.github.io/category/%EB%94%94%EC%9E%90%EC%9D%B8%ED%8C%A8%ED%84%B4/indexs.xml">
-  <link rel="alternate" type="application/rss+xml" title="하이브레인넷 부설연구소" href="/feed.xml">
+  <link rel="stylesheet" href="/jekyll-and-hybe/assets/main.css">
+  <link rel="canonical" href="https://hibrainnet.github.io/jekyll-and-hybe/category/%EB%94%94%EC%9E%90%EC%9D%B8%ED%8C%A8%ED%84%B4/indexs.xml">
+  <link rel="alternate" type="application/rss+xml" title="하이브레인넷 부설연구소" href="/jekyll-and-hybe/feed.xml">
 
   
 
@@ -68,11 +68,12 @@ getTypeValue();
 
     <header class="site-header" role="banner">
 
-  <div class="wrapper">
+  <div class="w3-top">
+    <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
     
     
-    <a class="site-title" href="/">하이브레인넷 부설연구소</a>
-  
+    <a class="site-title" href="/jekyll-and-hybe/">하이브레인넷 부설연구소</a>
+
     
       <nav class="site-nav">
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
@@ -105,7 +106,7 @@ getTypeValue();
         
 
     
-          <a class="page-link" href="/about/">About</a>
+          <a class="page-link" href="/jekyll-and-hybe/about/">About</a>
           
         
           <!--
@@ -116,7 +117,7 @@ getTypeValue();
         
 
     
-          <a class="page-link" href="/category/">category</a>
+          <a class="page-link" href="/jekyll-and-hybe/category/">category</a>
           
         
           <!--
@@ -127,7 +128,7 @@ getTypeValue();
         
 
     
-          <a class="page-link" href="/guestbook/">guestbook</a>
+          <a class="page-link" href="/jekyll-and-hybe/guestbook/">GUESTBOOK</a>
           
         
           <!--
@@ -138,27 +139,7 @@ getTypeValue();
         
 
     
-          <a class="page-link" href="/home/">home</a>
-          
-        
-          <!--
-            my_page.autogen is populated by the pagination logic for all pages
-                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-          -->
-        
-        
-
-    
-        
-          <!--
-            my_page.autogen is populated by the pagination logic for all pages
-                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-          -->
-        
-        
-
-    
-          <a class="page-link" href="/tags/">tags</a>
+          <a class="page-link" href="/jekyll-and-hybe/home/">home</a>
           
         
           <!--
@@ -178,88 +159,7 @@ getTypeValue();
         
 
     
-        
-          <!--
-            my_page.autogen is populated by the pagination logic for all pages
-                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-          -->
-        
-        
-
-    
-        
-          <!--
-            my_page.autogen is populated by the pagination logic for all pages
-                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-          -->
-        
-        
-
-    
-        
-          <!--
-            my_page.autogen is populated by the pagination logic for all pages
-                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-          -->
-        
-        
-
-    
-        
-          <!--
-            my_page.autogen is populated by the pagination logic for all pages
-                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-          -->
-        
-        
-
-    
-        
-          <!--
-            my_page.autogen is populated by the pagination logic for all pages
-                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-          -->
-        
-        
-
-    
-        
-          <!--
-            my_page.autogen is populated by the pagination logic for all pages
-                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-          -->
-        
-        
-
-    
-        
-          <!--
-            my_page.autogen is populated by the pagination logic for all pages
-                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-          -->
-        
-        
-
-    
-        
-          <!--
-            my_page.autogen is populated by the pagination logic for all pages
-                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-          -->
-        
-        
-
-    
-        
-          <!--
-            my_page.autogen is populated by the pagination logic for all pages
-                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-          -->
-        
-        
-
-    
-          <a class="page-link" href="/index.html">하이브레인넷 부설연구소</a>
+          <a class="page-link" href="/jekyll-and-hybe/tags/">tags</a>
           
         
           <!--
@@ -270,6 +170,152 @@ getTypeValue();
         
 
     
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+          <a class="page-link" href="/jekyll-and-hybe/index.html">하이브레인넷 부설연구소</a>
+          
         
           <!--
             my_page.autogen is populated by the pagination logic for all pages
@@ -284,13 +330,19 @@ getTypeValue();
 
       </nav>
     
+    </div>
   </div>
-</header>
+</div>
 
+<img class="w3-image w3-margin-top w3-margin-bottom" src="https://farm5.staticflickr.com/4732/39212074151_fa3a74e927_b.jpg" alt="Architecture" width="100%">
+<div class="w3-display-middle w3-margin-top w3-center">
+  <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>Hibrain</b></span> <span class="w3-hide-small w3-text-light-grey">Tech Blog</span></h1>
+</div>
+</header>
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <h1>Posts Categorys</h1>
+        <h1><b>POST CATEGORIES</b></h1>
 
     <a href="/category/디자인패턴">디자인패턴</a>
 
@@ -299,8 +351,20 @@ getTypeValue();
     
     
      <span class="site-tag">
+        <a href="jekyll">
+                jekyll (1)
+        </a>
+    </span>
+    
+     <span class="site-tag">
+        <a href="update">
+                update (1)
+        </a>
+    </span>
+    
+     <span class="site-tag">
         <a href="디자인패턴">
-                디자인패턴 (1)
+                디자인패턴 (2)
         </a>
     </span>
     
@@ -309,7 +373,7 @@ getTypeValue();
       </div>
     </main>
 
-    <footer class="site-footer">
+    <footer class="site-footer w3-light-grey">
 
   <div class="wrapper">
 
@@ -346,7 +410,7 @@ getTypeValue();
 
 </footer>
 
-    
+
     <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
