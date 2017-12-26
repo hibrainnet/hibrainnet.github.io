@@ -1,8 +1,8 @@
 ---
 permalink: "/guestbook/"
 layout: page
-comments : disqus
-title:  "guestbook"
+comments : true
+title:  "GUESTBOOK"
 ---
 
 
@@ -10,6 +10,6 @@ title:  "guestbook"
 =====================
 
 
-반갑습니다. 
+반갑습니다.
 
 방명록을 남겨주시면 감사하겠습니다.

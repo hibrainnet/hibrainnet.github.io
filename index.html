@@ -3,14 +3,13 @@ layout: default
 pagination:
   enabled: true
 ---
-
 <div class="home">
 
-  <h1 class="page-heading">Posts</h1>
+  <h1 class="w3-panel"><b>POSTS</b></h1>
 
-  <ul class="post-list">
+  <ul class="post-content w3-ul">
+
     {% for post in paginator.posts %}
-
       <li>
         {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
 
@@ -20,14 +19,18 @@ pagination:
           {% endif %}
         {% endfor %}
 
-        <span class="post-meta">{{ post.date | date: date_format }}</span>
+        <h1>
+          <b><a class="site-title" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></b>
+        </h1>
+        <p class="w3-text-gray"><a class="post-describe" href="{{ post.url | relative_url }}">{{ post.content | strip_html | truncatewords:50 }}</a></p>
 
-        <h2>
-          <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+        <div class="w3-padding w3-text-grey w3-small">
+          <span class="post-meta">{{ post.date | date: date_format }}</span> |
           <a class="post-meta" href="{{ site.baseurl }}/authors/{{ post.author }}">posted by {{ author.title }}</a>
-        </h2>
-      </li>
+        </div>
 
+
+      </li>
     {% endfor %}
   </ul>
 
