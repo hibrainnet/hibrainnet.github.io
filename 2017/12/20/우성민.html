@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <script language='javascript'>
+var url = 'http://localhost:4000'+''
+var pageType = '-1';
+var typeValue = '-1';
+
+function getTypeValue(){
+
+    var hashes = window.location.href.slice(0, window.location.href.indexOf('?')).split('/');
+    var pageNum = getParameter('page');
+
+    if(hashes.length == 7 && ( hashes[4] == 'tags' || hashes[4] == 'category' ) && pageNum != undefined) {
+      pageType = hashes[4];
+      typeValue = hashes[5];
+      window.location.replace(url + '/' + pageType + '/' + typeValue + '/page/' + pageNum);
+    }
+
+    if(hashes.length == 5 && pageNum != undefined) {
+      pageType = hashes[4];
+      typeValue = hashes[5];
+      window.location.replace(url + '/page/' + pageNum);
+    }
+
+}
+
+
+function getParameter(param) {
+    var returnValue;
+    var url = location.href;
+    var parameters = (url.slice(url.indexOf('?') + 1, url.length)).split('&');
+    for (var i = 0; i < parameters.length; i++) {
+        var varName = parameters[i].split('=')[0];
+        if (varName.toUpperCase() == param.toUpperCase()) {
+            returnValue = parameters[i].split('=')[1];
+            return decodeURIComponent(returnValue);
+        }
+    }
+};
+
+getTypeValue();
+</script>
+<head>
+
+
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+  <meta property="fb:app_id" content="147895112528926" />
+  <meta property="fb:admins" content="100001627773972"/>
+
+  <title>프로토타입 패턴</title>
+  <meta name="description" content="연구내용">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="http://localhost:4000/2017/12/20/%EC%9A%B0%EC%84%B1%EB%AF%BC.html">
+  <link rel="alternate" type="application/rss+xml" title="하이브레인넷 부설연구소" href="/feed.xml">
+
+  
+
+</head>
+
+
+  <body>
+
+    <header class="site-header" role="banner">
+
+  <div class="w3-top">
+    <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+    
+    
+    <a class="site-title" href="/">하이브레인넷 부설연구소</a>
+
+    
+      <nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+              <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+              <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+	
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+          <a class="page-link" href="/category/">category</a>
+          
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+          <a class="page-link" href="/guestbook/">GUESTBOOK</a>
+          
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+          <a class="page-link" href="/home/">home</a>
+          
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+          <a class="page-link" href="/tags/">tags</a>
+          
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+          <a class="page-link" href="/index.html">하이브레인넷 부설연구소</a>
+          
+        
+
+
+      </nav>
+    
+    </div>
+  </div>
+</div>
+
+<img class="w3-image w3-margin-top w3-margin-bottom" src="https://farm5.staticflickr.com/4732/39212074151_fa3a74e927_b.jpg" alt="Architecture" width="100%">
+<div class="w3-display-middle w3-margin-top w3-center">
+  <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>Hibrain</b></span> <span class="w3-hide-small w3-text-light-grey">Tech Blog</span></h1>
+</div>
+</header>
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">프로토타입 패턴</h1>
+    <p class="post-meta">
+      <time datetime="2017-12-20T00:00:00+09:00" itemprop="datePublished">
+        
+        Dec 20, 2017
+      </time>
+      
+        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">sm.woo</span></span>
+      </p>
+
+
+
+
+
+
+
+
+
+
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <h1 id="연구내용">연구내용</h1>
+
+<h1 id="프로토타입이란">프로토타입이란?</h1>
+
+<p><strong>프로토타입(Prototype)은</strong> 사전적인 의미로 대량 생산에 앞서 미리 제작해보는 <strong>원형</strong> 또는 <strong>시제품으로</strong>, 제작물의 모형이라 할 수 있다. 소프트웨어 개발에서는 정식 절차에 따라 완전한 소프트웨어를 만들기 전에 사용자의 요구를 받아 일단 모형을 만들고 이 모형을 사용자와 의사소통하는 도구로 활용한다.</p>
+
+<p>일상 생활에서 볼 수 있는 <strong>프로토타입은</strong> 아파트 <strong>모델하우스를</strong> 예로 들 수 있다.
+이 프로토타입인 모델하우스를 통해서 추후에 지어질 아파트에 대한 <strong>정보를 얻을 수 있다.</strong></p>
+
+<p><br /></p>
+
+<h1 id="프로토타입-패턴">프로토타입 패턴</h1>
+
+<p>프로토타입 패턴도 마찬가지로 <strong>원형이 되는 인스턴스를 근본으로 해서 새로운 인스턴스를 만드는 것</strong> 이라고 할 수 있다. Java 언어에서 복사하는 하는 것을 <strong>‘clone’</strong> 이라고 하고 있다.</p>
+
+<p>소프트 웨어 디자인 패턴에서 프로토타입 패턴은 생성할 객체들의 타입이 프로토타입인 인스턴스로부터 결정되도록 하며, 인스턴스는 새 객체를 만들기 위해 자신을 복제하게 된다.</p>
+
+<blockquote>
+  <p>프로토타입 패턴은 새로운 객체는 일반적인 방법으로 객체를 생성하는 고유의 비용이 주어진 응용 프로그램 상황에 있어서 불가피하게 매우 클 때, 이 비용을 감내하지 않을 수 있게 해준다.</p>
+</blockquote>
+
+<p><br /></p>
+
+<h4 id="프로토타입이-필요한-경우">프로토타입이 필요한 경우</h4>
+<p><strong>new</strong> 라는 자바 언어의 키워드를 사용하여 클래스 이름을 지정해서 인스턴스를 생성한다.
+이처럼 new 연산자로 인스턴스를 만드는 경우에는 클래스 이름을 반드시 지정해야 한다.
+그러나 클래스 이름을 지정하지 않고 인스턴스를 생성하는 경우도 있다.</p>
+
+<h5 id="다음과-같은-경우에-인스턴스를-복사해서-새로운-인스턴스를-생성한다">다음과 같은 경우에 인스턴스를 복사해서 새로운 인스턴스를 생성한다.</h5>
+
+<ol>
+  <li>종류가 너무 많아 한개의 클래스로 할 수 없는 경우</li>
+  <li>클래스로 부터 인스턴스를 생성하기 어려운 경우</li>
+  <li>프레임워크와 생성할 인스턴스를 분리하고 싶은 경우</li>
+</ol>
+
+<p><strong>패턴을 구현하려면 우선 clone() 메소드를 선언하는 추상 베이스 클래스를 하나 만든다.</strong> 다형적 생성자 기능이 필요한 클래스가 있다면, 그것을 앞에서 만든 클래스를 상속받게 한 후, clone() 메소드 내의 코드를 구현한다.</p>
+
+<p><br /></p>
+
+<h1 id="프로토타입-패턴에-사용되는-역할">프로토타입 패턴에 사용되는 역할</h1>
+<p><img src="https://farm5.staticflickr.com/4732/24348417007_df94666425_b.jpg" alt="flickr" /></p>
+
+<h3 id="prototype">Prototype</h3>
+<p>prototype의 역할은 인스턴스를 복사해서 새로운 인스턴스를 만들기 위한 메소드를 결정하는 역할</p>
+
+<h3 id="concreteprototype">ConcretePrototype</h3>
+<p>ConcretePrototype의 역할은 인스턴스를 복사해서 새로운 인스턴스를 만드는 메소드를 실제로 구현하는 역할</p>
+
+<h3 id="client">Client</h3>
+<p>Client의 역할은 인스턴스를 복사하는 메소드를 이용해서 새로운 인스턴스를 만드는 역할</p>
+
+<p><br /></p>
+
+<h3 id="예제">예제</h3>
+
+<h5 id="product-인터페이스">Product 인터페이스</h5>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/*
+ * Product.java
+ *
+ * version 1.0
+ *
+ * 2017-12-21
+ *
+ * Copyright 1996 - 2017 hibrain.net All rights reserved.
+ */</span>
+
+<span class="kn">package</span> <span class="n">io</span><span class="o">.</span><span class="na">hibrain</span><span class="o">.</span><span class="na">tutorial</span><span class="o">.</span><span class="na">designpattern</span><span class="o">.</span><span class="na">prototype</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Product</span> <span class="kd">extends</span> <span class="n">Cloneable</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">use</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">);</span>
+    <span class="kd">public</span> <span class="kd">abstract</span> <span class="n">Product</span> <span class="nf">createClone</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p>Product 인터페이스는 <strong>java.lang.Cloneable</strong> 인터페이스를 상속하고 있다.
+이 인터페이스를 구현하고 있는 클래스의 인스턴스는 clone 메소드를 사용해서 자동적으로 복제를 진행할 수 있다.</p>
+
+<p>use 메소드는 <strong>사용</strong> 하기 위한 메소드이고 무엇을 의미하는 지는 하위 클래스의 구현에 맞겨져 있다. createClone 메소드는 인스턴스를 복제하기 위한 것이다.</p>
+
+<p><br /></p>
+
+<h4 id="manager-클래스">Manager 클래스</h4>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/*
+ * Manager.java
+ *
+ * version 1.0
+ *
+ * 2017-12-21
+ *
+ * Copyright 1996 - 2017 hibrain.net All rights reserved.
+ */</span>
+
+<span class="kn">package</span> <span class="n">io</span><span class="o">.</span><span class="na">hibrain</span><span class="o">.</span><span class="na">tutorial</span><span class="o">.</span><span class="na">designpattern</span><span class="o">.</span><span class="na">prototype</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.Hashtable</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Manager</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">Hashtable</span> <span class="n">showcase</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Hashtable</span><span class="o">();</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">register</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="n">Product</span> <span class="n">proto</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">showcase</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="n">proto</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">Product</span> <span class="nf">create</span><span class="o">(</span><span class="n">String</span> <span class="n">protoname</span><span class="o">){</span>
+        <span class="n">Product</span> <span class="n">p</span> <span class="o">=</span> <span class="o">(</span><span class="n">Product</span><span class="o">)</span> <span class="n">showcase</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">protoname</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">p</span><span class="o">.</span><span class="na">createClone</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Manager 클래스는 Product 인터페이스를 이용해서 인스턴스를 복제하는 클래스다.</p>
+
+<p><strong>showcase</strong> 필드는 인스턴스의 이름과 인스턴스의 대응관계를 Hashtable로 표현한 것이다.
+register 메소드에서 제품의 이름과 Product 인터페이스가 제공되면 그 한 쌍을 showcase에 등록한다.</p>
+
+<p>Product 인터페이스나 Manager 클래스의 소스에 MessageBox 클래스나 UnderlinePen 클래스의 이름이 전혀 등장하지 않는 점에 유의해야한다. <strong>클래스의 이름이 등장하지 않는 것은 Product나 Manager와 관계없이 수정할 수 있다는 것을 의미하므로 대단히 중요한 핵심이다.</strong></p>
+
+<p><br /></p>
+
+<h4 id="messagebox-클래스">MessageBox 클래스</h4>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/*
+ * MessageBox.java
+ *
+ * version 1.0
+ *
+ * 2017-12-21
+ *
+ * Copyright 1996 - 2017 hibrain.net All rights reserved.
+ */</span>
+
+<span class="kn">package</span> <span class="n">io</span><span class="o">.</span><span class="na">hibrain</span><span class="o">.</span><span class="na">tutorial</span><span class="o">.</span><span class="na">designpattern</span><span class="o">.</span><span class="na">prototype</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MessageBox</span> <span class="kd">implements</span> <span class="n">Product</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">char</span> <span class="n">decochar</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="nf">MessageBox</span><span class="o">(</span><span class="kt">char</span> <span class="n">decochar</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">decochar</span> <span class="o">=</span> <span class="n">decochar</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">use</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">length</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">getBytes</span><span class="o">().</span><span class="na">length</span><span class="o">;</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">length</span> <span class="o">+</span> <span class="mi">4</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">decochar</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">" "</span><span class="o">);</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">decochar</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">s</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">decochar</span><span class="o">);</span>
+
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">length</span> <span class="o">+</span> <span class="mi">4</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">decochar</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">" "</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">Product</span> <span class="nf">createClone</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">Product</span> <span class="n">p</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="o">(</span><span class="n">Product</span><span class="o">)</span><span class="n">clone</span><span class="o">();</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">CloneNotSupportedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">p</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+<p>MessageBox 클래스는 Product 인터페이스를 구현
+decochar 필드는 decorate char 즉 문자열을 꾸며줄 장식 문자를 의미
+use 메소스는 주어진 문자를 decochar로 둘러싼다.</p>
+
+<p>createClone 메소드는 <strong>자기 자신을 복제하는 메소드다.</strong>
+clone 메소드는 자바 언어 스팩에 규정되어 있는 것으로 자기 자신의 복제를 실행한다.
+clone 메소드는 <strong>자신의 클래스나 하위 클래스에서만 호출을 할 수 있기 때문에</strong> 다른 클래스의
+요철으로 복제하는 경우에 다른 메소드로 clone 메소드를 감싸줄 필요가 있다.</p>
+
+<p><br /></p>
+
+<h4 id="underlinepen-클래스">UnderlinePen 클래스</h4>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/*
+ * UnderlinePen.java
+ *
+ * version 1.0
+ *
+ * 2017-12-21
+ *
+ * Copyright 1996 - 2017 hibrain.net All rights reserved.
+ */</span>
+
+<span class="kn">package</span> <span class="n">io</span><span class="o">.</span><span class="na">hibrain</span><span class="o">.</span><span class="na">tutorial</span><span class="o">.</span><span class="na">designpattern</span><span class="o">.</span><span class="na">prototype</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">UnderlinePen</span> <span class="kd">implements</span> <span class="n">Product</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">char</span> <span class="n">ulchar</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="nf">UnderlinePen</span><span class="o">(</span><span class="kt">char</span> <span class="n">ulchar</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">ulchar</span> <span class="o">=</span> <span class="n">ulchar</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">use</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">length</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">getBytes</span><span class="o">().</span><span class="na">length</span><span class="o">;</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\""</span> <span class="o">+</span> <span class="n">s</span> <span class="o">+</span> <span class="s">"\""</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">" "</span><span class="o">);</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">ulchar</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">Product</span> <span class="nf">createClone</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">Product</span> <span class="n">p</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="o">(</span><span class="n">Product</span><span class="o">)</span><span class="n">clone</span><span class="o">();</span>
+        <span class="o">}</span><span class="k">catch</span> <span class="o">(</span><span class="n">CloneNotSupportedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">p</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>UnderlinePen 클래스는 MessageBox와 거의 같은 동작을 한다.
+ulchar이라는 필드는 Underline char, 즉 문자열에 밑줄을 긋는 장식 문자 긋는데 사용된다.
+use 메소드는 주어진 물자열을 큰따옴표로 묶으면서 문자열 부문에 밑줄을 긋는다.</p>
+
+<p><br /></p>
+
+<h4 id="main-클래스">Main 클래스</h4>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/*
+ * HNMain.java
+ *
+ * version 1.0
+ *
+ * 2017-12-21
+ *
+ * Copyright 1996 - 2017 hibrain.net All rights reserved.
+ */</span>
+
+<span class="kn">package</span> <span class="n">io</span><span class="o">.</span><span class="na">hibrain</span><span class="o">.</span><span class="na">tutorial</span><span class="o">.</span><span class="na">designpattern</span><span class="o">.</span><span class="na">prototype</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HBNMain</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Manager</span> <span class="n">manager</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Manager</span><span class="o">();</span>
+        <span class="n">UnderlinePen</span> <span class="n">upen</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UnderlinePen</span><span class="o">(</span><span class="sc">'~'</span><span class="o">);</span>
+        <span class="n">MessageBox</span> <span class="n">mbox</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MessageBox</span><span class="o">(</span><span class="sc">'*'</span><span class="o">);</span>
+        <span class="n">MessageBox</span> <span class="n">sbox</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MessageBox</span><span class="o">(</span><span class="sc">'/'</span><span class="o">);</span>
+        <span class="n">manager</span><span class="o">.</span><span class="na">register</span><span class="o">(</span><span class="s">"strong message"</span><span class="o">,</span> <span class="n">upen</span><span class="o">);</span>
+        <span class="n">manager</span><span class="o">.</span><span class="na">register</span><span class="o">(</span><span class="s">"warning box"</span><span class="o">,</span> <span class="n">mbox</span><span class="o">);</span>
+        <span class="n">manager</span><span class="o">.</span><span class="na">register</span><span class="o">(</span><span class="s">"slash box"</span><span class="o">,</span> <span class="n">sbox</span><span class="o">);</span>
+
+        <span class="n">Product</span> <span class="n">p1</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="s">"strong message"</span><span class="o">);</span>
+        <span class="n">p1</span><span class="o">.</span><span class="na">use</span><span class="o">(</span><span class="s">"Hello, world"</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+        <span class="n">Product</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="s">"warning box"</span><span class="o">);</span>
+        <span class="n">p2</span><span class="o">.</span><span class="na">use</span><span class="o">(</span><span class="s">"Hello, world"</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+        <span class="n">Product</span> <span class="n">p3</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="s">"slash box"</span><span class="o">);</span>
+        <span class="n">p3</span><span class="o">.</span><span class="na">use</span><span class="o">(</span><span class="s">"Hello, world"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>Main 클래스에서는 우선 Manager의 인스턴스를 만들고 Manager 인스턴스에
+Underline 인스턴스와 MessageBox 인스턴스를 Hashtable에 등록(register)한다.</p>
+
+<h1 id="참고자료">참고자료</h1>
+<p>Java 언어로 배우는 디자인 패턴, Yuki Hiroshi ,2001</p>
+
+    <div class="share-page">
+<h4>공유하기</h4>
+
+    <a href="https://twitter.com/intent/tweet?text=프로토타입 패턴&url=http://localhost:4000/2017/12/20/%EC%9A%B0%EC%84%B1%EB%AF%BC.html&via=&related=" rel="nofollow" target="_blank" title="Share on Twitter">Twitter</a>
+    <a href="https://facebook.com/sharer.php?u=http://localhost:4000/2017/12/20/%EC%9A%B0%EC%84%B1%EB%AF%BC.html" rel="nofollow" target="_blank" title="Share on Facebook">Facebook</a>
+    <a href="https://plus.google.com/share?url=http://localhost:4000/2017/12/20/%EC%9A%B0%EC%84%B1%EB%AF%BC.html" rel="nofollow" target="_blank" title="Share on Google+">Google+</a>
+</div>
+
+
+  </div>
+  
+
+
+
+  
+
+
+
+  
+<div class="fb-comments" data-href="http://localhost:4000/2017/12/20/%EC%9A%B0%EC%84%B1%EB%AF%BC.html" data-width="100%" ></div>
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = http://localhost:4000/2017/12/20/%EC%9A%B0%EC%84%B1%EB%AF%BC.html  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+
+var disqus_shortname = 'hibrainappsblog';
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = '//' + 'disqus_shortname' + '.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript
+>
+
+
+</article>
+
+      </div>
+    </main>
+
+    <footer class="site-footer w3-light-grey">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">하이브레인넷 부설연구소</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>
+            
+              하이브레인넷 부설연구소
+            
+            </li>
+            
+            <li><a href="mailto:apps@hibrain.net">apps@hibrain.net</a></li>
+            
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+    <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.11&appId=1953364611586334';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+  </body>
+
+</html>
