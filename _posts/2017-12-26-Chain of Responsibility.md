@@ -29,8 +29,8 @@ permalink: /Chain-of-Responsibility
 
 예) trouble을 해결하는 프로그램이다.
 
-![1](https://media-api.atlassian.io/file/1dcb8612-0ffe-44d8-a3f1-626a4ad406ba/image?token=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiI1ZDBiZWYwMC0yZmQ5LTRlMDgtYmE2Ni1iNmQwMjVjZTE4NzYiLCJhY2Nlc3MiOnsidXJuOmZpbGVzdG9yZTpmaWxlOjFkY2I4NjEyLTBmZmUtNDRkOC1hM2YxLTYyNmE0YWQ0MDZiYSI6WyJyZWFkIl19LCJleHAiOjE1MTQyNzY2NjcsIm5iZiI6MTUxNDI3MzYwN30.L9hJD6SyIGh8BtZjXxXb1Sa-3iQc8bvcua7MFNPV36g&client=5d0bef00-2fd9-4e08-ba66-b6d025ce1876&name=image2017-12-26_14-31-10.png&max-age=2940&width=700&height=442)
-![2](https://media-api.atlassian.io/file/699e7e76-aab5-49e6-b0aa-6d8b05fa584b/image?token=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiI1ZDBiZWYwMC0yZmQ5LTRlMDgtYmE2Ni1iNmQwMjVjZTE4NzYiLCJhY2Nlc3MiOnsidXJuOmZpbGVzdG9yZTpmaWxlOjY5OWU3ZTc2LWFhYjUtNDllNi1iMGFhLTZkOGIwNWZhNTg0YiI6WyJyZWFkIl19LCJleHAiOjE1MTQyNzY2ODIsIm5iZiI6MTUxNDI3MzYyMn0.lifL9V2hiCAf-n8rGBjl0wT6BSHmicL9JgJXmz4qxM4&client=5d0bef00-2fd9-4e08-ba66-b6d025ce1876&name=image2017-12-26_14-47-35.png&max-age=2940&width=763&height=440)
+![1](http://image.fileslink.com/491415f66486ded/image2017-12-26_14-31-10.png)
+![2](http://image.fileslink.com/491415f686c5fec/image2017-12-26_14-47-35.png)
 
 
 |이름   |해설   |
@@ -381,7 +381,8 @@ public class HBNMain {
 
 
 -Trouble363번 처리할 때의 시퀀스 다이어그램
-![3](https://media-api.atlassian.io/file/1ff8cb6f-b8a9-4c87-9da8-3699daca7fe1/image?token=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiI1ZDBiZWYwMC0yZmQ5LTRlMDgtYmE2Ni1iNmQwMjVjZTE4NzYiLCJhY2Nlc3MiOnsidXJuOmZpbGVzdG9yZTpmaWxlOjFmZjhjYjZmLWI4YTktNGM4Ny05ZGE4LTM2OTlkYWNhN2ZlMSI6WyJyZWFkIl19LCJleHAiOjE1MTQyNzcxNzgsIm5iZiI6MTUxNDI3NDExOH0.ovfs_nsrqdidP6jl-uxYQFsaVIBAqAhIJWxFkEJQOyE&client=5d0bef00-2fd9-4e08-ba66-b6d025ce1876&name=image2017-12-26_15-11-47.png&max-age=2940&width=600&height=309)
+![3](http://image.fileslink.com/491415f76c3634b3/image2017-12-26_15-11-47.png
+)
 
 
 
