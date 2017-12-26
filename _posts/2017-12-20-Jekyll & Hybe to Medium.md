@@ -1,10 +1,15 @@
 ---
-layout : post
-author : gh.park
-comments : true
-title : "Medium blog 마크다운형태로 저장하기"
-date : "2017-12-20"
+layout: post
+author: gh.park
+title: "Jekyll & Hybe to Medium"
+date: 2017-12-20 17:58:11 +0900
+tags: [연구노트, 인턴십, jekyll ]
+category: [jekyll]
+publication: 'gahye-blog'
+license: 'public-domain'
+permalink: /Jekyll-Hybe-to-Medium
 ---
+
 ### 연구내용
 
 #### Medium blog 마크다운형태로 저장하기
@@ -69,8 +74,8 @@ var object = { ... };
 var length = Object.keys( object ).length;
 
 console.log( length );
-// object의 요소 갯수가 반환됩니다.
-// Object.keys()만 돌리게 되면 해당 Object의 value값만 배열로 반환이 됩니다.
+// object의 요소 갯수가 반환이 된다.
+// Object.keys()만 돌리게 되면 해당 Object의 value값만 배열로 반환이 된다.
 ```
 
 3. Object의 value 알아내기
