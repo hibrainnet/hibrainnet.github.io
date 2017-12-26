@@ -7,6 +7,7 @@ tags: [연구노트, 인턴십, javapattern]
 category: [디자인패턴]
 publication: 'gahye-blog'
 license: 'public-domain'
+permalink: /Bridge-pattern
 ---
 
 ### 연구내용
@@ -25,7 +26,9 @@ license: 'public-domain'
 hello, korea라는 문자열을
 
 +------------+
+<br>
 :Hello, korea:
+<br>
 +------------+
 
 위와 같은 형식으로 출력해준다.
@@ -33,14 +36,20 @@ hello, korea라는 문자열을
 다음과 같이 원하는 횟수만큼 출력도 할 수 있다.
 
 +----------------+
+<br>
 :Hello, Universe.:
+<br>
 :Hello, Universe.:
+<br>
 :Hello, Universe.:
+<br>
 :Hello, Universe.:
+<br>
 :Hello, Universe.:
+<br>
 +----------------+
-![1](https://media-api.atlassian.io/file/a68b0317-68de-472b-9946-bae2df7c4095/image?token=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiI1ZDBiZWYwMC0yZmQ5LTRlMDgtYmE2Ni1iNmQwMjVjZTE4NzYiLCJhY2Nlc3MiOnsidXJuOmZpbGVzdG9yZTpmaWxlOmE2OGIwMzE3LTY4ZGUtNDcyYi05OTQ2LWJhZTJkZjdjNDA5NSI6WyJyZWFkIl19LCJleHAiOjE1MTQyNTM3MTEsIm5iZiI6MTUxNDI1MDY1MX0.hykHV2cJrTjSDZhjdBhSBbjpZRIBddNLygyemL1RiZY&client=5d0bef00-2fd9-4e08-ba66-b6d025ce1876&name=image2017-12-14_16-13-1.png&max-age=2940&width=500&height=262)
-![2](https://media-api.atlassian.io/file/ba433a24-8163-49d6-bf79-8f824dbd457c/image?token=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiI1ZDBiZWYwMC0yZmQ5LTRlMDgtYmE2Ni1iNmQwMjVjZTE4NzYiLCJhY2Nlc3MiOnsidXJuOmZpbGVzdG9yZTpmaWxlOmJhNDMzYTI0LTgxNjMtNDlkNi1iZjc5LThmODI0ZGJkNDU3YyI6WyJyZWFkIl19LCJleHAiOjE1MTQyNTM3MTEsIm5iZiI6MTUxNDI1MDY1MX0.i2R8ab04zjYYW6n7hACBCgWo6Bcph7p2CApKhMtdjI0&client=5d0bef00-2fd9-4e08-ba66-b6d025ce1876&name=image2017-12-13_18-27-26.png&max-age=2940&width=500&height=315)
+![1](https://media-api.atlassian.io/file/a68b0317-68de-472b-9946-bae2df7c4095/image?token=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiI1ZDBiZWYwMC0yZmQ5LTRlMDgtYmE2Ni1iNmQwMjVjZTE4NzYiLCJhY2Nlc3MiOnsidXJuOmZpbGVzdG9yZTpmaWxlOmE2OGIwMzE3LTY4ZGUtNDcyYi05OTQ2LWJhZTJkZjdjNDA5NSI6WyJyZWFkIl19LCJleHAiOjE1MTQyNzU1NTcsIm5iZiI6MTUxNDI3MjQ5N30.BU_0hxxXf4Xzr6MMbK9Qds2AcVEJ0_hjAIHNow3uZtA&client=5d0bef00-2fd9-4e08-ba66-b6d025ce1876&name=image2017-12-14_16-13-1.png&max-age=2940&width=500&height=262)
+![2](https://media-api.atlassian.io/file/ba433a24-8163-49d6-bf79-8f824dbd457c/image?token=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiI1ZDBiZWYwMC0yZmQ5LTRlMDgtYmE2Ni1iNmQwMjVjZTE4NzYiLCJhY2Nlc3MiOnsidXJuOmZpbGVzdG9yZTpmaWxlOmJhNDMzYTI0LTgxNjMtNDlkNi1iZjc5LThmODI0ZGJkNDU3YyI6WyJyZWFkIl19LCJleHAiOjE1MTQyNzU4OTYsIm5iZiI6MTUxNDI3MjgzNn0.dy8bwGSGO4stu2QCv53YDnHtgVaZTfJj72yGINK8pQc&client=5d0bef00-2fd9-4e08-ba66-b6d025ce1876&name=image2017-12-13_18-27-26.png&max-age=2940&width=500&height=315)
 
 
 ##### Display 클래스 (표시하는 기능을 나타냄) 

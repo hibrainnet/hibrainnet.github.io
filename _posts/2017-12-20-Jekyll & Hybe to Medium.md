@@ -4,8 +4,10 @@ author: gh.park
 title: "Jekyll & Hybe to Medium"
 date: 2017-12-20 17:58:11 +0900
 tags: [연구노트, 인턴십, jekyll ]
+category: [jekyll]
 publication: 'gahye-blog'
 license: 'public-domain'
+permalink: /Jekyll-Hybe-to-Medium
 ---
 
 ### 연구내용

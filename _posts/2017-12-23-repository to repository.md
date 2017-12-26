@@ -7,6 +7,7 @@ tags: [연구노트, 인턴십, travis ]
 category: [travis]
 publication: 'gahye-blog'
 license: 'public-domain'
+permalink: /repository-to-repository
 
 ---
 

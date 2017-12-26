@@ -1,7 +1,5 @@
 ---
 layout: default
-pagination:
-  enabled: true
 ---
 
 
@@ -9,13 +7,10 @@ pagination:
 
 <div id="archive">
   <ul class="archive-post-list">
-  {%for post in paginator.posts %}
+  {%for post in site.posts %}
+    {% if post.tags contains page.tag %}
       <li><time>{{ post.date | date:"%b %d, %Y" }}</time> » <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+    {% endif %}
   {% endfor %}
   </ul>
 </div>
-{% if site.pagination.type == 'simple' %}
-  {% include pagination-simple.html %}
-{% elsif site.pagination.type == 'numbering' %}
-  {% include pagination-numbering.html %}
-{% endif %}
