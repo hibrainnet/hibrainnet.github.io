@@ -14,6 +14,10 @@ git:
     - sksong@hibrain.net
     - saltfactory@gmail.com
 
+## Medium tokens 설정
+medium:
+  integration_token: 2573b0a47fb27dde37fc91f7c5461aff3802ba0edf1f362473f47046e878fe3e2 
+
 ## github 설정
 github_page:
   remote_url: git@bitbucket.org:hibrainnet/jekyll-and-hybe.git

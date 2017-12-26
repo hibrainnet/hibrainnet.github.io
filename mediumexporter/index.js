@@ -49,7 +49,7 @@ utils.loadMediumPost(mediumURL, function(err, json) {
     console.log("---");
     console.log("layout: post");
     var userid = Object.keys(json.payload.references.User);
-    console.log("author: "+userid[0]);
+    console.log("title: "+story.title);
     console.log("url: "+story.url);
     console.log("date: "+story.date);
     process.stdout.write("tags: [");

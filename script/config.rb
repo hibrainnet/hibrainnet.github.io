@@ -6,3 +6,6 @@ config = YAML.load_file(path+"/_config.yml")
 
 @admin_git_email = config['git']['admins']
 @admin_length = @admin_git_email.length
+
+
+@medium_token = config['medium']['integration_token']
