@@ -1,1 +1,0 @@
-Sitemap: https://hibrainnet.github.io/jekyll-and-hybe/sitemap.xml
