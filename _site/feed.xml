@@ -1,0 +1,1463 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="https://hibrainnet.github.io/jekyll-and-hybe/feed.xml" rel="self" type="application/atom+xml" /><link href="https://hibrainnet.github.io/jekyll-and-hybe/" rel="alternate" type="text/html" /><updated>2017-12-28T17:49:22+09:00</updated><id>https://hibrainnet.github.io/jekyll-and-hybe/</id><title type="html">하이브레인넷 부설연구소</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Flyweight Pattern</title><link href="https://hibrainnet.github.io/jekyll-and-hybe/flyweight-pattern" rel="alternate" type="text/html" title="Flyweight Pattern" /><published>2017-12-27T15:33:33+09:00</published><updated>2017-12-27T15:33:33+09:00</updated><id>https://hibrainnet.github.io/jekyll-and-hybe/jh.heo</id><content type="html" xml:base="https://hibrainnet.github.io/jekyll-and-hybe/flyweight-pattern">&lt;h1 id=&quot;1-연구내용&quot;&gt;1. 연구내용&lt;/h1&gt;
+&lt;hr /&gt;
+&lt;h2 id=&quot;flyweight-pattern&quot;&gt;Flyweight Pattern&lt;/h2&gt;
+&lt;h3 id=&quot;정의&quot;&gt;정의&lt;/h3&gt;
+&lt;p&gt;플라이웨이트 패턴은 동일하거나 유사한 객체들이 데이터를 서로 공유하도록 하여 메모리 사용량을 최소화 하는 디자인 패턴이다.
+보통 많은 객체들을 생성해야 할때 객체의 생성 및 관리를 담당하는 객체를 따로 두고 사용한다.&lt;/p&gt;
+
+&lt;h3 id=&quot;예제&quot;&gt;예제&lt;/h3&gt;
+&lt;p&gt;예제로 사용할 상황은 커피를 주문하는 상황이다.
+카페에서 커피를 주문할때, 아메리카노, 카푸치노, 라떼 등 여러가지 커피들이 주문된다. 커피들이 객체라고 생각했을때 커피가 팔린 갯수 만큼 객체들이 만들어져야 할 것이다.
+하지만 커피라는 유사성이 있기때문에 같은 부분을 공유하도록 할 수 있다.&lt;/p&gt;
+
+&lt;h3 id=&quot;coffeeorder-인터페이스&quot;&gt;CoffeeOrder 인터페이스&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public interface CoffeeOrder {
+    public void serveCoffee(CoffeeOrderContext context);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;CoffeeOrder 인터페이스는 커피주문이 가지는 공통점을 표현한것이다.
+serveCoffee 메소드는 CoffeeOrderContext 형으로 주문받은 테이블 정보를 가지고 커피를 서빙하는 메소드이다.&lt;/p&gt;
+
+&lt;h3 id=&quot;coffeeflavor-클래스&quot;&gt;CoffeeFlavor 클래스&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class CoffeeFlavor implements CoffeeOrder {
+    private final String flavor;
+
+    public CoffeeFlavor(String newFlavor) {
+        this.flavor = newFlavor;
+    }
+
+    public String getFlavor() {
+        return this.flavor;
+    }
+
+    public void serveCoffee(CoffeeOrderContext context) {
+        System.out.println(flavor + &quot; &quot; + context.getTable() + &quot;번 테이블로&quot;);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;CoffeeFlavor 클래스는 ConffeeOrder를 구현하고 있다.
+newFlavor 문자열을 입력받아 각 커피의 고유맛을 표현하고 있다.
+그리고 serveCoffee를 구현하여 테이블로 서빙되는 방식을 구현하고 있다.&lt;/p&gt;
+
+&lt;h3 id=&quot;coffeeordercontext-클래스&quot;&gt;CoffeeOrderContext 클래스&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class CoffeeOrderContext {
+    private final int tableNumber;
+
+    public CoffeeOrderContext(int tableNumber) {
+        this.tableNumber = tableNumber;
+    }
+
+    public int getTable() {
+        return this.tableNumber;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;CoffeeOrderContext 클래스는 주문한 테이블의 정보를 담고 있는 클래스이다.
+int형 tableNumber 변수를 파라미터로 하는 생성자가 있다.&lt;/p&gt;
+
+&lt;h3 id=&quot;coffeeflavorfactory-클래스&quot;&gt;CoffeeFlavorFactory 클래스&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class CoffeeFlavorFactory {
+    private Map&amp;lt;String, CoffeeFlavor&amp;gt; flavors = new HashMap&amp;lt;String, CoffeeFlavor&amp;gt;();
+
+    public CoffeeFlavor getCoffeeFlavor(String flavorName) {
+        CoffeeFlavor flavor = flavors.get(flavorName);
+        if (flavor == null) {
+            flavor = new CoffeeFlavor(flavorName);
+            flavors.put(flavorName, flavor);
+        }
+        return flavor;
+    }
+
+    public int getTotalCoffeeFlavorsMade() {
+        return flavors.size();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;CoffeeFlavorFactory 클래스는 커피를 주문받아 커피를 만드는 일을 하듯이 CoffeeFlavor 객체를 생성하는 역할을 맡는다.
+Map&amp;lt;String, CoffeeFlavor&amp;gt; flavors 를 통해 커피이름, 커피객체를 키와 밸류값으로 저장한다.
+getCoffeeFlavor 메소드는 파라미터로 받은 flavorName이 맵에 있는 경우 커피맛 객체를 리턴해주고 없는 경우는 새로운 커피맛 객체를 생성하여 맵에 저장후 리턴해주게 된다.
+위와 같이 객체를 주문 받을때마다 생성하지 않고 맵을 활용하여 생성했던 객체는 저장후 공유하여 쓸수 있는것을 볼수 있다.&lt;/p&gt;
+
+&lt;h3 id=&quot;main-클래스&quot;&gt;Main 클래스&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class HBMain {
+    private static CoffeeFlavor[] flavors = new CoffeeFlavor[100];
+    private static CoffeeOrderContext[] tables = new CoffeeOrderContext[100];
+    private static int ordersMade = 0;
+    private static CoffeeFlavorFactory flavorFactory;
+
+    public static void takeOrders(String flavorIn, int table) {
+        flavors[ordersMade] = flavorFactory.getCoffeeFlavor(flavorIn);
+        tables[ordersMade++] = new CoffeeOrderContext(table);
+    }
+
+    public static void main(String[] args) {
+        flavorFactory = new CoffeeFlavorFactory();
+
+        takeOrders(&quot;아메리카노&quot;, 2);
+        takeOrders(&quot;아메리카노&quot;, 2);
+        takeOrders(&quot;카푸치노&quot;, 1);
+        takeOrders(&quot;카푸치노&quot;, 1);
+        takeOrders(&quot;라떼&quot;, 1);
+        takeOrders(&quot;카라멜 마끼야또&quot;, 897);
+        takeOrders(&quot;아메리카노&quot;, 97);
+        takeOrders(&quot;아메리카노&quot;, 97);
+        takeOrders(&quot;카라멜 마끼야또&quot;, 3);
+        takeOrders(&quot;에스프레소&quot;, 3);
+        takeOrders(&quot;아메리카노&quot;, 3);
+        takeOrders(&quot;카라멜 마끼야또&quot;, 96);
+        takeOrders(&quot;에스프레소&quot;, 552);
+        takeOrders(&quot;아메리카노&quot;, 121);
+        takeOrders(&quot;에스프레소&quot;, 121);
+
+        for (int i = 0; i &amp;lt; ordersMade; ++i) {
+            flavors[i].serveCoffee(tables[i]);
+        }
+        System.out.println(&quot; &quot;);
+        System.out.println(&quot;생성된 CoffeeFlavor 객체 : &quot; + flavorFactory.getTotalCoffeeFlavorsMade());
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Main 클래스는 커피맛 객체를 저장할 flavors, 주문 정보를 저장할 tables, 주문번호를 저장할 orderMade, 커피 객체를 생성할 flavorsFactory를 변수를 가지고 있다.
+그리고 takeOrders 메소드는 flavorFactory를 이용하여 객체를 생성 및 관리 하고 주문번호를 증가시킨다.&lt;/p&gt;
+
+&lt;h3 id=&quot;실행결과&quot;&gt;실행결과&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://image.ibb.co/i3sQuw/image.png&quot; alt=&quot;실행결과&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;2-참고자료&quot;&gt;2. 참고자료&lt;/h1&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;flyweight pattern, https://ko.wikipedia.org/wiki/%ED%94%8C%EB%9D%BC%EC%9D%B4%EC%9B%A8%EC%9D%B4%ED%8A%B8_%ED%8C%A8%ED%84%B4&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;flyweight 패턴, https://zetawiki.com/wiki/Flyweight_%ED%8C%A8%ED%84%B4&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</content><author><name>jh.heo</name></author><category term="연구노트" /><category term="인턴십" /><summary type="html">1. 연구내용 Flyweight Pattern 정의 플라이웨이트 패턴은 동일하거나 유사한 객체들이 데이터를 서로 공유하도록 하여 메모리 사용량을 최소화 하는 디자인 패턴이다. 보통 많은 객체들을 생성해야 할때 객체의 생성 및 관리를 담당하는 객체를 따로 두고 사용한다.</summary></entry><entry><title type="html">Decorator Pattern</title><link href="https://hibrainnet.github.io/jekyll-and-hybe/mediator-pattern" rel="alternate" type="text/html" title="Decorator Pattern" /><published>2017-12-26T16:22:11+09:00</published><updated>2017-12-26T16:22:11+09:00</updated><id>https://hibrainnet.github.io/jekyll-and-hybe/jh.heo</id><content type="html" xml:base="https://hibrainnet.github.io/jekyll-and-hybe/mediator-pattern">&lt;h1 id=&quot;1-연구내용&quot;&gt;1. 연구내용&lt;/h1&gt;
+&lt;hr /&gt;
+&lt;h2 id=&quot;mediator-pattern&quot;&gt;Mediator Pattern&lt;/h2&gt;
+&lt;h3 id=&quot;정의&quot;&gt;정의&lt;/h3&gt;
+
+&lt;p&gt;보통의 프로젝트에서 프로그램은 많은 클래스로 구성되어 있고 여러명의 개발자들이 함께 개발하게 된다. 이런 프로젝트의 경우 개발자들 사이에 의사소통의 매우 중요해진다. 의사소통이 제대로 이루어지지 않을 경우 요구사항을 제대로 만족하지 못하는 프로그램이 만들어질수도 있고 중복된 코드나 불필요한 코드가 많아질수 있다. 그래서 주로 프로젝트 매니저를 통해 의사소통이 이루어지고 개발자는 매니저가 지시한 사항에만 맞추어 개발을 하게 된다.&lt;/p&gt;
+
+&lt;p&gt;decorator(중재자) pattern은 위와 같은 상황처럼 중재자 혹은 카운셀러가 보고를 받고 각 멤버에게 지시를 내리는 패턴이다.&lt;/p&gt;
+
+&lt;h3 id=&quot;예제&quot;&gt;예제&lt;/h3&gt;
+
+&lt;p&gt;decorator pattern의 예제로 유저네임과 비밀번호를 입력하는 GUI 애플리케이션을 사용한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://image.ibb.co/hk5UH6/1.png&quot; alt=&quot;다이얼로그1&quot; /&gt;
+&lt;img src=&quot;https://image.ibb.co/gyLPjm/2.png&quot; alt=&quot;다이얼로그2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;위와 같은 다얼로그는 몇가지 규칙을 가진다.&lt;/p&gt;
+
+&lt;p&gt;guest를 선택한 경우 유저네임과 비밀번호는 비활성화 된다.&lt;/p&gt;
+
+&lt;p&gt;login을 선택한 경우 둘 다 활성화 된다.&lt;/p&gt;
+
+&lt;p&gt;loging의 경우 유저네임 한글지 이상입력한 경우에 비밀번호가 활성화 된다.&lt;/p&gt;
+
+&lt;p&gt;위와 같은 로직은 중재자에만 기술하고 멤버는 기술한대로 동작하면 되는 구조이다.&lt;/p&gt;
+
+&lt;p&gt;아래의 표는 예제에서 사용되는 클래스를 설명한 표이다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;이름&lt;/th&gt;
+      &lt;th&gt;설명&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Mediator&lt;/td&gt;
+      &lt;td&gt;카운셀러(중재자) 인터페이스(api)를 정하는 인터페이스&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Colleague&lt;/td&gt;
+      &lt;td&gt;멤버의 인터페이스를 정하는 인터페이스&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;ColleagueButton&lt;/td&gt;
+      &lt;td&gt;Colleague 인터페이스를 구현하고 버튼을 나타내는 클래스&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;ColleagueTextField&lt;/td&gt;
+      &lt;td&gt;Colleague 인터페이스를 구현하고 텍스트를 나타내는 클래스&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;ColleagueCheckbox&lt;/td&gt;
+      &lt;td&gt;Colleague 인터페이스를 구현하고 라디오 버튼을 나타내는 클래스&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;LoginFrame&lt;/td&gt;
+      &lt;td&gt;Mediator 인터페이스를 구현, 로그인 다어얼로그를 나타내는 클래스&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Main&lt;/td&gt;
+      &lt;td&gt;예제 동작용 클래스&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;mediator-인터페이스&quot;&gt;Mediator 인터페이스&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public interface Mediator {
+    public abstract void createColleagues();
+    public abstract void colleagueChanged(Colleague colleague);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Mediator 인터페이스는 중재자, 카운셀러의 인터페이스를 구현한것이다.
+createColleagues는 중재자가 관리하는 멤버들을 생성하는 메소드이다.
+colleagueChanged는 멤버들에 변화가 생겼을때 호출되는 메소드이다. 예를 들어 텍스트가 체크박스가 바뀐경우가 해당된다.&lt;/p&gt;
+
+&lt;h3 id=&quot;colleague-인터페이스&quot;&gt;Colleague 인터페이스&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public interface Colleague {
+    public abstract void setMediator(Mediator mediator);
+    public abstract void setColleagueEnabled(boolean enalbed);
+}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Colleague 인터페이스 중재 받는 멤버를 표현한 인터페이스이다.
+setMediator는 중재할 중재자를 입력하는 메소드이다.
+setColleagueEnabled 메소드는 중재자가 내리는 지시에 해당한다. enabled 값이 true가 되면 활성화, false가 되면 비활성화 된다.&lt;/p&gt;
+&lt;h3 id=&quot;colleaguebutton-클래스&quot;&gt;ColleagueButton 클래스&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class ColleagueButton extends Button implements Colleague {
+    private Mediator mediator;
+
+    public ColleagueButton(String label) {
+        super(label);
+    }
+
+    public void setMediator(Mediator mediator) {
+        this.mediator = mediator;
+    }
+
+    public void setColleagueEnabled (boolean enabled) {
+        setEnabled(enabled);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;ColleagueButton 클래스는 Button 클래스를 상속 받고 멤버를 표현한 Colleague 인터페이스를 구현하고 있다.
+setMediator를 통해 의사소통한 중재자를 정하고 setColleagueEnabled를 통해 해당 버튼을 유/무효화 할 수 있다.&lt;/p&gt;
+
+&lt;h3 id=&quot;colleaguetextfield-클래스&quot;&gt;ColleagueTextField 클래스&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class ColleagueTextField extends TextField implements TextListener, Colleague{
+    private  Mediator mediator;
+
+    public ColleagueTextField(String text, int columns) {
+        super(text, columns);
+    }
+
+    public void setMediator(Mediator mediator) {
+        this.mediator = mediator;
+    }
+
+    public void setColleagueEnabled(boolean enabled) {
+        setEnabled(enabled);
+        setBackground(enabled ? Color.WHITE : Color.lightGray);
+    }
+
+    public void textValueChanged(TextEvent e) {
+        mediator.colleagueChanged(this);
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;ColleagueTextField 클래스는 TextField를 상속 받고 Colleague, TextListener 인터페이스를 구현하고 있다. TextListener 인터페이스는 텍스트 내용이 변했을 때 textValueChanged메소드로 변화를 감지하기위해 존재한다. 변화 감지 후 this, 변화한 자신을 colleagueChanged 메소드로 변화한것을 알리게 된다.
+setColleagueEnabled를 통해 텍스트필드가 유효한경우 배경을 흰색, 아닌경우 회색으로 변경 할 수 있다.&lt;/p&gt;
+
+&lt;h3 id=&quot;colleaguecheckbox-클래스&quot;&gt;ColleagueCheckbox 클래스&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class ColleagueCheckBox extends Checkbox implements ItemListener, Colleague {
+    private Mediator mediator;
+
+    public ColleagueCheckBox(String caption, CheckboxGroup group, boolean state) {
+        super(caption, group, state);
+    }
+
+    public void setMediator(Mediator mediator) {
+        this.mediator = mediator;
+    }
+
+    public void setColleagueEnabled(boolean enabled) {
+        setEnabled(enabled);
+    }
+
+    public void itemStateChanged(ItemEvent e) {
+        mediator.colleagueChanged(this);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;ColleagueCheckbox 클래스는 CheckBox를 상속받고 ItemEvent, Colleague 인터페이스를 구현하고 있다.
+ItemListener의 itemStateChanged 메소드를 이용하여 CheckBox의 변화를 감지하고 있다.&lt;/p&gt;
+
+&lt;h3 id=&quot;loginframe-클래스&quot;&gt;LoginFrame 클래스&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class LoginFrame extends Frame implements ActionListener, Mediator {
+    private ColleagueCheckBox checkGuest;
+    private ColleagueCheckBox checkLogin;
+    private ColleagueTextField textUser;
+    private ColleagueTextField textPass;
+    private ColleagueButton buttonOk;
+    private ColleagueButton buttonCancel;
+
+    public LoginFrame(String title) {
+        super(title);
+        setBackground(Color.lightGray);
+        setLayout(new GridLayout(4, 2));
+        createColleagues();
+        add(checkGuest);
+        add(checkLogin);
+        add(new Label(&quot;Username:&quot;));
+        add(textUser);
+        add(new Label(&quot;password:&quot;));
+        add(textPass);
+        add(buttonOk);
+        add(buttonCancel);
+        colleagueChanged(checkGuest);
+        pack();
+        show();
+    }
+
+    public void createColleagues() {
+        CheckboxGroup g = new CheckboxGroup();
+        checkGuest = new ColleagueCheckBox(&quot;Guest&quot;, g, true);
+        checkLogin = new ColleagueCheckBox(&quot;Login&quot;, g, false);
+        textUser = new ColleagueTextField(&quot;&quot;, 10);
+        textPass = new ColleagueTextField(&quot;&quot;, 10);
+        textPass.setEchoChar('*');
+        buttonOk = new ColleagueButton(&quot;OK&quot;);
+        buttonCancel = new ColleagueButton(&quot;Cancel&quot;);
+
+        checkGuest.setMediator(this);
+        checkLogin.setMediator(this);
+        textUser.setMediator(this);
+        textPass.setMediator(this);
+        buttonOk.setMediator(this);
+        buttonCancel.setMediator(this);
+
+        checkGuest.addItemListener(checkGuest);
+        checkLogin.addItemListener(checkLogin);
+        textUser.addTextListener(textUser);
+        textPass.addTextListener(textPass);
+        buttonCancel.addActionListener(this);
+        buttonOk.addActionListener(this);
+    }
+
+
+    public void colleagueChanged(Colleague c) {
+        if (c == checkGuest || c == checkLogin) {
+            if (checkGuest.getState()) {
+                textUser.setColleagueEnabled(false);
+                textPass.setColleagueEnabled(false);
+                buttonOk.setColleagueEnabled(true);
+            } else {
+                textUser.setColleagueEnabled(true);
+                userpassChanged();
+            }
+        } else if (c == textUser || c == textPass) {
+            userpassChanged();
+        } else {
+            System.out.println(&quot;colleagueChanged:unknown colleague =&quot; + c);
+        }
+    }
+
+    private void userpassChanged() {
+        if (textUser.getText().length() &amp;gt; 0) {
+            textPass.setColleagueEnabled(true);
+            if (textPass.getText().length() &amp;gt; 0) {
+                buttonOk.setColleagueEnabled(true);
+            } else {
+                buttonOk.setColleagueEnabled(false);
+            }
+        } else {
+            textPass.setColleagueEnabled(false);
+            buttonOk.setColleagueEnabled(false);
+        }
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        System.out.println(&quot;&quot; + e);
+        System.exit(0);
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;LoginFrame 클래스는 GUI 어플리케이션을 만들기 위해 Frame 클래스를 상속 받고 있고 Mediator 인터페이스를 구현하고 있다.&lt;/p&gt;
+
+&lt;p&gt;생성자에서는 아래와 같은 일을 하고 있다.&lt;/p&gt;
+
+&lt;p&gt;배경색의 설정
+레이아웃 설정 (4 x 2)
+createColleagues를 통해 Colleagues 생성
+colleagues 배치
+초기 설정 및 표현&lt;/p&gt;
+
+&lt;p&gt;colleagueChanged 메소드를 통해 텍스트상자, 체크박스의 유/무효화 조건의 로직이 담겨있다.
+멤버들 사이의 어려운 의사소통은 중재자가 맡고 멤버들은 각자의 colleagueChanged 메소드를 호출하기만 하면된다.&lt;/p&gt;
+
+&lt;h3 id=&quot;main-클래스&quot;&gt;Main 클래스&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class HBMain {
+    public static void main(String[] args) {
+        new LoginFrame(&quot;Mediator Pattern&quot;);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id=&quot;실행결과&quot;&gt;실행결과&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://image.ibb.co/hk5UH6/1.png&quot; alt=&quot;다이얼로그1&quot; /&gt;
+&lt;img src=&quot;https://image.ibb.co/gyLPjm/2.png&quot; alt=&quot;다이얼로그2&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;2-참고자료&quot;&gt;2. 참고자료&lt;/h1&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;java 언어로 배우는 디자인 패턴, 유키 히로시, 영진닷컴&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>jh.heo</name></author><category term="연구노트" /><category term="인턴십" /><summary type="html">1. 연구내용 Mediator Pattern 정의</summary></entry><entry><title type="html">Decorator Pattern</title><link href="https://hibrainnet.github.io/jekyll-and-hybe/decorator-pattern" rel="alternate" type="text/html" title="Decorator Pattern" /><published>2017-12-22T16:11:11+09:00</published><updated>2017-12-22T16:11:11+09:00</updated><id>https://hibrainnet.github.io/jekyll-and-hybe/jh.heo</id><content type="html" xml:base="https://hibrainnet.github.io/jekyll-and-hybe/decorator-pattern">&lt;h1 id=&quot;1-연구내용&quot;&gt;1. 연구내용&lt;/h1&gt;
+&lt;hr /&gt;
+&lt;h2 id=&quot;decorator-pattern&quot;&gt;Decorator Pattern&lt;/h2&gt;
+&lt;h3 id=&quot;정의&quot;&gt;정의&lt;/h3&gt;
+&lt;p&gt;위키에서는 데코레이터 패턴이란 상황이나 용도에 따라 특정 객체에 책임을 덧붙이는 패턴이라고 정의 하고 있다. 예를 들어 스펀지 케이크에 생크림과 딸기를 올리면 딸기 생크림 케이크가 되고 초코렛을 올리면 초코 케이크가 된다.&lt;/p&gt;
+
+&lt;p&gt;객체도 스펀지 케이크 처럼 중심이 되는 객체에 원하는 기능을 하나씩 입혀가면서 목적이 맞는 객체을 만들수 있다. 이와 같은 상황에 사용하는 것이 Decorator 패턴이다.&lt;/p&gt;
+
+&lt;h3 id=&quot;예제&quot;&gt;예제&lt;/h3&gt;
+&lt;p&gt;예제 프로그램은 스트링을 중심객체로 생각하고 문자열 주변을 장식 하는 프로그램이다.
+예를 들어 string이나 글자에 -, +, |, / 등의 문자로 장식하는것을 말한다. 스펀지 케이스에 원하는 취향에 따라 생크림, 딸기, 초콜렛 등을 입히듯이 문자열에도 상황에 맞추어 장식을 입힐수 있다.&lt;/p&gt;
+
+&lt;p&gt;다음은 예제 프로그램에서 사용하는 클래스들 설명한 표이다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;이름&lt;/th&gt;
+      &lt;th&gt;설명&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Display&lt;/td&gt;
+      &lt;td&gt;문자열 표시용 추상 클래스&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;StirngDisplay&lt;/td&gt;
+      &lt;td&gt;한줄 짜리 문자열 출력 클래스&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Border&lt;/td&gt;
+      &lt;td&gt;장식을 나타내는 추상클래스&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;SideBorder&lt;/td&gt;
+      &lt;td&gt;좌우에만 장식을 붙이는 클래스&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;FullBorder&lt;/td&gt;
+      &lt;td&gt;상하좌우 모두 장식을 붙이는 클래스&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Main&lt;/td&gt;
+      &lt;td&gt;예제 프로그램 동작용 클래스&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;display-클래스&quot;&gt;Display 클래스&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public abstract class Display {
+    public abstract int getColumns();
+    public abstract int getRows();
+    public abstract String getRowText(int row);
+
+    public final void show() {
+        for (int i = 0; i &amp;lt; getRows(); i++) {
+            System.out.println(getRowText(i));
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Display 클래스는 여러줄의 문자열을 출력하기 위한 추상 클래스이다
+getColumns과, getRows는 문자열의 행과 열의 길이를 반환하는 메소드이다
+getRowText는 여러줄의 문자열 중 특정 행의 문자열을 출력하는 메소드이다.
+show메소드는 여러줄 문자열을 모두 출력하는 메소드이다.&lt;/p&gt;
+
+&lt;h3 id=&quot;stirngdisplay-클래스&quot;&gt;StirngDisplay 클래스&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class StringDisplay extends Display{
+    private String string;
+
+    public StringDisplay(String string) {
+        this.string = string;
+    }
+
+    public int getColumns() {
+        return string.getBytes().length;
+    }
+
+    public int getRows() {
+        return 1;
+    }
+
+    public String getRowText(int row) {
+        if (row == 0) {
+            return string;
+        } else {
+            return null;
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;StringDisplay 문자열 출력하는 메소드를 정의한 Display를 상속하고 한줄짜리 문자열을 출력하는 클래스이다. 출력할 문자열 string 필드를 가지고 생성하는 클래스이다.
+Display 클래스를 상속받았으므로 getRows와 getColumns를 구현해야 한다.
+한줄짜리 문자열을 출력하는 클래스 이므로 getRows는 1로 고정이고 getColumns은 문자열 길이를 리턴한다.
+마찬가지로 한줄짜리 문자열이므로 getRowText는 0번째 행을 원할때만 문자열을 리던하고 나머지에대해서는 null을 리턴한다.&lt;/p&gt;
+
+&lt;h3 id=&quot;border-클래스&quot;&gt;Border 클래스&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public abstract class Border extends Display {
+    protected Display display;
+
+    public Border(Display display) {
+        this.display = display;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Border 클래스는 위해서 설명한 케이크에서 딸기, 생크림 그리고 문자열에서 -, |, / 등의 장식을 표현한 추상래스이다.
+자세히 보면 Border 클래스도 Display 클래스를 상속 하고 있다. 이 말은 문자열과 장식을 동일시 한다는 것을 의미한다. 문자열도 getRows, getColumns등을 가진다.
+그리고 Border는 Display형 객체 하나를 필드로 가지고 있다. 이것이 Border가 장식할 내용물을 의미한다.
+하지만 객체의 타입이 Display형이기 때문에 장식이 들어올수도 있고 문자열이 들어올수도 있다. 이것을 다시말하면 문자열도 장식의 대상이되고 장식된 문자열 또한 장식의 대상이 된다.&lt;/p&gt;
+
+&lt;h3 id=&quot;sideborder-클래스&quot;&gt;SideBorder 클래스&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class SideBorder extends Border {
+    private char borderChar;
+
+    public SideBorder(Display display, char borderChar) {
+        super(display);
+        this.borderChar = borderChar;
+    }
+
+    public int getColumns() {
+        return display.getColumns() + 2;
+    }
+
+    public int getRows() {
+        return display.getRows();
+    }
+
+    public String getRowText(int row) {
+        return borderChar + display.getRowText(row) + borderChar;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;SideBorder 클래스는 문자열 좌우를 장식하는 클래스이다.
+장식 대상이되는 문자열 display와 장식할 문자 borderChar을 입력 받아 생성하도록 한다.
+getColumns은 좌우 문자열이 하나씩 늘어났으므로 +2 한값을 리턴한다.
+getRows는 좌우 장식만 하였으므로 변환없이 display.getRows 값을 리턴한다.&lt;/p&gt;
+&lt;h3 id=&quot;fullborder-클래스&quot;&gt;FullBorder 클래스&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class FullBorder extends Border {
+    public FullBorder(Display display) {
+        super(display);
+    }
+
+    public int getColumns() {
+        return display.getColumns() + 2;
+    }
+
+    public int getRows() {
+        return display.getRows() + 2;
+    }
+    public String getRowText(int row) {
+        if (row == 0) {
+            return  &quot;+&quot; + makeLine('-', display.getColumns()) + &quot;+&quot;;
+        } else if (row == display.getRows() + 1) {
+            return &quot;+&quot; + makeLine('-', display.getColumns()) + &quot;+&quot;;
+        } else {
+            return &quot;|&quot; + display.getRowText(row - 1) + &quot;|&quot;;
+        }
+    }
+
+    private String makeLine(char ch, int count) {
+        StringBuffer buf = new StringBuffer();
+
+        for (int i = 0; i &amp;lt; count; i++) {
+            buf.append(ch);
+        }
+
+        return buf.toString();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;FullBorder 클래스는 SideBorder클래스와 마찬가지로 Border 추상클래스를 상속 받고 있다. 하지만 SideBorder와는 다르게 장식할 문자를 입력하지 않는다. 그리고 문자열 상하좌우를 장식하는 클래스이다.
+makeLine은 문자열의 길이에 따라 상하의 장식의 만드는 메소드이다.&lt;/p&gt;
+
+&lt;h3 id=&quot;main-클래스&quot;&gt;Main 클래스&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class HBMain {
+    public static void main(String[] args) {
+        Display b1 = new StringDisplay(&quot;Hello, world.&quot;);
+        Display b2 = new SideBorder(b1, '#');
+        Display b3 = new FullBorder(b2);
+
+        b1.show();
+        b2.show();
+        b3.show();
+
+        Display b4 = new SideBorder(
+                new FullBorder(
+                        new FullBorder(
+                                new SideBorder(
+                                        new FullBorder(
+                                                new StringDisplay(&quot;안녕하세요&quot;)
+                                        ), '*'
+                                )
+                        )
+                ), '/'
+        );
+
+        b4.show();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;메인 클래스에서는 “Hello, World”라는 한줄짜리 문자열을 출력하는 b1
+다시 b1을 ‘#’으로 좌우를 장식한 b2
+다시 b2를 상하좌우 장식한 b3를 생성한다&lt;/p&gt;
+
+&lt;p&gt;그 후 b1, b2, b3의 결과를 확인한다&lt;/p&gt;
+
+&lt;p&gt;그리고  “안녕하세요”라는 문자열 생성 후 출력,
+상하좌우를 장식,
+좌우를 장식,
+상하좌우 장식,
+상하좌우 장식
+좌우 장식을 진행항 객체 b4가 있고 b4의 결과를 확인 한다.&lt;/p&gt;
+
+&lt;h3 id=&quot;실행결과&quot;&gt;실행결과&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://image.ibb.co/eu80LR/image.png&quot; alt=&quot;실행결과&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;2-참고자료&quot;&gt;2. 참고자료&lt;/h1&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;데코레이터 패턴, https://ko.wikipedia.org/wiki/%EB%8D%B0%EC%BD%94%EB%A0%88%EC%9D%B4%ED%84%B0_%ED%8C%A8%ED%84%B4&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;java 언어로 배우는 디자인 패턴, 유키 히로시, 영진닷컴&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</content><author><name>jh.heo</name></author><category term="연구노트" /><category term="인턴십" /><summary type="html">1. 연구내용 Decorator Pattern 정의 위키에서는 데코레이터 패턴이란 상황이나 용도에 따라 특정 객체에 책임을 덧붙이는 패턴이라고 정의 하고 있다. 예를 들어 스펀지 케이크에 생크림과 딸기를 올리면 딸기 생크림 케이크가 되고 초코렛을 올리면 초코 케이크가 된다.</summary></entry><entry><title type="html">Composite Pattern</title><link href="https://hibrainnet.github.io/jekyll-and-hybe/composite-pattern" rel="alternate" type="text/html" title="Composite Pattern" /><published>2017-12-21T11:11:11+09:00</published><updated>2017-12-21T11:11:11+09:00</updated><id>https://hibrainnet.github.io/jekyll-and-hybe/jh.heo</id><content type="html" xml:base="https://hibrainnet.github.io/jekyll-and-hybe/composite-pattern">&lt;h1 id=&quot;1-연구내용&quot;&gt;1. 연구내용&lt;/h1&gt;
+&lt;hr /&gt;
+&lt;h2 id=&quot;composite-pattern&quot;&gt;Composite Pattern&lt;/h2&gt;
+&lt;h3 id=&quot;정의&quot;&gt;정의&lt;/h3&gt;
+&lt;p&gt;위키백과에서는 Composite Pattern을 객체들의 관계를 트리 구조로 구성하여 부분 - 전체 계층을 표현하는 패턴, 사용자가 단일 객체와 복합 객체 모두 동일하고 다루도록 하는 패턴이라고 정의하고 있다.&lt;/p&gt;
+
+&lt;p&gt;단일 객체이던 객체들의 집합이던 같은 방법으로 취급하는 경우 사용할수 있다.&lt;/p&gt;
+
+&lt;p&gt;예를 들어 컴퓨터 파일시스템에서 디렉토리 구조를 보면 크게 디렉토리와 파일로 이루어져 있다.
+디렉토리는 하위에 다른 디렉토리 또는 파일을 가질수 있고 파일은 하위에 파일이나 디렉토리를 가지지 못한다.&lt;/p&gt;
+
+&lt;p&gt;파일시스템의 전체 구조를 모른다고 했을때 전체구조를 파악하기 위해서 모든 디렉토리 혹은 파일 경로를 방문하여 조사하여야 한다. 조사 대상은 디렉토리가 될수도 있고 파일이 될수도 있다.
+따라서 파일시스템의 파일이나 디렉토리를 하나의 구조로 보고 조사하여야 한다.
+그래서 파일, 디렉토리를 묶어 디렉토리 엔트리라고 표현하기도 한다.&lt;/p&gt;
+
+&lt;p&gt;파일시스템 처럼 객체와 객체들의 집합을 동일하게 다루고 싶은 경우 Composite 패턴을 사용하게 된다.
+&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;예제&quot;&gt;예제&lt;/h3&gt;
+&lt;p&gt;예제 프로그램은 위에서 설명한 파일과 디렉토리를 묶어 디렉토리 엔트리로 다루는 코드이다.&lt;/p&gt;
+
+&lt;p&gt;아래의 표는 예제 프로그램에서 사용하는 클래스들을 정리한 표이다&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;이름&lt;/th&gt;
+      &lt;th&gt;설명&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Entry&lt;/td&gt;
+      &lt;td&gt;File과 Directory를 동일시 하기위한 추상클래스&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;File&lt;/td&gt;
+      &lt;td&gt;파일을 나타내기 위한 클래스&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Directory&lt;/td&gt;
+      &lt;td&gt;디렉토리를 나타내기 위한 클래스&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;FileTreatmentException&lt;/td&gt;
+      &lt;td&gt;파일이 엔트리를 추가하려고 할때 발생하는 예외 클래스&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Main&lt;/td&gt;
+      &lt;td&gt;예제 프로그램 동작용 클래스&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;아래의 그림은 클래스 uml을 표현한 그림이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://image.ibb.co/fDrAkR/image.png&quot; alt=&quot;uml 사진&quot; /&gt;
+&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;entry-클래스&quot;&gt;Entry 클래스&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public abstract class Entry {
+    public abstract String getName();
+    public abstract int getSize();
+
+    public Entry add(Entry entry) throws FileTreatmentException {
+        throw new FileTreatmentException();
+    }
+
+    public void printList() {
+        printList(&quot;&quot;);
+    }
+
+    protected abstract void printList(String prefix);
+
+    public String toString() {
+        return getName() + &quot; (&quot; + getSize() + &quot;)&quot;;
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;
+Entry 클래스는 추상 클래스에서 디렉토리 엔트리를 표현한 것이다. File과 Directory가 이 추상클래스를 상속받게 된다. 상속을 통해 같은 방법(메소드)으로 취급할수 있다.&lt;/p&gt;
+
+&lt;p&gt;add 메소드는 엔트리 안에 엔트리를 만드는 메소드로 디렉토리 안에 파일이나 디렉토리를 생성하는 것을 표현 한것이다. 그런데 파일은 하위 엔트리를 가질수 없다. 이런 표현 방법은 여러가지가 있을수 있지만 여기서는 기본적으로 add 메소드가 예외를 발생시키고  하위 엔트리를 추가할수 있는 Directory 클래스가 오버라이딩 하는 방법으로 표현하였다. 파일이 add 메소드를 사용할경우 (하위에 엔트리를 추가하는 행동) 오버라이딩을 하지 않아 예외를 발생시키게 된다.&lt;/p&gt;
+
+&lt;p&gt;printList는 리스트를 출력하는 메소드로 문자열 하나를 받는 메소드와 파라미터가 없는 메소드가 존재 한다. 파일이나 디렉토리의 경로를 출력하는 것을 담당한다.
+&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;file-클래스&quot;&gt;File 클래스&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class File extends Entry {
+    private String name;
+    private int size;
+
+    public File(String name, int size) {
+        this.name = name;
+        this.size = size;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    protected void printList(String prefix) {
+        System.out.println(prefix + &quot;/&quot; + this);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;
+File 클래스는 Entry 클래스를 상속 받고 파일을 표현한 클래스이다. 파일의 이름과 사이즈를 의미하는 name과 size 두개의 필드가 존재한다.&lt;/p&gt;
+
+&lt;p&gt;생성자는 파일의 name과 size를 받아 생성하도록 되어있다.&lt;/p&gt;
+
+&lt;p&gt;getName과 getSize는 파일의 이름과 사이즈를 반환하는 getter 메소드 이다.&lt;/p&gt;
+
+&lt;p&gt;printList는 접두사 prefix를 입력받아 현재 경로와 파일의 이름을 출력하는 메소드이다.
+&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;directory-클래스&quot;&gt;Directory 클래스&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import java.util.Iterator;
+import java.util.Vector;
+
+public class Directory extends Entry {
+    private String name;
+    private Vector directory = new Vector();
+
+    public Directory(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getSize() {
+        int size = 0;
+        Iterator it = directory.iterator();
+        while (it.hasNext()) {
+            Entry entry = (Entry)it.next();
+            size += entry.getSize();
+        }
+        return size;
+    }
+
+    public Entry add(Entry entry) {
+        directory.add(entry);
+        return this;
+    }
+
+    protected void printList(String prefix) {
+        System.out.println(prefix + &quot;/&quot; + this);
+        Iterator it = directory.iterator();
+        while (it.hasNext()) {
+            Entry entry = (Entry)it.next();
+            entry.printList(prefix + &quot;/&quot; + name);
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;
+Directory 클래스는 Entry를 상속 하고 디렉토리를 표현한 클래스이다. 디렉토리의 name과 디렉토리 안에 있는 엔트리들의 정보를 담고 있는 directory 벡터 필드를 가지고 있다.&lt;/p&gt;
+
+&lt;p&gt;생성자는 디렉토리 이름을 가지고 생성한다.&lt;/p&gt;
+
+&lt;p&gt;getName과 getSize는 디렉토리으 이름과 사이즈를 반환하는 getter 메소드이다.&lt;/p&gt;
+
+&lt;p&gt;디렉토리는 사이즈를 가지고 있지 않지만 디렉토리에는 사이즈가 있는 파일이 존재할수 있고 디렉토리가 존재할수도 있다. 그리고 하위 디렉토리 하위에 또다른 파일이 존재할 수도 있다. 그러므로 하위의 모든 파일의 사이즈를 계산하여 리턴해주어야 한다. File과 Directory 모두 Entry를 상속 받으므로 getSize 메소드를 사용할수 있다. 그래서 하위 엔트리를 객체를 담고 있는 directory 벡터, iterator를 활용하여 재귀적으로 getSize를 호출할수 있다.
+&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;main-클래스&quot;&gt;Main 클래스&lt;/h4&gt;
+
+&lt;p&gt;Main 클래스에서는 아래와 같은 디렉토리 계층을 만들어 사용해 본다
+root 디렉토리가 존재하고 하위 디렉토리로 bin, tmp, usr 디렉토리를 가진다. 그리고 vi, latex라는 파일은 bin 디렉토리 하위에 생성한다&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ㅡroot
+    |ㅡbin
+    |   |ㅡvi
+    |   |ㅡlatex
+    |
+    |ㅡtmp
+    |ㅡusr
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;그 후 usr 디렉토리 하위에 kim, lee, kang이라는 파일을 생성한다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ㅡroot
+    |ㅡbin
+    |   |ㅡvi
+    |   |ㅡlatex
+    |
+    |ㅡtmp
+    |ㅡusr
+        |
+        |ㅡkimg
+        |   |ㅡdiary.html
+        |   |ㅡcomposite.java
+        |
+        |ㅡlee
+        |   |ㅡmemo.text
+        |
+        |ㅡkang
+            |ㅡgame.docs
+            |ㅡbattleground.exe
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;
+위의 엔트리들을 코드로 표현하면 다음과 같다.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class Main {
+    public static void main(String[] args) {
+        try {
+            System.out.println(&quot;Making root entries...&quot;);
+            Directory rootDir = new Directory(&quot;root&quot;);
+            Directory bindDir = new Directory(&quot;bind&quot;);
+            Directory tmpDir = new Directory(&quot;tmp&quot;);
+            Directory usrDir = new Directory(&quot;usr&quot;);
+            rootDir.add(bindDir);
+            rootDir.add(tmpDir);
+            rootDir.add(usrDir);
+            bindDir.add(new File(&quot;vi&quot;, 10000));
+            bindDir.add(new File(&quot;latex&quot;, 20000));
+            rootDir.printList();
+
+            System.out.println(&quot;&quot;);
+            System.out.println(&quot;Making user entries...&quot;);
+            Directory kim = new Directory(&quot;Kim&quot;);
+            Directory lee = new Directory(&quot;Lee&quot;);
+            Directory kang = new Directory(&quot;Kang&quot;);
+            usrDir.add(kim);
+            usrDir.add(lee);
+            usrDir.add(kang);
+            kim.add(new File(&quot;diary.html&quot;, 100));
+            kim.add(new File(&quot;composite.java&quot;, 200));
+            lee.add(new File(&quot;memo.text&quot;, 300));
+            kang.add(new File(&quot;game.doc&quot;, 400));
+            kang.add(new File(&quot;battleground.exe&quot;, 500));
+            rootDir.printList();
+
+
+        } catch (FileTreatmentException e) {
+            e.printStackTrace();
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;이후 실행 결과는 다음과 같다
+실행 결과는 파일이나 디렉토리의 경로 그리고 파일인 경우 사이즈가 출력된다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://image.ibb.co/jyhYN6/image.png&quot; alt=&quot;실행 결과&quot; /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;2-참고자료&quot;&gt;2. 참고자료&lt;/h1&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;composite pattern, https://ko.wikipedia.org/wiki/%EC%BB%B4%ED%8F%AC%EC%A7%80%ED%8A%B8_%ED%8C%A8%ED%84%B4&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;컴포지트 패턴, http://jdm.kr/blog/228&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;java 언어로 배우는 디자인 패턴, 유키 히로시, 영진닷컴&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</content><author><name>jh.heo</name></author><category term="연구노트" /><category term="인턴십" /><summary type="html">1. 연구내용 Composite Pattern 정의 위키백과에서는 Composite Pattern을 객체들의 관계를 트리 구조로 구성하여 부분 - 전체 계층을 표현하는 패턴, 사용자가 단일 객체와 복합 객체 모두 동일하고 다루도록 하는 패턴이라고 정의하고 있다.</summary></entry><entry><title type="html">프로토타입 패턴</title><link href="https://hibrainnet.github.io/jekyll-and-hybe/2017/12/20/%EC%9A%B0%EC%84%B1%EB%AF%BC.html" rel="alternate" type="text/html" title="프로토타입 패턴" /><published>2017-12-20T00:00:00+09:00</published><updated>2017-12-20T00:00:00+09:00</updated><id>https://hibrainnet.github.io/jekyll-and-hybe/2017/12/20/%EC%9A%B0%EC%84%B1%EB%AF%BC</id><content type="html" xml:base="https://hibrainnet.github.io/jekyll-and-hybe/2017/12/20/%EC%9A%B0%EC%84%B1%EB%AF%BC.html">&lt;h1 id=&quot;연구내용&quot;&gt;연구내용&lt;/h1&gt;
+
+&lt;h1 id=&quot;프로토타입이란&quot;&gt;프로토타입이란?&lt;/h1&gt;
+
+&lt;p&gt;&lt;strong&gt;프로토타입(Prototype)은&lt;/strong&gt; 사전적인 의미로 대량 생산에 앞서 미리 제작해보는 &lt;strong&gt;원형&lt;/strong&gt; 또는 &lt;strong&gt;시제품으로&lt;/strong&gt;, 제작물의 모형이라 할 수 있다. 소프트웨어 개발에서는 정식 절차에 따라 완전한 소프트웨어를 만들기 전에 사용자의 요구를 받아 일단 모형을 만들고 이 모형을 사용자와 의사소통하는 도구로 활용한다.&lt;/p&gt;
+
+&lt;p&gt;일상 생활에서 볼 수 있는 &lt;strong&gt;프로토타입은&lt;/strong&gt; 아파트 &lt;strong&gt;모델하우스를&lt;/strong&gt; 예로 들 수 있다.
+이 프로토타입인 모델하우스를 통해서 추후에 지어질 아파트에 대한 &lt;strong&gt;정보를 얻을 수 있다.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;프로토타입-패턴&quot;&gt;프로토타입 패턴&lt;/h1&gt;
+
+&lt;p&gt;프로토타입 패턴도 마찬가지로 &lt;strong&gt;원형이 되는 인스턴스를 근본으로 해서 새로운 인스턴스를 만드는 것&lt;/strong&gt; 이라고 할 수 있다. Java 언어에서 복사하는 하는 것을 &lt;strong&gt;‘clone’&lt;/strong&gt; 이라고 하고 있다.&lt;/p&gt;
+
+&lt;p&gt;소프트 웨어 디자인 패턴에서 프로토타입 패턴은 생성할 객체들의 타입이 프로토타입인 인스턴스로부터 결정되도록 하며, 인스턴스는 새 객체를 만들기 위해 자신을 복제하게 된다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;프로토타입 패턴은 새로운 객체는 일반적인 방법으로 객체를 생성하는 고유의 비용이 주어진 응용 프로그램 상황에 있어서 불가피하게 매우 클 때, 이 비용을 감내하지 않을 수 있게 해준다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;프로토타입이-필요한-경우&quot;&gt;프로토타입이 필요한 경우&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;new&lt;/strong&gt; 라는 자바 언어의 키워드를 사용하여 클래스 이름을 지정해서 인스턴스를 생성한다.
+이처럼 new 연산자로 인스턴스를 만드는 경우에는 클래스 이름을 반드시 지정해야 한다.
+그러나 클래스 이름을 지정하지 않고 인스턴스를 생성하는 경우도 있다.&lt;/p&gt;
+
+&lt;h5 id=&quot;다음과-같은-경우에-인스턴스를-복사해서-새로운-인스턴스를-생성한다&quot;&gt;다음과 같은 경우에 인스턴스를 복사해서 새로운 인스턴스를 생성한다.&lt;/h5&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;종류가 너무 많아 한개의 클래스로 할 수 없는 경우&lt;/li&gt;
+  &lt;li&gt;클래스로 부터 인스턴스를 생성하기 어려운 경우&lt;/li&gt;
+  &lt;li&gt;프레임워크와 생성할 인스턴스를 분리하고 싶은 경우&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;패턴을 구현하려면 우선 clone() 메소드를 선언하는 추상 베이스 클래스를 하나 만든다.&lt;/strong&gt; 다형적 생성자 기능이 필요한 클래스가 있다면, 그것을 앞에서 만든 클래스를 상속받게 한 후, clone() 메소드 내의 코드를 구현한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;프로토타입-패턴에-사용되는-역할&quot;&gt;프로토타입 패턴에 사용되는 역할&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&quot;https://farm5.staticflickr.com/4732/24348417007_df94666425_b.jpg&quot; alt=&quot;flickr&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;prototype&quot;&gt;Prototype&lt;/h3&gt;
+&lt;p&gt;prototype의 역할은 인스턴스를 복사해서 새로운 인스턴스를 만들기 위한 메소드를 결정하는 역할&lt;/p&gt;
+
+&lt;h3 id=&quot;concreteprototype&quot;&gt;ConcretePrototype&lt;/h3&gt;
+&lt;p&gt;ConcretePrototype의 역할은 인스턴스를 복사해서 새로운 인스턴스를 만드는 메소드를 실제로 구현하는 역할&lt;/p&gt;
+
+&lt;h3 id=&quot;client&quot;&gt;Client&lt;/h3&gt;
+&lt;p&gt;Client의 역할은 인스턴스를 복사하는 메소드를 이용해서 새로운 인스턴스를 만드는 역할&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;예제&quot;&gt;예제&lt;/h3&gt;
+
+&lt;h5 id=&quot;product-인터페이스&quot;&gt;Product 인터페이스&lt;/h5&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cm&quot;&gt;/*
+ * Product.java
+ *
+ * version 1.0
+ *
+ * 2017-12-21
+ *
+ * Copyright 1996 - 2017 hibrain.net All rights reserved.
+ */&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;io&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;hibrain&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;tutorial&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;designpattern&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;prototype&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Product&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Cloneable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;abstract&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;use&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;abstract&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;createClone&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Product 인터페이스는 &lt;strong&gt;java.lang.Cloneable&lt;/strong&gt; 인터페이스를 상속하고 있다.
+이 인터페이스를 구현하고 있는 클래스의 인스턴스는 clone 메소드를 사용해서 자동적으로 복제를 진행할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;use 메소드는 &lt;strong&gt;사용&lt;/strong&gt; 하기 위한 메소드이고 무엇을 의미하는 지는 하위 클래스의 구현에 맞겨져 있다. createClone 메소드는 인스턴스를 복제하기 위한 것이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;manager-클래스&quot;&gt;Manager 클래스&lt;/h4&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cm&quot;&gt;/*
+ * Manager.java
+ *
+ * version 1.0
+ *
+ * 2017-12-21
+ *
+ * Copyright 1996 - 2017 hibrain.net All rights reserved.
+ */&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;io&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;hibrain&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;tutorial&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;designpattern&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;prototype&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;java.util.Hashtable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Manager&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Hashtable&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;showcase&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Hashtable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;register&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;proto&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;showcase&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;put&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;proto&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;protoname&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;showcase&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;protoname&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;createClone&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Manager 클래스는 Product 인터페이스를 이용해서 인스턴스를 복제하는 클래스다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;showcase&lt;/strong&gt; 필드는 인스턴스의 이름과 인스턴스의 대응관계를 Hashtable로 표현한 것이다.
+register 메소드에서 제품의 이름과 Product 인터페이스가 제공되면 그 한 쌍을 showcase에 등록한다.&lt;/p&gt;
+
+&lt;p&gt;Product 인터페이스나 Manager 클래스의 소스에 MessageBox 클래스나 UnderlinePen 클래스의 이름이 전혀 등장하지 않는 점에 유의해야한다. &lt;strong&gt;클래스의 이름이 등장하지 않는 것은 Product나 Manager와 관계없이 수정할 수 있다는 것을 의미하므로 대단히 중요한 핵심이다.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;messagebox-클래스&quot;&gt;MessageBox 클래스&lt;/h4&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cm&quot;&gt;/*
+ * MessageBox.java
+ *
+ * version 1.0
+ *
+ * 2017-12-21
+ *
+ * Copyright 1996 - 2017 hibrain.net All rights reserved.
+ */&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;io&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;hibrain&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;tutorial&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;designpattern&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;prototype&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MessageBox&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;decochar&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;MessageBox&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;decochar&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;decochar&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;decochar&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;use&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getBytes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;decochar&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot; &quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;decochar&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot; &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot; &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;decochar&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;decochar&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot; &quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;createClone&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;clone&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CloneNotSupportedException&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;printStackTrace&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;MessageBox 클래스는 Product 인터페이스를 구현
+decochar 필드는 decorate char 즉 문자열을 꾸며줄 장식 문자를 의미
+use 메소스는 주어진 문자를 decochar로 둘러싼다.&lt;/p&gt;
+
+&lt;p&gt;createClone 메소드는 &lt;strong&gt;자기 자신을 복제하는 메소드다.&lt;/strong&gt;
+clone 메소드는 자바 언어 스팩에 규정되어 있는 것으로 자기 자신의 복제를 실행한다.
+clone 메소드는 &lt;strong&gt;자신의 클래스나 하위 클래스에서만 호출을 할 수 있기 때문에&lt;/strong&gt; 다른 클래스의
+요철으로 복제하는 경우에 다른 메소드로 clone 메소드를 감싸줄 필요가 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;underlinepen-클래스&quot;&gt;UnderlinePen 클래스&lt;/h4&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cm&quot;&gt;/*
+ * UnderlinePen.java
+ *
+ * version 1.0
+ *
+ * 2017-12-21
+ *
+ * Copyright 1996 - 2017 hibrain.net All rights reserved.
+ */&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;io&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;hibrain&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;tutorial&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;designpattern&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;prototype&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;UnderlinePen&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ulchar&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;UnderlinePen&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ulchar&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;ulchar&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ulchar&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;use&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getBytes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;\&quot;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;\&quot;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot; &quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ulchar&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;createClone&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;clone&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CloneNotSupportedException&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;printStackTrace&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;UnderlinePen 클래스는 MessageBox와 거의 같은 동작을 한다.
+ulchar이라는 필드는 Underline char, 즉 문자열에 밑줄을 긋는 장식 문자 긋는데 사용된다.
+use 메소드는 주어진 물자열을 큰따옴표로 묶으면서 문자열 부문에 밑줄을 긋는다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;main-클래스&quot;&gt;Main 클래스&lt;/h4&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cm&quot;&gt;/*
+ * HNMain.java
+ *
+ * version 1.0
+ *
+ * 2017-12-21
+ *
+ * Copyright 1996 - 2017 hibrain.net All rights reserved.
+ */&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;io&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;hibrain&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;tutorial&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;designpattern&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;prototype&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;HBNMain&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;Manager&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;manager&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Manager&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;UnderlinePen&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;upen&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;UnderlinePen&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'~'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;MessageBox&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mbox&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MessageBox&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'*'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;MessageBox&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sbox&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MessageBox&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'/'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;manager&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;register&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;strong message&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;upen&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;manager&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;register&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;warning box&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mbox&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;manager&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;register&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;slash box&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sbox&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;manager&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;strong message&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;p1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;use&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello, world&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;manager&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;warning box&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;p2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;use&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello, world&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;manager&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;slash box&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;p3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;use&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello, world&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Main 클래스에서는 우선 Manager의 인스턴스를 만들고 Manager 인스턴스에
+Underline 인스턴스와 MessageBox 인스턴스를 Hashtable에 등록(register)한다.&lt;/p&gt;
+
+&lt;h1 id=&quot;참고자료&quot;&gt;참고자료&lt;/h1&gt;
+&lt;p&gt;Java 언어로 배우는 디자인 패턴, Yuki Hiroshi ,2001&lt;/p&gt;</content><author><name>sm.woo</name></author><summary type="html">연구내용</summary></entry><entry><title type="html">Medium blog 마크다운형태로 저장하기</title><link href="https://hibrainnet.github.io/jekyll-and-hybe/2017/12/20/%EB%B0%95%EA%B0%80%ED%98%9C.html" rel="alternate" type="text/html" title="Medium blog 마크다운형태로 저장하기" /><published>2017-12-20T00:00:00+09:00</published><updated>2017-12-20T00:00:00+09:00</updated><id>https://hibrainnet.github.io/jekyll-and-hybe/2017/12/20/%EB%B0%95%EA%B0%80%ED%98%9C</id><content type="html" xml:base="https://hibrainnet.github.io/jekyll-and-hybe/2017/12/20/%EB%B0%95%EA%B0%80%ED%98%9C.html">&lt;h3 id=&quot;연구내용&quot;&gt;연구내용&lt;/h3&gt;
+
+&lt;h4 id=&quot;medium-blog-마크다운형태로-저장하기&quot;&gt;Medium blog 마크다운형태로 저장하기&lt;/h4&gt;
+&lt;p&gt;Node.js의 medium exporter패키지를 이용하므로, node.js가 설치되어있어야 함&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;medium exporter패키지 설치
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://github.com/xdamman/mediumexporter&quot;&gt;Medium Exporter github URL&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;npm install -g mediumexporter
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ol&gt;
+  &lt;li&gt;yaml frontmatter를 자동으로 추가하기 위해, /mediumexporter/index.js 파일을 /usr/lib/node_modules/mediumexporter/에 추가 (기존 index.js 삭제)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;layout&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;post&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;600bdec36593&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;https://medium.com/@robbinscm/mayor-bill-de-blasio-gothamist-dnainfo-interview-cbce444ca421&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Wed Dec 20 2017 00:28:23 GMT+0900 (DST)&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;tags&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;New York&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;Mayor Bill De Blasio&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;Sanctuary Cities&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;Journalism&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;Inequality&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;사용방법
+마크다운 파일을 받을 디렉토리에서 명령어 실행&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt; mediumexporter &lt;span class=&quot;nt&quot;&gt;--headers&lt;/span&gt; Medium 주소 &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; medium_post.md
+&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; mediumexporter &lt;span class=&quot;nt&quot;&gt;--headers&lt;/span&gt; https://medium.com/@xdamman/my-10-day-meditation-retreat-in-silence-71abda54940e &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; medium_post.md
+&lt;span class=&quot;go&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;도움말은 mediumexporter -h 을 이용&lt;/p&gt;
+
+&lt;h4 id=&quot;payload&quot;&gt;payload&lt;/h4&gt;
+&lt;p&gt;사용에 있어서 전송되는 데이터를 의미, 전송의 근본적인 목적이 되는 데이터의 일부분으로 데이터와 함께 전송되는 헤더와 메타데이터와 같은 데이터는 제외된다. 데이터 덩어리 중 흥미있는 데이터를 의미한다.&lt;/p&gt;
+
+&lt;h4 id=&quot;javascript의-object를-다루는-몇가지-팁&quot;&gt;Javascript의 Object를 다루는 몇가지 팁&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;Object의 key를 변수로 받기&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;person&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;neko&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;gender&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;male&quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;gender&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;요소의 갯수 알아내기&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// object의 요소 갯수가 반환됩니다.&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// Object.keys()만 돌리게 되면 해당 Object의 value값만 배열로 반환이 됩니다.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Object의 value 알아내기&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'bar'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;baz&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;42&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// ['bar', 42]&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// array like object&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'a'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'b'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'c'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// ['a', 'b', 'c']&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;참고자료&quot;&gt;참고자료&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/xdamman/mediumexporter&quot;&gt;Medium Exporter github URL&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://ko.wikipedia.org/wiki/%ED%8E%98%EC%9D%B4%EB%A1%9C%EB%93%9C&quot;&gt;payload&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://blog.nekoromancer.kr/2014/07/03/javascript%EC%9D%98-object%EB%A5%BC-%EB%8B%A4%EB%A3%A8%EB%8A%94-%EB%AA%87%EA%B0%80%EC%A7%80-%ED%8C%81%EB%93%A4/&quot;&gt;Javascript의 Object를 다루는 몇가지 팁들&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/values&quot;&gt;Object.values()&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>gh.park</name></author><summary type="html">연구내용 Medium blog 마크다운형태로 저장하기 Node.js의 medium exporter패키지를 이용하므로, node.js가 설치되어있어야 함 medium exporter패키지 설치 Medium Exporter github URL npm install -g mediumexporter yaml frontmatter를 자동으로 추가하기 위해, /mediumexporter/index.js 파일을 /usr/lib/node_modules/mediumexporter/에 추가 (기존 index.js 삭제) --- layout: post author: 600bdec36593 url: https://medium.com/@robbinscm/mayor-bill-de-blasio-gothamist-dnainfo-interview-cbce444ca421 date: Wed Dec 20 2017 00:28:23 GMT+0900 (DST) tags: [New York, Mayor Bill De Blasio, Sanctuary Cities, Journalism, Inequality ] --- 사용방법 마크다운 파일을 받을 디렉토리에서 명령어 실행 $ mediumexporter --headers Medium 주소 &amp;gt; medium_post.md $&amp;gt; mediumexporter --headers https://medium.com/@xdamman/my-10-day-meditation-retreat-in-silence-71abda54940e &amp;gt; medium_post.md 도움말은 mediumexporter -h 을 이용 payload 사용에 있어서 전송되는 데이터를 의미, 전송의 근본적인 목적이 되는 데이터의 일부분으로 데이터와 함께 전송되는 헤더와 메타데이터와 같은 데이터는 제외된다. 데이터 덩어리 중 흥미있는 데이터를 의미한다. Javascript의 Object를 다루는 몇가지 팁 Object의 key를 변수로 받기 var person = { name : &quot;neko&quot;, gender : &quot;male&quot; }; console.log( person.name, person.gender ); 요소의 갯수 알아내기 var object = { ... }; var length = Object.keys( object ).length; console.log( length ); // object의 요소 갯수가 반환됩니다. // Object.keys()만 돌리게 되면 해당 Object의 value값만 배열로 반환이 됩니다. Object의 value 알아내기 var obj = { foo: 'bar', baz: 42 }; console.log(Object.values(obj)); // ['bar', 42] // array like object var obj = { 0: 'a', 1: 'b', 2: 'c' }; console.log(Object.values(obj)); // ['a', 'b', 'c'] 참고자료 Medium Exporter github URL payload Javascript의 Object를 다루는 몇가지 팁들 Object.values()</summary></entry><entry><title type="html">Cloudinary API</title><link href="https://hibrainnet.github.io/jekyll-and-hybe/2017/12/20/JYL.html" rel="alternate" type="text/html" title="Cloudinary API" /><published>2017-12-20T00:00:00+09:00</published><updated>2017-12-20T00:00:00+09:00</updated><id>https://hibrainnet.github.io/jekyll-and-hybe/2017/12/20/JYL</id><content type="html" xml:base="https://hibrainnet.github.io/jekyll-and-hybe/2017/12/20/JYL.html">&lt;h1 id=&quot;1-연구노트&quot;&gt;1. 연구노트&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;이미지를 클라우드에 올려 url을 가져오는 이미지 호스팅 작업을 진행&lt;/p&gt;
+
+  &lt;p&gt;사용자가 원하는 이미지 파일을 올리면 호스팅 된 이미지 url을 반환&lt;/p&gt;
+
+  &lt;p&gt;Cloudinary 클라우드와 ruby언어를 사용하여 구축&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;1-1-cloudinary-api&quot;&gt;1-1. Cloudinary API&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;클라우드 기반의 이미지 관리 솔루션&lt;/li&gt;
+  &lt;li&gt;이미지 업로드뿐만 아니라 그와 관련된 태그,  이름변경 등의 옵션을 두어 여러가지 기능을 제공&lt;/li&gt;
+  &lt;li&gt;Rails, PHP, .NET, Java, Django, Javascript(jQuery, Node.js, React, Angular), IOS, Android, Scala 등의 언어를 지원&lt;/li&gt;
+  &lt;li&gt;이미지 뿐만 아니라 비디오와 API도 제공&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://res.cloudinary.com/degxeqfok/image/upload/v1513749352/mb6cqv2ntfmqh2c3n2ph.png&quot; alt=&quot;1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://cloudinary.com/documentation&quot;&gt;Cloudinary 사이트&lt;/a&gt;에서 Ruby on Rails를 참고하여 구축&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;1-2-ruby-on-rails&quot;&gt;1-2. Ruby on Rails&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;루비로 작성 된 MVC패턴을 이용하는 오픈 소스 웹 프레임워크&lt;/li&gt;
+  &lt;li&gt;rails는 트위터, github, airbnb 등 여러 회사에서 사용 중&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;간략한 문법&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.ruby-lang.org/ko/&quot;&gt;Ruby on Rails 사이트 참조&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;1-3-cloudinary--ruby-이미지-호스팅-url-가져오기&quot;&gt;1-3. Cloudinary + Ruby 이미지 호스팅 URL 가져오기&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;준비사항&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Cloudinary 계정&lt;/li&gt;
+  &lt;li&gt;Ruby&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;1-3-1-cloudinary-계정생성-및-key값-확인&quot;&gt;1-3-1. Cloudinary 계정생성 및 key값 확인&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://res.cloudinary.com/degxeqfok/image/upload/v1513750419/s7hrkueeap0qj5p23wcj.png&quot; alt=&quot;2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://cloudinary.com/&quot;&gt;Cloudinary 사이트&lt;/a&gt;에 접속하여 SIGN UP FOR FREE 버튼을 눌러 계정을 생성&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://res.cloudinary.com/degxeqfok/image/upload/v1513750686/henzwdap4teiavvmxpv8.jpg&quot; alt=&quot;3&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;생성한 계정으로 로그인하여 Media Library탭에 들어가면 위와 같은 저장소가 보임&lt;/p&gt;
+
+&lt;p&gt;최초 로그인 시 sample 이미지가 보이며, 오른쪽 상단에는 사용자의 cloud이름과 사용자 이름이 보임&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://res.cloudinary.com/degxeqfok/image/upload/v1513751010/pbvi2kq6hjosjjurnzxp.png&quot; alt=&quot;4&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;화면에서 Setting -&amp;gt; Security -&amp;gt; Access 로 들어가면 API Key와 API Secret값을 볼 수 있음&lt;/p&gt;
+
+&lt;p&gt;default로 상태는 활성화(Active)로 설정된 것을 확인&lt;/p&gt;
+
+&lt;p&gt;API Secret값은 ‘‘***'’로 처리된 부분을 클릭하면 값이 보임&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;1-3-2-ruby언어로-cloudinary-file-upload-api사용하기&quot;&gt;1-3-2. ruby언어로 Cloudinary file upload API사용하기&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;gem install cloudinary&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;cloudinary를 사용하기 위해서 ruby gem으로 설치&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;require 'cloudinary'
+
+Cloudinary.config do |config|
+  config.cloud_name = 'cloud_name'
+  config.api_key = '*******************'
+  config.api_secret = '*************'
+end&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;cloudinary를 import시켜 준 후 1-3-1에서 확인했던 API Key와 API Secret값을 넣어줌&lt;/p&gt;
+
+&lt;p&gt;clound_name에는 오른쪽 상단에 위치한 이름을 넣어줌(기본값 : degxeqfok)&lt;/p&gt;
+
+&lt;p&gt;위의 설정은 ruby코드 파일 내에서 해주는 방법이며, yml파일을 이용한 방법은 &lt;a href=&quot;https://cloudinary.com/documentation/rails_integration#rails_getting_started_guide&quot;&gt;yml파일 설정&lt;/a&gt;을 참조&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;image_path = ARGV
+
+result = Cloudinary::Uploader.upload(image_path[0])		//cloudinary로 upload
+
+url = result['url']		//결과값에서 url와 파일이름 추출
+file_name = result['original_filename']
+
+puts &quot;&lt;pre&gt; ![#{file_name}](#{url})&lt;/pre&gt;&quot;		//호스팅 된 url결과값 출력
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;image_path는 shell에서 입력한 이미지 경로를 매개변수로 받아옴&lt;/p&gt;
+
+&lt;p&gt;실제 Cloudinary에 이미지를 입로드 한 후 성공한 *결과값을 받아옴&lt;/p&gt;
+
+&lt;p&gt;호스팅 된 URL와 파일이름을 가지고와서 markdown이미지 문법 결과값을 출력&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;*결과값 result는 다음과 같은 값을 return&lt;/strong&gt;	&lt;img src=&quot;http://res.cloudinary.com/degxeqfok/image/upload/v1513751879/nokvprh1y1gksdufshzr.png&quot; alt=&quot;5&quot; /&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;구분&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;설명&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;url&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;호스팅 URL&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;secure_url&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;public_id&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;업로드 된 이미지에 접근하는데 필요한 식별자(사용자가 지정 가능)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;version&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;이미지를 변환할 때 이용한 프로그램 버전(Aspose 문서 변환)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;format&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;이미지 확장자&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;width&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;이미지 넓이&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;height&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;이미지 높이&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;bytes&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;이미지 크기&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://res.cloudinary.com/degxeqfok/image/upload/v1513757344/wlgzte0gt5r6fo4pqiup.png&quot; alt=&quot;2&quot; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+
+ruby cloudinary-upload.rb 로컬이미지경로
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;위의 명령어를 치면 결과값으로 호스팅 된 이미지 url이 나오는 것을 확인&lt;/p&gt;
+
+&lt;h3 id=&quot;2-참고자료&quot;&gt;2. 참고자료&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;https://www.ruby-lang.org/ko/, ruby-korea, accessed 2017-12-20&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;https://cloudinary.com/documentation/rails_integration#rails_getting_started_guide, cloudinary, accessed 2017-12-20&lt;/p&gt;
+
+    &lt;p&gt;​&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</content><author><name>yl.jung</name></author><summary type="html">1. 연구노트</summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="https://hibrainnet.github.io/jekyll-and-hybe/test" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2017-12-07T13:58:11+09:00</published><updated>2017-12-07T13:58:11+09:00</updated><id>https://hibrainnet.github.io/jekyll-and-hybe/welcome-to-jekyll</id><content type="html" xml:base="https://hibrainnet.github.io/jekyll-and-hybe/test">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+
+&lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+
+&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name>jh.heo</name></author><category term="jekyll" /><summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary></entry></feed>

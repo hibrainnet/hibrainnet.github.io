@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <script language='javascript'>
+var url = 'https://hibrainnet.github.io'+'/jekyll-and-hybe'
+var pageType = '-1';
+var typeValue = '-1';
+
+function getTypeValue(){
+
+    var hashes = window.location.href.slice(0, window.location.href.indexOf('?')).split('/');
+    var pageNum = getParameter('page');
+
+    if(hashes.length == 7 && ( hashes[4] == 'tags' || hashes[4] == 'category' ) && pageNum != undefined) {
+      pageType = hashes[4];
+      typeValue = hashes[5];
+      window.location.replace(url + '/' + pageType + '/' + typeValue + '/page/' + pageNum);
+    }
+
+    if(hashes.length == 5 && pageNum != undefined) {
+      pageType = hashes[4];
+      typeValue = hashes[5];
+      window.location.replace(url + '/page/' + pageNum);
+    }
+
+}
+
+
+function getParameter(param) {
+    var returnValue;
+    var url = location.href;
+    var parameters = (url.slice(url.indexOf('?') + 1, url.length)).split('&');
+    for (var i = 0; i < parameters.length; i++) {
+        var varName = parameters[i].split('=')[0];
+        if (varName.toUpperCase() == param.toUpperCase()) {
+            returnValue = parameters[i].split('=')[1];
+            return decodeURIComponent(returnValue);
+        }
+    }
+};
+
+getTypeValue();
+</script>
+<head>
+
+
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+  <meta property="fb:app_id" content="147895112528926" />
+  <meta property="fb:admins" content="100001627773972"/>
+
+  <title>Decorator Pattern</title>
+  <meta name="description" content="1. 연구내용 Mediator Pattern 정의">
+
+  <link rel="stylesheet" href="/jekyll-and-hybe/assets/main.css">
+  <link rel="canonical" href="https://hibrainnet.github.io/jekyll-and-hybe/mediator-pattern">
+  <link rel="alternate" type="application/rss+xml" title="하이브레인넷 부설연구소" href="/jekyll-and-hybe/feed.xml">
+
+  
+
+</head>
+
+
+  <body>
+
+    <header class="site-header" role="banner">
+
+  <div class="w3-top">
+    <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+    
+    
+    <a class="site-title" href="/jekyll-and-hybe/">하이브레인넷 부설연구소</a>
+
+    
+      <nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+              <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+              <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+	
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+          <a class="page-link" href="/jekyll-and-hybe/about/">About</a>
+          
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+          <a class="page-link" href="/jekyll-and-hybe/category/">category</a>
+          
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+          <a class="page-link" href="/jekyll-and-hybe/guestbook/">GUESTBOOK</a>
+          
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+          <a class="page-link" href="/jekyll-and-hybe/home/">home</a>
+          
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+          <a class="page-link" href="/jekyll-and-hybe/tags/">tags</a>
+          
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+          <a class="page-link" href="/jekyll-and-hybe/index.html">하이브레인넷 부설연구소</a>
+          
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+
+
+      </nav>
+    
+    </div>
+  </div>
+</div>
+
+<img class="w3-image w3-margin-top w3-margin-bottom" src="https://farm5.staticflickr.com/4732/39212074151_fa3a74e927_b.jpg" alt="Architecture" width="100%">
+<div class="w3-display-middle w3-margin-top w3-center">
+  <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>Hibrain</b></span> <span class="w3-hide-small w3-text-light-grey">Tech Blog</span></h1>
+</div>
+</header>
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Decorator Pattern</h1>
+    <p class="post-meta">
+      <time datetime="2017-12-26T16:22:11+09:00" itemprop="datePublished">
+        
+        Dec 26, 2017
+      </time>
+      
+        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">jh.heo</span></span>
+      </p>
+
+
+
+
+tag:
+<span>[
+  
+    
+  <a href="/jekyll-and-hybe/tags/연구노트"><code class=""><nobr>연구노트</nobr></code>&nbsp;</a>
+  
+    
+  <a href="/jekyll-and-hybe/tags/인턴십"><code class=""><nobr>인턴십</nobr></code>&nbsp;</a>
+  
+]</span>
+
+
+
+
+<br>
+category :
+<span>[
+  
+    
+   <a href="/jekyll-and-hybe/category/디자인패턴"><code class=""><nobr>디자인패턴</nobr></code>&nbsp;</a>
+  
+]</span>
+
+
+
+
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <h1 id="1-연구내용">1. 연구내용</h1>
+<hr />
+<h2 id="mediator-pattern">Mediator Pattern</h2>
+<h3 id="정의">정의</h3>
+
+<p>보통의 프로젝트에서 프로그램은 많은 클래스로 구성되어 있고 여러명의 개발자들이 함께 개발하게 된다. 이런 프로젝트의 경우 개발자들 사이에 의사소통의 매우 중요해진다. 의사소통이 제대로 이루어지지 않을 경우 요구사항을 제대로 만족하지 못하는 프로그램이 만들어질수도 있고 중복된 코드나 불필요한 코드가 많아질수 있다. 그래서 주로 프로젝트 매니저를 통해 의사소통이 이루어지고 개발자는 매니저가 지시한 사항에만 맞추어 개발을 하게 된다.</p>
+
+<p>decorator(중재자) pattern은 위와 같은 상황처럼 중재자 혹은 카운셀러가 보고를 받고 각 멤버에게 지시를 내리는 패턴이다.</p>
+
+<h3 id="예제">예제</h3>
+
+<p>decorator pattern의 예제로 유저네임과 비밀번호를 입력하는 GUI 애플리케이션을 사용한다.</p>
+
+<p><img src="https://image.ibb.co/hk5UH6/1.png" alt="다이얼로그1" />
+<img src="https://image.ibb.co/gyLPjm/2.png" alt="다이얼로그2" /></p>
+
+<p>위와 같은 다얼로그는 몇가지 규칙을 가진다.</p>
+
+<p>guest를 선택한 경우 유저네임과 비밀번호는 비활성화 된다.</p>
+
+<p>login을 선택한 경우 둘 다 활성화 된다.</p>
+
+<p>loging의 경우 유저네임 한글지 이상입력한 경우에 비밀번호가 활성화 된다.</p>
+
+<p>위와 같은 로직은 중재자에만 기술하고 멤버는 기술한대로 동작하면 되는 구조이다.</p>
+
+<p>아래의 표는 예제에서 사용되는 클래스를 설명한 표이다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">이름</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">Mediator</td>
+      <td>카운셀러(중재자) 인터페이스(api)를 정하는 인터페이스</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Colleague</td>
+      <td>멤버의 인터페이스를 정하는 인터페이스</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">ColleagueButton</td>
+      <td>Colleague 인터페이스를 구현하고 버튼을 나타내는 클래스</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">ColleagueTextField</td>
+      <td>Colleague 인터페이스를 구현하고 텍스트를 나타내는 클래스</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">ColleagueCheckbox</td>
+      <td>Colleague 인터페이스를 구현하고 라디오 버튼을 나타내는 클래스</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">LoginFrame</td>
+      <td>Mediator 인터페이스를 구현, 로그인 다어얼로그를 나타내는 클래스</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Main</td>
+      <td>예제 동작용 클래스</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="mediator-인터페이스">Mediator 인터페이스</h3>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public interface Mediator {
+    public abstract void createColleagues();
+    public abstract void colleagueChanged(Colleague colleague);
+}
+</code></pre></div></div>
+
+<p>Mediator 인터페이스는 중재자, 카운셀러의 인터페이스를 구현한것이다.
+createColleagues는 중재자가 관리하는 멤버들을 생성하는 메소드이다.
+colleagueChanged는 멤버들에 변화가 생겼을때 호출되는 메소드이다. 예를 들어 텍스트가 체크박스가 바뀐경우가 해당된다.</p>
+
+<h3 id="colleague-인터페이스">Colleague 인터페이스</h3>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public interface Colleague {
+    public abstract void setMediator(Mediator mediator);
+    public abstract void setColleagueEnabled(boolean enalbed);
+}
+
+</code></pre></div></div>
+<p>Colleague 인터페이스 중재 받는 멤버를 표현한 인터페이스이다.
+setMediator는 중재할 중재자를 입력하는 메소드이다.
+setColleagueEnabled 메소드는 중재자가 내리는 지시에 해당한다. enabled 값이 true가 되면 활성화, false가 되면 비활성화 된다.</p>
+<h3 id="colleaguebutton-클래스">ColleagueButton 클래스</h3>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public class ColleagueButton extends Button implements Colleague {
+    private Mediator mediator;
+
+    public ColleagueButton(String label) {
+        super(label);
+    }
+
+    public void setMediator(Mediator mediator) {
+        this.mediator = mediator;
+    }
+
+    public void setColleagueEnabled (boolean enabled) {
+        setEnabled(enabled);
+    }
+}
+</code></pre></div></div>
+<p>ColleagueButton 클래스는 Button 클래스를 상속 받고 멤버를 표현한 Colleague 인터페이스를 구현하고 있다.
+setMediator를 통해 의사소통한 중재자를 정하고 setColleagueEnabled를 통해 해당 버튼을 유/무효화 할 수 있다.</p>
+
+<h3 id="colleaguetextfield-클래스">ColleagueTextField 클래스</h3>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public class ColleagueTextField extends TextField implements TextListener, Colleague{
+    private  Mediator mediator;
+
+    public ColleagueTextField(String text, int columns) {
+        super(text, columns);
+    }
+
+    public void setMediator(Mediator mediator) {
+        this.mediator = mediator;
+    }
+
+    public void setColleagueEnabled(boolean enabled) {
+        setEnabled(enabled);
+        setBackground(enabled ? Color.WHITE : Color.lightGray);
+    }
+
+    public void textValueChanged(TextEvent e) {
+        mediator.colleagueChanged(this);
+    }
+
+}
+</code></pre></div></div>
+<p>ColleagueTextField 클래스는 TextField를 상속 받고 Colleague, TextListener 인터페이스를 구현하고 있다. TextListener 인터페이스는 텍스트 내용이 변했을 때 textValueChanged메소드로 변화를 감지하기위해 존재한다. 변화 감지 후 this, 변화한 자신을 colleagueChanged 메소드로 변화한것을 알리게 된다.
+setColleagueEnabled를 통해 텍스트필드가 유효한경우 배경을 흰색, 아닌경우 회색으로 변경 할 수 있다.</p>
+
+<h3 id="colleaguecheckbox-클래스">ColleagueCheckbox 클래스</h3>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public class ColleagueCheckBox extends Checkbox implements ItemListener, Colleague {
+    private Mediator mediator;
+
+    public ColleagueCheckBox(String caption, CheckboxGroup group, boolean state) {
+        super(caption, group, state);
+    }
+
+    public void setMediator(Mediator mediator) {
+        this.mediator = mediator;
+    }
+
+    public void setColleagueEnabled(boolean enabled) {
+        setEnabled(enabled);
+    }
+
+    public void itemStateChanged(ItemEvent e) {
+        mediator.colleagueChanged(this);
+    }
+}
+</code></pre></div></div>
+<p>ColleagueCheckbox 클래스는 CheckBox를 상속받고 ItemEvent, Colleague 인터페이스를 구현하고 있다.
+ItemListener의 itemStateChanged 메소드를 이용하여 CheckBox의 변화를 감지하고 있다.</p>
+
+<h3 id="loginframe-클래스">LoginFrame 클래스</h3>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public class LoginFrame extends Frame implements ActionListener, Mediator {
+    private ColleagueCheckBox checkGuest;
+    private ColleagueCheckBox checkLogin;
+    private ColleagueTextField textUser;
+    private ColleagueTextField textPass;
+    private ColleagueButton buttonOk;
+    private ColleagueButton buttonCancel;
+
+    public LoginFrame(String title) {
+        super(title);
+        setBackground(Color.lightGray);
+        setLayout(new GridLayout(4, 2));
+        createColleagues();
+        add(checkGuest);
+        add(checkLogin);
+        add(new Label("Username:"));
+        add(textUser);
+        add(new Label("password:"));
+        add(textPass);
+        add(buttonOk);
+        add(buttonCancel);
+        colleagueChanged(checkGuest);
+        pack();
+        show();
+    }
+
+    public void createColleagues() {
+        CheckboxGroup g = new CheckboxGroup();
+        checkGuest = new ColleagueCheckBox("Guest", g, true);
+        checkLogin = new ColleagueCheckBox("Login", g, false);
+        textUser = new ColleagueTextField("", 10);
+        textPass = new ColleagueTextField("", 10);
+        textPass.setEchoChar('*');
+        buttonOk = new ColleagueButton("OK");
+        buttonCancel = new ColleagueButton("Cancel");
+
+        checkGuest.setMediator(this);
+        checkLogin.setMediator(this);
+        textUser.setMediator(this);
+        textPass.setMediator(this);
+        buttonOk.setMediator(this);
+        buttonCancel.setMediator(this);
+
+        checkGuest.addItemListener(checkGuest);
+        checkLogin.addItemListener(checkLogin);
+        textUser.addTextListener(textUser);
+        textPass.addTextListener(textPass);
+        buttonCancel.addActionListener(this);
+        buttonOk.addActionListener(this);
+    }
+
+
+    public void colleagueChanged(Colleague c) {
+        if (c == checkGuest || c == checkLogin) {
+            if (checkGuest.getState()) {
+                textUser.setColleagueEnabled(false);
+                textPass.setColleagueEnabled(false);
+                buttonOk.setColleagueEnabled(true);
+            } else {
+                textUser.setColleagueEnabled(true);
+                userpassChanged();
+            }
+        } else if (c == textUser || c == textPass) {
+            userpassChanged();
+        } else {
+            System.out.println("colleagueChanged:unknown colleague =" + c);
+        }
+    }
+
+    private void userpassChanged() {
+        if (textUser.getText().length() &gt; 0) {
+            textPass.setColleagueEnabled(true);
+            if (textPass.getText().length() &gt; 0) {
+                buttonOk.setColleagueEnabled(true);
+            } else {
+                buttonOk.setColleagueEnabled(false);
+            }
+        } else {
+            textPass.setColleagueEnabled(false);
+            buttonOk.setColleagueEnabled(false);
+        }
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        System.out.println("" + e);
+        System.exit(0);
+    }
+
+}
+</code></pre></div></div>
+<p>LoginFrame 클래스는 GUI 어플리케이션을 만들기 위해 Frame 클래스를 상속 받고 있고 Mediator 인터페이스를 구현하고 있다.</p>
+
+<p>생성자에서는 아래와 같은 일을 하고 있다.</p>
+
+<p>배경색의 설정
+레이아웃 설정 (4 x 2)
+createColleagues를 통해 Colleagues 생성
+colleagues 배치
+초기 설정 및 표현</p>
+
+<p>colleagueChanged 메소드를 통해 텍스트상자, 체크박스의 유/무효화 조건의 로직이 담겨있다.
+멤버들 사이의 어려운 의사소통은 중재자가 맡고 멤버들은 각자의 colleagueChanged 메소드를 호출하기만 하면된다.</p>
+
+<h3 id="main-클래스">Main 클래스</h3>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public class HBMain {
+    public static void main(String[] args) {
+        new LoginFrame("Mediator Pattern");
+    }
+}
+</code></pre></div></div>
+<h3 id="실행결과">실행결과</h3>
+
+<p><img src="https://image.ibb.co/hk5UH6/1.png" alt="다이얼로그1" />
+<img src="https://image.ibb.co/gyLPjm/2.png" alt="다이얼로그2" /></p>
+
+<h1 id="2-참고자료">2. 참고자료</h1>
+
+<ol>
+  <li>java 언어로 배우는 디자인 패턴, 유키 히로시, 영진닷컴</li>
+</ol>
+
+    <div class="share-page">
+<h4>공유하기</h4>
+
+    <a href="https://twitter.com/intent/tweet?text=Decorator Pattern&url=https://hibrainnet.github.io/mediator-pattern&via=&related=" rel="nofollow" target="_blank" title="Share on Twitter">Twitter</a>
+    <a href="https://facebook.com/sharer.php?u=https://hibrainnet.github.io/mediator-pattern" rel="nofollow" target="_blank" title="Share on Facebook">Facebook</a>
+    <a href="https://plus.google.com/share?url=https://hibrainnet.github.io/mediator-pattern" rel="nofollow" target="_blank" title="Share on Google+">Google+</a>
+</div>
+
+
+  </div>
+  
+
+
+
+  
+
+
+
+  
+
+</article>
+
+      </div>
+    </main>
+
+    <footer class="site-footer w3-light-grey">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">하이브레인넷 부설연구소</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>
+            
+              하이브레인넷 부설연구소
+            
+            </li>
+            
+            <li><a href="mailto:apps@hibrain.net">apps@hibrain.net</a></li>
+            
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+    <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.11&appId=1953364611586334';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+  </body>
+
+</html>

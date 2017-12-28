@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <script language='javascript'>
+var url = 'https://hibrainnet.github.io'+'/jekyll-and-hybe'
+var pageType = '-1';
+var typeValue = '-1';
+
+function getTypeValue(){
+
+    var hashes = window.location.href.slice(0, window.location.href.indexOf('?')).split('/');
+    var pageNum = getParameter('page');
+
+    if(hashes.length == 7 && ( hashes[4] == 'tags' || hashes[4] == 'category' ) && pageNum != undefined) {
+      pageType = hashes[4];
+      typeValue = hashes[5];
+      window.location.replace(url + '/' + pageType + '/' + typeValue + '/page/' + pageNum);
+    }
+
+    if(hashes.length == 5 && pageNum != undefined) {
+      pageType = hashes[4];
+      typeValue = hashes[5];
+      window.location.replace(url + '/page/' + pageNum);
+    }
+
+}
+
+
+function getParameter(param) {
+    var returnValue;
+    var url = location.href;
+    var parameters = (url.slice(url.indexOf('?') + 1, url.length)).split('&');
+    for (var i = 0; i < parameters.length; i++) {
+        var varName = parameters[i].split('=')[0];
+        if (varName.toUpperCase() == param.toUpperCase()) {
+            returnValue = parameters[i].split('=')[1];
+            return decodeURIComponent(returnValue);
+        }
+    }
+};
+
+getTypeValue();
+</script>
+<head>
+
+
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+  <meta property="fb:app_id" content="147895112528926" />
+  <meta property="fb:admins" content="100001627773972"/>
+
+  <title>Flyweight Pattern</title>
+  <meta name="description" content="1. 연구내용 Flyweight Pattern 정의 플라이웨이트 패턴은 동일하거나 유사한 객체들이 데이터를 서로 공유하도록 하여 메모리 사용량을 최소화 하는 디자인 패턴이다. 보통 많은 객체들을 생성해야 할때 객체의 생성 및 관리를 담당하는 객체를 따로 두고 사용한다.">
+
+  <link rel="stylesheet" href="/jekyll-and-hybe/assets/main.css">
+  <link rel="canonical" href="https://hibrainnet.github.io/jekyll-and-hybe/flyweight-pattern">
+  <link rel="alternate" type="application/rss+xml" title="하이브레인넷 부설연구소" href="/jekyll-and-hybe/feed.xml">
+
+  
+
+</head>
+
+
+  <body>
+
+    <header class="site-header" role="banner">
+
+  <div class="w3-top">
+    <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+    
+    
+    <a class="site-title" href="/jekyll-and-hybe/">하이브레인넷 부설연구소</a>
+
+    
+      <nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+              <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+              <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+	
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+          <a class="page-link" href="/jekyll-and-hybe/about/">About</a>
+          
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+          <a class="page-link" href="/jekyll-and-hybe/category/">category</a>
+          
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+          <a class="page-link" href="/jekyll-and-hybe/guestbook/">GUESTBOOK</a>
+          
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+          <a class="page-link" href="/jekyll-and-hybe/home/">home</a>
+          
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+          <a class="page-link" href="/jekyll-and-hybe/tags/">tags</a>
+          
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+          <a class="page-link" href="/jekyll-and-hybe/index.html">하이브레인넷 부설연구소</a>
+          
+        
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+    
+        
+
+
+      </nav>
+    
+    </div>
+  </div>
+</div>
+
+<img class="w3-image w3-margin-top w3-margin-bottom" src="https://farm5.staticflickr.com/4732/39212074151_fa3a74e927_b.jpg" alt="Architecture" width="100%">
+<div class="w3-display-middle w3-margin-top w3-center">
+  <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>Hibrain</b></span> <span class="w3-hide-small w3-text-light-grey">Tech Blog</span></h1>
+</div>
+</header>
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Flyweight Pattern</h1>
+    <p class="post-meta">
+      <time datetime="2017-12-27T15:33:33+09:00" itemprop="datePublished">
+        
+        Dec 27, 2017
+      </time>
+      
+        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">jh.heo</span></span>
+      </p>
+
+
+
+
+tag:
+<span>[
+  
+    
+  <a href="/jekyll-and-hybe/tags/연구노트"><code class=""><nobr>연구노트</nobr></code>&nbsp;</a>
+  
+    
+  <a href="/jekyll-and-hybe/tags/인턴십"><code class=""><nobr>인턴십</nobr></code>&nbsp;</a>
+  
+]</span>
+
+
+
+
+<br>
+category :
+<span>[
+  
+    
+   <a href="/jekyll-and-hybe/category/디자인패턴"><code class=""><nobr>디자인패턴</nobr></code>&nbsp;</a>
+  
+]</span>
+
+
+
+
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <h1 id="1-연구내용">1. 연구내용</h1>
+<hr />
+<h2 id="flyweight-pattern">Flyweight Pattern</h2>
+<h3 id="정의">정의</h3>
+<p>플라이웨이트 패턴은 동일하거나 유사한 객체들이 데이터를 서로 공유하도록 하여 메모리 사용량을 최소화 하는 디자인 패턴이다.
+보통 많은 객체들을 생성해야 할때 객체의 생성 및 관리를 담당하는 객체를 따로 두고 사용한다.</p>
+
+<h3 id="예제">예제</h3>
+<p>예제로 사용할 상황은 커피를 주문하는 상황이다.
+카페에서 커피를 주문할때, 아메리카노, 카푸치노, 라떼 등 여러가지 커피들이 주문된다. 커피들이 객체라고 생각했을때 커피가 팔린 갯수 만큼 객체들이 만들어져야 할 것이다.
+하지만 커피라는 유사성이 있기때문에 같은 부분을 공유하도록 할 수 있다.</p>
+
+<h3 id="coffeeorder-인터페이스">CoffeeOrder 인터페이스</h3>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public interface CoffeeOrder {
+    public void serveCoffee(CoffeeOrderContext context);
+}
+</code></pre></div></div>
+<p>CoffeeOrder 인터페이스는 커피주문이 가지는 공통점을 표현한것이다.
+serveCoffee 메소드는 CoffeeOrderContext 형으로 주문받은 테이블 정보를 가지고 커피를 서빙하는 메소드이다.</p>
+
+<h3 id="coffeeflavor-클래스">CoffeeFlavor 클래스</h3>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public class CoffeeFlavor implements CoffeeOrder {
+    private final String flavor;
+
+    public CoffeeFlavor(String newFlavor) {
+        this.flavor = newFlavor;
+    }
+
+    public String getFlavor() {
+        return this.flavor;
+    }
+
+    public void serveCoffee(CoffeeOrderContext context) {
+        System.out.println(flavor + " " + context.getTable() + "번 테이블로");
+    }
+}
+</code></pre></div></div>
+<p>CoffeeFlavor 클래스는 ConffeeOrder를 구현하고 있다.
+newFlavor 문자열을 입력받아 각 커피의 고유맛을 표현하고 있다.
+그리고 serveCoffee를 구현하여 테이블로 서빙되는 방식을 구현하고 있다.</p>
+
+<h3 id="coffeeordercontext-클래스">CoffeeOrderContext 클래스</h3>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public class CoffeeOrderContext {
+    private final int tableNumber;
+
+    public CoffeeOrderContext(int tableNumber) {
+        this.tableNumber = tableNumber;
+    }
+
+    public int getTable() {
+        return this.tableNumber;
+    }
+}
+</code></pre></div></div>
+<p>CoffeeOrderContext 클래스는 주문한 테이블의 정보를 담고 있는 클래스이다.
+int형 tableNumber 변수를 파라미터로 하는 생성자가 있다.</p>
+
+<h3 id="coffeeflavorfactory-클래스">CoffeeFlavorFactory 클래스</h3>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public class CoffeeFlavorFactory {
+    private Map&lt;String, CoffeeFlavor&gt; flavors = new HashMap&lt;String, CoffeeFlavor&gt;();
+
+    public CoffeeFlavor getCoffeeFlavor(String flavorName) {
+        CoffeeFlavor flavor = flavors.get(flavorName);
+        if (flavor == null) {
+            flavor = new CoffeeFlavor(flavorName);
+            flavors.put(flavorName, flavor);
+        }
+        return flavor;
+    }
+
+    public int getTotalCoffeeFlavorsMade() {
+        return flavors.size();
+    }
+}
+</code></pre></div></div>
+<p>CoffeeFlavorFactory 클래스는 커피를 주문받아 커피를 만드는 일을 하듯이 CoffeeFlavor 객체를 생성하는 역할을 맡는다.
+Map&lt;String, CoffeeFlavor&gt; flavors 를 통해 커피이름, 커피객체를 키와 밸류값으로 저장한다.
+getCoffeeFlavor 메소드는 파라미터로 받은 flavorName이 맵에 있는 경우 커피맛 객체를 리턴해주고 없는 경우는 새로운 커피맛 객체를 생성하여 맵에 저장후 리턴해주게 된다.
+위와 같이 객체를 주문 받을때마다 생성하지 않고 맵을 활용하여 생성했던 객체는 저장후 공유하여 쓸수 있는것을 볼수 있다.</p>
+
+<h3 id="main-클래스">Main 클래스</h3>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public class HBMain {
+    private static CoffeeFlavor[] flavors = new CoffeeFlavor[100];
+    private static CoffeeOrderContext[] tables = new CoffeeOrderContext[100];
+    private static int ordersMade = 0;
+    private static CoffeeFlavorFactory flavorFactory;
+
+    public static void takeOrders(String flavorIn, int table) {
+        flavors[ordersMade] = flavorFactory.getCoffeeFlavor(flavorIn);
+        tables[ordersMade++] = new CoffeeOrderContext(table);
+    }
+
+    public static void main(String[] args) {
+        flavorFactory = new CoffeeFlavorFactory();
+
+        takeOrders("아메리카노", 2);
+        takeOrders("아메리카노", 2);
+        takeOrders("카푸치노", 1);
+        takeOrders("카푸치노", 1);
+        takeOrders("라떼", 1);
+        takeOrders("카라멜 마끼야또", 897);
+        takeOrders("아메리카노", 97);
+        takeOrders("아메리카노", 97);
+        takeOrders("카라멜 마끼야또", 3);
+        takeOrders("에스프레소", 3);
+        takeOrders("아메리카노", 3);
+        takeOrders("카라멜 마끼야또", 96);
+        takeOrders("에스프레소", 552);
+        takeOrders("아메리카노", 121);
+        takeOrders("에스프레소", 121);
+
+        for (int i = 0; i &lt; ordersMade; ++i) {
+            flavors[i].serveCoffee(tables[i]);
+        }
+        System.out.println(" ");
+        System.out.println("생성된 CoffeeFlavor 객체 : " + flavorFactory.getTotalCoffeeFlavorsMade());
+    }
+}
+</code></pre></div></div>
+
+<p>Main 클래스는 커피맛 객체를 저장할 flavors, 주문 정보를 저장할 tables, 주문번호를 저장할 orderMade, 커피 객체를 생성할 flavorsFactory를 변수를 가지고 있다.
+그리고 takeOrders 메소드는 flavorFactory를 이용하여 객체를 생성 및 관리 하고 주문번호를 증가시킨다.</p>
+
+<h3 id="실행결과">실행결과</h3>
+
+<p><img src="https://image.ibb.co/i3sQuw/image.png" alt="실행결과" /></p>
+
+<h1 id="2-참고자료">2. 참고자료</h1>
+
+<ol>
+  <li>
+    <p>flyweight pattern, https://ko.wikipedia.org/wiki/%ED%94%8C%EB%9D%BC%EC%9D%B4%EC%9B%A8%EC%9D%B4%ED%8A%B8_%ED%8C%A8%ED%84%B4</p>
+  </li>
+  <li>
+    <p>flyweight 패턴, https://zetawiki.com/wiki/Flyweight_%ED%8C%A8%ED%84%B4</p>
+  </li>
+</ol>
+
+    <div class="share-page">
+<h4>공유하기</h4>
+
+    <a href="https://twitter.com/intent/tweet?text=Flyweight Pattern&url=https://hibrainnet.github.io/flyweight-pattern&via=&related=" rel="nofollow" target="_blank" title="Share on Twitter">Twitter</a>
+    <a href="https://facebook.com/sharer.php?u=https://hibrainnet.github.io/flyweight-pattern" rel="nofollow" target="_blank" title="Share on Facebook">Facebook</a>
+    <a href="https://plus.google.com/share?url=https://hibrainnet.github.io/flyweight-pattern" rel="nofollow" target="_blank" title="Share on Google+">Google+</a>
+</div>
+
+
+  </div>
+  
+
+
+
+  
+
+
+
+  
+
+</article>
+
+      </div>
+    </main>
+
+    <footer class="site-footer w3-light-grey">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">하이브레인넷 부설연구소</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>
+            
+              하이브레인넷 부설연구소
+            
+            </li>
+            
+            <li><a href="mailto:apps@hibrain.net">apps@hibrain.net</a></li>
+            
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+    <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.11&appId=1953364611586334';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+  </body>
+
+</html>
