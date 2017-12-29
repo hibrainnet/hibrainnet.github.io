@@ -23,6 +23,11 @@ for i in $ADMIN_GIT_EMAIL; do
     then
        EXIT="EXIT1"  #스페이스 주의
     fi
+    if [[ "$branch" != master ]]
+    then
+
+       EXIT="EXIT1"  
+    fi
 done
 
 if [ "$EXIT" = EXIT0 ]; then
