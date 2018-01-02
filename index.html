@@ -25,8 +25,8 @@ pagination:
         <p class="w3-text-gray"><a class="post-describe" href="{{ post.url | relative_url }}">{{ post.content | strip_html | truncatewords:50 }}</a></p>
 
         <div class="w3-padding w3-text-grey w3-small">
-          <span class="post-meta">{{ post.date | date: date_format }}</span> |
-          <a class="post-meta" href="{{ site.baseurl }}/authors/{{ post.author }}">posted by {{ author.title }}</a>
+          <!--<a class="post-meta" href="{{ site.baseurl }}/authors/{{ post.author }}">posted by {{ author.title }}</a>-->
+          {% include author_profile.html %}
         </div>
 
 

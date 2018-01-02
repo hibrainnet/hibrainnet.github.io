@@ -11,11 +11,10 @@ layout: default
         {% if page.image %}
       <img src="{{site.baseurl}}{{page.image}}" class="w3-bar-item w3-circle" style="width:200px">
       {% else %}
-      <img src="{{site.baseurl}}/files/images/default_profile.png" class="w3-bar-item w3-circle" style="width:200px">
+      <img src="{{site.baseurl}}/files/images/default_profile.png" class="w3-bar-item w3-circle" style="width:200px; height:200px">
       {% endif %}
       <div class="w3-bar-item">
         <span class="w3-large">{{ page.title }}</span><br>
-        <p>All Posts by <em>{{ page.name }}</em></p>
       </div>
     </div>
 
