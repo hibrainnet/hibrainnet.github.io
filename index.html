@@ -24,11 +24,20 @@ pagination:
         </h1>
         <p class="w3-text-gray"><a class="post-describe" href="{{ post.url | relative_url }}">{{ post.content | strip_html | truncatewords:50 }}</a></p>
 
+        {% if post.tags.size > 0 %}
+        <span class="w3-section">
+          {% for tag in post.tags %}
+            {% capture tag_name %}{{ tag }}{% endcapture %}
+          <a href="{{ site.baseurl }}/tags/{{ tag_name }}"><code class=""><nobr>{{ tag_name }}</nobr></code>&nbsp;</a>
+          {% endfor %}
+        </span>
+        {% endif %}
+
         <div class="w3-padding w3-text-grey w3-small">
           <span class="post-meta">{{ post.date | date: date_format }}</span> |
           <a class="post-meta" href="{{ site.baseurl }}/authors/{{ post.author }}">posted by {{ author.title }}</a>
-        </div>
 
+        </div>
 
       </li>
     {% endfor %}
