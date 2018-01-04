@@ -21,6 +21,8 @@ after_success:
   - cd ..
   - cp -r _site/* hibrainnet.github.io/
   - cd hibrainnet.github.io
+  - git config --global user.email "herojoon1378@gmail.com"
+  - git config --global user.name "JuHanHeo"
   - git add .
   - git commit -m "congraturation"
   - git push
