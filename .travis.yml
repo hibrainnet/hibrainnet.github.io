@@ -18,7 +18,9 @@ after_success:
   - cd hibrainnet.github.io
   - shopt -s extglob
   - rm -rf !(.git)
-  - cd..
+  - cd ..
   - cp -r _site/* hibrainnet.github.io/
   - cd hibrainnet.github.io
+  - git add .
+  - git commit -m "congraturation"
   - git push
