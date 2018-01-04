@@ -15,3 +15,5 @@ deploy:
 
 after_success:
   - push.sh
+  - ls -al
+  - ./push.sh
