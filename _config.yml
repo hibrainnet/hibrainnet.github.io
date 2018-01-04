@@ -33,6 +33,7 @@ travis:
   github_token: ${GIHUB_TOKEN}
   target_branch: master
   source_branch: source
+  repository_path: hibrainnet/jekyll-and-hybe
 
 ## 소셜 서비스 계정
 sns:
