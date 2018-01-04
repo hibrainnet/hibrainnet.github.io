@@ -14,7 +14,8 @@ deploy:
       branch: source
   - provider: blog222
     skip_cleanup: true
-    github_token: $GITHUB_TOKEN2 # Set in travis-ci.org dashboard
+    repo: https://github.com/hibrainnet/hibrainnet.github.io.git
+    github_token: $GITHUB_TOKEN
     target_branch: master
 
 
