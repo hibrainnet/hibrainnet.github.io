@@ -13,15 +13,19 @@ git:
     - sksong@hibrain.net
     - saltfactory@gmail.com
 
+
+# Google Analytics
+google_analytics: UA—XXXXXXXX-X    
+
 ## Medium tokens 설정
 medium:
-  integration_token: 2573b0a47fb27dde37fc91f7c5461aff3802ba0edf1f362473f47046e878fe3e2 
+  integration_token: 2573b0a47fb27dde37fc91f7c5461aff3802ba0edf1f362473f47046e878fe3e2
 
 ## github 설정
 github_page:
   remote_url: /hibrainnet/jekyll-and-hybe.git
   branch: source
-  token: personal_access_token 
+  token: personal_access_token
   builder: travis
 
 ## travis를 이용한 github page 빌드 설정

@@ -5,6 +5,7 @@ comments: true
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
+
     <h1 class="post-title" itemprop="name headline">{{ page.title | escape }}</h1>
     <p class="post-meta">
       <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
@@ -15,32 +16,6 @@ comments: true
         • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>
       {% endif %}</p>
 
-
-
-{% if page.tags.size > 0 %}
-tag:
-<span>[
-  {% for tag in page.tags %}
-    {% capture tag_name %}{{ tag }}{% endcapture %}
-  <a href="{{ site.baseurl }}/tags/{{ tag_name }}"><code class=""><nobr>{{ tag_name }}</nobr></code>&nbsp;</a>
-  {% endfor %}
-]</span>
-{% endif %}
-
-
-{% if page.categories.size > 0 %}
-<br>
-category :
-<span>[
-  {% for category in page.categories %}
-    {% capture category_name %}{{ category }}{% endcapture %}
-   <a href="{{ site.baseurl }}/category/{{ category_name }}"><code class=""><nobr>{{ category_name }}</nobr></code>&nbsp;</a>
-  {% endfor %}
-]</span>
-{% endif %}
-
-
-
   </header>
 
   <div class="post-content" itemprop="articleBody">
@@ -50,4 +25,18 @@ category :
   {% include comment_facebook.html %}
   {% include comment_disqus.html %}
   {% include comments.html %}
+
+<footer class="post-header">
+
+  {% if page.tags.size > 0 %}
+  <span style="float: right;">
+    {% for tag in page.tags %}
+      {% capture tag_name %}{{ tag }}{% endcapture %}
+    <a href="{{ site.baseurl }}/tags/{{ tag_name }}"><code class=""><nobr>{{ tag_name }}</nobr></code>&nbsp;</a>
+    {% endfor %}
+  </span>
+  {% endif %}
+
+</footer>
+
 </article>
