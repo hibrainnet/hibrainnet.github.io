@@ -13,7 +13,8 @@ deploy:
   on:
     branch: source
 
-#after_success:
+after_success:
+  - git branch -D source 
 #  - git clone https://github.com/hibrainnet/hibrainnet.github.io.git
 #  - cd hibrainnet.github.io
 #  - shopt -s extglob
