@@ -12,3 +12,6 @@ deploy:
   target_branch: master
   on:
     branch: source
+
+after_success:
+  - push.sh
