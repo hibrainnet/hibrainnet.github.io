@@ -1,10 +1,9 @@
 ## 사이트 설정
 title: 하이브레인넷 부설연구소
+twitter : https://twitter.com/hibrainnet
+facebook : https://www.facebook.com/하이브레인넷-부설연구소-488747181169148/
 email: apps@hibrain.net
 description: >-
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
 baseurl: "/jekyll-and-hybe"
 url: "https://hibrainnet.github.io"
 

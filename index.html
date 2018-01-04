@@ -5,8 +5,6 @@ pagination:
 ---
 <div class="home">
 
-  <h1 class="w3-panel"><b>POSTS</b></h1>
-
   <ul class="post-content w3-ul">
 
     {% for post in paginator.posts %}
@@ -25,7 +23,7 @@ pagination:
         <p class="w3-text-gray"><a class="post-describe" href="{{ post.url | relative_url }}">{{ post.content | strip_html | truncatewords:50 }}</a></p>
 
         <div class="w3-padding w3-text-grey w3-small">
-          <span class="post-meta">{{ post.date | date: date_format }}</span> |
+          <span class="post-meta">{{ post.date | date: "%Y.%-m.%-d" }}</span> |
           <a class="post-meta" href="{{ site.baseurl }}/authors/{{ post.author }}">posted by {{ author.title }}</a>
         </div>
 

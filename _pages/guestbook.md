@@ -2,7 +2,7 @@
 permalink: "/guestbook/"
 layout: page
 comments : true
-title:  "GUESTBOOK"
+title:  "방명록"
 ---
 
 

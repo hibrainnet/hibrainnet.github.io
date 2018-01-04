@@ -14,6 +14,12 @@
               {{ site.title | escape }}
             {% endif %}
             </li>
+            {% if site.twitter %}
+            <li><a href="{{ site.twitter }}">Twitter 바로가기</a></li>
+            {% endif %}
+            {% if site.facebook %}
+            <li><a href="{{ site.facebook }}">Facebook 바로가기</a></li>
+            {% endif %}
             {% if site.email %}
             <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
             {% endif %}
