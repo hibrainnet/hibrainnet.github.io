@@ -5,7 +5,7 @@ facebook : https://www.facebook.com/하이브레인넷-부설연구소-488747181
 email: apps@hibrain.net
 description: >-
 # baseurl: "/jekyll-and-hybe"
-url: "https://hibrainnet.github.io"
+url: "http://blog.hibrainapps.net"
 
 ## git 설정
 git:
@@ -15,11 +15,11 @@ git:
 
 
 # Google Analytics
-google_analytics: UA—XXXXXXXX-X    
+google_analytics: UA-18071244-5    
 
 ## Medium tokens 설정
 medium:
-  integration_token: 2573b0a47fb27dde37fc91f7c5461aff3802ba0edf1f362473f47046e878fe3e2
+  integration_token: ${MEDIUM_TOKEN}
 
 ## github 설정
 github_page:
