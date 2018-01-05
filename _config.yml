@@ -1,12 +1,11 @@
 ## 사이트 설정
 title: 하이브레인넷 부설연구소
+twitter : https://twitter.com/hibrainnet
+facebook : https://www.facebook.com/하이브레인넷-부설연구소-488747181169148/
 email: apps@hibrain.net
 description: >-
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-baseurl: ""
-url: "https://hibrainnet.github.io"
+# baseurl: "/jekyll-and-hybe"
+url: "http://blog.hibrainapps.net"
 
 ## git 설정
 git:
@@ -14,9 +13,13 @@ git:
     - sksong@hibrain.net
     - saltfactory@gmail.com
 
+
+# Google Analytics
+google_analytics: UA-18071244-5    
+
 ## Medium tokens 설정
 medium:
-  integration_token: 2573b0a47fb27dde37fc91f7c5461aff3802ba0edf1f362473f47046e878fe3e2
+  integration_token: ${MEDIUM_TOKEN}
 
 ## github 설정
 github_page:
@@ -30,6 +33,7 @@ travis:
   github_token: ${GIHUB_TOKEN}
   target_branch: master
   source_branch: source
+  repository_path: hibrainnet/jekyll-and-hybe
 
 ## 소셜 서비스 계정
 sns:

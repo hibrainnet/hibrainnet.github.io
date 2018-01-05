@@ -63,7 +63,7 @@ GEM
     mini_portile2 (2.3.0)
     minima (2.1.1)
       jekyll (~> 3.3)
-    minitest (5.10.3)
+    minitest (5.11.1)
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
     parallel (1.12.1)
