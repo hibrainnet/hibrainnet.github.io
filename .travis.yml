@@ -20,13 +20,11 @@ deploy:
 
 
 after_success:
-  - git checkout -b test
-  - git remote add bbb {}
   - git config --global user.email herojoon1378@gmail.com
   - git config --global user.name juhanheo
   - git clone https://github.com/hibrainnet/hibrainnet.github.io.git
   - cd hibrainnet.github.io
-  - git config remote.origin.url https://JuHanHeo:06332147fa1f8f7f4f5eb1c16207a394f7a0420e@github.com/hibrainnet/hibrainnet.github.io.git
+  - git config remote.origin.url https://JuHanHeo:b68d2bef0a807fd230d1217f8227bea2f024e667@github.com/hibrainnet/hibrainnet.github.io.git
   - shopt -s extglob
   - rm -rf !(.git)
   - cd ..
