@@ -26,7 +26,7 @@ after_success:
   - git commit -m "congraturation"
   - ls -al
   - git branch
-  - git push https://{$GITHUB_TOKEN}@github.com/hibrainnet/hibrainnet.github.io.git master
+  - git push https://$GITHUB_TOKEN@github.com/hibrainnet/hibrainnet.github.io.git master
   - echo {$GITHUB_TOKEN}
   - echo $GITHUB_TOKEN
   - cd ..
