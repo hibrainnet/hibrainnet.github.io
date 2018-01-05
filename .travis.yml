@@ -22,9 +22,8 @@ deploy:
 after_success:
   - git config --global user.email herojoon1378@gmail.com
   - git config --global user.name juhanheo
-  - git clone https://github.com/hibrainnet/hibrainnet.github.io.git
+  - git clone https://JuHanHeo:b68d2bef0a807fd230d1217f8227bea2f024e667@github.com/hibrainnet/hibrainnet.github.io.git
   - cd hibrainnet.github.io
-  - git config remote.origin.url https://JuHanHeo:b68d2bef0a807fd230d1217f8227bea2f024e667@github.com/hibrainnet/hibrainnet.github.io.git
   - shopt -s extglob
   - rm -rf !(.git)
   - cd ..
