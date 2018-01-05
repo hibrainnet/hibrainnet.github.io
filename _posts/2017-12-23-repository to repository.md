@@ -8,6 +8,7 @@ category: [travis]
 publication: 'gahye-blog'
 license: 'public-domain'
 permalink: /repository-to-repository
+thumbnail:
 
 ---
 

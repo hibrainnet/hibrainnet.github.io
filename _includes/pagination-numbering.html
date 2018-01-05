@@ -39,39 +39,39 @@
 
 
 <paginate>
-<div class="pagination">
+<div class="pagination w3-bar w3-text-grey">
   {% if paginator.page != 1 %}
-    <a href="{{ site.baseurl }}/{{ paginator.first_page_path }}">&#60;&#60;</a>
+    <a class="w3-button" href="{{ site.baseurl }}/{{ paginator.first_page_path }}">&#60;&#60;</a>
   {% else %}
-    <span class="previous">&#60;&#60;</span>
+    <span class="previous w3-button">&#60;&#60;</span>
   {% endif %}
   {% if paginator.previous_page %}
-    <a href="{{ site.baseurl }}{{ paginator.previous_page_path }}" class="previous">&#60;</a>
+    <a href="{{ site.baseurl }}{{ paginator.previous_page_path }}" class="previous w3-button">&#60;</a>
   {% else %}
-    <span class="previous">&#60;</span>
+    <span class="previous w3-button">&#60;</span>
   {% endif %}
   {% for count in (first..last) %}
     {% if count == paginator.page %}
-     <li><span class="active">{{ count }}</span></li>
+     <li><span class="active w3-button w3-green">{{ count }}</span></li>
     {% else %}
     {%assign ppurl = page.purl | prepend: "/" | append: "/page/" | replace: "//", "/" %}
       {% if count == 1%}
-        <li><a href="{{ site.baseurl }}{{ page_path | replace: "/page/:num", "/" }}">{{ count}}</a></li>
+        <li><a class="w3-button" href="{{ site.baseurl }}{{ page_path | replace: "/page/:num", "/" }}">{{ count}}</a></li>
       {% else %}
-        <li><a href="{{ site.baseurl }}{{ page_path | replace: ":num", count }}">{{ count }}</a></li>
+        <li><a class="w3-button" href="{{ site.baseurl }}{{ page_path | replace: ":num", count }}">{{ count }}</a></li>
       {% endif %}
     {% endif %}
   {% endfor %}
 
   {% if paginator.next_page %}
-    <a href="{{ site.baseurl }}{{ paginator.next_page_path }}" class="next">&#62;</a>
+    <a href="{{ site.baseurl }}{{ paginator.next_page_path }}" class="next w3-button">&#62;</a>
   {% else %}
-    <span class="next ">&#62;</span>
+    <span class="next w3-button">&#62;</span>
   {% endif %}
   {% if paginator.page != paginator.total_pages %}
-    <a href="{{ site.baseurl }}{{ paginator.last_page_path }}">&#62;&#62;</a>
+    <a class="w3-button" href="{{ site.baseurl }}{{ paginator.last_page_path }}">&#62;&#62;</a>
   {% elsif paginator.pate == paginator.tota_pages %}
-    <span class="next ">&#62;&#62;</span>
+    <span class="next w3-button">&#62;&#62;</span>
   {% endif %}
 </div>
 </paginate>

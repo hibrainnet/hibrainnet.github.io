@@ -8,6 +8,7 @@ category: [jekyll]
 publication: 'gahye-blog'
 license: 'public-domain'
 permalink: /Jekyll-Hybe-to-Medium
+thumbnail: https://github.com/xdamman/mediumexporter
 ---
 
 ### 연구내용

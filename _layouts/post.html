@@ -5,38 +5,47 @@ comments: true
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
+    {% for auth in site.authors %}
+      {% if page.author == auth.name %}
+        {% assign author = auth %}
+      {% endif %}
+    {% endfor %}
 
     <h1 class="post-title" itemprop="name headline">{{ page.title | escape }}</h1>
     <p class="post-meta">
       <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
         {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
-        {{ page.date | date: date_format }}
+        <span class="post-meta w3-text-grey"><i class="fa fa-clock-o" aria-hidden="true"></i> {{ page.date | date: "%Y.%-m.%-d" }}</span>
       </time>
-      {% if page.author %}
-        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>
-      {% endif %}</p>
-
   </header>
 
   <div class="post-content" itemprop="articleBody">
     {{ content }}
-    {% include share-page.html %}
+
   </div>
-  {% include comment_facebook.html %}
-  {% include comment_disqus.html %}
-  {% include comments.html %}
 
-<footer class="post-header">
+  <div>
 
-  {% if page.tags.size > 0 %}
-  <span style="float: right;">
+    {% if page.tags.size > 0 %}
+    <span class="w3-margin-bottom">
+      <i class="fa fa-tags" aria-hidden="true"></i>
     {% for tag in page.tags %}
       {% capture tag_name %}{{ tag }}{% endcapture %}
     <a href="{{ site.baseurl }}/tags/{{ tag_name }}"><code class=""><nobr>{{ tag_name }}</nobr></code>&nbsp;</a>
     {% endfor %}
   </span>
-  {% endif %}
+    {% endif %}
 
-</footer>
+    <br><br>
+
+    <div class="w3-padding-24 w3-border-top w3-border-bottom w3-margin-bottom">
+      {% include author_profile.html %}
+    </div>
+    {% include share-page.html %}
+  </div>
+
+  {% include comment_facebook.html %}
+  {% include comment_disqus.html %}
+  {% include comments.html %}
 
 </article>

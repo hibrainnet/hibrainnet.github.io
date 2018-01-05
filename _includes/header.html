@@ -1,13 +1,13 @@
 <header class="site-header" role="banner">
 
   <div class="w3-top">
-    <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+    <div class="w3-bar w3-white w3-card" style="letter-spacing:4px;">
     {% assign default_paths = site.pages | map: "path" %}
     {% assign page_paths = site.header_pages | default: default_paths %}
-    <a class="site-title" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+    <a class="w3-bar-item site-title" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
 
     {% if page_paths %}
-      <nav class="site-nav">
+      <nav class="site-nav w3-bar-item">
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
         <label for="nav-trigger">
           <span class="menu-icon">
@@ -34,12 +34,40 @@
           {% endfor %}
         </div>
       </nav>
+
+
     {% endif %}
   </div>
-</div>
 
+</div>
+{% if page.url == "/index.html" %}
 <img class="w3-image w3-margin-top w3-margin-bottom" src="https://farm5.staticflickr.com/4732/39212074151_fa3a74e927_b.jpg" alt="Architecture" width="100%">
 <div class="w3-display-middle w3-margin-top w3-center">
-  <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>Hibrain</b></span> <span class="w3-hide-small w3-text-light-grey">Tech Blog</span></h1>
+  <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>Hibrain</b></span> <span class=" w3-text-light-grey">Tech Blog</span></h1>
 </div>
+  {% elsif page.url == "/about/" %}
+  <div class="about w3-display-container">
+    <div class=" w3-display-middle w3-center">
+      <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>Hibrain</b></span> <span class=" w3-text-light-grey">Tech Blog 소개</span></h1>
+    </div>
+  </div>
+  {% elsif page.url == "/guestbook/" %}
+  <div class="guestbook w3-display-container">
+    <div class=" w3-display-middle w3-center">
+      <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>Hibrain</b></span> <span class=" w3-text-light-grey">Tech Blog 방명록</span></h1>
+    </div>
+  </div>
+  {% elsif page.url == "/home/" %}
+  <div class="main w3-display-container">
+    <div class=" w3-display-middle w3-center">
+      <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>Hibrain</b></span> <span class=" w3-text-light-grey">Tech Blog</span></h1>
+    </div>
+  </div>
+  {% elsif page.url == "/tags/" %}
+  <div class="tags w3-display-container">
+    <div class=" w3-display-middle w3-center">
+      <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>Hibrain</b></span> <span class=" w3-text-light-grey">Tech Blog 태그</span></h1>
+    </div>
+  </div>
+  {% endif %}
 </header>
