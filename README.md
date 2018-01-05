@@ -200,6 +200,47 @@ numbering - 설정값에 따라 페이징 넘버 제공
 
 **sort_reverse** - 역순으로 정렬할지 여부 정의  
 
+## 다른 git으로 \_site deploy 하기
+jekyll travis가 빌드를 끝내면 \_site 내 파일들만 다른 저장소로 deploy 할 수 있다.
+
+`config.yml` 에서 다음과 같은 코드로 설정 할 수 있다.
+
+`_config.yml`
+
+```
+after_success:
+  - git clone https://github.com/저장소-소유자-깃허브계정/저장소이름.git
+  - cd 저장소이름
+  - shopt -s extglob
+  - rm -rf !(.git)
+  - cd ..
+  - cp -r _site/* 저장소이름/
+  - cd 저장소이름
+  - git add .
+  - git commit -m "커밋메시지"
+  - ls -al
+  - git push https://$GITHUB_TOKEN@github.com/저장소-소유자-깃허브계정/저장소이름.git master
+  - cd ..
+
+```
+
+위의 과정은 블로그를 서비스 할 git저장소에 서비스 할 파일만 (.html .css 등) 저장하고 싶은 경우 사용할 수 있다.
+
+after_success는 jekyll이 해석을 성공적으로 끝냈경우 뒤에 실행된다.
+
+jekyll이 해석을 끝내면 push할 저장소를 clone한다.
+
+clone후 `.git` 디렉토리를 제외하고 모두 지운다
+
+jekyll이 번역한 `_site` 파일은 clone한 git에 copy한다
+
+copy한 파일을 기준으로 add, commit push를 진행한다
+
+
+
+
+
+
 
 
 
