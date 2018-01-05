@@ -5,13 +5,13 @@ install:
 - gem install rake
 - bundle install
 deploy:
-  - provider: pages
-    skip_cleanup: true
-    github_token: $GITHUB_TOKEN
-    local_dir: _site
-    target_branch: master
-    on:
-      branch: source
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: _site
+  target_branch: master
+  on:
+    branch: source
 
 
 after_success:
@@ -23,8 +23,7 @@ after_success:
   - cp -r _site/* hibrainnet.github.io/
   - cd hibrainnet.github.io
   - git add .
-  - git commit -m "congraturation"
+  - git commit -m "deploy from travis"
   - ls -al
-  - git branch
   - git push https://$GITHUB_TOKEN@github.com/hibrainnet/hibrainnet.github.io.git master
   - cd ..
