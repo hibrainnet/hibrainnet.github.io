@@ -19,18 +19,19 @@ deploy:
     target_branch: master
 
 
-after_success:
-
-  - git config --global user.email herojoon1378@gmail.com
-  - git config --global user.name juhanheo
-  - git clone https://github.com/hibrainnet/hibrainnet.github.io.git
-  - cd hibrainnet.github.io
-  - shopt -s extglob
-  - rm -rf !(.git)
-  - cd ..
-  - cp -r _site/* hibrainnet.github.io/
-  - cd hibrainnet.github.io
-  - git add .
-  - git commit -m "congraturation"
-  - git push
-  - cd ..
+#after_success:
+#  - git checkout -b test
+#  - git remote add bbb {}
+#  - git config --global user.email herojoon1378@gmail.com
+#  - git config --global user.name juhanheo
+#  - git clone https://github.com/hibrainnet/hibrainnet.github.io.git
+#  - cd hibrainnet.github.io
+# - shopt -s extglob
+#  - rm -rf !(.git)
+#  - cd ..
+#  - cp -r _site/* hibrainnet.github.io/
+#  - cd hibrainnet.github.io
+#  - git add .
+#  - git commit -m "congraturation"
+#  - git push
+#  - cd ..
