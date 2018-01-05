@@ -5,7 +5,7 @@
 ## GitHub Pages 퍼블리싱 설정
 Jekyll & Hybe는 GitHub 를 사용하여 GitHub Pages로 퍼블리싱하는 기능을 가지고 있다. github 가 아닌 다른 git 저장소에서 GitHub 로 자동으로 소스코드를 디플로이하여 GitHub Pages를 퍼블리싱할 수 있다.
 
-- `hooks/` 디렉토리 안의 파일을 `.git/hooks/`  디렙토리 안으로 복사한다. 
+- `hooks/` 디렉토리 안의 파일을 `.git/hooks/`  디렙토리 안으로 복사한다.
 - `_config.yml` 파일에서 `github_pages:` 를 설정한다.
 ```
 github_pages :
@@ -19,7 +19,7 @@ github_pages :
 github_pages:
   remote_url : /hibrainnet/jekyll-and-hybe.git
   branch: source
-  token : **************************************** 
+  token : ****************************************
 ```
 
 ## git 관리자 설정
@@ -41,7 +41,7 @@ git config user.email
 
 ## travis build 설정
 
-Jekyll & Hybe 에서는 Github-page에서 push가 일어나면 자동으로 프로젝트 빌드를 해주는 travis ci가 구축되어있다. 
+Jekyll & Hybe 에서는 Github-page에서 push가 일어나면 자동으로 프로젝트 빌드를 해주는 travis ci가 구축되어있다.
 travis api로 구현된 ruby파일을 실행하면 push하지 않아도 사용자가 임의로 빌드를 발생할 수 있다. 이 기능을 사용하기 위해서는 다음과 같이 설정한 후 실행한다.
 
 -`_config.yml` 파일 안에 있는 `travis:`의 `repository_path:`에 빌드를 발생시킬 저장소의 경로를 추가한다. 이 때 저장소의 경로는 travis에서의 저장도 경로를 추가해야한다.
@@ -135,6 +135,47 @@ numbering - 설정값에 따라 페이징 넘버 제공
 **sort_field** - posts에 작성된 게시물을 정렬할 기준 정의  
 
 **sort_reverse** - 역순으로 정렬할지 여부 정의  
+
+## 다른 git으로 \_site deploy 하기
+jekyll travis가 빌드를 끝내면 \_site 내 파일들만 다른 저장소로 deploy 할 수 있다.
+
+`config.yml` 에서 다음과 같은 코드로 설정 할 수 있다.
+
+`_config.yml`
+
+```
+after_success:
+  - git clone https://github.com/저장소-소유자-깃허브계정/저장소이름.git
+  - cd 저장소이름
+  - shopt -s extglob
+  - rm -rf !(.git)
+  - cd ..
+  - cp -r _site/* 저장소이름/
+  - cd 저장소이름
+  - git add .
+  - git commit -m "커밋메시지"
+  - ls -al
+  - git push https://$GITHUB_TOKEN@github.com/저장소-소유자-깃허브계정/저장소이름.git master
+  - cd ..
+
+```
+
+위의 과정은 블로그를 서비스 할 git저장소에 서비스 할 파일만 (.html .css 등) 저장하고 싶은 경우 사용할 수 있다.
+
+after_success는 jekyll이 해석을 성공적으로 끝냈경우 뒤에 실행된다.
+
+jekyll이 해석을 끝내면 push할 저장소를 clone한다.
+
+clone후 `.git` 디렉토리를 제외하고 모두 지운다
+
+jekyll이 번역한 `_site` 파일은 clone한 git에 copy한다
+
+copy한 파일을 기준으로 add, commit push를 진행한다
+
+
+
+
+
 
 
 
