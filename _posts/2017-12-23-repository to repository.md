@@ -9,6 +9,7 @@ publication: 'gahye-blog'
 license: 'public-domain'
 permalink: /repository-to-repository
 thumbnail:
+comments : true
 
 ---
 

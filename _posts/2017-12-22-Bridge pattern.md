@@ -9,6 +9,7 @@ publication: 'gahye-blog'
 license: 'public-domain'
 permalink: /Bridge-pattern
 thumbnail: http://image.fileslink.com/491415f678ebf81/image2017-12-14_16-13-1.png
+comments : true
 ---
 
 ### 연구내용

@@ -1,29 +1,15 @@
-<<<<<<< HEAD
-<a class="post-meta" href="{{ site.baseurl }}/authors/{{ post.author }}">
-=======
 <a class="post-meta" href="{{ site.baseurl }}/authors/{{ author.name }}">
->>>>>>> HBNINTERN-64-blog-layout
-<div class="w3-bar">
+  <div class="w3-bar">
 
-  {% if author.image %}
+    {% if author.image %}
     <img src="{{site.baseurl}}{{author.image}}" class="w3-bar-item w3-circle" style="width:70px">
-  {% else %}
-<<<<<<< HEAD
-    <img src="{{site.baseurl}}/files/images/default_profile.png" class="w3-bar-item w3-circle" style="width:70px">
-  {% endif %}
+    {% else %}
+    <i class="fa fa-user fa-4x w3-bar-item w3-circle " aria-hidden="true"> </i>
+    {% endif %}
 
-  <div class="w3-bar-item">
-    <span class="w3-large">{{author.title}}</span><br>
-    <span class="post-meta">{{ post.date | date: date_format }}</span>
-    <span></span>
-=======
-  <i class="fa fa-user fa-4x w3-bar-item w3-circle " aria-hidden="true"> </i>
-  {% endif %}
-
-  <div class="w3-bar-item">
-    <span class="w3-large w3-text-black">{{author.title}}</span><br>
-    <span class="w3-medium w3-text-black">{{author.position}}</span>
->>>>>>> HBNINTERN-64-blog-layout
+    <div class="w3-bar-item">
+      <span class="w3-large w3-text-black">{{author.title}}</span><br>
+      <span class="w3-medium w3-text-black">{{author.position}}</span>
+    </div>
   </div>
-</div>
 </a>
