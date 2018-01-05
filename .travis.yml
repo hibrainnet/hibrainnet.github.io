@@ -15,8 +15,6 @@ deploy:
 
 
 after_success:
-  - git config --global user.email herojoon1378@gmail.com
-  - git config --global user.name juhanheo
   - git clone https://github.com/hibrainnet/hibrainnet.github.io.git
   - cd hibrainnet.github.io
   - shopt -s extglob
@@ -28,5 +26,5 @@ after_success:
   - git commit -m "congraturation"
   - ls -al
   - git branch
-  - git push https://62736b441dde4d403d19f6a28e4b396689137be0@github.com/hibrainnet/hibrainnet.github.io.git master
+  - git push https://b1eefa8b00cdaf4228ffa92a4382e25b49bc5045@github.com/hibrainnet/hibrainnet.github.io.git master
   - cd ..
