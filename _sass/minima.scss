@@ -2,7 +2,7 @@
 
 // Define defaults for each variable.
 
-$base-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$base-font-family: Avenir,'Lato',"애플 SD 산돌고딕 Neo","Apple SD Gothic Neo","나눔바른고딕",NanumBarunGothic,"나눔고딕",NanumGothic,"맑은 고딕","Malgun Gothic","돋움",dotum,AppleGothic,sans-serif;
 $base-font-size:   16px !default;
 $base-font-weight: 400 !default;
 $small-font-size:  $base-font-size * 0.875 !default;
@@ -19,7 +19,7 @@ $grey-color-light: lighten($grey-color, 40%) !default;
 $grey-color-dark:  darken($grey-color, 25%) !default;
 
 // Width of the content area
-$content-width:    1000px !default;
+$content-width:    900px !default;
 
 $on-palm:          600px !default;
 $on-laptop:        800px !default;
