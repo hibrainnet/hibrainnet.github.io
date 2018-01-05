@@ -5,7 +5,7 @@
 ## GitHub Pages 퍼블리싱 설정
 Jekyll & Hybe는 GitHub 를 사용하여 GitHub Pages로 퍼블리싱하는 기능을 가지고 있다. github 가 아닌 다른 git 저장소에서 GitHub 로 자동으로 소스코드를 디플로이하여 GitHub Pages를 퍼블리싱할 수 있다.
 
-- `hooks/` 디렉토리 안의 파일을 `.git/hooks/`  디렙토리 안으로 복사한다. 
+- `hooks/` 디렉토리 안의 파일을 `.git/hooks/`  디렙토리 안으로 복사한다.
 - `_config.yml` 파일에서 `github_pages:` 를 설정한다.
 ```
 github_pages :
@@ -19,7 +19,7 @@ github_pages :
 github_pages:
   remote_url : /hibrainnet/jekyll-and-hybe.git
   branch: source
-  token : **************************************** 
+  token : ****************************************
 ```
 
 ## git 관리자 설정
@@ -49,9 +49,10 @@ Jekyll & Hybe는 다른 외부 블로그 서비스에서 글을 Import 하는 �
 **Medium to Jekyll & Hybe** 는 Medium의 글을 Jekyll & Hybe의 글로 임포트하는 기능이다.
 
 ```
-jb import -from medium -uri https://medium.com/@hibrainapps/hello-world -doc _posts/2017-12-25-helloworkd.md
-```
+./jb.sh import -from medium -uri https://medium.com/@hibrainapps/hello-world -doc _posts/2017-12-25-helloworkd.md
 
+```
+<br>
 ## Export 기능
 Jekyll & Hybe는 다른 외부 블로그 서비스로 내가 쓴 글을 export 할 수 있는 기능을 가지고 있다. Export 할 수 있는 서비스는 다음과 같다.
 
@@ -78,8 +79,71 @@ license: 'public-domain'
 FrontMatter 설정 후 다음 명령어를 실행한다. token은 [Medium Settings](https://medium.com/me/settings)에서 생성한 Medium Token 을 사용한다.
 
 ```
-jb export -to medium -doc  _posts/2017-12-25-hello-world.md
+.jb.sh export -to medium -doc  _posts/2017-12-25-hello-world.md
+
 ```
+<br>
+## google Analytics 기능
+Jekyll & Hybe는 google Analytics를 사용하여 웹 사이트를 추적하고 분석할 수 있다. 이 기능을 사용하기 위해서는 다음과 같이 설정을 해야한다.
+- [google Analytics](https://www.google.com/analytics/)
+
+### \_includes 디렉토리에 google-analytics.html 추적 코드 추가
+```javascript
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '{{ site.google_analytics }}', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+```
+
+### \_config.yml 파일에 Google 웹로그 분석 추적 ID 추가
+```yml
+
+# Google Analytics
+google_analytics: UA—XXXXXXXX-X
+
+```
+### \_include디렉토리에 추적 코드 추가
+웹사이트 방문시, 모두 올바르게 추적할 수 있도록  \_include디렉토리의 head.html에  </head> 태그 바로 앞에 다음과 같이 코드를 추가한다.
+```yaml
+
+{% if site.google_analytics and jekyll.environment == 'production' %}
+{% include google-analytics.html %}
+{% endif %}
+
+```
+<br>
+## TRAVIS로 Markdown 저장소 가져오기
+Jekyll & Hybe 는 공개 되어지는 공간이기 때문에, Markdown 형식의 post를 다른 저장소에서 관리하고 있다. 이 기능은 TRAVIS를 통해 배포할때 Markdown 형식의 post를 가지고 오는 기능이다.
+### \_config.yml파일에 post를 저장할 저장소의 url 설정
+```yml
+
+## gitbub remote 설정
+github_post:  ##post를 저장할 저장소의 url 설정
+    remote_url: https://userid:sdwdwjfi2232bffff@github.com/user/Posts.git
+    ## https://<사용자id>:<github토큰값>@github.com/<posts 저장소>.git
+```
+### .travis.yml파일 추가
+\_config.yml의 github_post의 remote_url값을 이용하여 remote 저장소를 추가한다.
+Markdown 형식의 post가 저장되어 있는 other/post를 merge한다.
+```yml
+
+before_install:
+- GIT_POST_URL=$(ruby -r "$PWD"/script/config.rb -e "puts @github_post_url")
+- git remote add other $GIT_POST_URL
+- git fetch other
+- git merge --no-edit other/post
+
+```
+<br>
+
 
 ## Posts Paging
 

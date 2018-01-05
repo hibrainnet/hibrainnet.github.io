@@ -9,3 +9,6 @@ config = YAML.load_file(path+"/_config.yml")
 
 
 @medium_token = config['medium']['integration_token']
+
+
+@github_post_url = config['github_post']['remote_url']
