@@ -12,10 +12,32 @@ install:
 - gem install rake
 - bundle install
 deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: $GITHUB_TOKEN
-  local_dir: _site
-  target_branch: master
-  on:
-    branch: source
+  - provider: pages
+    skip_cleanup: true
+    github_token: $GITHUB_TOKEN
+    local_dir: _site
+    target_branch: master
+    on:
+      branch: source
+  - provider: blog222
+    skip_cleanup: true
+    repo: https://github.com/hibrainnet/hibrainnet.github.io.git
+    github_token: $GITHUB_TOKEN
+    target_branch: master
+
+
+after_success:
+
+  - git config --global user.email herojoon1378@gmail.com
+  - git config --global user.name juhanheo
+  - git clone https://github.com/hibrainnet/hibrainnet.github.io.git
+  - cd hibrainnet.github.io
+  - shopt -s extglob
+  - rm -rf !(.git)
+  - cd ..
+  - cp -r _site/* hibrainnet.github.io/
+  - cd hibrainnet.github.io
+  - git add .
+  - git commit -m "congraturation"
+  - git push
+  - cd ..

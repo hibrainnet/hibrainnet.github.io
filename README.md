@@ -39,6 +39,20 @@ git의 메일주소를 확인하고 싶으면 다음 명령어를 사용하여 �
 git config user.email
 ```
 
+## travis build 설정
+
+Jekyll & Hybe 에서는 Github-page에서 push가 일어나면 자동으로 프로젝트 빌드를 해주는 travis ci가 구축되어있다.
+travis api로 구현된 ruby파일을 실행하면 push하지 않아도 사용자가 임의로 빌드를 발생할 수 있다. 이 기능을 사용하기 위해서는 다음과 같이 설정한 후 실행한다.
+
+-`_config.yml` 파일 안에 있는 `travis:`의 `repository_path:`에 빌드를 발생시킬 저장소의 경로를 추가한다. 이 때 저장소의 경로는 travis에서의 저장도 경로를 추가해야한다.
+-`_config.yml` 파일이 있는 경로에서 `ruby travis/travis-build.rb` 파일을 실행시킨다.
+
+예)
+```
+travis:
+  repository_path: hibrainnet/jekyll-and-hybe
+```
+
 ## Inport 기능
 Jekyll & Hybe는 다른 외부 블로그 서비스에서 글을 Import 하는 기능을 가지고 있다. Inport 할 수 있는 서비스는 다음과 같다.
 
@@ -79,7 +93,7 @@ license: 'public-domain'
 FrontMatter 설정 후 다음 명령어를 실행한다. token은 [Medium Settings](https://medium.com/me/settings)에서 생성한 Medium Token 을 사용한다.
 
 ```
-.jb.sh export -to medium -doc  _posts/2017-12-25-hello-world.md
+./jb.sh export -to medium -doc  _posts/2017-12-25-hello-world.md
 
 ```
 <br>

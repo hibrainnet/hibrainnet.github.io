@@ -7,11 +7,17 @@ layout: default
 </div>
 
 <div id="cover" class="container"
-    <div>
-
-        <h1>{{ page.title | default: page.name }}</h1>
-        <p>All Posts by <em>{{ page.name }}</em></p>
+      <div class="w3-bar">
+        {% if page.image %}
+      <img src="{{site.baseurl}}{{page.image}}" class="w3-bar-item w3-circle" style="width:200px">
+      {% else %}
+      <img src="{{site.baseurl}}/files/images/default_profile.png" class="w3-bar-item w3-circle" style="width:200px; height:200px">
+      {% endif %}
+      <div class="w3-bar-item">
+        <span class="w3-large">{{ page.title }}</span><br>
+      </div>
     </div>
+
 
     <ul class="post-list">
       {% for post in site.posts %}
