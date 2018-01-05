@@ -9,6 +9,7 @@ publication: 'gahye-blog'
 license: 'public-domain'
 permalink: /Chain-of-Responsibility
 thumbnail: http://image.fileslink.com/491415f66486ded/image2017-12-26_14-31-10.png
+comments : true
 ---
 
 ### 연구내용

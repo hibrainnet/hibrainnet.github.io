@@ -6,11 +6,11 @@
     {% assign page_paths = site.header_pages | default: default_paths %}
     <a class="w3-bar-item site-title" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
 
-	<!--search bar and button--!>
-	<form action="{{ site.url}}/result/">
-		 <input id="q" name="q" type="text" placeholser="Search...">
-		<input type="hidden" name="filter" value="0" />
-         <button>search</button>		
+	<!--search bar and button-->
+	<form class="w3-bar-item w3-right" action="{{ site.url}}/result/">
+		 <input class="w3-input w3-bar-item" id="q" name="q" type="text" placeholder="Search...">
+		  <input type="hidden" name="filter" value="0" />
+         <button class="w3-button w3-large w3-bar-item"><i class="fa fa-search" aria-hidden="true"></i></button>
 	</form>
 
     {% if page_paths %}
@@ -35,7 +35,7 @@
         {% assign my_page = site.pages | where: "path", path | first %}
         {% assign tag_name = my_page.title | split: ": " %}
 
-          {% if my_page.title and my_page.autogen == nil and tag_name.first != "Posts" and tag_name.first != "Tag" and tag_name.first != "Category" and tag_name.first != site.title %}
+          {% if my_page.title and my_page.autogen == nil and tag_name.first != "Posts" and tag_name.first != "Tag" and tag_name.first != "Category" and tag_name.first != site.title and tag_name.first != "검색결과" %}
           <a class="page-link w3-wide" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
           {% endif %}
           {% endfor %}

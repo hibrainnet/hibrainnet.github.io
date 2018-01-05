@@ -6,9 +6,9 @@ comments: true
 
   <header class="post-header">
     {% for auth in site.authors %}
-      {% if page.author == auth.name %}
-        {% assign author = auth %}
-      {% endif %}
+    {% if page.author == auth.name %}
+    {% assign author = auth %}
+    {% endif %}
     {% endfor %}
 
     <h1 class="post-title" itemprop="name headline">{{ page.title | escape }}</h1>
@@ -17,30 +17,6 @@ comments: true
         {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
         <span class="post-meta w3-text-grey"><i class="fa fa-clock-o" aria-hidden="true"></i> {{ page.date | date: "%Y.%-m.%-d" }}</span>
       </time>
-<<<<<<< HEAD
-=======
-      {% if page.author %}
-        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>
-      {% endif %}</p>
-
-<<<<<<< HEAD
-
-{% if page.categories.size > 0 %}
-<br>
-category :
-<span>[
-  {% for category in page.categories %}
-    {% capture category_name %}{{ category }}{% endcapture %}
-   <a href="{{ site.baseurl }}/category/{{ category_name }}"><code class=""><nobr>{{ category_name }}</nobr></code>&nbsp;</a>
-  {% endfor %}
-]</span>
-{% endif %}
-
-
-
-=======
->>>>>>> master
->>>>>>> HBNINTERN-63-travis-markdown-fetch
   </header>
 
   <div class="post-content" itemprop="articleBody">
@@ -48,28 +24,7 @@ category :
 
   </div>
 
-<<<<<<< HEAD
   <div>
-=======
-<<<<<<< HEAD
-
-
-
-
- <footer class="post-header">
-{% if page.tags.size > 0 %}
-<span style="float: right;">
-  {% for tag in page.tags %}
-    {% capture tag_name %}{{ tag }}{% endcapture %}
-  <a href="{{ site.baseurl }}/tags/{{ tag_name }}"><code class=""><nobr>{{ tag_name }}</nobr></code>&nbsp;</a>
-  {% endfor %}
-</span>
-{% endif %}
-
-</footer>
-=======
-<footer class="post-header">
->>>>>>> HBNINTERN-63-travis-markdown-fetch
 
     {% if page.tags.size > 0 %}
     <span class="w3-margin-bottom">
@@ -93,5 +48,4 @@ category :
   {% include comment_disqus.html %}
   {% include comments.html %}
 
->>>>>>> master
 </article>
