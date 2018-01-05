@@ -28,5 +28,5 @@ after_success:
   - git commit -m "congraturation"
   - ls -al
   - git branch
-  - git push https://4a3fd60da8e2f4b0db10f1af7af7ac417f237ca8@github.com/hibrainnet/hibrainnet.github.io.git master
+  - git push https://62736b441dde4d403d19f6a28e4b396689137be0@github.com/hibrainnet/hibrainnet.github.io.git master
   - cd ..
