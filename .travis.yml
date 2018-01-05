@@ -27,7 +27,7 @@ after_success:
   - git clone https://github.com/hibrainnet/hibrainnet.github.io.git
   - cd hibrainnet.github.io
   - git config remote.origin.url https://JuHanHeo:06332147fa1f8f7f4f5eb1c16207a394f7a0420e@github.com/hibrainnet/hibrainnet.github.io.git
- - shopt -s extglob
+  - shopt -s extglob
   - rm -rf !(.git)
   - cd ..
   - cp -r _site/* hibrainnet.github.io/
