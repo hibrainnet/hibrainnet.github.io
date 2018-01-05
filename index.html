@@ -36,9 +36,8 @@ pagination:
         {% endif %}
 
         <div class="w3-padding w3-text-grey w3-small">
-          <span class="post-meta">{{ post.date | date: "%Y.%-m.%-d" }}</span> |
-          <a class="post-meta" href="{{ site.baseurl }}/authors/{{ post.author }}">posted by {{ author.title }}</a>
-
+          <!--<a class="post-meta" href="{{ site.baseurl }}/authors/{{ post.author }}">posted by {{ author.title }}</a>-->
+          {% include author_profile.html %}
         </div>
 
       </li>
