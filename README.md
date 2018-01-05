@@ -160,5 +160,43 @@ facebook admin_id : admin_id는 페이스북 댓글 시스템을 관리하기 �
 3. 앱 또는 게임에 커서를 가져간 다음 연필 모양 아이콘을 클릭.
 4. 하단의 앱 개발자도움받기에서  사용자 ID 확인.
 
+
+## Search
+검색 시스템은 구글 맞춤검색을 이용하여 구현한다.
+
+1. 검색 박스를 넣을 html파일에 아래와 같은 코드를 추가한다.
+
+예)
+
+```html
+<form action="{{ site.url}}/결과값을 출력할 페이지 url">
+	<input name="검색어 매개변수 이름" type="text" placeholser="Search...">
+	<input type="hidden" name="filter" value="0" />
+	<button>search</button>
+</form>
+```
+
+
+2. [구글 맞춤검색 엔진](https://cse.google.co.kr/cse/all)에서 사용자가 [검색 엔진 생성 방법](https://developers.google.com/custom-search/docs/tutorial/introduction)으로 생성한 스크립트를 결과값을 출력할 html파일에 추가한다.
+
+- 사용자가 직접 검색 박스와 결과값을 지정하고 싶다면 **검색엔진수정 -> 디자인 -> 검색결과만** 방법으로 검색 엔진을 생성한다.
+
+예)
+
+```javascript
+<script>
+  (function() {
+    var cx = '사용자의 개인 인증 키';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:searchresults-only></gcse:searchresults-only>
+```
+
 ## License
 This project is licensed under the MIT License - see the LICENSE.md file for details

@@ -6,6 +6,13 @@
     {% assign page_paths = site.header_pages | default: default_paths %}
     <a class="site-title" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
 
+	<!--search bar and button--!>
+	<form action="{{ site.url}}/result/">
+		 <input id="q" name="q" type="text" placeholser="Search...">
+		<input type="hidden" name="filter" value="0" />
+         <button>search</button>		
+	</form>
+
     {% if page_paths %}
       <nav class="site-nav">
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
