@@ -21,6 +21,13 @@ google_analytics: UA-18071244-5
 medium:
   integration_token: ${MEDIUM_TOKEN}
 
+
+## gitbub remote 설정
+github_post:  ##post를 저장할 저장소의 url 설정 
+    remote_url: https://Pgahye:12d2f451bcf19daa7158070ae62bdebd4070e171@github.com/Pgahye/Posts.git
+
+
+
 ## github 설정
 github_page:
   remote_url: /hibrainnet/jekyll-and-hybe.git
