@@ -6,7 +6,7 @@ before_install:
 - GIT_POST_URL=$(ruby -r "$PWD"/script/config.rb -e "puts @github_post_url")
 - git remote add other $GIT_POST_URL
 - git fetch other
-#- git merge --no-edit other/post
+- git merge --no-edit other/master
 
 install:
 - gem install rake
