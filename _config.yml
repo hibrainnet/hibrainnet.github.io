@@ -24,7 +24,7 @@ medium:
 
 ## gitbub remote 설정
 github_post:  ##post를 저장할 저장소의 url 설정 
-    remote_url: https://Pgahye:12d2f451bcf19daa7158070ae62bdebd4070e171@github.com/Pgahye/Posts.git
+    remote_url: https://hibrainnet:148d7f9198d98b9e450c591f9def40908c08ba2a@github.com/hibrainnet/research-notes.git
 
 
 
