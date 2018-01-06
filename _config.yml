@@ -32,7 +32,7 @@ github_post:  ##post를 저장할 저장소의 url 설정
 github_page:
   remote_url: /hibrainnet/jekyll-and-hybe.git
   branch: source
-  token: personal_access_token
+  token: ${GITHUB_TOKEN}
   builder: travis
 
 ## travis를 이용한 github page 빌드 설정
