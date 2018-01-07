@@ -1,13 +1,13 @@
 <header class="site-header" role="banner">
 
   <div class="w3-top">
-    <div class="w3-bar w3-white w3-card" style="letter-spacing:4px;">
+    <div class="w3-bar w3-white w3-card " style="letter-spacing:4px;">
     {% assign default_paths = site.pages | map: "path" %}
     {% assign page_paths = site.header_pages | default: default_paths %}
-    <a class="w3-bar-item site-title" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+    <a class="w3-bar-item site-title w3-mobile" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
 
 	<!--search bar and button-->
-	<form class="w3-bar-item w3-right" action="{{ site.url}}/result/">
+	<form class="w3-bar-item w3-right w3-mobile" action="{{ site.url}}/result/">
 		 <input class="w3-input w3-bar-item w3-xlarge" id="q" name="q" type="text" placeholder="검색">
 		  <input type="hidden" name="filter" value="0" />
          <button class="w3-button w3-xlarge w3-bar-item"><i class="fa fa-search" aria-hidden="true"></i></button>
