@@ -10,7 +10,7 @@ pagination:
     {% for post in paginator.posts %}
       <li>
         <div class="w3-row">
-        <div class="w3-col s8 m8 l8 w3-margin-right">
+        <div class="w3-col s12 m8 l8 w3-margin-right w3-left">
           {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
 
           {% for auth in site.authors %}
@@ -22,11 +22,25 @@ pagination:
           <h1>
             <b><a class="site-title w3-bar-item" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></b>
           </h1>
-          <p class=" w3-text-gray"><a class="post-describe" href="{{ post.url | relative_url }}">{{ post.content | strip_html | truncatewords:25 }}</a></p>
+
+        </div>
+          <div class="w3-col s3 m3 l3 w3-margin-top">
+            <p class="">{% if post.thumbnail %}
+              <img src="{{ post.thumbnail| escape }}" style="max-height: 160px; max-width: 200px;" align="center" />
+              {% else %}
+              <img src="/images/nothumbnail.jpg"
+                   style="height: 160px;" align="center" />
+              {% endif %}</p>
+          </div>
+
+          <div class="w3-col s8 m8 l7">
+            <p class=" w3-text-gray"><a class="post-describe" href="{{ post.url | relative_url }}">{{ post.content | strip_html | truncatewords:25 }}</a></p>
+
+          </div>
 
 
 
-          <div class="w3-text-grey w3-small">
+          <div class="w3-col s12 m12 l12 w3-text-grey w3-small">
             <span class="post-meta"><i class="fa fa-clock-o" aria-hidden="true"></i> {{ post.date | date: "%Y.%-m.%-d" }}</span>
 
             {% if post.tags.size > 0 %}
@@ -40,18 +54,9 @@ pagination:
             <!--작성자 정보-->
             <!--<a class="post-meta" href="{{ site.baseurl }}/authors/{{ post.author }}">posted by {{ author.title }}</a>-->
           </div>
-        </div>
-
 
         <!--포스트 썸네일-->
-        <div class="w3-rest w3-right w3-margin-top ">
-          <p class="">{% if post.thumbnail %}
-            <img src="{{ post.thumbnail| escape }}" style="max-height: 160px; max-width: 200px;" align="center" />
-            {% else %}
-            <img src="/images/nothumbnail.jpg"
-                 style="height: 160px;" align="center" />
-            {% endif %}</p>
-        </div>
+
         </div>
         <br>
       </li>
