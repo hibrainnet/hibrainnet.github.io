@@ -1,0 +1,13 @@
+
+#!/bin/sh
+
+remote="$1"
+url="$2"
+
+PWD=$(pwd)
+
+# 사용자에 따라 push 권한 생성 
+"$PWD"/.git/hooks/push-block.sh
+
+#github로 push작업
+$PWD/.git/hooks/push-github.sh $remote $url
