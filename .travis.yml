@@ -7,6 +7,7 @@ before_install:
 - git clone $GIT_POST_URL
 - cp -r research-notes/* _posts/
 - ls -al _posts/
+- rm -rf research-notes
 
 install:
 - gem install rake
