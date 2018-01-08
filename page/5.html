@@ -83,16 +83,16 @@ getTypeValue();
     <header class="site-header" role="banner">
 
   <div class="w3-top">
-    <div class="w3-bar w3-white w3-card" style="letter-spacing:4px;">
+    <div class="w3-bar w3-white w3-card " style="letter-spacing:4px;">
     
     
-    <a class="w3-bar-item site-title" href="/">하이브레인넷 부설연구소</a>
+    <a class="w3-bar-item site-title w3-mobile" href="/">하이브레인넷 부설연구소</a>
 
-	<!--search bar and button--!>
-	<form action="http://blog.hibrainapps.net/result/">
-		 <input id="q" name="q" type="text" placeholser="Search...">
-		<input type="hidden" name="filter" value="0" />
-         <button>search</button>		
+	<!--search bar and button-->
+	<form class="w3-bar-item w3-right w3-mobile" action="http://blog.hibrainapps.net/result/">
+		 <input class="w3-input w3-bar-item w3-xlarge" id="q" name="q" type="text" placeholder="검색">
+		  <input type="hidden" name="filter" value="0" />
+         <button class="w3-button w3-xlarge w3-bar-item"><i class="fa fa-search" aria-hidden="true"></i></button>
 	</form>
 
     
@@ -118,18 +118,7 @@ getTypeValue();
         
 
           
-          <a class="page-link w3-wide" href="/home/">홈</a>
-          
-          
-          <!--
-            my_page.autogen is populated by the pagination logic for all pages
-                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-          -->
-        
-        
-
-          
-          <a class="page-link w3-wide" href="/about/">소개</a>
+          <a class="page-link w3-wide" href="/index/">홈</a>
           
           
           <!--
@@ -179,8 +168,6 @@ getTypeValue();
         
         
 
-          
-          <a class="page-link w3-wide" href="/result/">검색결과</a>
           
           
           <!--
@@ -441,12 +428,12 @@ getTypeValue();
       <div class="wrapper">
         <div class="home">
 
-  <ul class="post-content w3-ul">
+  <ul class="post-content w3-ul ">
 
     
       <li>
         <div class="w3-row">
-        <div class="w3-col s8 m8 l8 w3-margin-right">
+        <div class="w3-col s12 m8 l8 w3-margin-right w3-left">
           
 
           
@@ -454,29 +441,33 @@ getTypeValue();
           <h1>
             <b><a class="site-title w3-bar-item" href="/2017/12/20/yl.jung.html">Cloudinary API</a></b>
           </h1>
-          <p class=" w3-text-gray"><a class="post-describe" href="/2017/12/20/yl.jung.html">1. 연구노트 이미지를 클라우드에 올려 url을 가져오는 이미지 호스팅 작업을 진행 사용자가 원하는 이미지 파일을 올리면 호스팅 된 이미지 url을 반환 Cloudinary 클라우드와 ruby언어를 사용하여 구축 1-1. Cloudinary API 클라우드...</a></p>
+
+        </div>
+          <div class="w3-col s3 m3 l3 w3-margin-top">
+            <p class="">
+              <img src="http://res.cloudinary.com/degxeqfok/image/upload/v1513749352/mb6cqv2ntfmqh2c3n2ph.png" style="max-height: 160px; max-width: 200px;" align="center" />
+              </p>
+          </div>
+
+          <div class="w3-col s8 m8 l7">
+            <p class=" w3-text-gray"><a class="post-describe" href="/2017/12/20/yl.jung.html">1. 연구노트 이미지를 클라우드에 올려 url을 가져오는 이미지 호스팅 작업을 진행 사용자가 원하는 이미지 파일을 올리면 호스팅 된 이미지 url을 반환 Cloudinary 클라우드와 ruby언어를 사용하여...</a></p>
+
+          </div>
 
 
 
-          <div class="w3-text-grey w3-small">
-            <span class="post-meta">2017.12.20</span> |
+          <div class="w3-col s12 m12 l12 w3-text-grey w3-small">
+            <span class="post-meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 2017.12.20</span>
 
             
             <!--작성자 정보-->
             <!--<a class="post-meta" href="/authors/yl.jung">posted by 정예린</a>-->
           </div>
-        </div>
-
 
         <!--포스트 썸네일-->
-        <div class="w3-rest w3-right w3-margin-top">
-          <p class="">
-            <img src="http://res.cloudinary.com/degxeqfok/image/upload/v1513749352/mb6cqv2ntfmqh2c3n2ph.png" style="max-height: 160px; max-width: 200px;" align="center" />
-            </p>
-        </div>
-        </div>
 
-
+        </div>
+        <br>
       </li>
     
   </ul>

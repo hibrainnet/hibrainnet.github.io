@@ -83,16 +83,16 @@ getTypeValue();
     <header class="site-header" role="banner">
 
   <div class="w3-top">
-    <div class="w3-bar w3-white w3-card" style="letter-spacing:4px;">
+    <div class="w3-bar w3-white w3-card " style="letter-spacing:4px;">
     
     
-    <a class="w3-bar-item site-title" href="/">하이브레인넷 부설연구소</a>
+    <a class="w3-bar-item site-title w3-mobile" href="/">하이브레인넷 부설연구소</a>
 
-	<!--search bar and button--!>
-	<form action="http://blog.hibrainapps.net/result/">
-		 <input id="q" name="q" type="text" placeholser="Search...">
-		<input type="hidden" name="filter" value="0" />
-         <button>search</button>		
+	<!--search bar and button-->
+	<form class="w3-bar-item w3-right w3-mobile" action="http://blog.hibrainapps.net/result/">
+		 <input class="w3-input w3-bar-item w3-xlarge" id="q" name="q" type="text" placeholder="검색">
+		  <input type="hidden" name="filter" value="0" />
+         <button class="w3-button w3-xlarge w3-bar-item"><i class="fa fa-search" aria-hidden="true"></i></button>
 	</form>
 
     
@@ -118,18 +118,7 @@ getTypeValue();
         
 
           
-          <a class="page-link w3-wide" href="/home/">홈</a>
-          
-          
-          <!--
-            my_page.autogen is populated by the pagination logic for all pages
-                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-          -->
-        
-        
-
-          
-          <a class="page-link w3-wide" href="/about/">소개</a>
+          <a class="page-link w3-wide" href="/index/">홈</a>
           
           
           <!--
@@ -179,8 +168,6 @@ getTypeValue();
         
         
 
-          
-          <a class="page-link w3-wide" href="/result/">검색결과</a>
           
           
           <!--
@@ -441,12 +428,12 @@ getTypeValue();
       <div class="wrapper">
         <div class="home">
 
-  <ul class="post-content w3-ul">
+  <ul class="post-content w3-ul ">
 
     
       <li>
         <div class="w3-row">
-        <div class="w3-col s8 m8 l8 w3-margin-right">
+        <div class="w3-col s12 m8 l8 w3-margin-right w3-left">
           
 
           
@@ -454,15 +441,26 @@ getTypeValue();
           <h1>
             <b><a class="site-title w3-bar-item" href="/Memento">Memento pattern</a></b>
           </h1>
-          <p class=" w3-text-gray"><a class="post-describe" href="/Memento">연구내용 Memento 패턴-상태를 보존한다 텍스트 에디터를 사용할 때, 실수로 삭제해도 undo라는 기능을 사용하면 삭제하기 전 상태로 텍스트를 복원할 수 있다. 또한 undo를 여러단계 실행해서 편집 작업이 점점 과거로 거슬러 올라가게...</a></p>
+
+        </div>
+          <div class="w3-col s3 m3 l3 w3-margin-top">
+            <p class="">
+              <img src="http://res.cloudinary.com/dxovdseb3/image/upload/v1514362226/image2017-12-27_13-54-35_njaxjp.png" style="max-height: 160px; max-width: 200px;" align="center" />
+              </p>
+          </div>
+
+          <div class="w3-col s8 m8 l7">
+            <p class=" w3-text-gray"><a class="post-describe" href="/Memento">연구내용 Memento 패턴-상태를 보존한다 텍스트 에디터를 사용할 때, 실수로 삭제해도 undo라는 기능을 사용하면 삭제하기 전 상태로 텍스트를 복원할 수 있다. 또한 undo를 여러단계 실행해서 편집...</a></p>
+
+          </div>
 
 
 
-          <div class="w3-text-grey w3-small">
-            <span class="post-meta">2017.12.27</span> |
+          <div class="w3-col s12 m12 l12 w3-text-grey w3-small">
+            <span class="post-meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 2017.12.27</span>
 
             
-            <span class="w3-section">
+            <span class="w3-section"> |
           
             
           <a href="/tags/연구노트"><code class=""><nobr>연구노트</nobr></code>&nbsp;</a>
@@ -478,23 +476,16 @@ getTypeValue();
             <!--작성자 정보-->
             <!--<a class="post-meta" href="/authors/gh.park">posted by 박가혜</a>-->
           </div>
-        </div>
-
 
         <!--포스트 썸네일-->
-        <div class="w3-rest w3-right w3-margin-top">
-          <p class="">
-            <img src="http://res.cloudinary.com/dxovdseb3/image/upload/v1514362226/image2017-12-27_13-54-35_njaxjp.png" style="max-height: 160px; max-width: 200px;" align="center" />
-            </p>
-        </div>
-        </div>
 
-
+        </div>
+        <br>
       </li>
     
       <li>
         <div class="w3-row">
-        <div class="w3-col s8 m8 l8 w3-margin-right">
+        <div class="w3-col s12 m8 l8 w3-margin-right w3-left">
           
 
           
@@ -502,34 +493,38 @@ getTypeValue();
           <h1>
             <b><a class="site-title w3-bar-item" href="/2017/12/27/yl.jung.html">Travis Aunthentication Using github token</a></b>
           </h1>
-          <p class=" w3-text-gray"><a class="post-describe" href="/2017/12/27/yl.jung.html">1. 연구노트 1-1. Travis Authentication *Travis 인증방법 -기존의 travis login을 이용한 token값 발행은 여러 단계를 거쳐야 하는 번거로움이 있음 -login을 이용한 token값 발행과 다르게 좀 더 간단한 인증 방법을 이용...</a></p>
+
+        </div>
+          <div class="w3-col s3 m3 l3 w3-margin-top">
+            <p class="">
+              <img src="http://res.cloudinary.com/degxeqfok/image/upload/v1514338830/m7synttz2cfi8wm4hv9k.png" style="max-height: 160px; max-width: 200px;" align="center" />
+              </p>
+          </div>
+
+          <div class="w3-col s8 m8 l7">
+            <p class=" w3-text-gray"><a class="post-describe" href="/2017/12/27/yl.jung.html">1. 연구노트 1-1. Travis Authentication *Travis 인증방법 -기존의 travis login을 이용한 token값 발행은 여러 단계를 거쳐야 하는 번거로움이 있음 -login을 이용한 token값 발행과 다르게 좀...</a></p>
+
+          </div>
 
 
 
-          <div class="w3-text-grey w3-small">
-            <span class="post-meta">2017.12.27</span> |
+          <div class="w3-col s12 m12 l12 w3-text-grey w3-small">
+            <span class="post-meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 2017.12.27</span>
 
             
             <!--작성자 정보-->
             <!--<a class="post-meta" href="/authors/yl.jung">posted by 정예린</a>-->
           </div>
-        </div>
-
 
         <!--포스트 썸네일-->
-        <div class="w3-rest w3-right w3-margin-top">
-          <p class="">
-            <img src="http://res.cloudinary.com/degxeqfok/image/upload/v1514338830/m7synttz2cfi8wm4hv9k.png" style="max-height: 160px; max-width: 200px;" align="center" />
-            </p>
-        </div>
-        </div>
 
-
+        </div>
+        <br>
       </li>
     
       <li>
         <div class="w3-row">
-        <div class="w3-col s8 m8 l8 w3-margin-right">
+        <div class="w3-col s12 m8 l8 w3-margin-right w3-left">
           
 
           
@@ -537,15 +532,26 @@ getTypeValue();
           <h1>
             <b><a class="site-title w3-bar-item" href="/mediator-pattern">Mediator Pattern</a></b>
           </h1>
-          <p class=" w3-text-gray"><a class="post-describe" href="/mediator-pattern">1. 연구내용 Mediator Pattern 정의 보통의 프로젝트에서 프로그램은 많은 클래스로 구성되어 있고 여러명의 개발자들이 함께 개발하게 된다. 이런 프로젝트의 경우 개발자들 사이에 의사소통의 매우 중요해진다. 의사소통이 제대로 이루어지지 않을 경우...</a></p>
+
+        </div>
+          <div class="w3-col s3 m3 l3 w3-margin-top">
+            <p class="">
+              <img src="https://image.ibb.co/hk5UH6/1.png" style="max-height: 160px; max-width: 200px;" align="center" />
+              </p>
+          </div>
+
+          <div class="w3-col s8 m8 l7">
+            <p class=" w3-text-gray"><a class="post-describe" href="/mediator-pattern">1. 연구내용 Mediator Pattern 정의 보통의 프로젝트에서 프로그램은 많은 클래스로 구성되어 있고 여러명의 개발자들이 함께 개발하게 된다. 이런 프로젝트의 경우 개발자들 사이에 의사소통의 매우 중요해진다....</a></p>
+
+          </div>
 
 
 
-          <div class="w3-text-grey w3-small">
-            <span class="post-meta">2017.12.26</span> |
+          <div class="w3-col s12 m12 l12 w3-text-grey w3-small">
+            <span class="post-meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 2017.12.26</span>
 
             
-            <span class="w3-section">
+            <span class="w3-section"> |
           
             
           <a href="/tags/연구노트"><code class=""><nobr>연구노트</nobr></code>&nbsp;</a>
@@ -558,23 +564,16 @@ getTypeValue();
             <!--작성자 정보-->
             <!--<a class="post-meta" href="/authors/jh.heo">posted by 허주한</a>-->
           </div>
-        </div>
-
 
         <!--포스트 썸네일-->
-        <div class="w3-rest w3-right w3-margin-top">
-          <p class="">
-            <img src="https://image.ibb.co/hk5UH6/1.png" style="max-height: 160px; max-width: 200px;" align="center" />
-            </p>
-        </div>
-        </div>
 
-
+        </div>
+        <br>
       </li>
     
       <li>
         <div class="w3-row">
-        <div class="w3-col s8 m8 l8 w3-margin-right">
+        <div class="w3-col s12 m8 l8 w3-margin-right w3-left">
           
 
           
@@ -582,15 +581,26 @@ getTypeValue();
           <h1>
             <b><a class="site-title w3-bar-item" href="/Chain-of-Responsibility">Chain of Responsibility pattern</a></b>
           </h1>
-          <p class=" w3-text-gray"><a class="post-describe" href="/Chain-of-Responsibility">연구내용 Chain of Responsibility (책임연쇄패턴)-책임떠넘기기 예를 들어, 어떤 요구가 발생했을 때, 그 요구를 처리할 객체를 바로 결정할수 없는 경우에는 다수의 객체를 사슬처럼 연결해 두고 객체의 사슬을 차례로 돌아다니면서 목적에 맞는...</a></p>
+
+        </div>
+          <div class="w3-col s3 m3 l3 w3-margin-top">
+            <p class="">
+              <img src="http://image.fileslink.com/491415f66486ded/image2017-12-26_14-31-10.png" style="max-height: 160px; max-width: 200px;" align="center" />
+              </p>
+          </div>
+
+          <div class="w3-col s8 m8 l7">
+            <p class=" w3-text-gray"><a class="post-describe" href="/Chain-of-Responsibility">연구내용 Chain of Responsibility (책임연쇄패턴)-책임떠넘기기 예를 들어, 어떤 요구가 발생했을 때, 그 요구를 처리할 객체를 바로 결정할수 없는 경우에는 다수의 객체를 사슬처럼 연결해 두고 객체의...</a></p>
+
+          </div>
 
 
 
-          <div class="w3-text-grey w3-small">
-            <span class="post-meta">2017.12.26</span> |
+          <div class="w3-col s12 m12 l12 w3-text-grey w3-small">
+            <span class="post-meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 2017.12.26</span>
 
             
-            <span class="w3-section">
+            <span class="w3-section"> |
           
             
           <a href="/tags/연구노트"><code class=""><nobr>연구노트</nobr></code>&nbsp;</a>
@@ -606,23 +616,16 @@ getTypeValue();
             <!--작성자 정보-->
             <!--<a class="post-meta" href="/authors/gh.park">posted by 박가혜</a>-->
           </div>
-        </div>
-
 
         <!--포스트 썸네일-->
-        <div class="w3-rest w3-right w3-margin-top">
-          <p class="">
-            <img src="http://image.fileslink.com/491415f66486ded/image2017-12-26_14-31-10.png" style="max-height: 160px; max-width: 200px;" align="center" />
-            </p>
-        </div>
-        </div>
 
-
+        </div>
+        <br>
       </li>
     
       <li>
         <div class="w3-row">
-        <div class="w3-col s8 m8 l8 w3-margin-right">
+        <div class="w3-col s12 m8 l8 w3-margin-right w3-left">
           
 
           
@@ -630,15 +633,26 @@ getTypeValue();
           <h1>
             <b><a class="site-title w3-bar-item" href="/2017/12/26/%EC%9A%B0%EC%84%B1%EB%AF%BC.html">Visitor Pattern</a></b>
           </h1>
-          <p class=" w3-text-gray"><a class="post-describe" href="/2017/12/26/%EC%9A%B0%EC%84%B1%EB%AF%BC.html">방문자 패턴(Visitor Pattern)이란? Visitor는 사전적인 의미로 어떤 사람이나 장소를 찾아오는 사람 이라는 의미를 가지고 있다. 방문자 패턴에서는 데이터 구조와 처리를 분리한다. 데이터 구조 안을 돌아다니는 주체인 방문자 를 나타내는 클래스를...</a></p>
+
+        </div>
+          <div class="w3-col s3 m3 l3 w3-margin-top">
+            <p class="">
+              <img src="https://farm5.staticflickr.com/4738/39312549112_bce2c9b763_b.jpg" style="max-height: 160px; max-width: 200px;" align="center" />
+              </p>
+          </div>
+
+          <div class="w3-col s8 m8 l7">
+            <p class=" w3-text-gray"><a class="post-describe" href="/2017/12/26/%EC%9A%B0%EC%84%B1%EB%AF%BC.html">방문자 패턴(Visitor Pattern)이란? Visitor는 사전적인 의미로 어떤 사람이나 장소를 찾아오는 사람 이라는 의미를 가지고 있다. 방문자 패턴에서는 데이터 구조와 처리를 분리한다. 데이터 구조 안을 돌아다니는...</a></p>
+
+          </div>
 
 
 
-          <div class="w3-text-grey w3-small">
-            <span class="post-meta">2017.12.26</span> |
+          <div class="w3-col s12 m12 l12 w3-text-grey w3-small">
+            <span class="post-meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 2017.12.26</span>
 
             
-            <span class="w3-section">
+            <span class="w3-section"> |
           
             
           <a href="/tags/연구노트"><code class=""><nobr>연구노트</nobr></code>&nbsp;</a>
@@ -651,18 +665,11 @@ getTypeValue();
             <!--작성자 정보-->
             <!--<a class="post-meta" href="/authors/sm.woo">posted by 우성민</a>-->
           </div>
-        </div>
-
 
         <!--포스트 썸네일-->
-        <div class="w3-rest w3-right w3-margin-top">
-          <p class="">
-            <img src="https://farm5.staticflickr.com/4738/39312549112_bce2c9b763_b.jpg" style="max-height: 160px; max-width: 200px;" align="center" />
-            </p>
-        </div>
-        </div>
 
-
+        </div>
+        <br>
       </li>
     
   </ul>

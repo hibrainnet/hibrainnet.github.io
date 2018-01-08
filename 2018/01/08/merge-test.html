@@ -83,16 +83,16 @@ getTypeValue();
     <header class="site-header" role="banner">
 
   <div class="w3-top">
-    <div class="w3-bar w3-white w3-card" style="letter-spacing:4px;">
+    <div class="w3-bar w3-white w3-card " style="letter-spacing:4px;">
     
     
-    <a class="w3-bar-item site-title" href="/">하이브레인넷 부설연구소</a>
+    <a class="w3-bar-item site-title w3-mobile" href="/">하이브레인넷 부설연구소</a>
 
-	<!--search bar and button--!>
-	<form action="http://blog.hibrainapps.net/result/">
-		 <input id="q" name="q" type="text" placeholser="Search...">
-		<input type="hidden" name="filter" value="0" />
-         <button>search</button>		
+	<!--search bar and button-->
+	<form class="w3-bar-item w3-right w3-mobile" action="http://blog.hibrainapps.net/result/">
+		 <input class="w3-input w3-bar-item w3-xlarge" id="q" name="q" type="text" placeholder="검색">
+		  <input type="hidden" name="filter" value="0" />
+         <button class="w3-button w3-xlarge w3-bar-item"><i class="fa fa-search" aria-hidden="true"></i></button>
 	</form>
 
     
@@ -118,18 +118,7 @@ getTypeValue();
         
 
           
-          <a class="page-link w3-wide" href="/home/">홈</a>
-          
-          
-          <!--
-            my_page.autogen is populated by the pagination logic for all pages
-                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-          -->
-        
-        
-
-          
-          <a class="page-link w3-wide" href="/about/">소개</a>
+          <a class="page-link w3-wide" href="/index/">홈</a>
           
           
           <!--
@@ -179,8 +168,6 @@ getTypeValue();
         
         
 
-          
-          <a class="page-link w3-wide" href="/result/">검색결과</a>
           
           
           <!--
@@ -450,16 +437,6 @@ getTypeValue();
         
         <span class="post-meta w3-text-grey"><i class="fa fa-clock-o" aria-hidden="true"></i> 2018.1.8</span>
       </time>
-
-
-      
-        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">jh.heo</span></span>
-      </p>
-
-
-
-
-
   </header>
 
   <div class="post-content" itemprop="articleBody">
@@ -484,48 +461,33 @@ awe
 f</p>
 
 
-
   </div>
 
-
   <div>
-
-
-
-<footer class="post-header">
-
 
     
 
     <br><br>
 
     <div class="w3-padding-24 w3-border-top w3-border-bottom w3-margin-bottom">
-      <a class="post-meta" href="/authors/">
-<a class="post-meta" href="/authors/jh.heo">
-<div class="w3-bar">
+      <a class="post-meta" href="/authors/jh.heo">
+  <div class="w3-bar">
 
-  
-    <img src="/files/images/default_profile.png" class="w3-bar-item w3-circle" style="width:70px">
-  
+    
+    <i class="fa fa-user fa-4x w3-bar-item w3-circle " aria-hidden="true"> </i>
+    
 
-  <div class="w3-bar-item">
-    <span class="w3-large">허주한</span><br>
-    <span class="post-meta"></span>
-    <span></span>
-  <i class="fa fa-user fa-4x w3-bar-item w3-circle " aria-hidden="true"> </i>
-  <div class="w3-bar-item">
-    <span class="w3-large w3-text-black">허주한</span><br>
-    <span class="w3-medium w3-text-black">하이브레인 인턴</span>
-  </div>
-</div>
-</a>
-
+    <div class="w3-bar-item">
+      <span class="w3-large w3-text-black">허주한</span><br>
+      <span class="w3-medium w3-text-black">하이브레인넷 인턴</span>
     </div>
-</footer>    
+  </div>
+</a>
+    </div>
     <div class="share-page w3-right w3-margin-bottom">
-    <a class="w3-button w3-text-white w3-round-large" style="background-color: #1da1f2" href="https://twitter.com/intent/tweet?text=merge test&url=http://blog.hibrainapps.net/2018/01/08/merge-test.html&via=&related=" rel="nofollow" target="_blank" title="Share on Twitter"><i class="fa fa-twitter" aria-hidden="true"><b>트윗</b> </i></a>
-    <a class="w3-button w3-text-white w3-round-large" style="background-color: #3b5998" href="https://facebook.com/sharer.php?u=http://blog.hibrainapps.net/2018/01/08/merge-test.html" rel="nofollow" target="_blank" title="Share on Facebook"><i class="fa fa-facebook" aria-hidden="true"> <b>공유하기</b></i></a>
-    <a class="w3-button w3-text-white w3-round-large" style="background-color: #dd4b39" href="https://plus.google.com/share?url=http://blog.hibrainapps.net/2018/01/08/merge-test.html" rel="nofollow" target="_blank" title="Share on Google+"><i class="fa fa-google-plus" aria-hidden="true"> <b>공유하기</b></i></a>
+    <a class="w3-button w3-tiny w3-padding-small w3-text-white w3-round" style="height : 20px; background-color: #1da1f2" href="https://twitter.com/intent/tweet?text=merge test&url=http://blog.hibrainapps.net/2018/01/08/merge-test.html&via=&related=" rel="nofollow" target="_blank" title="Share on Twitter"><i class="fa fa-twitter" aria-hidden="true"> <b>트윗</b> </i></a>
+    <a class="w3-button w3-tiny w3-padding-small w3-text-white w3-round" style="height : 20px; background-color: #dd4b39" href="https://plus.google.com/share?url=http://blog.hibrainapps.net/2018/01/08/merge-test.html" rel="nofollow" target="_blank" title="Share on Google+"><i class="fa fa-google-plus" aria-hidden="true"> <b>공유하기</b></i></a>
+    <div class="fb-like" data-href="http://blog.hibrainapps.net" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
 </div>
 
 
@@ -540,11 +502,9 @@ f</p>
 
 
   
-
 
 
 </article>
-
       </div>
     </main>
 
