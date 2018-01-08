@@ -1,4 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://blog.hibrainapps.net/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.hibrainapps.net/" rel="alternate" type="text/html" /><updated>2018-01-08T01:42:30+00:00</updated><id>http://blog.hibrainapps.net/</id><title type="html">하이브레인넷 부설연구소</title><subtitle></subtitle><entry><title type="html">Java design Pattern -Interpreter Pattern</title><link href="http://blog.hibrainapps.net/2017/12/29/yl.jung.html" rel="alternate" type="text/html" title="Java design Pattern -Interpreter Pattern" /><published>2017-12-29T00:00:00+00:00</published><updated>2017-12-29T00:00:00+00:00</updated><id>http://blog.hibrainapps.net/2017/12/29/yl.jung</id><content type="html" xml:base="http://blog.hibrainapps.net/2017/12/29/yl.jung.html">&lt;h1 id=&quot;1-연구노트&quot;&gt;1. 연구노트&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://blog.hibrainapps.net/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.hibrainapps.net/" rel="alternate" type="text/html" /><updated>2018-01-08T01:56:51+00:00</updated><id>http://blog.hibrainapps.net/</id><title type="html">하이브레인넷 부설연구소</title><subtitle></subtitle><entry><title type="html">merge test</title><link href="http://blog.hibrainapps.net/2018/01/08/merge-test.html" rel="alternate" type="text/html" title="merge test" /><published>2018-01-08T00:11:11+00:00</published><updated>2018-01-08T00:11:11+00:00</updated><id>http://blog.hibrainapps.net/2018/01/08/merge-test</id><content type="html" xml:base="http://blog.hibrainapps.net/2018/01/08/merge-test.html">&lt;p&gt;aoiehfaiehwfioawe
+faoiefhaef
+a
+f
+aef
+a
+wef
+aw
+ef
+awe
+fa
+wef
+awe
+f&lt;/p&gt;</content><author><name>jh.heo</name></author><summary type="html">aoiehfaiehwfioawe faoiefhaef a f aef a wef aw ef awe fa wef awe f</summary></entry><entry><title type="html">Java design Pattern -Interpreter Pattern</title><link href="http://blog.hibrainapps.net/2017/12/29/yl.jung.html" rel="alternate" type="text/html" title="Java design Pattern -Interpreter Pattern" /><published>2017-12-29T00:00:00+00:00</published><updated>2017-12-29T00:00:00+00:00</updated><id>http://blog.hibrainapps.net/2017/12/29/yl.jung</id><content type="html" xml:base="http://blog.hibrainapps.net/2017/12/29/yl.jung.html">&lt;h1 id=&quot;1-연구노트&quot;&gt;1. 연구노트&lt;/h1&gt;
 
 &lt;h2 id=&quot;1-1-interpreter-pattern&quot;&gt;1-1. Interpreter Pattern&lt;/h2&gt;
 
@@ -2652,155 +2665,4 @@ Fruits.accept(visitor)가 실행되고 호출한 Visitor 클래스 내의 visit(
 
 &lt;h1 id=&quot;참고자료&quot;&gt;참고자료&lt;/h1&gt;
 &lt;p&gt;Java 언어로 배우는 디자인 패턴, Yuki Hiroshi ,2001
-http://techbard.tistory.com/2869&lt;/p&gt;</content><author><name>sm.woo</name></author><category term="연구노트" /><category term="인턴십" /><summary type="html">방문자 패턴(Visitor Pattern)이란? Visitor는 사전적인 의미로 어떤 사람이나 장소를 찾아오는 사람 이라는 의미를 가지고 있다. 방문자 패턴에서는 데이터 구조와 처리를 분리한다. 데이터 구조 안을 돌아다니는 주체인 방문자 를 나타내는 클래스를 준비해서 그 클래스에게 처리를 맡긴다. 새로운 처리를 추가하고 싶을 땐 새로운 방문자 를 만들고 데이터 구조는 문들 두드리는 방문자 를 받아들이면 된다.</summary></entry><entry><title type="html">JAVA Design Pattern -Facade Pattern</title><link href="http://blog.hibrainapps.net/2017/12/26/yl.jung.html" rel="alternate" type="text/html" title="JAVA Design Pattern -Facade Pattern" /><published>2017-12-26T00:00:00+00:00</published><updated>2017-12-26T00:00:00+00:00</updated><id>http://blog.hibrainapps.net/2017/12/26/yl.jung</id><content type="html" xml:base="http://blog.hibrainapps.net/2017/12/26/yl.jung.html">&lt;h1 id=&quot;1-연구노트&quot;&gt;1. 연구노트&lt;/h1&gt;
-
-&lt;h2 id=&quot;1-1-facade-pattern&quot;&gt;1-1. Facade Pattern&lt;/h2&gt;
-
-&lt;p&gt;Facade의 뜻은 정면, 표면.&lt;/p&gt;
-
-&lt;p&gt;서브시스템의 일련의 인터페이스에 대한 통합된 인터페이스를 제공.&lt;/p&gt;
-
-&lt;p&gt;Facade에서 고수준 인터페이스를 정의하기 때문에 서브시스템을 쉽게 사용.&lt;/p&gt;
-
-&lt;p&gt;다른 패턴과 달리 추상화같은게 필요없어 단순한 편.&lt;/p&gt;
-
-&lt;p&gt;클라이언트와 서브시스템간의 의존성을 줄일 수 있음.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;*Facade Pattern 구조&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://res.cloudinary.com/degxeqfok/image/upload/v1514263936/fvl4re53ognhkdbtk4ka.jpg&quot; alt=&quot;1&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;-Facade : Package 1, 2, 3 및 그림에 표시하지 않았지만 그 밖의 응용프로그램 코드와 상호 동작.&lt;/p&gt;
-
-&lt;p&gt;-Package : 소프트웨어 라이브러리/API 집합. Facade 클래스를 통해 접근.&lt;/p&gt;
-
-&lt;p&gt;-Client : Package 내의 리소스들을 접근하기 위해 Facade 클래스를 쓰는 객체.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;*Facade Pattern 예제&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://res.cloudinary.com/degxeqfok/image/upload/v1514268314/sebzc5e5pxkhk6j6hwi1.jpg&quot; alt=&quot;2&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;-컴퓨터에 관련된 서브시스템들의 동작을 Facade패턴으로 구현.&lt;/p&gt;
-
-&lt;p&gt;-컴퓨터에서 시작버튼을 눌렀을 때, CPU, Memory, HardDrive에서 순차적으로 일어나는 일들을 구현.&lt;/p&gt;
-
-&lt;p&gt;-Computer(Facade) :  CPU, Memory, HardDrive와 상호동작. 각각의 클래스가 언제 어떤 일을 수행할지 정의.&lt;/p&gt;
-
-&lt;p&gt;-CPU, Memory, HardDrive(Package) : 파트별로 어떤 동작을 할지 구현. Facade클래스를 통해 Client가 접근가능.&lt;/p&gt;
-
-&lt;p&gt;-HBMain(Client) : 사용자는 컴퓨터를 시작한다는 명령을 내려 Package를 사용하는 객체.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;*Facade Pattern의 장점&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;인터페이스를 간단하게 바꿔줌.&lt;/li&gt;
-  &lt;li&gt;클라이언트 시스템과 서브시스템을 분리가능.&lt;/li&gt;
-  &lt;li&gt;인터페이스가 변경되었을 때 클라이언트 변경없이 Facade만 변경하여 적용.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;1-2-facade-pattern-소스코드&quot;&gt;1-2. Facade Pattern 소스코드&lt;/h2&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;-Computer.java : 컴퓨터가 특정 동작을 할 때 cpu, memory등을 이용한 작업과정을 정의.&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;io&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;hibrain&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;tutorial&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;designpattern&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;facade&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;subparts&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Computer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BOOT_ADDRESS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BOOT_SECTOR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SECTOR_SIZE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;startComputer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;CPU&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cpu&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CPU&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;Memory&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;memory&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Memory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;HardDrive&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hardDrive&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HardDrive&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-
-        &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;컴퓨터 시작&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;cpu&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;freeze&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;memory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;load&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BOOT_ADDRESS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hardDrive&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BOOT_SECTOR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SECTOR_SIZE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;cpu&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;jump&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BOOT_ADDRESS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;cpu&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;execute&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-  
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;-CPU.java, Memory.java, HardDrive.java : 컴퓨터 동작에 부품들.&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;io&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;hibrain&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;tutorial&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;designpattern&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;facade&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;subparts&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;CPU&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;  
-  
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;freeze&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt; 
-  
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;execute&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt; 
-  
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;jump&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;position&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt;
-  
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Memory&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;  
-  
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;load&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;boot_address&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;byte&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt;  
-  
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;HardDrive&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;  
-  
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;byte&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;boot_sector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sector_size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;      
-        &lt;span class=&quot;kt&quot;&gt;byte&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;byte&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;  
-  
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;-HBNMAin.java : 작업을 요청하는 Client.&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;io&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;hibrain&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;tutorial&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;designpattern&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;facade&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;io.hibrain.tutorial.designpattern.facade.subparts.Computer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;HBNMain&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;  
-  
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;Computer&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;computer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Computer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;computer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;startComputer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;  
-  
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;-결과값&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;err&quot;&gt;컴퓨터&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;시작&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;2-참고자료&quot;&gt;2. 참고자료&lt;/h1&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;http://showmiso.tistory.com/110, 개인블로그, accessed 2017-12-26&lt;/li&gt;
-  &lt;li&gt;https://ko.wikipedia.org/wiki/%ED%8D%BC%EC%82%AC%EB%93%9C_%ED%8C%A8%ED%84%B4, 위키백과, accessed 2017-12-26&lt;/li&gt;
-  &lt;li&gt;https://lalwr.blogspot.kr/2016/03/adapter-vs-facade-vs-decorator.html, 개인블로그, accessed 2017-12-26&lt;/li&gt;
-  &lt;li&gt;https://sourcemaking.com/design_patterns/facade, source making, accessed 2017-12-26&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>yl.jung</name></author><summary type="html">1. 연구노트</summary></entry></feed>
+http://techbard.tistory.com/2869&lt;/p&gt;</content><author><name>sm.woo</name></author><category term="연구노트" /><category term="인턴십" /><summary type="html">방문자 패턴(Visitor Pattern)이란? Visitor는 사전적인 의미로 어떤 사람이나 장소를 찾아오는 사람 이라는 의미를 가지고 있다. 방문자 패턴에서는 데이터 구조와 처리를 분리한다. 데이터 구조 안을 돌아다니는 주체인 방문자 를 나타내는 클래스를 준비해서 그 클래스에게 처리를 맡긴다. 새로운 처리를 추가하고 싶을 땐 새로운 방문자 를 만들고 데이터 구조는 문들 두드리는 방문자 를 받아들이면 된다.</summary></entry></feed>
