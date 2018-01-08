@@ -41,7 +41,7 @@
 <paginate>
 <div class="pagination w3-bar w3-text-grey">
   {% if paginator.page != 1 %}
-    <a class="w3-button" href="{{ /site.baseurl }}/{{ paginator.first_page_path }}">&#60;&#60;</a>
+    <a class="w3-button" href="{{ site.baseurl }}{{ paginator.first_page_path }}">&#60;&#60;</a>
   {% else %}
     <span class="previous w3-button">&#60;&#60;</span>
   {% endif %}
