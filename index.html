@@ -83,16 +83,16 @@ getTypeValue();
     <header class="site-header" role="banner">
 
   <div class="w3-top">
-    <div class="w3-bar w3-white w3-card " style="letter-spacing:4px;">
+    <div class="w3-bar w3-white w3-card" style="letter-spacing:4px;">
     
     
-    <a class="w3-bar-item site-title w3-mobile" href="/">하이브레인넷 부설연구소</a>
+    <a class="w3-bar-item site-title" href="/">하이브레인넷 부설연구소</a>
 
-	<!--search bar and button-->
-	<form class="w3-bar-item w3-right w3-mobile" action="http://blog.hibrainapps.net/result/">
-		 <input class="w3-input w3-bar-item w3-xlarge" id="q" name="q" type="text" placeholder="검색">
-		  <input type="hidden" name="filter" value="0" />
-         <button class="w3-button w3-xlarge w3-bar-item"><i class="fa fa-search" aria-hidden="true"></i></button>
+	<!--search bar and button--!>
+	<form action="http://blog.hibrainapps.net/result/">
+		 <input id="q" name="q" type="text" placeholser="Search...">
+		<input type="hidden" name="filter" value="0" />
+         <button>search</button>		
 	</form>
 
     
@@ -118,7 +118,18 @@ getTypeValue();
         
 
           
-          <a class="page-link w3-wide" href="/index/">홈</a>
+          <a class="page-link w3-wide" href="/home/">홈</a>
+          
+          
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+          
+          <a class="page-link w3-wide" href="/about/">소개</a>
           
           
           <!--
@@ -168,6 +179,8 @@ getTypeValue();
         
         
 
+          
+          <a class="page-link w3-wide" href="/result/">검색결과</a>
           
           
           <!--
@@ -415,7 +428,7 @@ getTypeValue();
 
 <img class="w3-image w3-margin-top w3-margin-bottom" src="https://farm5.staticflickr.com/4732/39212074151_fa3a74e927_b.jpg" alt="Architecture" width="100%">
 <div class="w3-display-middle w3-margin-top w3-center">
-  <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>Hibrain.net</b></span> <span class=" w3-text-light-grey">Tech Blog</span></h1>
+  <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>Hibrain</b></span> <span class=" w3-text-light-grey">Tech Blog</span></h1>
 </div>
   
 </header>
@@ -424,12 +437,12 @@ getTypeValue();
       <div class="wrapper">
         <div class="home">
 
-  <ul class="post-content w3-ul ">
+  <ul class="post-content w3-ul">
 
     
       <li>
         <div class="w3-row">
-        <div class="w3-col s12 m8 l8 w3-margin-right w3-left">
+        <div class="w3-col s8 m8 l8 w3-margin-right">
           
 
           
@@ -437,38 +450,34 @@ getTypeValue();
           <h1>
             <b><a class="site-title w3-bar-item" href="/2017/12/29/yl.jung.html">Java design Pattern -Interpreter Pattern</a></b>
           </h1>
-
-        </div>
-          <div class="w3-col s3 m3 l3 w3-margin-top">
-            <p class="">
-              <img src="http://res.cloudinary.com/degxeqfok/image/upload/v1514509902/bhvams3xcehwcz5xvyjm.png" style="max-height: 160px; max-width: 200px;" align="center" />
-              </p>
-          </div>
-
-          <div class="w3-col s8 m8 l7">
-            <p class=" w3-text-gray"><a class="post-describe" href="/2017/12/29/yl.jung.html">1. 연구노트 1-1. Interpreter Pattern 문장을 해석할 때 사용하는 패턴 문법규칙을 클래스로 표현한 구조 쉘 커맨드, 수식계산, 도메일 기반 언어 해석(SQL, XML, JSF)에 주로 쓰임...</a></p>
-
-          </div>
+          <p class=" w3-text-gray"><a class="post-describe" href="/2017/12/29/yl.jung.html">1. 연구노트 1-1. Interpreter Pattern 문장을 해석할 때 사용하는 패턴 문법규칙을 클래스로 표현한 구조 쉘 커맨드, 수식계산, 도메일 기반 언어 해석(SQL, XML, JSF)에 주로 쓰임 *Interpreter Pattern 구조 -Context Interpreter의...</a></p>
 
 
 
-          <div class="w3-col s12 m12 l12 w3-text-grey w3-small">
-            <span class="post-meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 2017.12.29</span>
+          <div class="w3-text-grey w3-small">
+            <span class="post-meta">2017.12.29</span> |
 
             
             <!--작성자 정보-->
             <!--<a class="post-meta" href="/authors/yl.jung">posted by 정예린</a>-->
           </div>
+        </div>
+
 
         <!--포스트 썸네일-->
-
+        <div class="w3-rest w3-right w3-margin-top">
+          <p class="">
+            <img src="http://res.cloudinary.com/degxeqfok/image/upload/v1514509902/bhvams3xcehwcz5xvyjm.png" style="max-height: 160px; max-width: 200px;" align="center" />
+            </p>
         </div>
-        <br>
+        </div>
+
+
       </li>
     
       <li>
         <div class="w3-row">
-        <div class="w3-col s12 m8 l8 w3-margin-right w3-left">
+        <div class="w3-col s8 m8 l8 w3-margin-right">
           
 
           
@@ -476,26 +485,15 @@ getTypeValue();
           <h1>
             <b><a class="site-title w3-bar-item" href="/command">command pattern</a></b>
           </h1>
-
-        </div>
-          <div class="w3-col s3 m3 l3 w3-margin-top">
-            <p class="">
-              <img src="http://res.cloudinary.com/dxovdseb3/image/upload/v1514448784/command2_i86s1a.png" style="max-height: 160px; max-width: 200px;" align="center" />
-              </p>
-          </div>
-
-          <div class="w3-col s8 m8 l7">
-            <p class=" w3-text-gray"><a class="post-describe" href="/command">연구내용 Command 패턴-명령을 클래스로 만든다 클래스가 일을 수행할 때 자신의 클래스나 다른 클래스의 메소드를 호출한다. 메소드를 호출한 결과는 객체 상태로 반영이 되지만, 일을 수행한 이력은...</a></p>
-
-          </div>
+          <p class=" w3-text-gray"><a class="post-describe" href="/command">연구내용 Command 패턴-명령을 클래스로 만든다 클래스가 일을 수행할 때 자신의 클래스나 다른 클래스의 메소드를 호출한다. 메소드를 호출한 결과는 객체 상태로 반영이 되지만, 일을 수행한 이력은 어디에도 남지 않는다. 만약 실행하고...</a></p>
 
 
 
-          <div class="w3-col s12 m12 l12 w3-text-grey w3-small">
-            <span class="post-meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 2017.12.28</span>
+          <div class="w3-text-grey w3-small">
+            <span class="post-meta">2017.12.28</span> |
 
             
-            <span class="w3-section"> |
+            <span class="w3-section">
           
             
           <a href="/tags/연구노트"><code class=""><nobr>연구노트</nobr></code>&nbsp;</a>
@@ -511,16 +509,23 @@ getTypeValue();
             <!--작성자 정보-->
             <!--<a class="post-meta" href="/authors/gh.park">posted by 박가혜</a>-->
           </div>
+        </div>
+
 
         <!--포스트 썸네일-->
-
+        <div class="w3-rest w3-right w3-margin-top">
+          <p class="">
+            <img src="http://res.cloudinary.com/dxovdseb3/image/upload/v1514448784/command2_i86s1a.png" style="max-height: 160px; max-width: 200px;" align="center" />
+            </p>
         </div>
-        <br>
+        </div>
+
+
       </li>
     
       <li>
         <div class="w3-row">
-        <div class="w3-col s12 m8 l8 w3-margin-right w3-left">
+        <div class="w3-col s8 m8 l8 w3-margin-right">
           
 
           
@@ -528,38 +533,34 @@ getTypeValue();
           <h1>
             <b><a class="site-title w3-bar-item" href="/2017/12/28/yl.jung.html">Java design Pattern -State Pattern</a></b>
           </h1>
-
-        </div>
-          <div class="w3-col s3 m3 l3 w3-margin-top">
-            <p class="">
-              <img src="http://res.cloudinary.com/degxeqfok/image/upload/v1514428814/wyptlmj3znowbq66hrds.jpg" style="max-height: 160px; max-width: 200px;" align="center" />
-              </p>
-          </div>
-
-          <div class="w3-col s8 m8 l7">
-            <p class=" w3-text-gray"><a class="post-describe" href="/2017/12/28/yl.jung.html">1. 연구노트 1-1. State Pattern 상태를 위한 객체 패턴. 현재 상태 값에 따라 다른 동작을 보여야 하는 구현아 사용. 어떤 액션이 실행되고 난 후 상태가...</a></p>
-
-          </div>
+          <p class=" w3-text-gray"><a class="post-describe" href="/2017/12/28/yl.jung.html">1. 연구노트 1-1. State Pattern 상태를 위한 객체 패턴. 현재 상태 값에 따라 다른 동작을 보여야 하는 구현아 사용. 어떤 액션이 실행되고 난 후 상태가 자동적으로 바뀌는 것을 구현. *State...</a></p>
 
 
 
-          <div class="w3-col s12 m12 l12 w3-text-grey w3-small">
-            <span class="post-meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 2017.12.28</span>
+          <div class="w3-text-grey w3-small">
+            <span class="post-meta">2017.12.28</span> |
 
             
             <!--작성자 정보-->
             <!--<a class="post-meta" href="/authors/yl.jung">posted by 정예린</a>-->
           </div>
+        </div>
+
 
         <!--포스트 썸네일-->
-
+        <div class="w3-rest w3-right w3-margin-top">
+          <p class="">
+            <img src="http://res.cloudinary.com/degxeqfok/image/upload/v1514428814/wyptlmj3znowbq66hrds.jpg" style="max-height: 160px; max-width: 200px;" align="center" />
+            </p>
         </div>
-        <br>
+        </div>
+
+
       </li>
     
       <li>
         <div class="w3-row">
-        <div class="w3-col s12 m8 l8 w3-margin-right w3-left">
+        <div class="w3-col s8 m8 l8 w3-margin-right">
           
 
           
@@ -567,26 +568,15 @@ getTypeValue();
           <h1>
             <b><a class="site-title w3-bar-item" href="/flyweight-pattern">Flyweight Pattern</a></b>
           </h1>
-
-        </div>
-          <div class="w3-col s3 m3 l3 w3-margin-top">
-            <p class="">
-              <img src="https://image.ibb.co/i3sQuw/image.png" style="max-height: 160px; max-width: 200px;" align="center" />
-              </p>
-          </div>
-
-          <div class="w3-col s8 m8 l7">
-            <p class=" w3-text-gray"><a class="post-describe" href="/flyweight-pattern">1. 연구내용3 Flyweight Pattern 정의 플라이웨이트 패턴은 동일하거나 유사한 객체들이 데이터를 서로 공유하도록 하여 메모리 사용량을 최소화 하는 디자인 패턴이다. 보통 많은 객체들을 생성해야 할때...</a></p>
-
-          </div>
+          <p class=" w3-text-gray"><a class="post-describe" href="/flyweight-pattern">1. 연구내용 Flyweight Pattern 정의 플라이웨이트 패턴은 동일하거나 유사한 객체들이 데이터를 서로 공유하도록 하여 메모리 사용량을 최소화 하는 디자인 패턴이다. 보통 많은 객체들을 생성해야 할때 객체의 생성 및 관리를 담당하는...</a></p>
 
 
 
-          <div class="w3-col s12 m12 l12 w3-text-grey w3-small">
-            <span class="post-meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 2017.12.27</span>
+          <div class="w3-text-grey w3-small">
+            <span class="post-meta">2017.12.27</span> |
 
             
-            <span class="w3-section"> |
+            <span class="w3-section">
           
             
           <a href="/tags/연구노트"><code class=""><nobr>연구노트</nobr></code>&nbsp;</a>
@@ -599,16 +589,23 @@ getTypeValue();
             <!--작성자 정보-->
             <!--<a class="post-meta" href="/authors/jh.heo">posted by 허주한</a>-->
           </div>
+        </div>
+
 
         <!--포스트 썸네일-->
-
+        <div class="w3-rest w3-right w3-margin-top">
+          <p class="">
+            <img src="https://image.ibb.co/i3sQuw/image.png" style="max-height: 160px; max-width: 200px;" align="center" />
+            </p>
         </div>
-        <br>
+        </div>
+
+
       </li>
     
       <li>
         <div class="w3-row">
-        <div class="w3-col s12 m8 l8 w3-margin-right w3-left">
+        <div class="w3-col s8 m8 l8 w3-margin-right">
           
 
           
@@ -616,26 +613,15 @@ getTypeValue();
           <h1>
             <b><a class="site-title w3-bar-item" href="/Memento">Memento pattern</a></b>
           </h1>
-
-        </div>
-          <div class="w3-col s3 m3 l3 w3-margin-top">
-            <p class="">
-              <img src="http://res.cloudinary.com/dxovdseb3/image/upload/v1514362226/image2017-12-27_13-54-35_njaxjp.png" style="max-height: 160px; max-width: 200px;" align="center" />
-              </p>
-          </div>
-
-          <div class="w3-col s8 m8 l7">
-            <p class=" w3-text-gray"><a class="post-describe" href="/Memento">연구내용 Memento 패턴-상태를 보존한다 텍스트 에디터를 사용할 때, 실수로 삭제해도 undo라는 기능을 사용하면 삭제하기 전 상태로 텍스트를 복원할 수 있다. 또한 undo를 여러단계 실행해서 편집...</a></p>
-
-          </div>
+          <p class=" w3-text-gray"><a class="post-describe" href="/Memento">연구내용 Memento 패턴-상태를 보존한다 텍스트 에디터를 사용할 때, 실수로 삭제해도 undo라는 기능을 사용하면 삭제하기 전 상태로 텍스트를 복원할 수 있다. 또한 undo를 여러단계 실행해서 편집 작업이 점점 과거로 거슬러 올라가게...</a></p>
 
 
 
-          <div class="w3-col s12 m12 l12 w3-text-grey w3-small">
-            <span class="post-meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 2017.12.27</span>
+          <div class="w3-text-grey w3-small">
+            <span class="post-meta">2017.12.27</span> |
 
             
-            <span class="w3-section"> |
+            <span class="w3-section">
           
             
           <a href="/tags/연구노트"><code class=""><nobr>연구노트</nobr></code>&nbsp;</a>
@@ -651,11 +637,18 @@ getTypeValue();
             <!--작성자 정보-->
             <!--<a class="post-meta" href="/authors/gh.park">posted by 박가혜</a>-->
           </div>
+        </div>
+
 
         <!--포스트 썸네일-->
-
+        <div class="w3-rest w3-right w3-margin-top">
+          <p class="">
+            <img src="http://res.cloudinary.com/dxovdseb3/image/upload/v1514362226/image2017-12-27_13-54-35_njaxjp.png" style="max-height: 160px; max-width: 200px;" align="center" />
+            </p>
         </div>
-        <br>
+        </div>
+
+
       </li>
     
   </ul>

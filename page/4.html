@@ -83,16 +83,16 @@ getTypeValue();
     <header class="site-header" role="banner">
 
   <div class="w3-top">
-    <div class="w3-bar w3-white w3-card " style="letter-spacing:4px;">
+    <div class="w3-bar w3-white w3-card" style="letter-spacing:4px;">
     
     
-    <a class="w3-bar-item site-title w3-mobile" href="/">하이브레인넷 부설연구소</a>
+    <a class="w3-bar-item site-title" href="/">하이브레인넷 부설연구소</a>
 
-	<!--search bar and button-->
-	<form class="w3-bar-item w3-right w3-mobile" action="http://blog.hibrainapps.net/result/">
-		 <input class="w3-input w3-bar-item w3-xlarge" id="q" name="q" type="text" placeholder="검색">
-		  <input type="hidden" name="filter" value="0" />
-         <button class="w3-button w3-xlarge w3-bar-item"><i class="fa fa-search" aria-hidden="true"></i></button>
+	<!--search bar and button--!>
+	<form action="http://blog.hibrainapps.net/result/">
+		 <input id="q" name="q" type="text" placeholser="Search...">
+		<input type="hidden" name="filter" value="0" />
+         <button>search</button>		
 	</form>
 
     
@@ -118,7 +118,18 @@ getTypeValue();
         
 
           
-          <a class="page-link w3-wide" href="/index/">홈</a>
+          <a class="page-link w3-wide" href="/home/">홈</a>
+          
+          
+          <!--
+            my_page.autogen is populated by the pagination logic for all pages
+                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+          -->
+        
+        
+
+          
+          <a class="page-link w3-wide" href="/about/">소개</a>
           
           
           <!--
@@ -168,6 +179,8 @@ getTypeValue();
         
         
 
+          
+          <a class="page-link w3-wide" href="/result/">검색결과</a>
           
           
           <!--
@@ -419,12 +432,12 @@ getTypeValue();
       <div class="wrapper">
         <div class="home">
 
-  <ul class="post-content w3-ul ">
+  <ul class="post-content w3-ul">
 
     
       <li>
         <div class="w3-row">
-        <div class="w3-col s12 m8 l8 w3-margin-right w3-left">
+        <div class="w3-col s8 m8 l8 w3-margin-right">
           
 
           
@@ -432,26 +445,15 @@ getTypeValue();
           <h1>
             <b><a class="site-title w3-bar-item" href="/composite-pattern">Composite Pattern</a></b>
           </h1>
-
-        </div>
-          <div class="w3-col s3 m3 l3 w3-margin-top">
-            <p class="">
-              <img src="https://image.ibb.co/fDrAkR/image.png" style="max-height: 160px; max-width: 200px;" align="center" />
-              </p>
-          </div>
-
-          <div class="w3-col s8 m8 l7">
-            <p class=" w3-text-gray"><a class="post-describe" href="/composite-pattern">1. 연구내용 Composite Pattern 정의 위키백과에서는 Composite Pattern을 객체들의 관계를 트리 구조로 구성하여 부분 - 전체 계층을 표현하는 패턴, 사용자가 단일 객체와 복합 객체 모두...</a></p>
-
-          </div>
+          <p class=" w3-text-gray"><a class="post-describe" href="/composite-pattern">1. 연구내용 Composite Pattern 정의 위키백과에서는 Composite Pattern을 객체들의 관계를 트리 구조로 구성하여 부분 - 전체 계층을 표현하는 패턴, 사용자가 단일 객체와 복합 객체 모두 동일하고 다루도록 하는 패턴이라고 정의하고...</a></p>
 
 
 
-          <div class="w3-col s12 m12 l12 w3-text-grey w3-small">
-            <span class="post-meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 2017.12.21</span>
+          <div class="w3-text-grey w3-small">
+            <span class="post-meta">2017.12.21</span> |
 
             
-            <span class="w3-section"> |
+            <span class="w3-section">
           
             
           <a href="/tags/연구노트"><code class=""><nobr>연구노트</nobr></code>&nbsp;</a>
@@ -464,16 +466,23 @@ getTypeValue();
             <!--작성자 정보-->
             <!--<a class="post-meta" href="/authors/jh.heo">posted by 허주한</a>-->
           </div>
+        </div>
+
 
         <!--포스트 썸네일-->
-
+        <div class="w3-rest w3-right w3-margin-top">
+          <p class="">
+            <img src="https://image.ibb.co/fDrAkR/image.png" style="max-height: 160px; max-width: 200px;" align="center" />
+            </p>
         </div>
-        <br>
+        </div>
+
+
       </li>
     
       <li>
         <div class="w3-row">
-        <div class="w3-col s12 m8 l8 w3-margin-right w3-left">
+        <div class="w3-col s8 m8 l8 w3-margin-right">
           
 
           
@@ -481,38 +490,34 @@ getTypeValue();
           <h1>
             <b><a class="site-title w3-bar-item" href="/2017/12/21/yl.jung.html">JAVA Design Pattern -Strategy Pattern</a></b>
           </h1>
-
-        </div>
-          <div class="w3-col s3 m3 l3 w3-margin-top">
-            <p class="">
-              <img src="http://res.cloudinary.com/degxeqfok/image/upload/v1513821832/gocthxbdjq0kk2jgk6zm.png" style="max-height: 160px; max-width: 200px;" align="center" />
-              </p>
-          </div>
-
-          <div class="w3-col s8 m8 l7">
-            <p class=" w3-text-gray"><a class="post-describe" href="/2017/12/21/yl.jung.html">1. 연구노트 1-1. Strategy Pattern 알고리즘을 정의하고 캡슐화하여 교환해서 사용할 수 있도록 만듦. 알고리즘을 사용하는 클라이언트와 독립적으로 알고리즘 변경 가능. *Strategy Pattern 구조 -Strategy :...</a></p>
-
-          </div>
+          <p class=" w3-text-gray"><a class="post-describe" href="/2017/12/21/yl.jung.html">1. 연구노트 1-1. Strategy Pattern 알고리즘을 정의하고 캡슐화하여 교환해서 사용할 수 있도록 만듦. 알고리즘을 사용하는 클라이언트와 독립적으로 알고리즘 변경 가능. *Strategy Pattern 구조 -Strategy : 전략을 이용하기 위한 인터페이스. -ConcreteStrategy(ImplementationOne,...</a></p>
 
 
 
-          <div class="w3-col s12 m12 l12 w3-text-grey w3-small">
-            <span class="post-meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 2017.12.21</span>
+          <div class="w3-text-grey w3-small">
+            <span class="post-meta">2017.12.21</span> |
 
             
             <!--작성자 정보-->
             <!--<a class="post-meta" href="/authors/yl.jung">posted by 정예린</a>-->
           </div>
+        </div>
+
 
         <!--포스트 썸네일-->
-
+        <div class="w3-rest w3-right w3-margin-top">
+          <p class="">
+            <img src="http://res.cloudinary.com/degxeqfok/image/upload/v1513821832/gocthxbdjq0kk2jgk6zm.png" style="max-height: 160px; max-width: 200px;" align="center" />
+            </p>
         </div>
-        <br>
+        </div>
+
+
       </li>
     
       <li>
         <div class="w3-row">
-        <div class="w3-col s12 m8 l8 w3-margin-right w3-left">
+        <div class="w3-col s8 m8 l8 w3-margin-right">
           
 
           
@@ -520,26 +525,15 @@ getTypeValue();
           <h1>
             <b><a class="site-title w3-bar-item" href="/Jekyll-Hybe-to-Medium">Jekyll &amp; Hybe to Medium</a></b>
           </h1>
-
-        </div>
-          <div class="w3-col s3 m3 l3 w3-margin-top">
-            <p class="">
-              <img src="https://github.com/xdamman/mediumexporter" style="max-height: 160px; max-width: 200px;" align="center" />
-              </p>
-          </div>
-
-          <div class="w3-col s8 m8 l7">
-            <p class=" w3-text-gray"><a class="post-describe" href="/Jekyll-Hybe-to-Medium">연구내용 Medium blog 마크다운형태로 저장하기 Node.js의 medium exporter패키지를 이용하므로, node.js가 설치되어있어야 함 medium exporter패키지 설치 Medium Exporter github URL npm install -g mediumexporter yaml frontmatter를...</a></p>
-
-          </div>
+          <p class=" w3-text-gray"><a class="post-describe" href="/Jekyll-Hybe-to-Medium">연구내용 Medium blog 마크다운형태로 저장하기 Node.js의 medium exporter패키지를 이용하므로, node.js가 설치되어있어야 함 medium exporter패키지 설치 Medium Exporter github URL npm install -g mediumexporter yaml frontmatter를 자동으로 추가하기 위해, /mediumexporter/index.js 파일을...</a></p>
 
 
 
-          <div class="w3-col s12 m12 l12 w3-text-grey w3-small">
-            <span class="post-meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 2017.12.20</span>
+          <div class="w3-text-grey w3-small">
+            <span class="post-meta">2017.12.20</span> |
 
             
-            <span class="w3-section"> |
+            <span class="w3-section">
           
             
           <a href="/tags/연구노트"><code class=""><nobr>연구노트</nobr></code>&nbsp;</a>
@@ -555,16 +549,23 @@ getTypeValue();
             <!--작성자 정보-->
             <!--<a class="post-meta" href="/authors/gh.park">posted by 박가혜</a>-->
           </div>
+        </div>
+
 
         <!--포스트 썸네일-->
-
+        <div class="w3-rest w3-right w3-margin-top">
+          <p class="">
+            <img src="https://github.com/xdamman/mediumexporter" style="max-height: 160px; max-width: 200px;" align="center" />
+            </p>
         </div>
-        <br>
+        </div>
+
+
       </li>
     
       <li>
         <div class="w3-row">
-        <div class="w3-col s12 m8 l8 w3-margin-right w3-left">
+        <div class="w3-col s8 m8 l8 w3-margin-right">
           
 
           
@@ -572,38 +573,34 @@ getTypeValue();
           <h1>
             <b><a class="site-title w3-bar-item" href="/2017/12/20/%EC%9A%B0%EC%84%B1%EB%AF%BC.html">프로토타입 패턴</a></b>
           </h1>
-
-        </div>
-          <div class="w3-col s3 m3 l3 w3-margin-top">
-            <p class="">
-              <img src="https://farm5.staticflickr.com/4732/24348417007_df94666425_b.jpg" style="max-height: 160px; max-width: 200px;" align="center" />
-              </p>
-          </div>
-
-          <div class="w3-col s8 m8 l7">
-            <p class=" w3-text-gray"><a class="post-describe" href="/2017/12/20/%EC%9A%B0%EC%84%B1%EB%AF%BC.html">연구내용 프로토타입이란? 프로토타입(Prototype)은 사전적인 의미로 대량 생산에 앞서 미리 제작해보는 원형 또는 시제품으로, 제작물의 모형이라 할 수 있다. 소프트웨어 개발에서는 정식 절차에 따라 완전한 소프트웨어를...</a></p>
-
-          </div>
+          <p class=" w3-text-gray"><a class="post-describe" href="/2017/12/20/%EC%9A%B0%EC%84%B1%EB%AF%BC.html">연구내용 프로토타입이란? 프로토타입(Prototype)은 사전적인 의미로 대량 생산에 앞서 미리 제작해보는 원형 또는 시제품으로, 제작물의 모형이라 할 수 있다. 소프트웨어 개발에서는 정식 절차에 따라 완전한 소프트웨어를 만들기 전에 사용자의 요구를 받아...</a></p>
 
 
 
-          <div class="w3-col s12 m12 l12 w3-text-grey w3-small">
-            <span class="post-meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 2017.12.20</span>
+          <div class="w3-text-grey w3-small">
+            <span class="post-meta">2017.12.20</span> |
 
             
             <!--작성자 정보-->
             <!--<a class="post-meta" href="/authors/sm.woo">posted by 우성민</a>-->
           </div>
+        </div>
+
 
         <!--포스트 썸네일-->
-
+        <div class="w3-rest w3-right w3-margin-top">
+          <p class="">
+            <img src="https://farm5.staticflickr.com/4732/24348417007_df94666425_b.jpg" style="max-height: 160px; max-width: 200px;" align="center" />
+            </p>
         </div>
-        <br>
+        </div>
+
+
       </li>
     
       <li>
         <div class="w3-row">
-        <div class="w3-col s12 m8 l8 w3-margin-right w3-left">
+        <div class="w3-col s8 m8 l8 w3-margin-right">
           
 
           
@@ -611,33 +608,29 @@ getTypeValue();
           <h1>
             <b><a class="site-title w3-bar-item" href="/2017/12/20/yl.jung.html">Cloudinary API</a></b>
           </h1>
-
-        </div>
-          <div class="w3-col s3 m3 l3 w3-margin-top">
-            <p class="">
-              <img src="http://res.cloudinary.com/degxeqfok/image/upload/v1513749352/mb6cqv2ntfmqh2c3n2ph.png" style="max-height: 160px; max-width: 200px;" align="center" />
-              </p>
-          </div>
-
-          <div class="w3-col s8 m8 l7">
-            <p class=" w3-text-gray"><a class="post-describe" href="/2017/12/20/yl.jung.html">1. 연구노트 이미지를 클라우드에 올려 url을 가져오는 이미지 호스팅 작업을 진행 사용자가 원하는 이미지 파일을 올리면 호스팅 된 이미지 url을 반환 Cloudinary 클라우드와 ruby언어를 사용하여...</a></p>
-
-          </div>
+          <p class=" w3-text-gray"><a class="post-describe" href="/2017/12/20/yl.jung.html">1. 연구노트 이미지를 클라우드에 올려 url을 가져오는 이미지 호스팅 작업을 진행 사용자가 원하는 이미지 파일을 올리면 호스팅 된 이미지 url을 반환 Cloudinary 클라우드와 ruby언어를 사용하여 구축 1-1. Cloudinary API 클라우드...</a></p>
 
 
 
-          <div class="w3-col s12 m12 l12 w3-text-grey w3-small">
-            <span class="post-meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 2017.12.20</span>
+          <div class="w3-text-grey w3-small">
+            <span class="post-meta">2017.12.20</span> |
 
             
             <!--작성자 정보-->
             <!--<a class="post-meta" href="/authors/yl.jung">posted by 정예린</a>-->
           </div>
+        </div>
+
 
         <!--포스트 썸네일-->
-
+        <div class="w3-rest w3-right w3-margin-top">
+          <p class="">
+            <img src="http://res.cloudinary.com/degxeqfok/image/upload/v1513749352/mb6cqv2ntfmqh2c3n2ph.png" style="max-height: 160px; max-width: 200px;" align="center" />
+            </p>
         </div>
-        <br>
+        </div>
+
+
       </li>
     
   </ul>
