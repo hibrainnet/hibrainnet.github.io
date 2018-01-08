@@ -1,1 +1,197 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://blog.hibrainapps.net/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.hibrainapps.net/" rel="alternate" type="text/html" /><updated>2018-01-08T07:52:27+00:00</updated><id>http://blog.hibrainapps.net/</id><title type="html">하이브레인넷 부설연구소</title><subtitle></subtitle></feed>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://blog.hibrainapps.net/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.hibrainapps.net/" rel="alternate" type="text/html" /><updated>2018-01-08T14:37:17+00:00</updated><id>http://blog.hibrainapps.net/</id><title type="html">하이브레인넷 부설연구소</title><subtitle></subtitle><entry><title type="html">[jekyll 블로그] Google CSE 적용하기</title><link href="http://blog.hibrainapps.net/2018/01/08/file.html" rel="alternate" type="text/html" title="[jekyll 블로그] Google CSE 적용하기" /><published>2018-01-08T00:00:00+00:00</published><updated>2018-01-08T00:00:00+00:00</updated><id>http://blog.hibrainapps.net/2018/01/08/file</id><content type="html" xml:base="http://blog.hibrainapps.net/2018/01/08/file.html">&lt;h1 id=&quot;google-cse&quot;&gt;Google CSE&lt;/h1&gt;
+
+&lt;p&gt;Google CSE는 구글 맞춤검색 엔진의 약자이다. 실제 우리가 사용하고 있는 구글 검색 기능에서 사용자가 원하는 사이트만 검색하도록 지정할 수 있는 기능이다. 이를 우리 블로그에 적용하여 블로그 자료 검색기능을 적용하고자 한다. 설정 방법으로는 웹에서 제공하는 Control Panel과 XML파일을 만드는 두 가지 방법이 있다. 기본적으로 제공하는 설정을 통해 디자인, 부가적인 검색기능(자동 완성, 동의어 등)도 사용이 가능하다. 좀 더 확장된 부가기능은 통계와 로그가 있는데 Google 애널리틱스와 연동해서 사용이 가능하다. Google CSE를 사용하기 위해서는 적용할 사이트 URL과 구글 계정이 필요하다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;google-cse-만들기&quot;&gt;Google CSE 만들기&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://res.cloudinary.com/degxeqfok/image/upload/v1515378810/hw5z2ltbtu366je0xwvq.png&quot; alt=&quot;Screen Shot 2018-01-08 at 11.28.32 AM&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Google 계정으로 로그인 한 후 &lt;a href=&quot;https://cse.google.com/create/new&quot;&gt;Control Panel&lt;/a&gt;로 접속한다.&lt;/li&gt;
+  &lt;li&gt;검색할 사이트(Sites to search)에 검색 할 사이트 URL을 입력한다. &lt;a href=&quot;https://support.google.com/customsearch/answer/71826&quot;&gt;URL 패턴 페이지&lt;/a&gt;를 참고하여 URL을 등록한다.&lt;/li&gt;
+  &lt;li&gt;언어(language)는 검색 엔진에서 사용할 언어를 선택한다. 버튼이나 기타 디자인 요소들이 선택한 언어로 표시된다.&lt;/li&gt;
+  &lt;li&gt;검색 엔진 이름(name)은 Control Panel에서 사용자에게 보이는 검색엔진 이름을 입력한다.&lt;/li&gt;
+  &lt;li&gt;만들기(Ctrate) 버튼을 클릭하면 새 검색엔진이 만들어진다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;*Google CSE 사용&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://res.cloudinary.com/degxeqfok/image/upload/v1515379960/nuspb13xfnhwfdklwz9d.png&quot; alt=&quot;Screen Shot 2018-01-08 at 11.49.49 AM&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;URL을 이용하여 사용자와 공유
+    &lt;ul&gt;
+      &lt;li&gt;생성한 검색 엔진의 Control Panel에서 &lt;strong&gt;설정 -&amp;gt; 기본사항 -&amp;gt; 세부정보 -&amp;gt; 공개 URL&lt;/strong&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;검색 기능을 사용 할 웹사이트에 검색박스를 import&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;검색박스-import&quot;&gt;검색박스 import&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Control Panel에서 import할 검색 엔진을 선택한다.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;설정 -&amp;gt; 기본사항 -&amp;gt; 코드 가져오기&lt;/strong&gt; 에서 코드를 복사한다.&lt;/li&gt;
+  &lt;li&gt;검색박스가 노출되었으면 하는 페이지에(HTML파일) 해당 코드를 붙여넣기 한다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;*디자인에 따른 검색박스 코드&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Google CSE는 검색박스와 결과 페이지 디자인을 선택하여 사용할 수 있다. 제일 처음 검색엔진을 생성하면 기본적으로 오버레이 디자인으로 설정되어 있다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;오버레이 디자인&lt;/p&gt;
+
+    &lt;p&gt;검색박스에 검색어를 입력하면 modal창으로 결과를 보여주는 디자인&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;cx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'YOUR_ENGINE_ID'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;gcse&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;createElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'script'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;gcse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'text/javascript'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;gcse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;gcse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'https://cse.google.com/cse.js?cx='&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;cx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getElementsByTagName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'script'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parentNode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;insertBefore&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;gcse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;})();&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/script&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;gcse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;search&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/gcse:search&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;두 페이지 디자인&lt;/p&gt;
+
+    &lt;p&gt;검색박스에 검색어를 입력하면 새 창으로 결과를 보여주는 디자인&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;resultUrl=&quot;&quot;&lt;/code&gt;을 이용하여 결과값을 보여줄 URL을 설정 가능&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;cx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'YOUR_ENGINE_ID'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;gcse&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;createElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'script'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;gcse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'text/javascript'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;gcse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;gcse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'https://cse.google.com/cse.js?cx='&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;cx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getElementsByTagName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'script'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parentNode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;insertBefore&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;gcse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;})();&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/script&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;gcse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;searchbox&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;only&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;resultsUrl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;YOUR_RESULTS_PAGE_URL&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/gcse:searchbox-only&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;위의 두 디자인 외에도 전체 화면, 두 열, 간단히, Google에서 호스팅 등의 다양한 디자인이 존재한다. 사용자가 구축하는 블로그의 특성에 맞게 원하는 디자인을 적용하여 코드를 사용한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;##검색박스 Customising&lt;/p&gt;
+
+&lt;p&gt;Google CSE에서 사용하는 검색박스와 결과 페이지에 대한 디자인은 Control Panel을 이용하여 수정이 가능하다. 하지만, 실제 블로그를 운영하다보면 HTML코드를 이용하여 검색박스를 디자인 하고 싶은 경우가 있다. 해당 경우에 ‘검색 결과만’ 디자인을 이용하여 간단하게 구현이 가능하다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;생성한 검색엔진에서 디자인을 ‘검색결과 만’으로 설정하면 아래와 같은 부가적인 설정이 가능하다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://res.cloudinary.com/degxeqfok/image/upload/v1515389717/ojoluzmnhf8zsu25nxqp.png&quot; alt=&quot;Screen Shot 2018-01-08 at 2.33.55 PM&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;검색결과 코드 가져오기 페이지에서 검색결과 세부정보를 클릭하면 검색어 매개변수 이름을 설정 할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;기본 값은 q이며 사용자가 원하는 값을 지정 가능하다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;웹 상에서 설정이 끝난 후 HTML파일을 수정한다.&lt;/p&gt;
+
+&lt;p&gt;이 때 사용자는&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;검색박스를 위치 시킬 HTML파일&lt;/li&gt;
+  &lt;li&gt;결과를 출력 할 HTML파일  두 개의 파일에 대해서 코드를 작성 해야 한다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;*검색박스&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;검색박스에 대한 모든 코드는 자유롭다. 하지만  &lt;code class=&quot;highlighter-rouge&quot;&gt;action=&quot;결과 페이지 URL&quot;&lt;/code&gt;과 &lt;code class=&quot;highlighter-rouge&quot;&gt;name=&quot;검색어 매개변수 이름&quot;&lt;/code&gt;은 정확하게 입력하여야 한다. &lt;code class=&quot;highlighter-rouge&quot;&gt;action&lt;/code&gt;은 결과를 보여줄 페이지의 URL이며 &lt;code class=&quot;highlighter-rouge&quot;&gt;name&lt;/code&gt;은 웹 상에서 설정해주었던 검색어 매개변수의 이름을 반드시 입력하여야 한다.&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;form&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;searchForm&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;action=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;결과 페이지 URL&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;searchtext&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;검색어 매개변수 이름&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;placeholser=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Search...&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;button&amp;gt;&lt;/span&gt;search&lt;span class=&quot;nt&quot;&gt;&amp;lt;/button&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/form&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;*결과&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;결과는 위의 검색박스에서 설정해준 &lt;code class=&quot;highlighter-rouge&quot;&gt;action&lt;/code&gt;으로 이동 한 페이지에서 나올 검색결과이다.&lt;/p&gt;
+
+&lt;p&gt;웹에서 가져온 코드는 디자인 설정이 ‘검색결과 만’이므로 검색박스에서 매개변수로 전달한 검색어의 검색결과를 출력한다.&lt;/p&gt;
+
+&lt;p&gt;결과가 나와야 할 페이지에 아래의 코드를 붙여넣기 해준다.&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;cx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'YOUR_ENGINE_ID'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;gcse&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;createElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'script'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;gcse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'text/javascript'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;gcse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;gcse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'https://cse.google.com/cse.js?cx='&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;cx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getElementsByTagName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'script'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;parentNode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;insertBefore&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;gcse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;})();&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/script&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;gcse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;searchresults&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;only&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/gcse:searchresults-only&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;google-cse를-적용한-blog-예시&quot;&gt;Google CSE를 적용한 Blog 예시&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://res.cloudinary.com/degxeqfok/image/upload/v1515391380/jnydq8v39zqc7zujyskn.png&quot; alt=&quot;Screen Shot 2018-01-08 at 3.01.39 PM&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;오른쪽 상단에 검색박스 Customising을 이용하여 검색박스를 적용하였다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://res.cloudinary.com/degxeqfok/image/upload/v1515391568/dtv0qvfni0wmcf5mspbv.png&quot; alt=&quot;Screen Shot 2018-01-08 at 3.04.31 PM&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;검색결과가 위와 같이 출력된다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;참고자료&quot;&gt;참고자료&lt;/h1&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;https://developers.google.com/custom-search/, google developers, accessed 2017-01-08&lt;/li&gt;
+  &lt;li&gt;http://digitaldrummerj.me/blogging-on-github-part-7-adding-a-custom-google-search/, 개인블로그, accessed 2017-01-08&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>yl.jung</name></author><summary type="html">Google CSE Google CSE는 구글 맞춤검색 엔진의 약자이다. 실제 우리가 사용하고 있는 구글 검색 기능에서 사용자가 원하는 사이트만 검색하도록 지정할 수 있는 기능이다. 이를 우리 블로그에 적용하여 블로그 자료 검색기능을 적용하고자 한다. 설정 방법으로는 웹에서 제공하는 Control Panel과 XML파일을 만드는 두 가지 방법이 있다. 기본적으로 제공하는 설정을 통해 디자인, 부가적인 검색기능(자동 완성, 동의어 등)도 사용이 가능하다. 좀 더 확장된 부가기능은 통계와 로그가 있는데 Google 애널리틱스와 연동해서 사용이 가능하다. Google CSE를 사용하기 위해서는 적용할 사이트 URL과 구글 계정이 필요하다. Google CSE 만들기 Google 계정으로 로그인 한 후 Control Panel로 접속한다. 검색할 사이트(Sites to search)에 검색 할 사이트 URL을 입력한다. URL 패턴 페이지를 참고하여 URL을 등록한다. 언어(language)는 검색 엔진에서 사용할 언어를 선택한다. 버튼이나 기타 디자인 요소들이 선택한 언어로 표시된다. 검색 엔진 이름(name)은 Control Panel에서 사용자에게 보이는 검색엔진 이름을 입력한다. 만들기(Ctrate) 버튼을 클릭하면 새 검색엔진이 만들어진다. *Google CSE 사용 URL을 이용하여 사용자와 공유 생성한 검색 엔진의 Control Panel에서 설정 -&amp;gt; 기본사항 -&amp;gt; 세부정보 -&amp;gt; 공개 URL 검색 기능을 사용 할 웹사이트에 검색박스를 import 검색박스 import Control Panel에서 import할 검색 엔진을 선택한다. 설정 -&amp;gt; 기본사항 -&amp;gt; 코드 가져오기 에서 코드를 복사한다. 검색박스가 노출되었으면 하는 페이지에(HTML파일) 해당 코드를 붙여넣기 한다. *디자인에 따른 검색박스 코드 Google CSE는 검색박스와 결과 페이지 디자인을 선택하여 사용할 수 있다. 제일 처음 검색엔진을 생성하면 기본적으로 오버레이 디자인으로 설정되어 있다. 오버레이 디자인 검색박스에 검색어를 입력하면 modal창으로 결과를 보여주는 디자인 &amp;lt;script&amp;gt; (function() { var cx = 'YOUR_ENGINE_ID'; var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true; gcse.src = 'https://cse.google.com/cse.js?cx=' + cx; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s); })(); &amp;lt;/script&amp;gt; &amp;lt;gcse:search&amp;gt;&amp;lt;/gcse:search&amp;gt; 두 페이지 디자인 검색박스에 검색어를 입력하면 새 창으로 결과를 보여주는 디자인 resultUrl=&quot;&quot;을 이용하여 결과값을 보여줄 URL을 설정 가능 &amp;lt;script&amp;gt; (function() { var cx = 'YOUR_ENGINE_ID'; var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true; gcse.src = 'https://cse.google.com/cse.js?cx=' + cx; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s); })(); &amp;lt;/script&amp;gt; &amp;lt;gcse:searchbox-only resultsUrl=&quot;YOUR_RESULTS_PAGE_URL&quot;&amp;gt;&amp;lt;/gcse:searchbox-only&amp;gt; 위의 두 디자인 외에도 전체 화면, 두 열, 간단히, Google에서 호스팅 등의 다양한 디자인이 존재한다. 사용자가 구축하는 블로그의 특성에 맞게 원하는 디자인을 적용하여 코드를 사용한다. ##검색박스 Customising Google CSE에서 사용하는 검색박스와 결과 페이지에 대한 디자인은 Control Panel을 이용하여 수정이 가능하다. 하지만, 실제 블로그를 운영하다보면 HTML코드를 이용하여 검색박스를 디자인 하고 싶은 경우가 있다. 해당 경우에 ‘검색 결과만’ 디자인을 이용하여 간단하게 구현이 가능하다. 생성한 검색엔진에서 디자인을 ‘검색결과 만’으로 설정하면 아래와 같은 부가적인 설정이 가능하다. 검색결과 코드 가져오기 페이지에서 검색결과 세부정보를 클릭하면 검색어 매개변수 이름을 설정 할 수 있다. 기본 값은 q이며 사용자가 원하는 값을 지정 가능하다. 웹 상에서 설정이 끝난 후 HTML파일을 수정한다. 이 때 사용자는 검색박스를 위치 시킬 HTML파일 결과를 출력 할 HTML파일 두 개의 파일에 대해서 코드를 작성 해야 한다. *검색박스 검색박스에 대한 모든 코드는 자유롭다. 하지만 action=&quot;결과 페이지 URL&quot;과 name=&quot;검색어 매개변수 이름&quot;은 정확하게 입력하여야 한다. action은 결과를 보여줄 페이지의 URL이며 name은 웹 상에서 설정해주었던 검색어 매개변수의 이름을 반드시 입력하여야 한다. &amp;lt;form id=&quot;searchForm&quot; action=&quot;결과 페이지 URL&quot;&amp;gt; &amp;lt;input id=&quot;searchtext&quot; name=&quot;검색어 매개변수 이름&quot; type=&quot;text&quot; placeholser=&quot;Search...&quot;&amp;gt; &amp;lt;button&amp;gt;search&amp;lt;/button&amp;gt; &amp;lt;/form&amp;gt; *결과 결과는 위의 검색박스에서 설정해준 action으로 이동 한 페이지에서 나올 검색결과이다. 웹에서 가져온 코드는 디자인 설정이 ‘검색결과 만’이므로 검색박스에서 매개변수로 전달한 검색어의 검색결과를 출력한다. 결과가 나와야 할 페이지에 아래의 코드를 붙여넣기 해준다. &amp;lt;script&amp;gt; (function() { var cx = 'YOUR_ENGINE_ID'; var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true; gcse.src = 'https://cse.google.com/cse.js?cx=' + cx; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s); })(); &amp;lt;/script&amp;gt; &amp;lt;gcse:searchresults-only&amp;gt;&amp;lt;/gcse:searchresults-only&amp;gt; Google CSE를 적용한 Blog 예시 오른쪽 상단에 검색박스 Customising을 이용하여 검색박스를 적용하였다. 검색결과가 위와 같이 출력된다. 참고자료 https://developers.google.com/custom-search/, google developers, accessed 2017-01-08 http://digitaldrummerj.me/blogging-on-github-part-7-adding-a-custom-google-search/, 개인블로그, accessed 2017-01-08</summary></entry></feed>
