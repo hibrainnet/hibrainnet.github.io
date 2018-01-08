@@ -52,11 +52,11 @@ getTypeValue();
 
   <meta property="fb:app_id" content="147895112528926" />
   <meta property="fb:admins" content="100001627773972"/>
-  <title>Decorator Pattern</title>
-  <meta name="description" content="1. 연구내용 Decorator Pattern 정의 위키에서는 데코레이터 패턴이란 상황이나 용도에 따라 특정 객체에 책임을 덧붙이는 패턴이라고 정의 하고 있다. 예를 들어 스펀지 케이크에 생크림과 딸기를 올리면 딸기 생크림 케이크가 되고 초코렛을 올리면 초코 케이크가 된다.">
+  <title>merge test</title>
+  <meta name="description" content="">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://blog.hibrainapps.net/decorator-pattern">
+  <link rel="canonical" href="http://blog.hibrainapps.net/research-notes/posts/2018-01-08-merge-test.html">
   <link rel="alternate" type="application/rss+xml" title="하이브레인넷 부설연구소" href="/feed.xml">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
@@ -442,266 +442,40 @@ getTypeValue();
   <header class="post-header">
     
 
-    <h1 class="post-title" itemprop="name headline">Decorator Pattern</h1>
+    <h1 class="post-title" itemprop="name headline">merge test</h1>
     <p class="post-meta">
-      <time datetime="2017-12-22T07:11:11+00:00" itemprop="datePublished">
+      <time datetime="2018-01-08T00:11:11+00:00" itemprop="datePublished">
         
-        <span class="post-meta w3-text-grey"><i class="fa fa-clock-o" aria-hidden="true"></i> 2017.12.22</span>
+        <span class="post-meta w3-text-grey"><i class="fa fa-clock-o" aria-hidden="true"></i> 2018.1.8</span>
       </time>
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <h1 id="1-연구내용">1. 연구내용</h1>
-<hr />
-<h2 id="decorator-pattern">Decorator Pattern</h2>
-<h3 id="정의">정의</h3>
-<p>위키에서는 데코레이터 패턴이란 상황이나 용도에 따라 특정 객체에 책임을 덧붙이는 패턴이라고 정의 하고 있다. 예를 들어 스펀지 케이크에 생크림과 딸기를 올리면 딸기 생크림 케이크가 되고 초코렛을 올리면 초코 케이크가 된다.</p>
+    <p>하하하하핫</p>
 
-<p>객체도 스펀지 케이크 처럼 중심이 되는 객체에 원하는 기능을 하나씩 입혀가면서 목적이 맞는 객체을 만들수 있다. 이와 같은 상황에 사용하는 것이 Decorator 패턴이다.</p>
+<p>wijefojaofijaoewjfao;wiefjoa;wiej</p>
 
-<h3 id="예제">예제</h3>
-<p>예제 프로그램은 스트링을 중심객체로 생각하고 문자열 주변을 장식 하는 프로그램이다.
-예를 들어 string이나 글자에 -, +, |, / 등의 문자로 장식하는것을 말한다. 스펀지 케이스에 원하는 취향에 따라 생크림, 딸기, 초콜렛 등을 입히듯이 문자열에도 상황에 맞추어 장식을 입힐수 있다.</p>
+<p>제발 되라 으아아아아아
+aoiehfaiehwfioawe
+faoiefhaef
+a
+f
+aef
+a
+wef
+aw
+ef
+awe
+fa
+wef
+awe
+f</p>
 
-<p>다음은 예제 프로그램에서 사용하는 클래스들 설명한 표이다.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center">이름</th>
-      <th>설명</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center">Display</td>
-      <td>문자열 표시용 추상 클래스</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">StirngDisplay</td>
-      <td>한줄 짜리 문자열 출력 클래스</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">Border</td>
-      <td>장식을 나타내는 추상클래스</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">SideBorder</td>
-      <td>좌우에만 장식을 붙이는 클래스</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">FullBorder</td>
-      <td>상하좌우 모두 장식을 붙이는 클래스</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">Main</td>
-      <td>예제 프로그램 동작용 클래스</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>아래의 그림은 클래스 uml을 표현한 그림이다.</p>
-
-<p><img src="https://image.ibb.co/b55d7G/uml.png" alt="uml 사진" />
-<br /><br /></p>
-
-<h3 id="display-클래스">Display 클래스</h3>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public abstract class Display {
-    public abstract int getColumns();
-    public abstract int getRows();
-    public abstract String getRowText(int row);
-
-    public final void show() {
-        for (int i = 0; i &lt; getRows(); i++) {
-            System.out.println(getRowText(i));
-        }
-    }
-}
-</code></pre></div></div>
-
-<p>Display 클래스는 여러줄의 문자열을 출력하기 위한 추상 클래스이다
-getColumns과, getRows는 문자열의 행과 열의 길이를 반환하는 메소드이다
-getRowText는 여러줄의 문자열 중 특정 행의 문자열을 출력하는 메소드이다.
-show메소드는 여러줄 문자열을 모두 출력하는 메소드이다.</p>
-
-<h3 id="stirngdisplay-클래스">StirngDisplay 클래스</h3>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public class StringDisplay extends Display{
-    private String string;
-
-    public StringDisplay(String string) {
-        this.string = string;
-    }
-
-    public int getColumns() {
-        return string.getBytes().length;
-    }
-
-    public int getRows() {
-        return 1;
-    }
-
-    public String getRowText(int row) {
-        if (row == 0) {
-            return string;
-        } else {
-            return null;
-        }
-    }
-}
-</code></pre></div></div>
-
-<p>StringDisplay 문자열 출력하는 메소드를 정의한 Display를 상속하고 한줄짜리 문자열을 출력하는 클래스이다. 출력할 문자열 string 필드를 가지고 생성하는 클래스이다.
-Display 클래스를 상속받았으므로 getRows와 getColumns를 구현해야 한다.
-한줄짜리 문자열을 출력하는 클래스 이므로 getRows는 1로 고정이고 getColumns은 문자열 길이를 리턴한다.
-마찬가지로 한줄짜리 문자열이므로 getRowText는 0번째 행을 원할때만 문자열을 리던하고 나머지에대해서는 null을 리턴한다.</p>
-
-<h3 id="border-클래스">Border 클래스</h3>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public abstract class Border extends Display {
-    protected Display display;
-
-    public Border(Display display) {
-        this.display = display;
-    }
-}
-</code></pre></div></div>
-<p>Border 클래스는 위해서 설명한 케이크에서 딸기, 생크림 그리고 문자열에서 -, |, / 등의 장식을 표현한 추상래스이다.
-자세히 보면 Border 클래스도 Display 클래스를 상속 하고 있다. 이 말은 문자열과 장식을 동일시 한다는 것을 의미한다. 문자열도 getRows, getColumns등을 가진다.
-그리고 Border는 Display형 객체 하나를 필드로 가지고 있다. 이것이 Border가 장식할 내용물을 의미한다.
-하지만 객체의 타입이 Display형이기 때문에 장식이 들어올수도 있고 문자열이 들어올수도 있다. 이것을 다시말하면 문자열도 장식의 대상이되고 장식된 문자열 또한 장식의 대상이 된다.</p>
-
-<h3 id="sideborder-클래스">SideBorder 클래스</h3>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public class SideBorder extends Border {
-    private char borderChar;
-
-    public SideBorder(Display display, char borderChar) {
-        super(display);
-        this.borderChar = borderChar;
-    }
-
-    public int getColumns() {
-        return display.getColumns() + 2;
-    }
-
-    public int getRows() {
-        return display.getRows();
-    }
-
-    public String getRowText(int row) {
-        return borderChar + display.getRowText(row) + borderChar;
-    }
-}
-</code></pre></div></div>
-<p>SideBorder 클래스는 문자열 좌우를 장식하는 클래스이다.
-장식 대상이되는 문자열 display와 장식할 문자 borderChar을 입력 받아 생성하도록 한다.
-getColumns은 좌우 문자열이 하나씩 늘어났으므로 +2 한값을 리턴한다.
-getRows는 좌우 장식만 하였으므로 변환없이 display.getRows 값을 리턴한다.</p>
-<h3 id="fullborder-클래스">FullBorder 클래스</h3>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public class FullBorder extends Border {
-    public FullBorder(Display display) {
-        super(display);
-    }
-
-    public int getColumns() {
-        return display.getColumns() + 2;
-    }
-
-    public int getRows() {
-        return display.getRows() + 2;
-    }
-    public String getRowText(int row) {
-        if (row == 0) {
-            return  "+" + makeLine('-', display.getColumns()) + "+";
-        } else if (row == display.getRows() + 1) {
-            return "+" + makeLine('-', display.getColumns()) + "+";
-        } else {
-            return "|" + display.getRowText(row - 1) + "|";
-        }
-    }
-
-    private String makeLine(char ch, int count) {
-        StringBuffer buf = new StringBuffer();
-
-        for (int i = 0; i &lt; count; i++) {
-            buf.append(ch);
-        }
-
-        return buf.toString();
-    }
-}
-</code></pre></div></div>
-<p>FullBorder 클래스는 SideBorder클래스와 마찬가지로 Border 추상클래스를 상속 받고 있다. 하지만 SideBorder와는 다르게 장식할 문자를 입력하지 않는다. 그리고 문자열 상하좌우를 장식하는 클래스이다.
-makeLine은 문자열의 길이에 따라 상하의 장식의 만드는 메소드이다.</p>
-
-<h3 id="main-클래스">Main 클래스</h3>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public class HBMain {
-    public static void main(String[] args) {
-        Display b1 = new StringDisplay("Hello, world.");
-        Display b2 = new SideBorder(b1, '#');
-        Display b3 = new FullBorder(b2);
-
-        b1.show();
-        b2.show();
-        b3.show();
-
-        Display b4 = new SideBorder(
-                new FullBorder(
-                        new FullBorder(
-                                new SideBorder(
-                                        new FullBorder(
-                                                new StringDisplay("안녕하세요")
-                                        ), '*'
-                                )
-                        )
-                ), '/'
-        );
-
-        b4.show();
-    }
-}
-</code></pre></div></div>
-<p>메인 클래스에서는 “Hello, World”라는 한줄짜리 문자열을 출력하는 b1
-다시 b1을 ‘#’으로 좌우를 장식한 b2
-다시 b2를 상하좌우 장식한 b3를 생성한다</p>
-
-<p>그 후 b1, b2, b3의 결과를 확인한다</p>
-
-<p>그리고  “안녕하세요”라는 문자열 생성 후 출력,
-상하좌우를 장식,
-좌우를 장식,
-상하좌우 장식,
-상하좌우 장식
-좌우 장식을 진행항 객체 b4가 있고 b4의 결과를 확인 한다.</p>
-
-<h3 id="실행결과">실행결과</h3>
-
-<p><img src="https://image.ibb.co/eu80LR/image.png" alt="실행결과" /></p>
-
-<h1 id="2-참고자료">2. 참고자료</h1>
-
-<ol>
-  <li>
-    <p>데코레이터 패턴, https://ko.wikipedia.org/wiki/%EB%8D%B0%EC%BD%94%EB%A0%88%EC%9D%B4%ED%84%B0_%ED%8C%A8%ED%84%B4</p>
-  </li>
-  <li>
-    <p>java 언어로 배우는 디자인 패턴, 유키 히로시, 영진닷컴</p>
-  </li>
-</ol>
 
   </div>
 
   <div>
 
-    
-    <span class="w3-margin-bottom">
-      <i class="fa fa-tags" aria-hidden="true"></i>
-    
-      
-    <a href="/tags/연구노트"><code class=""><nobr>연구노트</nobr></code>&nbsp;</a>
-    
-      
-    <a href="/tags/인턴십"><code class=""><nobr>인턴십</nobr></code>&nbsp;</a>
-    
-  </span>
     
 
     <br><br>
@@ -722,8 +496,8 @@ makeLine은 문자열의 길이에 따라 상하의 장식의 만드는 메소�
 </a>
     </div>
     <div class="share-page w3-right w3-margin-bottom">
-    <a class="w3-button w3-tiny w3-padding-small w3-text-white w3-round" style="height : 20px; background-color: #1da1f2" href="https://twitter.com/intent/tweet?text=Decorator Pattern&url=http://blog.hibrainapps.net/decorator-pattern&via=&related=" rel="nofollow" target="_blank" title="Share on Twitter"><i class="fa fa-twitter" aria-hidden="true"> <b>트윗</b> </i></a>
-    <a class="w3-button w3-tiny w3-padding-small w3-text-white w3-round" style="height : 20px; background-color: #dd4b39" href="https://plus.google.com/share?url=http://blog.hibrainapps.net/decorator-pattern" rel="nofollow" target="_blank" title="Share on Google+"><i class="fa fa-google-plus" aria-hidden="true"> <b>공유하기</b></i></a>
+    <a class="w3-button w3-tiny w3-padding-small w3-text-white w3-round" style="height : 20px; background-color: #1da1f2" href="https://twitter.com/intent/tweet?text=merge test&url=http://blog.hibrainapps.net/research-notes/posts/2018-01-08-merge-test.html&via=&related=" rel="nofollow" target="_blank" title="Share on Twitter"><i class="fa fa-twitter" aria-hidden="true"> <b>트윗</b> </i></a>
+    <a class="w3-button w3-tiny w3-padding-small w3-text-white w3-round" style="height : 20px; background-color: #dd4b39" href="https://plus.google.com/share?url=http://blog.hibrainapps.net/research-notes/posts/2018-01-08-merge-test.html" rel="nofollow" target="_blank" title="Share on Google+"><i class="fa fa-google-plus" aria-hidden="true"> <b>공유하기</b></i></a>
     <div class="fb-like" data-href="http://blog.hibrainapps.net" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
 </div>
 
@@ -739,33 +513,6 @@ makeLine은 문자열의 길이에 따라 상하의 장식의 만드는 메소�
 
 
   
-<div class="fb-comments" data-href="http://blog.hibrainapps.net/decorator-pattern" data-width="100%" ></div>
-
-<div id="disqus_thread"></div>
-<script>
-
-/**
-*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-/*
-var disqus_config = function () {
-this.page.url = http://blog.hibrainapps.net/decorator-pattern  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
-
-var disqus_shortname = 'hibrainappsblog';
-
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = '//' + 'disqus_shortname' + '.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript
->
-
 
 
 </article>
