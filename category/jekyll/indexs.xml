@@ -129,28 +129,6 @@ getTypeValue();
         
 
           
-          <a class="page-link w3-wide" href="/home/">홈</a>
-          
-          
-          <!--
-            my_page.autogen is populated by the pagination logic for all pages
-                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-          -->
-        
-        
-
-          
-          <a class="page-link w3-wide" href="/about/">소개</a>
-          
-          
-          <!--
-            my_page.autogen is populated by the pagination logic for all pages
-                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-          -->
-        
-        
-
-          
           <a class="page-link w3-wide" href="/about/">소개</a>
           
           
@@ -163,28 +141,6 @@ getTypeValue();
 
           
           <a class="page-link w3-wide" href="/tags/">태그</a>
-          
-          
-          <!--
-            my_page.autogen is populated by the pagination logic for all pages
-                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-          -->
-        
-        
-
-          
-          <a class="page-link w3-wide" href="/tags/">태그</a>
-          
-          
-          <!--
-            my_page.autogen is populated by the pagination logic for all pages
-                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-          -->
-        
-        
-
-          
-          <a class="page-link w3-wide" href="/guestbook/">방명록</a>
           
           
           <!--
@@ -224,171 +180,7 @@ getTypeValue();
         
 
           
-          
-          <!--
-            my_page.autogen is populated by the pagination logic for all pages
-                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-          -->
-        
-        
-
-          
-          
-          <!--
-            my_page.autogen is populated by the pagination logic for all pages
-                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-          -->
-        
-        
-
-          
           <a class="page-link w3-wide" href="/result/">검색결과</a>
-          
-          
-          <!--
-            my_page.autogen is populated by the pagination logic for all pages
-                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-          -->
-        
-        
-
-          
-          <a class="page-link w3-wide" href="/result/">검색결과</a>
-          
-          
-          <!--
-            my_page.autogen is populated by the pagination logic for all pages
-                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-          -->
-        
-        
-
-          
-          
-          <!--
-            my_page.autogen is populated by the pagination logic for all pages
-                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-          -->
-        
-        
-
-          
-          
-          <!--
-            my_page.autogen is populated by the pagination logic for all pages
-                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-          -->
-        
-        
-
-          
-          
-          <!--
-            my_page.autogen is populated by the pagination logic for all pages
-                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-          -->
-        
-        
-
-          
-          
-          <!--
-            my_page.autogen is populated by the pagination logic for all pages
-                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-          -->
-        
-        
-
-          
-          
-          <!--
-            my_page.autogen is populated by the pagination logic for all pages
-                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-          -->
-        
-        
-
-          
-          
-          <!--
-            my_page.autogen is populated by the pagination logic for all pages
-                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-          -->
-        
-        
-
-          
-          
-          <!--
-            my_page.autogen is populated by the pagination logic for all pages
-                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-          -->
-        
-        
-
-          
-          
-          <!--
-            my_page.autogen is populated by the pagination logic for all pages
-                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-          -->
-        
-        
-
-          
-          
-          <!--
-            my_page.autogen is populated by the pagination logic for all pages
-                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-          -->
-        
-        
-
-          
-          
-          <!--
-            my_page.autogen is populated by the pagination logic for all pages
-                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-          -->
-        
-        
-
-          
-          
-          <!--
-            my_page.autogen is populated by the pagination logic for all pages
-                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-          -->
-        
-        
-
-          
-          
-          <!--
-            my_page.autogen is populated by the pagination logic for all pages
-                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-          -->
-        
-        
-
-          
-          
-          <!--
-            my_page.autogen is populated by the pagination logic for all pages
-                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-          -->
-        
-        
-
-          
-          
-          <!--
-            my_page.autogen is populated by the pagination logic for all pages
-                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-          -->
-        
-        
-
           
           
           <!--
@@ -657,31 +449,25 @@ getTypeValue();
     
      <span class="site-tag">
         <a href="jekyll">
-                jekyll (2)
-        </a>
-    </span>
-    
-     <span class="site-tag">
-        <a href="jekyll-and-hybe">
-                jekyll and hybe (20)
+                jekyll (1)
         </a>
     </span>
     
      <span class="site-tag">
         <a href="shell">
-                shell (2)
+                shell (1)
         </a>
     </span>
     
      <span class="site-tag">
         <a href="travis">
-                travis (2)
+                travis (1)
         </a>
     </span>
     
      <span class="site-tag">
         <a href="디자인패턴">
-                디자인패턴 (16)
+                디자인패턴 (8)
         </a>
     </span>
     
