@@ -1,4 +1,409 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://blog.hibrainapps.net/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.hibrainapps.net/" rel="alternate" type="text/html" /><updated>2018-01-09T00:26:09+00:00</updated><id>http://blog.hibrainapps.net/</id><title type="html">하이브레인넷 부설연구소</title><subtitle></subtitle><entry><title type="html">[jekyll 블로그] Google CSE 적용하기</title><link href="http://blog.hibrainapps.net/2018/01/08/yljung.html" rel="alternate" type="text/html" title="[jekyll 블로그] Google CSE 적용하기" /><published>2018-01-08T00:00:00+00:00</published><updated>2018-01-08T00:00:00+00:00</updated><id>http://blog.hibrainapps.net/2018/01/08/yljung</id><content type="html" xml:base="http://blog.hibrainapps.net/2018/01/08/yljung.html">&lt;h1 id=&quot;google-cse&quot;&gt;Google CSE&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://blog.hibrainapps.net/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.hibrainapps.net/" rel="alternate" type="text/html" /><updated>2018-01-09T01:23:10+00:00</updated><id>http://blog.hibrainapps.net/</id><title type="html">하이브레인넷 부설연구소</title><subtitle></subtitle><entry><title type="html">Command 패턴 소개</title><link href="http://blog.hibrainapps.net/command" rel="alternate" type="text/html" title="Command 패턴 소개" /><published>2018-01-08T03:00:11+00:00</published><updated>2018-01-08T03:00:11+00:00</updated><id>http://blog.hibrainapps.net/command</id><content type="html" xml:base="http://blog.hibrainapps.net/command">&lt;p&gt;Command 패턴은 자바 디자인패턴이다. 자바 디자인패턴은 많은 프로그래머들이 인정한 효율적인 코딩방법 또는 구조로, 모듈을 기능적으로 세분화하여 재사용이 높고 유지보수가 쉽게 코드를 명확하고 단순하게 만들어주는 방법론을 말한다.&lt;/p&gt;
+
+&lt;h2 id=&quot;command-패턴이란-명령을-클래스로-만드는-것&quot;&gt;Command 패턴이란? 명령을 클래스로 만드는 것!&lt;/h2&gt;
+&lt;p&gt;클래스가 일을 수행할 때 자신의 클래스나 다른 클래스의 메소드를 호출한다.
+메소드를 호출한 결과는 객체 상태로 반영이 되지만, 일을 수행한 이력은 어디에도 남지 않는다. 만약 실행하고 싶은 일을 메소드를 호출하는 동적인 처리로서 표현하는 것이 아니라,  이 일을 실행하시오! 라는 명령을 나타내는 클래스의 인스턴스의 집합으로 관리하게 되면 똑같은 명령을 재실행할 수도 있고, 여러 개의 명령을 모아 새로운 명령으로도 재사용할 수 있다. 이와 같은 ‘명령’ 을 Command 패턴이라고 한다.
+ &lt;strong&gt;메소드(작업 요청)을 객체의 형태로 캡슐화 하는 것&lt;/strong&gt; 이 가장 큰 목적이다.&lt;/p&gt;
+
+&lt;h3 id=&quot;command-패턴-예제&quot;&gt;Command 패턴 예제&lt;/h3&gt;
+&lt;p&gt;간단한 그림 그리기 소프트, 마우스를 끌면 빨간 점이 연결되어 그림이 그려지고 clear 버튼을 누르면 점이 지워진다.
+사용자가 마우스를 끌때마다 ‘이 위치에 점을 그려라’ 라는 명령이 DrawCommand 클래스의 인스턴스로 생성된다. 이 인스턴스를 저장했다가 필요에 따라서 재사용한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://res.cloudinary.com/dxovdseb3/image/upload/v1514448751/command_yszmrh.png&quot; alt=&quot;2&quot; /&gt;
+그림 1. 예제프로그램의 클래스 다이어그램
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;style type=&quot;text/css&quot;&gt;
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg .tg-yw4l{vertical-align:top}
+&lt;/style&gt;
+
+&lt;table class=&quot;tg&quot;&gt;
+  &lt;tr&gt;
+    &lt;th class=&quot;tg-yw4l&quot;&gt;패키지&lt;/th&gt;
+    &lt;th class=&quot;tg-yw4l&quot;&gt;이름&lt;/th&gt;
+    &lt;th class=&quot;tg-yw4l&quot;&gt;해설&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td class=&quot;tg-yw4l&quot;&gt;command&lt;/td&gt;
+    &lt;td class=&quot;tg-yw4l&quot;&gt;Command&lt;/td&gt;
+    &lt;td class=&quot;tg-yw4l&quot;&gt;'명령'을 표현하는 인터페이스&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td class=&quot;tg-yw4l&quot;&gt;command&lt;/td&gt;
+    &lt;td class=&quot;tg-yw4l&quot;&gt;MacroCommand&lt;/td&gt;
+    &lt;td class=&quot;tg-yw4l&quot;&gt;'여러 개의 명령을 모은 명령'을 나타내는 클래스&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td class=&quot;tg-yw4l&quot;&gt;drawer&lt;/td&gt;
+    &lt;td class=&quot;tg-yw4l&quot;&gt;DrawCommand&lt;/td&gt;
+    &lt;td class=&quot;tg-yw4l&quot;&gt;'그림 그리기 명령'을 표현한 클래스&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td class=&quot;tg-yw4l&quot;&gt;drawer&lt;/td&gt;
+    &lt;td class=&quot;tg-yw4l&quot;&gt;Drawable&lt;/td&gt;
+    &lt;td class=&quot;tg-yw4l&quot;&gt;'그리기 대상'을 표현한 인터페이스&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td class=&quot;tg-yw4l&quot;&gt;drawer&lt;/td&gt;
+    &lt;td class=&quot;tg-yw4l&quot;&gt;DrawCanvas&lt;/td&gt;
+    &lt;td class=&quot;tg-yw4l&quot;&gt;'그리기 대상'을 구현한 인터페이스&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td class=&quot;tg-yw4l&quot;&gt;Anonymous&lt;/td&gt;
+    &lt;td class=&quot;tg-yw4l&quot;&gt;HBNMain&lt;/td&gt;
+    &lt;td class=&quot;tg-yw4l&quot;&gt;동작 테스트용 클래스&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;p&gt;표 1. 예제프로그램의 클래스 및 인터페이스 설명&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;command-인터페이스&quot;&gt;Command 인터페이스&lt;/h3&gt;
+&lt;p&gt;‘명령’을 표현하기 위한 인터페이스다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Command  인터페이스는 execute 메소드를 가지며,  호출했을때 구체적으로 일어나는 일은 Command 인터페이스를 구현한 클래스가 결정한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Command&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;cm&quot;&gt;/**
+     * 실행한다.
+     */&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;abstract&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;execute&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id=&quot;macrocommand-클래스&quot;&gt;MacroCommand 클래스&lt;/h3&gt;
+&lt;p&gt;여러개의 명령을 하나로 모은 명령을 나타내는 클래스다.
+Command 인터페이스를 구현하고 있다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;execute() 메소드 : commands 필드에 보관되어 있는 인스턴스의 execute() 메소드를 실행한다.&lt;/li&gt;
+  &lt;li&gt;append() 메소드 : MacroCommand 클래스에 새로운 Command를 추가한다.
+if문의 조건은 만약 자기 자신을 실수 add해버리면, execute 메소드는 영원히 끝나지 않기 때문에, 사용한다.
+(java.util.stack 클래스의 push 메소드는 인스턴스에 마지막 요소를 추가한다는 의미를 가짐)&lt;/li&gt;
+  &lt;li&gt;undo() 메소드 : commands의 마지막 명령어를 삭제하는 메소드로 pop을 통해 요소를 꺼낸다음 인스턴스에서 제거한다.&lt;/li&gt;
+  &lt;li&gt;clear() 메소드 : 모든 명령을 삭제하는 메소드다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MacroCommand&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Command&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;cm&quot;&gt;/**
+     * Command 인터페이스의 execute() 구현
+     *
+     * @param     commands  다수의 command를 모아두기 위한 필드
+     */&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Stack&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;commands&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Stack&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt;  &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;execute&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;Iterator&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;it&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;commands&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;iterator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;hasNext&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Command&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;execute&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;cm&quot;&gt;/**
+     * MacroCommand 클래스에 새로운 Command를 추가 (Command를 구현한 클래스의 인스턴스 추가)
+     */&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Command&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cmd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cmd&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;commands&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cmd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;cm&quot;&gt;/**
+     * commands의 최후의 명령을 삭제
+     */&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;undo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;commands&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;empty&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;commands&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;cm&quot;&gt;/**
+     * 모든 명령을 삭제
+     */&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;clear&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;commands&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;clear&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;drawable-인터페이스&quot;&gt;Drawable 인터페이스&lt;/h3&gt;
+&lt;p&gt;그림 그리기 대상을 표현하는 인터페이스다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;draw() 메소드 : 그림을 그리는 메소드를 나타낸다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Drawable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;cm&quot;&gt;/**
+     * 그림 그린다.
+     */&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;abstract&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;draw&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;drawcanvas-클래스&quot;&gt;DrawCanvas 클래스&lt;/h3&gt;
+&lt;p&gt;Drawable 인터페이스를 구현하고 있는 클래스다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;history 필드 : 그림을 그리도록 하는 명령의 집합을 나타낸다.&lt;/li&gt;
+  &lt;li&gt;DrawCanvas 생성자 : 폭, 높이와 그림 내용을 받아서 DrawCanvas인스턴스를 초기화한다.&lt;/li&gt;
+  &lt;li&gt;paint 메소드 : DrawCanvas를 다시 그릴 필요가 생겼을때, history에 기록되어 있는 명령의 집합을 재실행 시킨다.&lt;/li&gt;
+  &lt;li&gt;draw 메소드 : Drawable 인터페이스 구현을 위해 정의되어 있는 메소드로, 색을 지정하고 원을 표시한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DrawCanvas&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Canvas&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Drawable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;cm&quot;&gt;/**
+     * DrawCanvas 클래스의 생성자
+     *
+     * @param     color  그림 그리는 색
+     * @param     radius  그림 그리기를 할 점의 반경
+     * @param     history  그림을 그리도록 하는 명령의 집합 필드
+     */&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Color&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;color&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;red&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;radius&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MacroCommand&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;history&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;DrawCanvas&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MacroCommand&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;history&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;setSize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;setBackground&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;white&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;history&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;history&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;cm&quot;&gt;/**
+     * 이력 전체를 다시 그리기
+     */&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;paint&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Graphics&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;history&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;execute&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;cm&quot;&gt;/**
+     * 그리기
+     */&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;draw&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;Graphics&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;g&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getGraphics&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setColor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;fillOval&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;radius&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;radius&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;radius&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;radius&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;drawcommand-클래스&quot;&gt;DrawCommand 클래스&lt;/h3&gt;
+&lt;p&gt;Command 인터페이스를 구현한 클래스로, 그림 그리기 명령을 표현한다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;DrawCommand 생성자 : Drawable 인터페이스를 구현한 클래스의 인스턴스와 Point 클래스의 인스턴스를 인수로 넘겨 필드에 대입한다. =&amp;gt; 이 위치에 점을 그려라!! 라는 명령을 생성함을 의미한다.&lt;/li&gt;
+  &lt;li&gt;execute() 메소드 : drawable 필드의 draw 메소드를 호출함으로서, 명령을 실행한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DrawCommand&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Command&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;cm&quot;&gt;/**
+     * DrawCommand 클래스의 생성자, 명령 생성
+     *
+     * @param     drawable  그림 그리기를 실행할 대상을 보관하는 필드
+     * @param     position  그림 그리기를 행할 위치를 나타내는 필드
+     */&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Drawable&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;drawable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Point&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;position&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;DrawCommand&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Drawable&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;drawable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Point&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;position&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;drawable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;drawable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;position&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;position&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;cm&quot;&gt;/**
+     * 명령 실행
+     */&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;execute&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;drawable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;draw&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;position&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;position&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;main-클래스&quot;&gt;Main 클래스&lt;/h5&gt;
+
+&lt;p&gt;예제 프로그램을 작동시키기 위한 클래스다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;history 필드 : 그림의 이력을 보관한다.&lt;/li&gt;
+  &lt;li&gt;canvas 필드 : 그림을 그리는 영역으로 초기 사이즈로 400*400을 제공한다.&lt;/li&gt;
+  &lt;li&gt;clearButton 필드 : 그린 점을 지우는 제거 버튼을 나타낸다.&lt;/li&gt;
+  &lt;li&gt;main생성자: 마우스 클릭 등의 이벤트를 받아들이는 리스너를 설정, 그림 그리기할 컴포넌트를 배치하고 있다.
+    &lt;ol&gt;
+      &lt;li&gt;가로로 컴포넌트를 나열할 박스 buttonBox 생성&lt;/li&gt;
+      &lt;li&gt;buttonBox 위에 clearButton 생성&lt;/li&gt;
+      &lt;li&gt;세로로 컴포넌트를 나열할 박스 mainBox 생성&lt;/li&gt;
+      &lt;li&gt;mainBox위에 buttonBox와 canvas 나열&lt;/li&gt;
+      &lt;li&gt;JFrame 위에 mainBox 나열 (getContentPane 컨테이너 이용)&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;actionPerformed() 메소드 : ActionListener 인터페이스 구현하기 위한 것으로, clearButton이 눌러졌을때 그림 이력을 제거 후 다시 그리기 실행한다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;mouseDragged() 메소드 : MouseMotionListener 인터페이스를 구현하기 위한 것으로, 마우스를 끌었을때, 이 점을 그려라는 명령을 생성한다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;windowClosing() 메소드 : WindowListener 인터페이스를 구현하기 위한 것으로, 종료 처리를 구현한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;HBNMain&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;JFrame&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ActionListener&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MouseMotionListener&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WindowListener&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;cm&quot;&gt;/**
+     * HBNMain 클래스의 생성자
+     *
+     * @param     history  그림 그리기 이력
+     * @param     canvas  그림 그리기 영역
+     * @param     clearButton  제거 버튼
+     */&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MacroCommand&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;history&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MacroCommand&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DrawCanvas&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;canvas&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DrawCanvas&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;400&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;400&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;history&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;JButton&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;clearButton&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;JButton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;clear&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;HBNMain&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;addWindowListener&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;canvas&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;addMouseMotionListener&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;clearButton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;addActionListener&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;Box&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;buttonBox&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Box&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BoxLayout&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;X_AXIS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;buttonBox&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;clearButton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;Box&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mainBox&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Box&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BoxLayout&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;Y_AXIS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;mainBox&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;buttonBox&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;mainBox&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;canvas&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;getContentPane&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mainBox&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;pack&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;setVisible&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;cm&quot;&gt;/**
+     * ActionListener 인터페이스 구현
+     */&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;actionPerformed&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ActionEvent&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getSource&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;clearButton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;history&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;clear&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;canvas&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;repaint&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;cm&quot;&gt;/**
+     * MouseMotionListener 인터페이스 구현
+     */&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;mouseDragged&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MouseEvent&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;Command&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cmd&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DrawCommand&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;canvas&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getPoint&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;history&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cmd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;// 실행 이력에 추가&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;cmd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;execute&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;// 실행&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;mouseMoved&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MouseEvent&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;windowOpened&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;WindowEvent&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;cm&quot;&gt;/**
+     * WindowListener 인터페이스 구현
+     */&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;windowClosing&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;WindowEvent&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;exit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;windowClosed&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;WindowEvent&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;windowIconified&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;WindowEvent&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;windowDeiconified&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;WindowEvent&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;windowActivated&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;WindowEvent&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;windowDeactivated&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;WindowEvent&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;cm&quot;&gt;/**
+     * Main 클래스의 인스턴스 생성 및 실행
+     */&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;HBNMain&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Command Pattern Sample&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;command-패턴에-등장하는-역할&quot;&gt;Command 패턴에 등장하는 역할&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Command(명령)의 역할&lt;/strong&gt;&lt;br /&gt;
+명령의 인터페이스(API)를 정의하는 역할
+예) Command 인터페이스&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;ConcreateCommand(구체적인 명령)의 역할&lt;/strong&gt;&lt;br /&gt;
+Command 인터페이스를 실제로 구현하고 있는 역할
+예) MacroCommand 클래스, DrawCommand 클래스&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Receiver(수신자)의 역할&lt;/strong&gt;&lt;br /&gt;
+Command 명령을 실행할때 대상이 되는 역할, 명령을 받아들이는 사람을 의미
+예)DrawCanvas클래스&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Client(의뢰자) 의 역할&lt;/strong&gt;&lt;br /&gt;
+ConcreateCommand를 생성하고, Receiver를 할당하는 역할
+예) Main클래스- 마우스 끌기에 맞춰 DrawCommand 인스턴스 생성 및 DrawCanvas의 인스턴스를 생성자에게 전달&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;invoker(기동자)의 역할&lt;/strong&gt;&lt;br /&gt;
+명령을 처음 실행하는 역할, Command에서 정의되어 있는 인터페이스를 호출
+예) Main 클래스, DrawCanvas 클래스 - Command 인터페이스의 execute를 호출&lt;/p&gt;
+
+&lt;h3 id=&quot;마치며&quot;&gt;마치며&lt;/h3&gt;
+&lt;p&gt;Command 패턴은 작업 요청을 객체로 표현해서 이력을 보관하고 재실행하고 있다. 만약 어떤 애플리케이션에서 명령을 실행하면서 디스크에 실행 히스토리를 기록할 경우, 애플리케이션이 다운이 되면 command 객체를 다시 로딩하고 execute()메소드를 자동으로 실행하는 방식으로 애플리케이션을 복구하는 데 적용할 수 있을 것이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;참고자료&quot;&gt;참고자료&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;  http://copynull.tistory.com/142&quot;&gt;커멘트 패턴(Command Pattern)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;  http://secretroute.tistory.com/entry/Head-First-Design-Pattern-%EC%A0%9C6%EA%B0%95-Command-%ED%8C%A8%ED%84%B4&quot;&gt;Desion Pattern- 제6강: Command 패턴&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;[Java 언어로 배우는 디자인 패턴 입문 , 영진닷컴]&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>gh.park</name></author><category term="[&quot;디자인패턴&quot;]" /><category term="연구노트" /><category term="인턴십" /><category term="javapattern" /><summary type="html">Command 패턴은 자바 디자인패턴이다. 자바 디자인패턴은 많은 프로그래머들이 인정한 효율적인 코딩방법 또는 구조로, 모듈을 기능적으로 세분화하여 재사용이 높고 유지보수가 쉽게 코드를 명확하고 단순하게 만들어주는 방법론을 말한다. Command 패턴이란? 명령을 클래스로 만드는 것! 클래스가 일을 수행할 때 자신의 클래스나 다른 클래스의 메소드를 호출한다. 메소드를 호출한 결과는 객체 상태로 반영이 되지만, 일을 수행한 이력은 어디에도 남지 않는다. 만약 실행하고 싶은 일을 메소드를 호출하는 동적인 처리로서 표현하는 것이 아니라, 이 일을 실행하시오! 라는 명령을 나타내는 클래스의 인스턴스의 집합으로 관리하게 되면 똑같은 명령을 재실행할 수도 있고, 여러 개의 명령을 모아 새로운 명령으로도 재사용할 수 있다. 이와 같은 ‘명령’ 을 Command 패턴이라고 한다. 메소드(작업 요청)을 객체의 형태로 캡슐화 하는 것 이 가장 큰 목적이다. Command 패턴 예제 간단한 그림 그리기 소프트, 마우스를 끌면 빨간 점이 연결되어 그림이 그려지고 clear 버튼을 누르면 점이 지워진다. 사용자가 마우스를 끌때마다 ‘이 위치에 점을 그려라’ 라는 명령이 DrawCommand 클래스의 인스턴스로 생성된다. 이 인스턴스를 저장했다가 필요에 따라서 재사용한다. 그림 1. 예제프로그램의 클래스 다이어그램 패키지 이름 해설 command Command '명령'을 표현하는 인터페이스 command MacroCommand '여러 개의 명령을 모은 명령'을 나타내는 클래스 drawer DrawCommand '그림 그리기 명령'을 표현한 클래스 drawer Drawable '그리기 대상'을 표현한 인터페이스 drawer DrawCanvas '그리기 대상'을 구현한 인터페이스 Anonymous HBNMain 동작 테스트용 클래스 표 1. 예제프로그램의 클래스 및 인터페이스 설명 Command 인터페이스 ‘명령’을 표현하기 위한 인터페이스다. Command 인터페이스는 execute 메소드를 가지며, 호출했을때 구체적으로 일어나는 일은 Command 인터페이스를 구현한 클래스가 결정한다. public interface Command { /** * 실행한다. */ public abstract void execute(); } MacroCommand 클래스 여러개의 명령을 하나로 모은 명령을 나타내는 클래스다. Command 인터페이스를 구현하고 있다. execute() 메소드 : commands 필드에 보관되어 있는 인스턴스의 execute() 메소드를 실행한다. append() 메소드 : MacroCommand 클래스에 새로운 Command를 추가한다. if문의 조건은 만약 자기 자신을 실수 add해버리면, execute 메소드는 영원히 끝나지 않기 때문에, 사용한다. (java.util.stack 클래스의 push 메소드는 인스턴스에 마지막 요소를 추가한다는 의미를 가짐) undo() 메소드 : commands의 마지막 명령어를 삭제하는 메소드로 pop을 통해 요소를 꺼낸다음 인스턴스에서 제거한다. clear() 메소드 : 모든 명령을 삭제하는 메소드다. public class MacroCommand implements Command { /** * Command 인터페이스의 execute() 구현 * * @param commands 다수의 command를 모아두기 위한 필드 */ private Stack commands = new Stack(); public void execute() { Iterator it = commands.iterator(); while(it.hasNext()) { ((Command)it.next()).execute(); } } /** * MacroCommand 클래스에 새로운 Command를 추가 (Command를 구현한 클래스의 인스턴스 추가) */ public void append(Command cmd) { if(cmd != this) { commands.push(cmd); } } /** * commands의 최후의 명령을 삭제 */ public void undo() { if(!commands.empty()) { commands.pop(); } } /** * 모든 명령을 삭제 */ public void clear(){ commands.clear(); } } Drawable 인터페이스 그림 그리기 대상을 표현하는 인터페이스다. draw() 메소드 : 그림을 그리는 메소드를 나타낸다. public interface Drawable { /** * 그림 그린다. */ public abstract void draw(int x, int y); } DrawCanvas 클래스 Drawable 인터페이스를 구현하고 있는 클래스다. history 필드 : 그림을 그리도록 하는 명령의 집합을 나타낸다. DrawCanvas 생성자 : 폭, 높이와 그림 내용을 받아서 DrawCanvas인스턴스를 초기화한다. paint 메소드 : DrawCanvas를 다시 그릴 필요가 생겼을때, history에 기록되어 있는 명령의 집합을 재실행 시킨다. draw 메소드 : Drawable 인터페이스 구현을 위해 정의되어 있는 메소드로, 색을 지정하고 원을 표시한다. public class DrawCanvas extends Canvas implements Drawable { /** * DrawCanvas 클래스의 생성자 * * @param color 그림 그리는 색 * @param radius 그림 그리기를 할 점의 반경 * @param history 그림을 그리도록 하는 명령의 집합 필드 */ private Color color = Color.red; private int radius = 6; private MacroCommand history; public DrawCanvas(int width, int height, MacroCommand history) { setSize(width, height); setBackground(Color.white); this.history = history; } /** * 이력 전체를 다시 그리기 */ public void paint(Graphics g) { history.execute(); } /** * 그리기 */ @Override public void draw(int x, int y) { Graphics g = getGraphics(); g.setColor(color); g.fillOval(x - radius, y - radius, radius * 2, radius * 2); } } DrawCommand 클래스 Command 인터페이스를 구현한 클래스로, 그림 그리기 명령을 표현한다. DrawCommand 생성자 : Drawable 인터페이스를 구현한 클래스의 인스턴스와 Point 클래스의 인스턴스를 인수로 넘겨 필드에 대입한다. =&amp;gt; 이 위치에 점을 그려라!! 라는 명령을 생성함을 의미한다. execute() 메소드 : drawable 필드의 draw 메소드를 호출함으로서, 명령을 실행한다. public class DrawCommand implements Command { /** * DrawCommand 클래스의 생성자, 명령 생성 * * @param drawable 그림 그리기를 실행할 대상을 보관하는 필드 * @param position 그림 그리기를 행할 위치를 나타내는 필드 */ protected Drawable drawable; private Point position; public DrawCommand(Drawable drawable, Point position) { this.drawable = drawable; this.position = position; } /** * 명령 실행 */ @Override public void execute() { drawable.draw(position.x, position.y); } } Main 클래스 예제 프로그램을 작동시키기 위한 클래스다. history 필드 : 그림의 이력을 보관한다. canvas 필드 : 그림을 그리는 영역으로 초기 사이즈로 400*400을 제공한다. clearButton 필드 : 그린 점을 지우는 제거 버튼을 나타낸다. main생성자: 마우스 클릭 등의 이벤트를 받아들이는 리스너를 설정, 그림 그리기할 컴포넌트를 배치하고 있다. 가로로 컴포넌트를 나열할 박스 buttonBox 생성 buttonBox 위에 clearButton 생성 세로로 컴포넌트를 나열할 박스 mainBox 생성 mainBox위에 buttonBox와 canvas 나열 JFrame 위에 mainBox 나열 (getContentPane 컨테이너 이용) actionPerformed() 메소드 : ActionListener 인터페이스 구현하기 위한 것으로, clearButton이 눌러졌을때 그림 이력을 제거 후 다시 그리기 실행한다. mouseDragged() 메소드 : MouseMotionListener 인터페이스를 구현하기 위한 것으로, 마우스를 끌었을때, 이 점을 그려라는 명령을 생성한다. windowClosing() 메소드 : WindowListener 인터페이스를 구현하기 위한 것으로, 종료 처리를 구현한다. public class HBNMain extends JFrame implements ActionListener, MouseMotionListener, WindowListener { /** * HBNMain 클래스의 생성자 * * @param history 그림 그리기 이력 * @param canvas 그림 그리기 영역 * @param clearButton 제거 버튼 */ private MacroCommand history = new MacroCommand(); private DrawCanvas canvas = new DrawCanvas(400, 400, history); private JButton clearButton = new JButton(&quot;clear&quot;); public HBNMain(String title) { super(title); this.addWindowListener(this); canvas.addMouseMotionListener(this); clearButton.addActionListener(this); Box buttonBox = new Box(BoxLayout.X_AXIS); buttonBox.add(clearButton); Box mainBox = new Box(BoxLayout.Y_AXIS); mainBox.add(buttonBox); mainBox.add(canvas); getContentPane().add(mainBox); pack(); setVisible(true); } /** * ActionListener 인터페이스 구현 */ @Override public void actionPerformed(ActionEvent e) { if(e.getSource() == clearButton) { history.clear(); canvas.repaint(); } } /** * MouseMotionListener 인터페이스 구현 */ @Override public void mouseDragged(MouseEvent e) { Command cmd = new DrawCommand(canvas, e.getPoint()); history.append(cmd); // 실행 이력에 추가 cmd.execute(); // 실행 } @Override public void mouseMoved(MouseEvent e) { } @Override public void windowOpened(WindowEvent e) { } /** * WindowListener 인터페이스 구현 */ @Override public void windowClosing(WindowEvent e) { System.exit(0); } @Override public void windowClosed(WindowEvent e) { } @Override public void windowIconified(WindowEvent e) { } @Override public void windowDeiconified(WindowEvent e) { } @Override public void windowActivated(WindowEvent e) { } @Override public void windowDeactivated(WindowEvent e) { } /** * Main 클래스의 인스턴스 생성 및 실행 */ public static void main(String[] args) { new HBNMain(&quot;Command Pattern Sample&quot;); } } Command 패턴에 등장하는 역할 Command(명령)의 역할 명령의 인터페이스(API)를 정의하는 역할 예) Command 인터페이스 ConcreateCommand(구체적인 명령)의 역할 Command 인터페이스를 실제로 구현하고 있는 역할 예) MacroCommand 클래스, DrawCommand 클래스 Receiver(수신자)의 역할 Command 명령을 실행할때 대상이 되는 역할, 명령을 받아들이는 사람을 의미 예)DrawCanvas클래스 Client(의뢰자) 의 역할 ConcreateCommand를 생성하고, Receiver를 할당하는 역할 예) Main클래스- 마우스 끌기에 맞춰 DrawCommand 인스턴스 생성 및 DrawCanvas의 인스턴스를 생성자에게 전달 invoker(기동자)의 역할 명령을 처음 실행하는 역할, Command에서 정의되어 있는 인터페이스를 호출 예) Main 클래스, DrawCanvas 클래스 - Command 인터페이스의 execute를 호출 마치며 Command 패턴은 작업 요청을 객체로 표현해서 이력을 보관하고 재실행하고 있다. 만약 어떤 애플리케이션에서 명령을 실행하면서 디스크에 실행 히스토리를 기록할 경우, 애플리케이션이 다운이 되면 command 객체를 다시 로딩하고 execute()메소드를 자동으로 실행하는 방식으로 애플리케이션을 복구하는 데 적용할 수 있을 것이다. 참고자료 커멘트 패턴(Command Pattern) Desion Pattern- 제6강: Command 패턴 [Java 언어로 배우는 디자인 패턴 입문 , 영진닷컴]</summary></entry><entry><title type="html">[jekyll 블로그] Google CSE 적용하기</title><link href="http://blog.hibrainapps.net/2018/01/08/yljung.html" rel="alternate" type="text/html" title="[jekyll 블로그] Google CSE 적용하기" /><published>2018-01-08T00:00:00+00:00</published><updated>2018-01-08T00:00:00+00:00</updated><id>http://blog.hibrainapps.net/2018/01/08/yljung</id><content type="html" xml:base="http://blog.hibrainapps.net/2018/01/08/yljung.html">&lt;h1 id=&quot;google-cse&quot;&gt;Google CSE&lt;/h1&gt;
 
 &lt;p&gt;Google CSE는 구글 맞춤검색 엔진의 약자이다. 실제 우리가 사용하고 있는 구글 검색 기능에서 사용자가 원하는 사이트만 검색하도록 지정할 수 있는 기능이다. 이를 우리 블로그에 적용하여 블로그 자료 검색기능을 적용하고자 한다. 설정 방법으로는 웹에서 제공하는 Control Panel과 XML파일을 만드는 두 가지 방법이 있다. 기본적으로 제공하는 설정을 통해 디자인, 부가적인 검색기능(자동 완성, 동의어 등)도 사용이 가능하다. 좀 더 확장된 부가기능은 통계와 로그가 있는데 Google 애널리틱스와 연동해서 사용이 가능하다. Google CSE를 사용하기 위해서는 적용할 사이트 URL과 구글 계정이 필요하다.&lt;/p&gt;
 
