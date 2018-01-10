@@ -67,17 +67,17 @@ h1, h2, h3, h4, h5, h6 {
  * Links
  */
 a {
-  color: #2a7ae2;
+  color: #111;
   text-decoration: none; }
   a:visited {
-    color: #1756a9; }
+    color: black; }
   a:hover {
     color: #111;
-    text-decoration: underline; }
+    text-decoration: none; }
   .social-media-list a:hover {
     text-decoration: none; }
     .social-media-list a:hover .username {
-      text-decoration: underline; }
+      text-decoration: none; }
 
 /**
  * Blockquotes
@@ -328,11 +328,39 @@ pre {
       .post-content h4 {
         font-size: 18px; } }
 
-.post-describe {
-  line-height: 30px; }
-  .post-describe:visited {
-    color: #828282; }
+@media screen and (max-width: 480px) {
+  .w3-col.images {
+    float: left; }
 
+  .describes {
+    float: right;
+    font-size: 10px;
+    max-height: 6em;
+    text-overflow: ellipsis;
+    overflow: hidden; }
+
+  .main-title {
+    font-size: 15px; }
+
+  .thumbnails {
+    max-height: 6em; } }
+@media screen and (min-width: 481px) {
+  .w3-col.images {
+    float: right; }
+
+  .describes {
+    float: left; }
+
+  site-title {
+    float: left; }
+
+  .thumbnails {
+    float: right;
+    height: 160px;
+    width: 190px; }
+
+  .main-title {
+    font-size: 36px; } }
 .about {
   margin-top: 67px;
   width: 100%;
@@ -538,8 +566,8 @@ a:active, a:hover {
 
 abbr[title] {
   border-bottom: none;
-  text-decoration: underline;
-  text-decoration: underline dotted; }
+  text-decoration: none;
+  text-decoration: none; }
 
 dfn {
   font-style: italic; }
