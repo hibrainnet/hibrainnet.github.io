@@ -4,9 +4,15 @@ rvm:
 
 before_install:
 - GIT_POST_URL=$(ruby -r "$PWD"/script/config.rb -e "puts @github_post_url")
+<<<<<<< HEAD
 - git clone $GIT_POST_URL
 - cp research-notes/* _posts/
 - ls -al _posts/
+=======
+- git remote add other $GIT_POST_URL
+- git fetch other
+#- git merge --no-edit other/master --allow-unrelated-histories
+>>>>>>> c91b81ffac4068eff47a128f9dff3b9621de67ad
 
 install:
 - gem install rake

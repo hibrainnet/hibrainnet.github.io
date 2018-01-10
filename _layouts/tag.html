@@ -6,7 +6,7 @@ layout: default
 <h1>tag: {{ page.tag }}</h1>
 
 <div id="archive">
-  <ul class="archive-post-list">
+  <ul class="archive-post-list w3-ul">
   {%for post in site.posts %}
     {% if post.tags contains page.tag %}
       <li><time>{{ post.date | date:"%b %d, %Y" }}</time> » <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>

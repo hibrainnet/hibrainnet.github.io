@@ -247,11 +247,49 @@
   }
 }
 
-.post-describe {
-  line-height: $base-line-height * $base-font-size * 1.25;
-  &:visited {
-    color: $grey-color;
+@media screen and (max-width: 480px) {
+  .w3-col.images {
+    float: left;
   }
+  .describes {
+    float: right;
+    font-size : 10px;
+    max-height: 6em;
+    text-overflow:ellipsis;
+    overflow: hidden;
+  }
+  .main-title {
+    font-size : 15px;
+  }
+  .thumbnails {
+    max-height: 6em;
+  }
+
+}
+@media screen and (min-width: 481px) {
+  .w3-col.images {
+    float: right;
+  }
+  .describes {
+    float: left;
+
+  }
+  site-title {
+    float: left;
+  }
+  .thumbnails {
+    float: right;
+    height: 160px; width: 190px;
+  }
+  .main-title {
+    font-size: 36px;
+  }
+}
+
+.describe {
+  //display: table;
+  //table-layout: fixed;
+  //width: 250px;
 }
 
 .about {
