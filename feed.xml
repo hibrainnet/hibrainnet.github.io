@@ -1,4 +1,70 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://blog.hibrainapps.net/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.hibrainapps.net/" rel="alternate" type="text/html" /><updated>2018-01-09T01:23:10+00:00</updated><id>http://blog.hibrainapps.net/</id><title type="html">하이브레인넷 부설연구소</title><subtitle></subtitle><entry><title type="html">Command 패턴 소개</title><link href="http://blog.hibrainapps.net/command" rel="alternate" type="text/html" title="Command 패턴 소개" /><published>2018-01-08T03:00:11+00:00</published><updated>2018-01-08T03:00:11+00:00</updated><id>http://blog.hibrainapps.net/command</id><content type="html" xml:base="http://blog.hibrainapps.net/command">&lt;p&gt;Command 패턴은 자바 디자인패턴이다. 자바 디자인패턴은 많은 프로그래머들이 인정한 효율적인 코딩방법 또는 구조로, 모듈을 기능적으로 세분화하여 재사용이 높고 유지보수가 쉽게 코드를 명확하고 단순하게 만들어주는 방법론을 말한다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://blog.hibrainapps.net/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.hibrainapps.net/" rel="alternate" type="text/html" /><updated>2018-01-10T08:58:27+00:00</updated><id>http://blog.hibrainapps.net/</id><title type="html">하이브레인넷 부설연구소</title><subtitle></subtitle><entry><title type="html">Docker에 대해서</title><link href="http://blog.hibrainapps.net/2018/01/10/docker.html" rel="alternate" type="text/html" title="Docker에 대해서" /><published>2018-01-10T00:00:00+00:00</published><updated>2018-01-10T00:00:00+00:00</updated><id>http://blog.hibrainapps.net/2018/01/10/docker</id><content type="html" xml:base="http://blog.hibrainapps.net/2018/01/10/docker.html">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
+
+&lt;p&gt;Oracle환경을 실습하기 위해서는 먼저 Oracle 설치를 진행해야한다. 하지만 Oracle은 macOS나 Windows환경에서는 설치를 지원하지 않기 때문에 Ubuntu나 CentOS환경에 설치를 진행해야 한다. 실습용 개발 서버로 Ubuntu나 CentOS가 존재한다면 다행이지만, 존재하지 않는 경우도 있다. 이런 경우 보통 VMware나 VirtualBox를 이용하여 가상 OS환경을 만들어서 Oracle을 설치하였다. 가상 서버 환경에 Oracle을 설치하여 사용하면 동작은 하지만 무겁고 느리다는 단점이 발생한다. 이 때, Docker를 이용하면 기존의 VMware나 VirtualBox보다 가볍고 빠르게 가상 서버 환경과 연결하여 사용할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;docker란&quot;&gt;Docker란&lt;/h2&gt;
+
+&lt;p&gt;Docker는 컨테이너 기반의 오픈소스 가상화 플랫폼이다. Docker는 소프트웨어를 컨테이너라는 표준화된 단위로 묶어주는데 해당 컨테이너 안에는 라이브러리, 시스템 도구, 코드 등 소프트웨어를 실행하는데 필요한 것들이 포함되어 있다. Docker를 사용하면 환경에 구애받지 않고 애플리케이션을 빠르게 배포 및 확장이 가능하다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;docker의-가상화방식&quot;&gt;Docker의 가상화방식&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://subicura.com/assets/article_images/2017-01-19-docker-guide-for-beginners-1/vm-vs-docker.png&quot; alt=&quot;가상머신과 도커&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;*컨테이너와 가상화방식&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;컨테이너는 철판으로 만들어진 박스 형태의 통을 의미한다. 흔히 알고 있듯이 화물따위를 운송할 때 사용하는 통이다. 서버에서 컨테이너는 격리된 공간에서 프로세스가 동작하는 기술을 의미한다. 서버에서 컨테이너는 가상화 기술의 하나로, VMware나 VirtualBox가 이에 포함된다. VMware와 VirtualBox은 전가상화(Full Virtualization) 방식 기반인데 호스트OS 위에 게스트OS 전체를 가상화하여 사용한다. 이 방식은 여러 가지 OS를 가상화 할 수 있고 비교적 사용법이 간단하지만 무겁고 느리다는 단점을 가진다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;전가상화 방식 외에도 또다른 가상화 방식인 반가상화(Paravirtualization) 방식이 있다. 반가상화 방식은 게스트OS가 필요하지만 전체 OS를 가상화하는 방식은 아니다. 따라서 전가상화 방식보다는 빠르고 가볍게 사용할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;*Docker의 가상화 방식&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Docker는 위에서 설명한 &lt;strong&gt;반가상화 방식보다 좀 더 경량화된 방식&lt;/strong&gt;이라고 할 수 있다. Docker에서 사용하는 가상화 방식은 전가상화나 반가상화 방식과 다르게 게스트OS를 설치하지 않는다. Docker이미지에 서버 운영을 위한 프로그램과 라이브러리만 격리하여 설치할 수 있으며, OS자원은 호스트와 공유하는 방식이다. 이 같은 방식을 사용하게 되면서 이미지 용량이 매우 줄어드는 장점이 있다. 또한 Docker는 하드웨어를 가상화하는 계층이 존재하지 않으므로 메모리 접근, 파일시스템, 네트워크 속도가 가상머신에 비해 매우 빠르다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Docker를 이용함으로써 하나의 서버에서 여러 개의 컨테이너가 서로 영향을 미치치 않고 독립적으로 실행되면서 VMware와 다르게 매우 빠른 성능으로 사용이 가능해졌다. 실행중인 컨테이너에 접속하여 명령어가 입력가능하고 &lt;code class=&quot;highlighter-rouge&quot;&gt;apt-get&lt;/code&gt;이나 &lt;code class=&quot;highlighter-rouge&quot;&gt;yum&lt;/code&gt;으로 패키지 설치도 가능하다. 또한 호스트의 특정 포트와 연결하거나 호스트의 특정 디렉토리를 내부 디렉토리 인 것처럼 사용도 가능하다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;docker의-컨테이너와-이미지&quot;&gt;Docker의 컨테이너와 이미지&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://subicura.com/assets/article_images/2017-01-19-docker-guide-for-beginners-1/docker-image.png&quot; alt=&quot;Docker image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Docker에서 가장 중요한 개념은 컨테이너와 이미지이다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;이미지는 컨테이너 실행에 필요한 파일과 설정값 등을 포함하고 있는 것으로 변하지 않는다. 컨테이너는 이미지를 실행한 상태라고 볼 수 있으며 추가되거나 변하는 값은 컨테이너에 저장된다. 같은 이미지에서 여러 개의 컨테이너를 생성할 수 있고 컨테이너의 상태가 바뀌거나 컨테이너가 삭제되더라도 이미지는 변하지 않고 남아 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Docker 이미지를 등록하고 직접 만들어 관리할 수 있도록 하기 위해서 Docker hub와 Docker Registry를 제공한다. Docker hub는 이미 만들어진 이미지를 다운받아 사용할 수 있도록 한 것이다. Docker Registry는 사용자가 이미지를 직접 만들어 관리할 수 있도록 한 것이다. 사용자의 컴퓨터에서 이미지를 관리하려면 용량도 매우 크기 때문에 불편함이 있었다. 하지만 Docker에서 제공해주는 위의 두 기능으로 용량 차지 없이 무료로 사이트에서 관리가 가능하다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;이미지는 컨테이너를 실행하기 위한 모든 정보를 가지고 있다. 때문에 새로운 서버 추가는 미리 만들어 놓은 이미지를 다운받고 컨테이너를 생성하는 간단한 방식으로 가능하다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Docker를 이용하여 직접 Oracle을 설치하면 기존 방식의 단점을 보완할 뿐만 아니라, 더 좋은 기능들을 제공받으면서 사용할 수 있을 것이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;참고자료&quot;&gt;참고자료&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;https://www.slideshare.net/pyrasis/docker-docker-38286477, slideshar, accessed 2017-01-10&lt;/li&gt;
+  &lt;li&gt;https://subicura.com/2017/01/19/docker-guide-for-beginners-1.html, 개인블로그, accessed 2017-01-10&lt;/li&gt;
+  &lt;li&gt;https://ko.wikipedia.org/wiki/%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88, 위키백과, accessed 2017-01-10&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>yl.jung</name></author><summary type="html">서론</summary></entry><entry><title type="html">Command 패턴 소개</title><link href="http://blog.hibrainapps.net/command" rel="alternate" type="text/html" title="Command 패턴 소개" /><published>2018-01-08T03:00:11+00:00</published><updated>2018-01-08T03:00:11+00:00</updated><id>http://blog.hibrainapps.net/command</id><content type="html" xml:base="http://blog.hibrainapps.net/command">&lt;p&gt;Command 패턴은 자바 디자인패턴이다. 자바 디자인패턴은 많은 프로그래머들이 인정한 효율적인 코딩방법 또는 구조로, 모듈을 기능적으로 세분화하여 재사용이 높고 유지보수가 쉽게 코드를 명확하고 단순하게 만들어주는 방법론을 말한다.&lt;/p&gt;
 
 &lt;h2 id=&quot;command-패턴이란-명령을-클래스로-만드는-것&quot;&gt;Command 패턴이란? 명령을 클래스로 만드는 것!&lt;/h2&gt;
 &lt;p&gt;클래스가 일을 수행할 때 자신의 클래스나 다른 클래스의 메소드를 호출한다.

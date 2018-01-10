@@ -52,11 +52,11 @@ getTypeValue();
 
   <meta property="fb:app_id" content="147895112528926" />
   <meta property="fb:admins" content="100001627773972"/>
-  <title>하이브레인넷 부설연구소</title>
-  <meta name="description" content="">
+  <title>Docker에 대해서</title>
+  <meta name="description" content="서론">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://blog.hibrainapps.net/">
+  <link rel="canonical" href="http://blog.hibrainapps.net/2018/01/10/docker.html">
   <link rel="alternate" type="application/rss+xml" title="하이브레인넷 부설연구소" href="/feed.xml">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
@@ -296,199 +296,164 @@ getTypeValue();
 
 </div>
 
-<img class="w3-image w3-margin-top w3-margin-bottom" src="https://farm5.staticflickr.com/4732/39212074151_fa3a74e927_b.jpg" alt="Architecture" width="100%">
-<div class="w3-display-middle w3-margin-top w3-center">
-  <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>Hibrain.net</b></span> <span class=" w3-text-light-grey">Tech Blog</span></h1>
-</div>
-  
 </header>
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <div class="home">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-  <ul class="post-content w3-ul ">
+  <header class="post-header">
+    
+
+    <h1 class="post-title" itemprop="name headline">Docker에 대해서</h1>
+    <p class="post-meta">
+      <time datetime="2018-01-10T00:00:00+00:00" itemprop="datePublished">
+        
+        <span class="post-meta w3-text-grey"><i class="fa fa-clock-o" aria-hidden="true"></i> 2018.1.10</span>
+      </time>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <h2 id="서론">서론</h2>
+
+<p>Oracle환경을 실습하기 위해서는 먼저 Oracle 설치를 진행해야한다. 하지만 Oracle은 macOS나 Windows환경에서는 설치를 지원하지 않기 때문에 Ubuntu나 CentOS환경에 설치를 진행해야 한다. 실습용 개발 서버로 Ubuntu나 CentOS가 존재한다면 다행이지만, 존재하지 않는 경우도 있다. 이런 경우 보통 VMware나 VirtualBox를 이용하여 가상 OS환경을 만들어서 Oracle을 설치하였다. 가상 서버 환경에 Oracle을 설치하여 사용하면 동작은 하지만 무겁고 느리다는 단점이 발생한다. 이 때, Docker를 이용하면 기존의 VMware나 VirtualBox보다 가볍고 빠르게 가상 서버 환경과 연결하여 사용할 수 있다.</p>
+
+<p><br /></p>
+
+<h2 id="docker란">Docker란</h2>
+
+<p>Docker는 컨테이너 기반의 오픈소스 가상화 플랫폼이다. Docker는 소프트웨어를 컨테이너라는 표준화된 단위로 묶어주는데 해당 컨테이너 안에는 라이브러리, 시스템 도구, 코드 등 소프트웨어를 실행하는데 필요한 것들이 포함되어 있다. Docker를 사용하면 환경에 구애받지 않고 애플리케이션을 빠르게 배포 및 확장이 가능하다.</p>
+
+<p><br /></p>
+
+<h3 id="docker의-가상화방식">Docker의 가상화방식</h3>
+
+<p><img src="https://subicura.com/assets/article_images/2017-01-19-docker-guide-for-beginners-1/vm-vs-docker.png" alt="가상머신과 도커" /></p>
+
+<p><strong>*컨테이너와 가상화방식</strong></p>
+
+<p>컨테이너는 철판으로 만들어진 박스 형태의 통을 의미한다. 흔히 알고 있듯이 화물따위를 운송할 때 사용하는 통이다. 서버에서 컨테이너는 격리된 공간에서 프로세스가 동작하는 기술을 의미한다. 서버에서 컨테이너는 가상화 기술의 하나로, VMware나 VirtualBox가 이에 포함된다. VMware와 VirtualBox은 전가상화(Full Virtualization) 방식 기반인데 호스트OS 위에 게스트OS 전체를 가상화하여 사용한다. 이 방식은 여러 가지 OS를 가상화 할 수 있고 비교적 사용법이 간단하지만 무겁고 느리다는 단점을 가진다.</p>
+
+<p><br /></p>
+
+<p>전가상화 방식 외에도 또다른 가상화 방식인 반가상화(Paravirtualization) 방식이 있다. 반가상화 방식은 게스트OS가 필요하지만 전체 OS를 가상화하는 방식은 아니다. 따라서 전가상화 방식보다는 빠르고 가볍게 사용할 수 있다.</p>
+
+<p><br /></p>
+
+<p><strong>*Docker의 가상화 방식</strong></p>
+
+<p>Docker는 위에서 설명한 <strong>반가상화 방식보다 좀 더 경량화된 방식</strong>이라고 할 수 있다. Docker에서 사용하는 가상화 방식은 전가상화나 반가상화 방식과 다르게 게스트OS를 설치하지 않는다. Docker이미지에 서버 운영을 위한 프로그램과 라이브러리만 격리하여 설치할 수 있으며, OS자원은 호스트와 공유하는 방식이다. 이 같은 방식을 사용하게 되면서 이미지 용량이 매우 줄어드는 장점이 있다. 또한 Docker는 하드웨어를 가상화하는 계층이 존재하지 않으므로 메모리 접근, 파일시스템, 네트워크 속도가 가상머신에 비해 매우 빠르다.</p>
+
+<p><br /></p>
+
+<p>Docker를 이용함으로써 하나의 서버에서 여러 개의 컨테이너가 서로 영향을 미치치 않고 독립적으로 실행되면서 VMware와 다르게 매우 빠른 성능으로 사용이 가능해졌다. 실행중인 컨테이너에 접속하여 명령어가 입력가능하고 <code class="highlighter-rouge">apt-get</code>이나 <code class="highlighter-rouge">yum</code>으로 패키지 설치도 가능하다. 또한 호스트의 특정 포트와 연결하거나 호스트의 특정 디렉토리를 내부 디렉토리 인 것처럼 사용도 가능하다.</p>
+
+<p><br /></p>
+
+<h3 id="docker의-컨테이너와-이미지">Docker의 컨테이너와 이미지</h3>
+
+<p><img src="https://subicura.com/assets/article_images/2017-01-19-docker-guide-for-beginners-1/docker-image.png" alt="Docker image" /></p>
+
+<p>Docker에서 가장 중요한 개념은 컨테이너와 이미지이다.<br /></p>
+
+<p>이미지는 컨테이너 실행에 필요한 파일과 설정값 등을 포함하고 있는 것으로 변하지 않는다. 컨테이너는 이미지를 실행한 상태라고 볼 수 있으며 추가되거나 변하는 값은 컨테이너에 저장된다. 같은 이미지에서 여러 개의 컨테이너를 생성할 수 있고 컨테이너의 상태가 바뀌거나 컨테이너가 삭제되더라도 이미지는 변하지 않고 남아 있다.</p>
+
+<p><br /></p>
+
+<p>Docker 이미지를 등록하고 직접 만들어 관리할 수 있도록 하기 위해서 Docker hub와 Docker Registry를 제공한다. Docker hub는 이미 만들어진 이미지를 다운받아 사용할 수 있도록 한 것이다. Docker Registry는 사용자가 이미지를 직접 만들어 관리할 수 있도록 한 것이다. 사용자의 컴퓨터에서 이미지를 관리하려면 용량도 매우 크기 때문에 불편함이 있었다. 하지만 Docker에서 제공해주는 위의 두 기능으로 용량 차지 없이 무료로 사이트에서 관리가 가능하다.</p>
+
+<p><br /></p>
+
+<p>이미지는 컨테이너를 실행하기 위한 모든 정보를 가지고 있다. 때문에 새로운 서버 추가는 미리 만들어 놓은 이미지를 다운받고 컨테이너를 생성하는 간단한 방식으로 가능하다.</p>
+
+<p><br /></p>
+
+<p><br /></p>
+
+<p>Docker를 이용하여 직접 Oracle을 설치하면 기존 방식의 단점을 보완할 뿐만 아니라, 더 좋은 기능들을 제공받으면서 사용할 수 있을 것이다.</p>
+
+<p><br /></p>
+
+<h2 id="참고자료">참고자료</h2>
+
+<ol>
+  <li>https://www.slideshare.net/pyrasis/docker-docker-38286477, slideshar, accessed 2017-01-10</li>
+  <li>https://subicura.com/2017/01/19/docker-guide-for-beginners-1.html, 개인블로그, accessed 2017-01-10</li>
+  <li>https://ko.wikipedia.org/wiki/%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88, 위키백과, accessed 2017-01-10</li>
+</ol>
+
+
+  </div>
+
+  <div>
 
     
-      <li>
-        <div class="w3-row">
-        <div class="w3-col s12 m8 l8 w3-margin-right w3-left">
-          
 
-          
+    <br><br>
 
-          <h1>
-            <b><a class="site-title w3-bar-item" href="/2018/01/10/docker.html">Docker에 대해서</a></b>
-          </h1>
+    <div class="w3-padding-24 w3-border-top w3-border-bottom w3-margin-bottom">
+      <a class="post-meta" href="/authors/yl.jung">
+  <div class="w3-bar">
 
-        </div>
-          <div class="w3-col s3 m3 l3 w3-margin-top">
-            <p class="">
-              <img src="/images/nothumbnail.jpg"
-                   style="height: 160px;" align="center" />
-              </p>
-          </div>
-
-          <div class="w3-col s8 m8 l7">
-            <p class=" w3-text-gray"><a class="post-describe" href="/2018/01/10/docker.html">서론 Oracle환경을 실습하기 위해서는 먼저 Oracle 설치를 진행해야한다. 하지만 Oracle은 macOS나 Windows환경에서는 설치를 지원하지 않기 때문에 Ubuntu나 CentOS환경에 설치를 진행해야 한다. 실습용 개발 서버로 Ubuntu나...</a></p>
-
-          </div>
-
-
-
-          <div class="w3-col s12 m12 l12 w3-text-grey w3-small">
-            <span class="post-meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 2018.1.10</span>
-
-            
-            <!--작성자 정보-->
-            <!--<a class="post-meta" href="/authors/yl.jung">posted by 정예린</a>-->
-          </div>
-
-        <!--포스트 썸네일-->
-
-        </div>
-        <br>
-      </li>
     
-      <li>
-        <div class="w3-row">
-        <div class="w3-col s12 m8 l8 w3-margin-right w3-left">
-          
-
-          
-
-          <h1>
-            <b><a class="site-title w3-bar-item" href="/command">Command 패턴 소개</a></b>
-          </h1>
-
-        </div>
-          <div class="w3-col s3 m3 l3 w3-margin-top">
-            <p class="">
-              <img src="http://res.cloudinary.com/dxovdseb3/image/upload/v1514448751/command_yszmrh.png" style="max-height: 160px; max-width: 200px;" align="center" />
-              </p>
-          </div>
-
-          <div class="w3-col s8 m8 l7">
-            <p class=" w3-text-gray"><a class="post-describe" href="/command">Command 패턴은 자바 디자인패턴이다. 자바 디자인패턴은 많은 프로그래머들이 인정한 효율적인 코딩방법 또는 구조로, 모듈을 기능적으로 세분화하여 재사용이 높고 유지보수가 쉽게 코드를 명확하고 단순하게 만들어주는 방법론을...</a></p>
-
-          </div>
-
-
-
-          <div class="w3-col s12 m12 l12 w3-text-grey w3-small">
-            <span class="post-meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 2018.1.8</span>
-
-            
-            <span class="w3-section"> |
-          
-            
-          <a href="/tags/연구노트"><code class=""><nobr>연구노트</nobr></code>&nbsp;</a>
-          
-            
-          <a href="/tags/인턴십"><code class=""><nobr>인턴십</nobr></code>&nbsp;</a>
-          
-            
-          <a href="/tags/javapattern"><code class=""><nobr>javapattern</nobr></code>&nbsp;</a>
-          
-        </span>
-            
-            <!--작성자 정보-->
-            <!--<a class="post-meta" href="/authors/gh.park">posted by 박가혜</a>-->
-          </div>
-
-        <!--포스트 썸네일-->
-
-        </div>
-        <br>
-      </li>
+    <i class="fa fa-user fa-4x w3-bar-item w3-circle " aria-hidden="true"> </i>
     
-      <li>
-        <div class="w3-row">
-        <div class="w3-col s12 m8 l8 w3-margin-right w3-left">
-          
 
-          
-
-          <h1>
-            <b><a class="site-title w3-bar-item" href="/2018/01/08/yljung.html">[jekyll 블로그] Google CSE 적용하기</a></b>
-          </h1>
-
-        </div>
-          <div class="w3-col s3 m3 l3 w3-margin-top">
-            <p class="">
-              <img src="/images/nothumbnail.jpg"
-                   style="height: 160px;" align="center" />
-              </p>
-          </div>
-
-          <div class="w3-col s8 m8 l7">
-            <p class=" w3-text-gray"><a class="post-describe" href="/2018/01/08/yljung.html">Google CSE Google CSE는 구글 맞춤검색 엔진의 약자이다. 실제 우리가 사용하고 있는 구글 검색 기능에서 사용자가 원하는 사이트만 검색하도록 지정할 수 있는 기능이다. 이를 우리...</a></p>
-
-          </div>
-
-
-
-          <div class="w3-col s12 m12 l12 w3-text-grey w3-small">
-            <span class="post-meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 2018.1.8</span>
-
-            
-            <!--작성자 정보-->
-            <!--<a class="post-meta" href="/authors/yl.jung">posted by 정예린</a>-->
-          </div>
-
-        <!--포스트 썸네일-->
-
-        </div>
-        <br>
-      </li>
-    
-  </ul>
-
-  
-	  <!-- 첫번째 페이지 계산 -->
-
-
-
-<!-- 마지막 페이지 계산 -->
-
-
-
-<!-- 페이지 넘버 링크 생성 (카테고리/태그/일반 별 링크 다름) -->
-
-
-
-
-
-
-
-<paginate>
-<div class="pagination w3-bar w3-text-grey">
-  
-    <span class="previous w3-button">&#60;&#60;</span>
-  
-  
-    <span class="previous w3-button">&#60;</span>
-  
-  
-    
-     <li><span class="active w3-button w3-green">1</span></li>
-    
-  
-
-  
-    <span class="next w3-button">&#62;</span>
-  
-  
-    <span class="next w3-button">&#62;&#62;</span>
-  
-</div>
-</paginate>
-
-  
-
-
+    <div class="w3-bar-item">
+      <span class="w3-large w3-text-black">정예린</span><br>
+      <span class="w3-medium w3-text-black">하이브레인넷 인턴</span>
+    </div>
+  </div>
+</a>
+    </div>
+    <div class="share-page w3-right w3-margin-bottom">
+    <a class="w3-button w3-tiny w3-padding-small w3-text-white w3-round" style="height : 20px; background-color: #1da1f2" href="https://twitter.com/intent/tweet?text=Docker에 대해서&url=http://blog.hibrainapps.net/2018/01/10/docker.html&via=&related=" rel="nofollow" target="_blank" title="Share on Twitter"><i class="fa fa-twitter" aria-hidden="true"> <b>트윗</b> </i></a>
+    <a class="w3-button w3-tiny w3-padding-small w3-text-white w3-round" style="height : 20px; background-color: #dd4b39" href="https://plus.google.com/share?url=http://blog.hibrainapps.net/2018/01/10/docker.html" rel="nofollow" target="_blank" title="Share on Google+"><i class="fa fa-google-plus" aria-hidden="true"> <b>공유하기</b></i></a>
+    <div class="fb-like" data-href="http://blog.hibrainapps.net" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
 </div>
 
+
+  </div>
+
+  
+
+
+
+  
+
+
+
+  
+<div class="fb-comments" data-href="http://blog.hibrainapps.net/2018/01/10/docker.html" data-width="100%" ></div>
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = http://blog.hibrainapps.net/2018/01/10/docker.html  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+
+var disqus_shortname = 'hibrainappsblog';
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = '//' + 'disqus_shortname' + '.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript
+>
+
+
+
+</article>
       </div>
     </main>
 
