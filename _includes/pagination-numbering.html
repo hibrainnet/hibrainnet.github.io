@@ -39,7 +39,7 @@
 
 
 <paginate>
-<div class="pagination w3-bar w3-text-grey">
+<div class="pagination w3-bar w3-text-grey w3-hide-small">
   {% if paginator.page != 1 %}
     <a class="w3-button" href="{{ site.baseurl }}/{{ paginator.first_page_path }}">&#60;&#60;</a>
   {% else %}
@@ -74,4 +74,10 @@
     <span class="next w3-button">&#62;&#62;</span>
   {% endif %}
 </div>
+
+  <div class="pagination w3-bar w3-border w3-round w3-hide-large w3-hide-medium">
+    <a href="{{ site.baseurl }}{{ paginator.previous_page_path }}" class="w3-left w3-button">&#10094; Previous</a>
+    <a href="{{ site.baseurl }}{{ paginator.next_page_path }}" class="w3-button w3-right">Next &#10095;</a>
+  </div>
+
 </paginate>
