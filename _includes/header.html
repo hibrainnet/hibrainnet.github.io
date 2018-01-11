@@ -1,73 +1,114 @@
 <header class="site-header" role="banner">
+  <!-- Navbar (sit on top) -->
+
+  <!--<div class="w3-top">-->
+    <!--<div class="w3-row w3-white w3-padding">-->
+      <!--<div class="w3-half" style="margin:4px 0 6px 0"><a href='https://www.w3schools.com'><img src='/images/w3schools.png' alt='W3Schools.com'></a></div>-->
+      <!--<div class="w3-half w3-margin-top w3-wide w3-hide-medium w3-hide-small"><div class="w3-right">THE WORLD'S LARGEST WEB DEVELOPER SITE</div></div>-->
+    <!--</div>-->
+    <!--<div class="w3-bar w3-theme w3-large" style="z-index:4;">-->
+      <!--<a class="w3-bar-item w3-button w3-left w3-hide-large w3-hover-white w3-large w3-theme w3-padding-16" href="javascript:void(0)" onclick="w3_open()">☰</a>-->
+      <!--<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-white w3-padding-16" href="javascript:void(0)" onclick="w3_show_nav('menuTut')">TUTORIALS</a>-->
+      <!--<a class="w3-bar-item w3-button w3-hide-medium w3-hover-white w3-padding-16" href="javascript:void(0)" onclick="w3_show_nav('menuRef')">REFERENCES</a>-->
+    <!--</div>-->
+  <!--</div>-->
 
   <div class="w3-top">
-    <div class="w3-bar w3-white w3-card " style="letter-spacing:4px;">
-    {% assign default_paths = site.pages | map: "path" %}
-    {% assign page_paths = site.header_pages | default: default_paths %}
-    <a class="w3-bar-item site-title w3-mobile" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+    <div class="w3-bar w3-white w3-card" id="myNavbar">
+      {% assign default_paths = site.pages | map: "path" %}
+      {% assign page_paths = site.header_pages | default: default_paths %}
+      <a href="#navbar" class="w3-bar-item w3-button w3-left w3-hide-large w3-hide-medium">
+        <i class="fa fa-bars"></i>
+      </a>
 
-	<!--search bar and button-->
-	<form class="w3-bar-item w3-right w3-mobile" action="{{ site.url}}/result/">
-		 <input class="w3-input w3-bar-item w3-xlarge" id="q" name="q" type="text" placeholder="검색">
-		  <input type="hidden" name="filter" value="0" />
-         <button class="w3-button w3-xlarge w3-bar-item"><i class="fa fa-search" aria-hidden="true"></i></button>
-	</form>
+      <a id="logo" class="w3-bar-item w3-button w3-wide w3-large" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
 
-    {% if page_paths %}
-      <nav class="site-nav w3-bar-item">
-        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
-        <label for="nav-trigger">
-          <span class="menu-icon">
-            <svg viewBox="0 0 18 15" width="18px" height="15px">
-              <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
-              <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
-              <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
-            </svg>
-          </span>
-        </label>
+      <div class="w3-card">
+        <form class="w3-bar-item w3-right" action="{{ site.url}}/result/">
+          <input type="hidden" name="filter" value="0" />
+          <a class="w3-bar-item" href="#search"><i class="fa fa-search" aria-hidden="true"></i></a>
+        </form>
+      </div>
 
-        <div class="trigger">
-	    {% for my_page in site.pages %}
-          <!--
-            my_page.autogen is populated by the pagination logic for all pages
-                            that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-          -->
+      <!--<div id="search">-->
+        <!--<form action="{{ site.url}}/result/">-->
+          <!--<input type="search" id="q" name="q" type="text" placeholder="검색">-->
+        <!--</form>-->
+      <!--</div>-->
+
+
+      <div class="w3-hide-small w3-right">
+        {% for my_page in site.pages %}
+        <!--
+          my_page.autogen is populated by the pagination logic for all pages
+                          that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+        -->
         {% assign my_page = site.pages | where: "path", path | first %}
         {% assign tag_name = my_page.title | split: ": " %}
 
-          {% if my_page.title and my_page.autogen == nil and tag_name.first != "Posts" and tag_name.first != "Tag" and tag_name.first != "Category" and tag_name.first != site.title and tag_name.first != "검색결과" %}
-          <a class="page-link w3-wide" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
-          {% endif %}
-          {% endfor %}
+        {% if my_page.title and my_page.autogen == nil and tag_name.first != "Posts" and tag_name.first != "Tag" and tag_name.first != "Category" and tag_name.first != site.title and tag_name.first != "검색결과" %}
+        <a class="w3-bar-item w3-button w3-wide " href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
+        {% endif %}
+        {% endfor %}
+      </div>
+      <!--search bar and button-->
+
+      <!--<form class="w3-bar-item w3-right w3-margin-top" action="{{ site.url}}/result/">-->
+        <!--<input class="w3-input w3-bar-item" id="q" name="q" type="text" placeholder="검색">-->
+        <!--<input type="hidden" name="filter" value="0" />-->
+        <!--<button class="w3-bar-item" style="background-color: white;"><i class="fa fa-search" aria-hidden="true"></i></button>-->
+      <!--</form>-->
+    </div>
+
+
+    <div id="searchbar" class="w3-col s12 m12 l12">
+      <form action="{{ site.url}}/result/">
+        <div class="w3-padding">
+        <input class="w3-input w3-border w3-round" type="search" id="q" name="q" type="text" placeholder="검색">
         </div>
-      </nav>
+      </form>
+    </div>
 
+    <div id="mySidebar" class="w3-white w3-col s12 m12 l12 w3-hide-medium w3-hide-large" style="display:none;" >
+      <div class="w3-padding">
+      {% for my_page in site.pages %}
+      <!--
+        my_page.autogen is populated by the pagination logic for all pages
+                        that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+      -->
+      {% assign my_page = site.pages | where: "path", path | first %}
+      {% assign tag_name = my_page.title | split: ": " %}
 
-    {% endif %}
+      {% if my_page.title and my_page.autogen == nil and tag_name.first != "Posts" and tag_name.first != "Tag" and tag_name.first != "Category" and tag_name.first != site.title and tag_name.first != "검색결과" %}
+      <a class=" w3-bar-item w3-button w3-wide" style="width: 30%;" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
+      {% endif %}
+      {% endfor %}
+      </div>
+    </div>
   </div>
 
-</div>
+
 {% if page.url == "/index.html" %}
-<img class="w3-image w3-margin-top w3-margin-bottom" src="https://farm5.staticflickr.com/4732/39212074151_fa3a74e927_b.jpg" alt="Architecture" width="100%">
+<img id="main-image" class="w3-image w3-margin-top w3-margin-bottom" src="https://farm5.staticflickr.com/4732/39212074151_fa3a74e927_b.jpg" alt="Architecture" width="100%">
 <div class="w3-display-middle w3-margin-top w3-center">
-  <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>Hibrain.net</b></span> <span class=" w3-text-light-grey">Tech Blog</span></h1>
+  <span class=" w3-text-white main-title"><span class="w3-padding w3-black w3-opacity-min"><b>하이브레인넷</b></span> <span class=" w3-text-light-grey">기술 블로그</span></span>
 </div>
   {% elsif page.url == "/guestbook/" %}
   <div class="guestbook w3-display-container">
     <div class=" w3-display-middle w3-center">
-      <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>Hibrain.net</b></span> <span class=" w3-text-light-grey">Tech Blog 방명록</span></h1>
+      <span class=" w3-text-white sub-title"><span class="w3-padding w3-black w3-opacity-min"><b>하이브레인넷</b></span> <span class=" w3-text-light-grey">기술 블로그 방명록</span></span>
     </div>
   </div>
   {% elsif page.url == "/home/" %}
   <div class="main w3-display-container">
     <div class=" w3-display-middle w3-center">
-      <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>Hibrain.net</b></span> <span class=" w3-text-light-grey">Tech Blog</span></h1>
+      <span class=" w3-text-white sub-title"><span class="w3-padding w3-black w3-opacity-min"><b>하이브레인넷</b></span> <span class="w3-text-light-grey">기술 블로그</span></span>
     </div>
   </div>
   {% elsif page.url == "/tags/" %}
   <div class="tags w3-display-container">
     <div class=" w3-display-middle w3-center">
-      <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>Hibrain.net</b></span> <span class=" w3-text-light-grey">Tech Blog 태그</span></h1>
+      <span class=" w3-text-white sub-title"><span class="w3-padding w3-black w3-opacity-min"><b>하이브레인넷</b></span> <span class=" w3-text-light-grey">기술 블로그 태그</span></span>
     </div>
   </div>
   {% endif %}

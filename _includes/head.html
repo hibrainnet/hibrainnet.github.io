@@ -37,6 +37,7 @@ function getParameter(param) {
 };
 
 getTypeValue();
+
 </script>
 <head>
 
@@ -56,9 +57,70 @@ getTypeValue();
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ "/feed.xml" | relative_url }}">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
   {% if jekyll.environment == 'production' and site.google_analytics %}
   {% include google-analytics.html %}
   {% endif %}
 
+  <style>
+    .w3-bar .w3-button {
+      padding: 16px;
+    }
+
+  </style>
+
+  <script>
+      $(document).ready(function(){
+          $("#searchbar").hide();
+
+          $('a[href="#search"]').click(function(){
+              if ( $("#searchbar").is(':hidden')){
+                $("#searchbar").show();
+                $("#mySidebar").hide();
+                $('#searchbar > form > div > input[type="search"]').focus();
+              }else {
+                  $("#searchbar").hide();
+              }
+          });
+
+          $('a[href="#navbar"]').click(function(){
+              if ( $("#mySidebar").is(':hidden')){
+                  $("#mySidebar").show();
+                  $("#searchbar").hide();
+              }else {
+                  $("#mySidebar ").hide();
+              }
+          });
+     
+          $('.home, #main-image').on('click', function(e) {
+              if($(e.target).closest('#mySidebar').length == 0) {
+                  $("#mySidebar").hide();
+              }
+              if($(e.target).closest('#searchbar').length == 0) {
+                  $("#searchbar").hide();
+              }
+          });
+      });
+
+
+
+      $(document).ready(function() {
+      var windowsize = $(window).width();
+
+      $(window).resize(function() {
+          var windowsize = $(window).width();
+      });
+
+          function checkWidth() {
+          if (windowsize < 500) {
+              $('#logo').removeClass('w3-large').addClass('w3-medium').addClass('w3-center');
+          }
+        }
+          // Execute on load
+          checkWidth();
+          // Bind event listener
+          $(window).resize(checkWidth);
+      });
+  </script>
 </head>
