@@ -1,16 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://blog.hibrainapps.net/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.hibrainapps.net/" rel="alternate" type="text/html" /><updated>2018-01-11T09:10:29+00:00</updated><id>http://blog.hibrainapps.net/</id><title type="html">하이브레인넷 부설연구소</title><subtitle></subtitle><entry><title type="html">Install Docker</title><link href="http://blog.hibrainapps.net/2018/01/11/install-docker.html" rel="alternate" type="text/html" title="Install Docker" /><published>2018-01-11T00:00:00+00:00</published><updated>2018-01-11T00:00:00+00:00</updated><id>http://blog.hibrainapps.net/2018/01/11/install-docker</id><content type="html" xml:base="http://blog.hibrainapps.net/2018/01/11/install-docker.html">&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;layout: post
-author: yl.jung
-title: &quot;Docker 설치&quot;
-date: 2018-01-11 17:29:00 +0900
-tags: [연구노트, 인턴십, docker, install]
-category: [docker]
-license: 'public-domain'
-permalink: /docker/install
-comments : true
-thumbnail: http://res.cloudinary.com/degxeqfok/image/upload/v1515658000/gmlsq9pxwdydku3r6dqd.png
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h1 id=&quot;docker-설치&quot;&gt;Docker 설치&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://blog.hibrainapps.net/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.hibrainapps.net/" rel="alternate" type="text/html" /><updated>2018-01-11T09:15:42+00:00</updated><id>http://blog.hibrainapps.net/</id><title type="html">하이브레인넷 부설연구소</title><subtitle></subtitle><entry><title type="html">Docker 설치</title><link href="http://blog.hibrainapps.net/docker/install" rel="alternate" type="text/html" title="Docker 설치" /><published>2018-01-11T08:29:00+00:00</published><updated>2018-01-11T08:29:00+00:00</updated><id>http://blog.hibrainapps.net/docker/install-docker</id><content type="html" xml:base="http://blog.hibrainapps.net/docker/install">&lt;h1 id=&quot;docker-설치&quot;&gt;Docker 설치&lt;/h1&gt;
 
 &lt;p&gt;Docker는 Windows를 위한 “Docker for Windows”를 지원해준다. 하지만, “Docker for Windows”는 Windows OS버전에 따라 지원해주지 않는 경우가 있다. Windows 10을 기준으로 버전 종류는 Home, Pro, Enterprise, Education이 있는데 그 중 Home버전은 “Docker for Windows”설치를 지원하지 않는 버전이다. 반면에 Pro버전의 경우  “Docker for Windows” 설치를 지원한다. 따라서 Home버전일 때와 Pro버전일 때 Docker를 사용하려면 다른 방법으로 설치를 진행해야 한다.&lt;/p&gt;
 
@@ -192,7 +180,7 @@ thumbnail: http://res.cloudinary.com/degxeqfok/image/upload/v1515658000/gmlsq9px
 &lt;ol&gt;
   &lt;li&gt;https://docs.docker.com/toolbox/toolbox_install_windows/#what-you-get-and-how-it-works, docker docs, accessed 2017-01-11&lt;/li&gt;
   &lt;li&gt;https://docs.docker.com/docker-for-windows/install/, docker docs, accessed 2017-01-11&lt;/li&gt;
-&lt;/ol&gt;</content><author><name></name></author><summary type="html">layout: post author: yl.jung title: &quot;Docker 설치&quot; date: 2018-01-11 17:29:00 +0900 tags: [연구노트, 인턴십, docker, install] category: [docker] license: 'public-domain' permalink: /docker/install comments : true thumbnail: http://res.cloudinary.com/degxeqfok/image/upload/v1515658000/gmlsq9pxwdydku3r6dqd.png</summary></entry><entry><title type="html">docker 연구하기</title><link href="http://blog.hibrainapps.net/p-docker" rel="alternate" type="text/html" title="docker 연구하기" /><published>2018-01-10T03:00:11+00:00</published><updated>2018-01-10T03:00:11+00:00</updated><id>http://blog.hibrainapps.net/Docker(pgh)</id><content type="html" xml:base="http://blog.hibrainapps.net/p-docker">&lt;p&gt;하나의 서버에 여러프로그램을 설치하게 되면, 서로 사용하는 라이브러리의 버전이 다르거나 동일한 포트를 사용하는 경우 설치가 굉장히 까다로워지게 된다. 또한 시간이 흐르면서 서버 환경은 계속 변하는데( ex CentOS와 Ubuntu), 물론 서로 다른 서버에 설치할 수 있으면 좋겠지만  보통 개발자들이 쓸수 있는 자원은 한정적이다.&lt;br /&gt;
+&lt;/ol&gt;</content><author><name>yl.jung</name></author><category term="[&quot;docker&quot;]" /><category term="연구노트" /><category term="인턴십" /><category term="docker" /><category term="install" /><summary type="html">Docker 설치</summary></entry><entry><title type="html">docker 연구하기</title><link href="http://blog.hibrainapps.net/p-docker" rel="alternate" type="text/html" title="docker 연구하기" /><published>2018-01-10T03:00:11+00:00</published><updated>2018-01-10T03:00:11+00:00</updated><id>http://blog.hibrainapps.net/Docker(pgh)</id><content type="html" xml:base="http://blog.hibrainapps.net/p-docker">&lt;p&gt;하나의 서버에 여러프로그램을 설치하게 되면, 서로 사용하는 라이브러리의 버전이 다르거나 동일한 포트를 사용하는 경우 설치가 굉장히 까다로워지게 된다. 또한 시간이 흐르면서 서버 환경은 계속 변하는데( ex CentOS와 Ubuntu), 물론 서로 다른 서버에 설치할 수 있으면 좋겠지만  보통 개발자들이 쓸수 있는 자원은 한정적이다.&lt;br /&gt;
  2010년을 넘어서면서는 사용요금만 내고 가상서버를 빌려쓰게 되는 클라우드 환경으로 변하게 되며, 클라우드 환경에서는 클릭 몇번으로 가상 서버를 만들 수 있게 되었다.&lt;br /&gt;
  하지만 생성된 가상 서버에 각종 소프트웨어를 설정해야 하는데, 서버가 한두대면 쉽게 가능하지만 서버 갯수가 많아지면 사람이 일일이 설정하기가 어려워 진다.
 따라서 클라우드 환경에서는 서버를 생성하는 것은 쉬워졌지만, 소프트웨어 설치와 배포가 큰 어려움으로 다가왔다.&lt;br /&gt;

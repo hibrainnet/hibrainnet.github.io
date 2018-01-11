@@ -423,6 +423,42 @@ getTypeValue();
 
         
         
+        <!--
+          my_page.autogen is populated by the pagination logic for all pages
+                          that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+        -->
+        
+        
+
+        
+        
+        <!--
+          my_page.autogen is populated by the pagination logic for all pages
+                          that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+        -->
+        
+        
+
+        
+        
+        <!--
+          my_page.autogen is populated by the pagination logic for all pages
+                          that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+        -->
+        
+        
+
+        
+        
+        <!--
+          my_page.autogen is populated by the pagination logic for all pages
+                          that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+        -->
+        
+        
+
+        
+        
       </div>
       <!--search bar and button-->
 
@@ -685,6 +721,42 @@ getTypeValue();
 
       
       
+      <!--
+        my_page.autogen is populated by the pagination logic for all pages
+                        that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+      -->
+      
+      
+
+      
+      
+      <!--
+        my_page.autogen is populated by the pagination logic for all pages
+                        that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+      -->
+      
+      
+
+      
+      
+      <!--
+        my_page.autogen is populated by the pagination logic for all pages
+                        that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+      -->
+      
+      
+
+      
+      
+      <!--
+        my_page.autogen is populated by the pagination logic for all pages
+                        that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+      -->
+      
+      
+
+      
+      
       </div>
     </div>
   </div>
@@ -702,6 +774,12 @@ getTypeValue();
 
   <div>
     
+    
+     <span class="site-tag">
+        <a href="docker">
+                docker (1)
+        </a>
+    </span>
     
      <span class="site-tag">
         <a href="디자인패턴">
