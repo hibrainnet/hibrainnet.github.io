@@ -221,6 +221,7 @@
 }
 .post-content {
   margin-bottom: $spacing-unit;
+  line-height: 29px;
 
   h2 {
     @include relative-font-size(2);
@@ -261,6 +262,9 @@
   .main-title {
     font-size : 15px;
   }
+  .sub-title {
+    font-size: 12px;
+  }
   .thumbnails {
     max-height: 6em;
   }
@@ -279,11 +283,14 @@
   }
   .thumbnails {
     float: right;
-    height: 160px; width: 190px;
+    height: 120px;
+    width: 170px;
+    object-fit: cover;
   }
   .main-title {
     font-size: 36px;
   }
+
 }
 
 .describe {
