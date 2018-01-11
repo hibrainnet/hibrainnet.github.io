@@ -25,9 +25,10 @@ pagination:
 
           <div class="w3-col s3 m4 l4 images">
             <p class="images">{% if post.thumbnail %}
-              <img class="w3-image thumbnails" src="{{ post.thumbnail| escape }}" align="center"/>
+              <!--<img class="w3-image thumbnails" src="{{ post.thumbnail| escape }}" align="center"/>-->
+              <img class="thumbnails" src="{{ post.thumbnail| escape }}" align="center"/>
               {% else %}
-              <img class="w3-image thumbnails" src="/images/nothumbnail.jpg" align="center" />
+              <img class="thumbnails" src="/images/nothumbnail.jpg" align="center" />
               {% endif %}</p>
           </div>
 
