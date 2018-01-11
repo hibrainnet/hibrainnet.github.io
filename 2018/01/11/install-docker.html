@@ -1,0 +1,197 @@
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+layout: post
+author: yl.jung
+title: "Docker 설치"
+date: 2018-01-11 17:29:00 +0900
+tags: [연구노트, 인턴십, docker, install]
+category: [docker]
+license: 'public-domain'
+permalink: /docker/install
+comments : true
+thumbnail: http://res.cloudinary.com/degxeqfok/image/upload/v1515658000/gmlsq9pxwdydku3r6dqd.png
+---
+</code></pre></div></div>
+
+<h1 id="docker-설치">Docker 설치</h1>
+
+<p>Docker는 Windows를 위한 “Docker for Windows”를 지원해준다. 하지만, “Docker for Windows”는 Windows OS버전에 따라 지원해주지 않는 경우가 있다. Windows 10을 기준으로 버전 종류는 Home, Pro, Enterprise, Education이 있는데 그 중 Home버전은 “Docker for Windows”설치를 지원하지 않는 버전이다. 반면에 Pro버전의 경우  “Docker for Windows” 설치를 지원한다. 따라서 Home버전일 때와 Pro버전일 때 Docker를 사용하려면 다른 방법으로 설치를 진행해야 한다.</p>
+
+<p><br /></p>
+
+<h2 id="windows-10-home-버전에서의-설치">Windows 10 Home 버전에서의 설치</h2>
+
+<blockquote>
+  <p>Windows 10 Home 버전은 앞에서 말했듯이 “Docker for Windows”가 지원되지 않기 때문에 “Docker toolbox for Windows”를 이용하여 설치를 진행해야 한다.</p>
+
+  <p>“Docker toolbox for Windows”는</p>
+
+  <ul>
+    <li>Docker Engine을 실행하여 이미지와 컨테이너를 만드는 Docker CLI 클라이언트</li>
+    <li>Docker GUI 인 Kitematic</li>
+    <li>Docker 명령어 환경에 맞게 구성된 Docker QuickStart 쉘</li>
+    <li>Oracle VM VirtualBox</li>
+  </ul>
+
+  <p>로 구성되어 있다.</p>
+
+  <p>Docker Engine 데몬은 Linux 관련 커널 기능을 사용하므로 Windows에서 실행이 불가능하다.</p>
+
+  <p>하지만, <code class="highlighter-rouge">docker machine</code>명령어를 사용하여 Windows환경의 컴퓨터 내에 작은 Linux VM을 만들고 연결하여 Docker Engine이 실행가능하도록 한다.</p>
+
+  <hr />
+
+  <p>Docker설치에 필요한 환경</p>
+
+  <ul>
+    <li>Windows 7 이상 64비트 운영제체</li>
+    <li>Windows 시스템이 하드웨어 가상화가 활성되어 있는지 확인
+      <ul>
+        <li>시작 -&gt; 작업관리자 -&gt; 성능 탭 -&gt; CPU 아래에 표시</li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<p><br /></p>
+
+<ol>
+  <li>
+    <p><a href="https://download.docker.com/win/stable/DockerToolbox.exe">Docker 사이트</a>에서 “Docker toolbox for Windows”를 다운로드 받는다.</p>
+  </li>
+  <li>
+    <p>“Docker toolbox for Windows installer” 를 실행시키고 <code class="highlighter-rouge">Next &gt;</code>버튼을 누른다.</p>
+
+    <p><img src="http://res.cloudinary.com/degxeqfok/image/upload/v1515658000/gmlsq9pxwdydku3r6dqd.png" alt="toolbox2" /></p>
+
+    <p><br /></p>
+  </li>
+  <li>
+    <p>설치할 경로를 지정한다. 기본 경로는 <code class="highlighter-rouge">C:\Program Files\Docker Toolbox</code>이다.</p>
+
+    <p><img src="http://res.cloudinary.com/degxeqfok/image/upload/v1515658020/lbv7rq1q6ytszrio1oud.png" alt="toolbox3" /></p>
+
+    <p><br /></p>
+  </li>
+  <li>
+    <p>설치하고자 할 프로그램을 선택한다. Github에서 iso파일을 내려받아야 하기 때문에 Git이 설치되어 있지 않으면 <code class="highlighter-rouge">Git for Windows</code>를 선택한다. 기존에 설치 되어있는 경우도 이전 버전을 삭제하고 다시 설치해준다.</p>
+
+    <p><img src="http://res.cloudinary.com/degxeqfok/image/upload/v1515658039/shancqlxe58x0xpzjjaq.png" alt="toolbox4" /></p>
+
+    <p><br /></p>
+  </li>
+  <li>
+    <p>추가적인 설치 과정을 선택한다. 맨 아래에 VirtualBox 또한 iso파일을 구동하기 위해 필수적인 프로그램이다. 설치되어 있는 경우 선택하지 않아도 되지만, 버전문제가 생길 수 있기 때문에 설치 선택을 권장한다.</p>
+
+    <p><img src="http://res.cloudinary.com/degxeqfok/image/upload/v1515658223/zhwfkcax7e6buswfnil2.png" alt="toolbox5" /></p>
+
+    <p><br /></p>
+  </li>
+  <li>
+    <p>설치가 정삭적으로 완료되면</p>
+
+    <ol>
+      <li>
+        <p>Docker Quickstart Terminal</p>
+      </li>
+      <li>
+        <p>Kitematic</p>
+      </li>
+      <li>
+        <p>Oracle VM VirtualBox</p>
+
+        <p>위의 세 가지가 설치된다.</p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>설치된 “Docker Quickstart Terminal”을 실행시키면 자동으로 iso파일을 내려받아 Docker를 사용할 수 있는 환경을 만들어 준다.</p>
+
+    <p><img src="http://res.cloudinary.com/degxeqfok/image/upload/v1515658259/h10hmejxqtwndubnialo.jpg" alt="toolbox7-1" /></p>
+
+    <p><img src="http://res.cloudinary.com/degxeqfok/image/upload/v1515658298/lnkvupkklukonzx4evfr.png" alt="toolbox7-2" /></p>
+
+    <p><br /></p>
+  </li>
+  <li>
+    <p>설치가 완료 된 후 shell에 명령어를 입력하여 제대로 동작하는지 확인한다.</p>
+
+    <p><code class="highlighter-rouge">docker run hello-world</code></p>
+
+    <p><img src="http://res.cloudinary.com/degxeqfok/image/upload/v1515658315/ppao9aaulehkzxqbwlcx.png" alt="toolbox8-1" /></p>
+
+    <p><img src="http://res.cloudinary.com/degxeqfok/image/upload/v1515658326/vf9fk50obrydggbggric.png" alt="toolbox8-2" /></p>
+  </li>
+</ol>
+
+<p><br /></p>
+
+<h2 id="windows-10-pro-버전에서의-설치">Windows 10 Pro 버전에서의 설치</h2>
+
+<blockquote>
+  <p>Windows 01 Pro버전에서는 “Docker for Windows”를 사용하여 간단하게 설치가 가능하다.</p>
+</blockquote>
+
+<p><br /></p>
+
+<ol>
+  <li>
+    <p><a href="https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe">Docker 사이트</a>에서 “Docker for Windows” 설치 파일을 다운로드 받는다.</p>
+  </li>
+  <li>
+    <p>다운로드 받은 설치 파일을 실행시키면 Docker와 관련된 패키지들이 자동으로 설치된다.</p>
+
+    <p><img src="http://res.cloudinary.com/degxeqfok/image/upload/v1515638607/mzoxl4jpivpqtjodbref.png" alt="install" /></p>
+
+    <p><img src="http://res.cloudinary.com/degxeqfok/image/upload/v1515638657/e2tbg6lnabpqzmuije6c.png" alt="install-finish" /></p>
+
+    <p><br /></p>
+  </li>
+  <li>
+    <p>설치를 완료한 후 바탕화면의 바로가기나 프로그램 검색에서 찾은 “Docker for Windows”를 실행시킨다.</p>
+
+    <p><img src="http://res.cloudinary.com/degxeqfok/image/upload/v1515638771/f94f1nivxmzjokpovb4o.jpg" alt="serach-docker" /></p>
+
+    <p>​</p>
+
+    <p><br /></p>
+  </li>
+  <li>
+    <p>정상적으로 실행되면 하단의 작업 표시줄에 고래 모양의 Docker 아이콘이 실행된다.</p>
+
+    <p><img src="http://res.cloudinary.com/degxeqfok/image/upload/v1515638827/mcckswih9kxcufimd9df.jpg" alt="docker-icon" /></p>
+
+    <p><br /></p>
+  </li>
+  <li>
+    <p>최초로 설치하면 간단한 안내문구와 로그인 버튼이 있는 화면이 뜬다.</p>
+
+    <p><img src="http://res.cloudinary.com/degxeqfok/image/upload/v1515638855/ieganhky2hhiwbs78kck.png" alt="init-install-result" /></p>
+  </li>
+</ol>
+
+<p><br /></p>
+
+<p><strong>*Docker가 정상적으로 설치되었는지 실행</strong></p>
+
+<ol>
+  <li>
+    <p>명령 프롬프트(cmd)창을 실행시킨다.</p>
+  </li>
+  <li>
+    <p>해당 창에서 <code class="highlighter-rouge">docker info</code>, <code class="highlighter-rouge">docker version</code>등의 명령어를 실행 시킬 수 있다.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">docker run hello-world</code>명령어를 입력하여 Docker에서 기본으로 제공하는 “helllo-world” 가 정상적으로 작동하는지 확인한다.</p>
+
+    <p><img src="http://res.cloudinary.com/degxeqfok/image/upload/v1515638921/i3mitdiivnubjo5cmdfb.png" alt="run-docker" /></p>
+
+    <p>​</p>
+  </li>
+</ol>
+
+<h1 id="참고자료">참고자료</h1>
+
+<ol>
+  <li>https://docs.docker.com/toolbox/toolbox_install_windows/#what-you-get-and-how-it-works, docker docs, accessed 2017-01-11</li>
+  <li>https://docs.docker.com/docker-for-windows/install/, docker docs, accessed 2017-01-11</li>
+</ol>
