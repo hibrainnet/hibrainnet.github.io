@@ -81,78 +81,43 @@ getTypeValue();
     .w3-bar .w3-button {
       padding: 16px;
     }
-    #search {
-      position: fixed;
-      top: 60px;
-      left: 0px;
-      width: 100%;
-      height: 10%;
-      background-color: rgba(0, 0, 0, 0.65);
-
-      -webkit-transition: all 0.5s ease-in-out;
-      -moz-transition: all 0.5s ease-in-out;
-      -o-transition: all 0.5s ease-in-out;
-      -ms-transition: all 0.5s ease-in-out;
-      transition: all 0.5s ease-in-out;
-
-      -webkit-transform: translate(0px, -100%) scale(0, 0);
-      -moz-transform: translate(0px, -100%) scale(0, 0);
-      -o-transform: translate(0px, -100%) scale(0, 0);
-      -ms-transform: translate(0px, -100%) scale(0, 0);
-      transform: translate(0px, -100%) scale(0, 0);
-
-      opacity: 0;
-    }
-
-    #search.open {
-      -webkit-transform: translate(0px, 0px) scale(1, 1);
-      -moz-transform: translate(0px, 0px) scale(1, 1);
-      -o-transform: translate(0px, 0px) scale(1, 1);
-      -ms-transform: translate(0px, 0px) scale(1, 1);
-      transform: translate(0px, 0px) scale(1, 1);
-      opacity: 1;
-    }
-
-    #search input[type="search"] {
-      position: fixed;
-      top: 30%;
-      width: 100%;
-      color: rgb(255, 255, 255);
-      background: rgba(0, 0, 0, 0);
-      font-size: 30px;
-      font-weight: 300;
-      text-align: center;
-      border: 0px;
-      margin: 0px auto;
-      margin-top: -25px;
-      padding-left: 30px;
-      padding-right: 30px;
-      outline: none;
-    }
-    #search .btn {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      margin-top: 61px;
-      margin-left: -45px;
-    }
 
   </style>
 
   <script>
-      $(function () {
-          $('a[href="#search"]').on('click', function(event) {
-              event.preventDefault();
-              $('#search').addClass('open');
-              $('#search > form > input[type="search"]').focus();
+      $(document).ready(function(){
+          $("#searchbar").hide();
+
+          $('a[href="#search"]').click(function(){
+              if ( $("#searchbar").is(':hidden')){
+                $("#searchbar").show();
+                $("#mySidebar").hide();
+                $('#searchbar > form > div > input[type="search"]').focus();
+              }else {
+                  $("#searchbar").hide();
+              }
           });
 
-          $('#search, #search button.close').on('click keyup', function(event) {
-              if (event.target == this || event.target.className == 'close' || event.keyCode == 27) {
-                  $(this).removeClass('open');
+          $('a[href="#navbar"]').click(function(){
+              if ( $("#mySidebar").is(':hidden')){
+                  $("#mySidebar").show();
+                  $("#searchbar").hide();
+              }else {
+                  $("#mySidebar ").hide();
+              }
+          });
+     
+          $('.home, #main-image').on('click', function(e) {
+              if($(e.target).closest('#mySidebar').length == 0) {
+                  $("#mySidebar").hide();
+              }
+              if($(e.target).closest('#searchbar').length == 0) {
+                  $("#searchbar").hide();
               }
           });
       });
+
+
 
       $(document).ready(function() {
       var windowsize = $(window).width();
@@ -196,7 +161,7 @@ getTypeValue();
     <div class="w3-bar w3-white w3-card" id="myNavbar">
       
       
-      <a href="javascript:void(0)" class="w3-bar-item w3-button w3-left w3-hide-large w3-hide-medium" onclick="w3_open()">
+      <a href="#navbar" class="w3-bar-item w3-button w3-left w3-hide-large w3-hide-medium">
         <i class="fa fa-bars"></i>
       </a>
 
@@ -209,13 +174,14 @@ getTypeValue();
         </form>
       </div>
 
-      <div id="search">
-        <form action="http://blog.hibrainapps.net/result/">
-          <input type="search" id="q" name="q" type="text" placeholder="검색">
-        </form>
-      </div>
+      <!--<div id="search">-->
+        <!--<form action="http://blog.hibrainapps.net/result/">-->
+          <!--<input type="search" id="q" name="q" type="text" placeholder="검색">-->
+        <!--</form>-->
+      <!--</div>-->
 
-      <div class="w3-hide-small">
+
+      <div class="w3-hide-small w3-right">
         
         <!--
           my_page.autogen is populated by the pagination logic for all pages
@@ -225,18 +191,7 @@ getTypeValue();
         
 
         
-        <a class="w3-bar-item w3-button w3-wide w3-right" href="/index/">홈</a>
-        
-        
-        <!--
-          my_page.autogen is populated by the pagination logic for all pages
-                          that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-        -->
-        
-        
-
-        
-        <a class="w3-bar-item w3-button w3-wide w3-right" href="/tags/">태그</a>
+        <a class="w3-bar-item w3-button w3-wide " href="/index/">홈</a>
         
         
         <!--
@@ -247,7 +202,27 @@ getTypeValue();
         
 
         
-        <a class="w3-bar-item w3-button w3-wide w3-right" href="/guestbook/">방명록</a>
+        <a class="w3-bar-item w3-button w3-wide " href="/tags/">태그</a>
+        
+        
+        <!--
+          my_page.autogen is populated by the pagination logic for all pages
+                          that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+        -->
+        
+        
+
+        
+        <a class="w3-bar-item w3-button w3-wide " href="/guestbook/">방명록</a>
+        
+        
+        <!--
+          my_page.autogen is populated by the pagination logic for all pages
+                          that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+        -->
+        
+        
+
         
         
         <!--
@@ -421,210 +396,226 @@ getTypeValue();
         <!--<button class="w3-bar-item" style="background-color: white;"><i class="fa fa-search" aria-hidden="true"></i></button>-->
       <!--</form>-->
     </div>
+
+
+    <div id="searchbar" class="w3-col s12 m12 l12">
+      <form action="http://blog.hibrainapps.net/result/">
+        <div class="w3-padding">
+        <input class="w3-input w3-border w3-round" type="search" id="q" name="q" type="text" placeholder="검색">
+        </div>
+      </form>
+    </div>
+
+    <div id="mySidebar" class="w3-white w3-col s12 m12 l12 w3-hide-medium w3-hide-large" style="display:none;" >
+      <div class="w3-padding">
+      
+      <!--
+        my_page.autogen is populated by the pagination logic for all pages
+                        that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+      -->
+      
+      
+
+      
+      <a class=" w3-bar-item w3-button w3-wide" style="width: 30%;" href="/index/">홈</a>
+      
+      
+      <!--
+        my_page.autogen is populated by the pagination logic for all pages
+                        that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+      -->
+      
+      
+
+      
+      <a class=" w3-bar-item w3-button w3-wide" style="width: 30%;" href="/tags/">태그</a>
+      
+      
+      <!--
+        my_page.autogen is populated by the pagination logic for all pages
+                        that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+      -->
+      
+      
+
+      
+      <a class=" w3-bar-item w3-button w3-wide" style="width: 30%;" href="/guestbook/">방명록</a>
+      
+      
+      <!--
+        my_page.autogen is populated by the pagination logic for all pages
+                        that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+      -->
+      
+      
+
+      
+      
+      <!--
+        my_page.autogen is populated by the pagination logic for all pages
+                        that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+      -->
+      
+      
+
+      
+      
+      <!--
+        my_page.autogen is populated by the pagination logic for all pages
+                        that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+      -->
+      
+      
+
+      
+      
+      <!--
+        my_page.autogen is populated by the pagination logic for all pages
+                        that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+      -->
+      
+      
+
+      
+      
+      <!--
+        my_page.autogen is populated by the pagination logic for all pages
+                        that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+      -->
+      
+      
+
+      
+      
+      <!--
+        my_page.autogen is populated by the pagination logic for all pages
+                        that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+      -->
+      
+      
+
+      
+      
+      <!--
+        my_page.autogen is populated by the pagination logic for all pages
+                        that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+      -->
+      
+      
+
+      
+      
+      <!--
+        my_page.autogen is populated by the pagination logic for all pages
+                        that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+      -->
+      
+      
+
+      
+      
+      <!--
+        my_page.autogen is populated by the pagination logic for all pages
+                        that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+      -->
+      
+      
+
+      
+      
+      <!--
+        my_page.autogen is populated by the pagination logic for all pages
+                        that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+      -->
+      
+      
+
+      
+      
+      <!--
+        my_page.autogen is populated by the pagination logic for all pages
+                        that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+      -->
+      
+      
+
+      
+      
+      <!--
+        my_page.autogen is populated by the pagination logic for all pages
+                        that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+      -->
+      
+      
+
+      
+      
+      <!--
+        my_page.autogen is populated by the pagination logic for all pages
+                        that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+      -->
+      
+      
+
+      
+      
+      <!--
+        my_page.autogen is populated by the pagination logic for all pages
+                        that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+      -->
+      
+      
+
+      
+      
+      <!--
+        my_page.autogen is populated by the pagination logic for all pages
+                        that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+      -->
+      
+      
+
+      
+      
+      <!--
+        my_page.autogen is populated by the pagination logic for all pages
+                        that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+      -->
+      
+      
+
+      
+      
+      <!--
+        my_page.autogen is populated by the pagination logic for all pages
+                        that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+      -->
+      
+      
+
+      
+      
+      <!--
+        my_page.autogen is populated by the pagination logic for all pages
+                        that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+      -->
+      
+      
+
+      
+      
+      <!--
+        my_page.autogen is populated by the pagination logic for all pages
+                        that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
+      -->
+      
+      
+
+      
+      
+      </div>
+    </div>
   </div>
-
-  <!-- Sidebar on small screens when clicking the menu icon -->
-  <nav class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
-    <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
-    
-    <!--
-      my_page.autogen is populated by the pagination logic for all pages
-                      that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-    -->
-    
-    
-
-    
-    <a class="w3-bar-item w3-button w3-wide" href="/index/">홈</a>
-    
-    
-    <!--
-      my_page.autogen is populated by the pagination logic for all pages
-                      that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-    -->
-    
-    
-
-    
-    <a class="w3-bar-item w3-button w3-wide" href="/tags/">태그</a>
-    
-    
-    <!--
-      my_page.autogen is populated by the pagination logic for all pages
-                      that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-    -->
-    
-    
-
-    
-    <a class="w3-bar-item w3-button w3-wide" href="/guestbook/">방명록</a>
-    
-    
-    <!--
-      my_page.autogen is populated by the pagination logic for all pages
-                      that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-    -->
-    
-    
-
-    
-    
-    <!--
-      my_page.autogen is populated by the pagination logic for all pages
-                      that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-    -->
-    
-    
-
-    
-    
-    <!--
-      my_page.autogen is populated by the pagination logic for all pages
-                      that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-    -->
-    
-    
-
-    
-    
-    <!--
-      my_page.autogen is populated by the pagination logic for all pages
-                      that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-    -->
-    
-    
-
-    
-    
-    <!--
-      my_page.autogen is populated by the pagination logic for all pages
-                      that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-    -->
-    
-    
-
-    
-    
-    <!--
-      my_page.autogen is populated by the pagination logic for all pages
-                      that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-    -->
-    
-    
-
-    
-    
-    <!--
-      my_page.autogen is populated by the pagination logic for all pages
-                      that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-    -->
-    
-    
-
-    
-    
-    <!--
-      my_page.autogen is populated by the pagination logic for all pages
-                      that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-    -->
-    
-    
-
-    
-    
-    <!--
-      my_page.autogen is populated by the pagination logic for all pages
-                      that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-    -->
-    
-    
-
-    
-    
-    <!--
-      my_page.autogen is populated by the pagination logic for all pages
-                      that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-    -->
-    
-    
-
-    
-    
-    <!--
-      my_page.autogen is populated by the pagination logic for all pages
-                      that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-    -->
-    
-    
-
-    
-    
-    <!--
-      my_page.autogen is populated by the pagination logic for all pages
-                      that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-    -->
-    
-    
-
-    
-    
-    <!--
-      my_page.autogen is populated by the pagination logic for all pages
-                      that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-    -->
-    
-    
-
-    
-    
-    <!--
-      my_page.autogen is populated by the pagination logic for all pages
-                      that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-    -->
-    
-    
-
-    
-    
-    <!--
-      my_page.autogen is populated by the pagination logic for all pages
-                      that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-    -->
-    
-    
-
-    
-    
-    <!--
-      my_page.autogen is populated by the pagination logic for all pages
-                      that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-    -->
-    
-    
-
-    
-    
-    <!--
-      my_page.autogen is populated by the pagination logic for all pages
-                      that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-    -->
-    
-    
-
-    
-    
-    <!--
-      my_page.autogen is populated by the pagination logic for all pages
-                      that are automatically created by the gem. Check for non-existence to exclude pagination pages from site.pages iterators
-    -->
-    
-    
-
-    
-    
-  </nav>
-
-
 
 
 
@@ -682,6 +673,36 @@ getTypeValue();
               <a class="post-link" href="/command">Command 패턴 소개</a>
               <span class="post-meta" href="/authors/gh.park">posted by 박가혜</span>
               </h2>
+          
+        </li>
+
+      
+
+        <li>
+          
+
+          
+        </li>
+
+      
+
+        <li>
+          
+
+          
+              <span class="post-meta">Dec 28, 2017</span>
+              <h2>
+              <a class="post-link" href="/command">command pattern</a>
+              <span class="post-meta" href="/authors/gh.park">posted by 박가혜</span>
+              </h2>
+          
+        </li>
+
+      
+
+        <li>
+          
+
           
         </li>
 
