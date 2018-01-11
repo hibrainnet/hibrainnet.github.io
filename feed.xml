@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://blog.hibrainapps.net/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.hibrainapps.net/" rel="alternate" type="text/html" /><updated>2018-01-11T09:38:25+00:00</updated><id>http://blog.hibrainapps.net/</id><title type="html">하이브레인넷 부설연구소</title><subtitle></subtitle><entry><title type="html">Docker 설치</title><link href="http://blog.hibrainapps.net/docker/install" rel="alternate" type="text/html" title="Docker 설치" /><published>2018-01-11T08:29:00+00:00</published><updated>2018-01-11T08:29:00+00:00</updated><id>http://blog.hibrainapps.net/docker/install-docker</id><content type="html" xml:base="http://blog.hibrainapps.net/docker/install">&lt;h1 id=&quot;docker-설치&quot;&gt;Docker 설치&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://blog.hibrainapps.net/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.hibrainapps.net/" rel="alternate" type="text/html" /><updated>2018-01-11T09:44:45+00:00</updated><id>http://blog.hibrainapps.net/</id><title type="html">하이브레인넷 부설연구소</title><subtitle></subtitle><entry><title type="html">Docker 설치</title><link href="http://blog.hibrainapps.net/docker/install" rel="alternate" type="text/html" title="Docker 설치" /><published>2018-01-11T08:29:00+00:00</published><updated>2018-01-11T08:29:00+00:00</updated><id>http://blog.hibrainapps.net/docker/install-docker</id><content type="html" xml:base="http://blog.hibrainapps.net/docker/install">&lt;h1 id=&quot;docker-설치&quot;&gt;Docker 설치&lt;/h1&gt;
 
 &lt;p&gt;Docker는 Windows를 위한 “Docker for Windows”를 지원해준다. 하지만, “Docker for Windows”는 Windows OS버전에 따라 지원해주지 않는 경우가 있다. Windows 10을 기준으로 버전 종류는 Home, Pro, Enterprise, Education이 있는데 그 중 Home버전은 “Docker for Windows”설치를 지원하지 않는 버전이다. 반면에 Pro버전의 경우  “Docker for Windows” 설치를 지원한다. 따라서 Home버전일 때와 Pro버전일 때 Docker를 사용하려면 다른 방법으로 설치를 진행해야 한다.&lt;/p&gt;
 
@@ -181,10 +181,9 @@
   &lt;li&gt;https://docs.docker.com/toolbox/toolbox_install_windows/#what-you-get-and-how-it-works, docker docs, accessed 2017-01-11&lt;/li&gt;
   &lt;li&gt;https://docs.docker.com/docker-for-windows/install/, docker docs, accessed 2017-01-11&lt;/li&gt;
 &lt;/ol&gt;</content><author><name>yl.jung</name></author><category term="[&quot;docker&quot;]" /><category term="연구노트" /><category term="인턴십" /><category term="docker" /><category term="install" /><summary type="html">Docker 설치</summary></entry><entry><title type="html">docker 연구하기</title><link href="http://blog.hibrainapps.net/p-docker" rel="alternate" type="text/html" title="docker 연구하기" /><published>2018-01-10T03:00:11+00:00</published><updated>2018-01-10T03:00:11+00:00</updated><id>http://blog.hibrainapps.net/Docker(pgh)</id><content type="html" xml:base="http://blog.hibrainapps.net/p-docker">&lt;h2 id=&quot;docker-등장-배경&quot;&gt;docker 등장 배경&lt;/h2&gt;
+
 &lt;p&gt;하나의 서버에 여러프로그램을 설치하게 되면, 서로 사용하는 라이브러리의 버전이 다르거나 동일한 포트를 사용하는 경우 설치가 굉장히 까다로워지게 된다. 또한 시간이 흐르면서 &lt;strong&gt;서버 환경은 계속 변하는데( ex CentOS와 Ubuntu)&lt;/strong&gt; , 물론 서로 다른 서버에 설치할 수 있으면 좋겠지만 보통 &lt;strong&gt;개발자들이 쓸수 있는 자원은 한정적이다.&lt;/strong&gt; &lt;br /&gt;
- 2010년을 넘어서면서는 사용요금만 내고 가상서버를 빌려쓰게 되는 클라우드 환경으로 변하게 되며, 클라우드 환경에서는 클릭 몇번으로 가상 서버를 만들 수 있게 되었다.&lt;br /&gt;
- 하지만 생성된 가상 서버에 각종 소프트웨어를 설정해야 하는데, 서버가 한두대면 쉽게 가능하지만 서버 갯수가 많아지면 사람이 일일이 설정하기가 어려워 진다.
-따라서 &lt;strong&gt;클라우드 환경에서는 서버를 생성하는 것은 쉬워졌지만, 소프트웨어 설치와 배포&lt;/strong&gt; 가 큰 어려움으로 다가왔다.&lt;br /&gt;
+2010년을 넘어서면서는 사용요금만 내고 가상서버를 빌려쓰게 되는 클라우드 환경으로 변하게 되며, 클라우드 환경에서는 클릭 몇번으로 가상 서버를 만들 수 있게 되었다. 하지만 생성된 가상 서버에 각종 소프트웨어를 설정해야 하는데, 서버가 한두대면 쉽게 가능하지만 서버 갯수가 많아지면 사람이 일일이 설정하기가 어려워 진다. 따라서 &lt;strong&gt;클라우드 환경에서는 서버를 생성하는 것은 쉬워졌지만, 소프트웨어 설치와 배포&lt;/strong&gt; 가 큰 어려움으로 다가왔다.&lt;br /&gt;
 이때, immutable infrastructure(불변의 인프라) 라는 패러다임이 등장했는데, 이것은 호스트OS와 서비스 운영 환경(서버 프로그램, 소스코드…)을 분리하고 한번 설정한 운영환경은 변경하지 않는다 라는 것을 의미한다.&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;호스트OS : 호스트에 설치된 OS, 물리머신에 설치된 OS&lt;/li&gt;
@@ -212,11 +211,13 @@
   &lt;li&gt;전가상화 : 호스트 서버 장치인 하드웨어를 완전하게 가상화하는 방식, GuestOS는 모든 하드웨어 접근 명령을 하이퍼바이저를 통해 진행한다. 그래서 전가상화보다 낮은 성과를 나타낸다. 이 방식은 GuestOS를 수정할 필요가 없는 장점이 있다.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://res.cloudinary.com/dxovdseb3/image/upload/v1515574749/image2018-1-9_17-14-56_mp3vj4.png&quot; alt=&quot;2&quot; /&gt;
-그림 1. 전가상화 계층도(출처 : http://virtualhive.tistory.com/36)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://res.cloudinary.com/dxovdseb3/image/upload/v1515574749/image2018-1-9_17-14-56_mp3vj4.png&quot; alt=&quot;2&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://res.cloudinary.com/dxovdseb3/image/upload/v1515574736/vm_qgas5q.png&quot; alt=&quot;2&quot; /&gt;
-그림 2. 가상머신 계층도(출처 : https://subicura.com/2017/01/19/docker-guide-for-beginners-1.html)&lt;/p&gt;
+&lt;p&gt;그림 1. 전가상화 계층도(출처 : http://virtualhive.tistory.com/36)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://res.cloudinary.com/dxovdseb3/image/upload/v1515574736/vm_qgas5q.png&quot; alt=&quot;2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;그림 2. 가상머신 계층도(출처 : https://subicura.com/2017/01/19/docker-guide-for-beginners-1.html)&lt;/p&gt;
 
 &lt;p&gt;가상머신의 단점을 개선하기 위해 반가상화(Paravirtualization)방식의 Xen이 등장한다.&lt;/p&gt;
 
@@ -229,8 +230,9 @@
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://res.cloudinary.com/dxovdseb3/image/upload/v1515574752/image2018-1-9_17-15-27_soe6si.png&quot; alt=&quot;2&quot; /&gt;
-그림 3. 반가상화 계층도(출처 : http://virtualhive.tistory.com/36)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://res.cloudinary.com/dxovdseb3/image/upload/v1515574752/image2018-1-9_17-15-27_soe6si.png&quot; alt=&quot;2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;그림 3. 반가상화 계층도(출처 : http://virtualhive.tistory.com/36)&lt;/p&gt;
 
 &lt;p&gt;도커는 반가상화보다 좀 더 가벼워진 방식으로, &lt;strong&gt;추가적인 게스트OS를 설치하지 않고 도커 이미지에 서버 운영을 위한 프로그램과 라이브러리만 설치하고 OS 자원은 호스트와 공유하는 방식&lt;/strong&gt; 이다. 가상머신과 달리 이미지에 OS가 설치되어 있지 않기 떄문에 이미지의 용량 자체가 줄어들기 때문에 배포에도 빠르다.
 하드웨어, 운영체제를 가상화 하는 곳 자체가 없기 때문에 메모리 접근 속도, 파일시스템 사용 속도, 네트워크 속도 등에서 가상머신에 비해 월등히 빠른 속도를 가지게 된다.
@@ -238,8 +240,9 @@
 
 &lt;p&gt;도커는 LXC 기반으로 시작해서 0.9버전에서는 libcintainer 기술을 사용하여 개발하고 있다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://res.cloudinary.com/dxovdseb3/image/upload/v1515574745/image2018-1-9_16-58-2_hltkmm.png&quot; alt=&quot;2&quot; /&gt;
-그림 4. 도커 계층도(출처 : https://subicura.com/2017/01/19/docker-guide-for-beginners-1.html)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://res.cloudinary.com/dxovdseb3/image/upload/v1515574745/image2018-1-9_16-58-2_hltkmm.png&quot; alt=&quot;2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;그림 4. 도커 계층도(출처 : https://subicura.com/2017/01/19/docker-guide-for-beginners-1.html)&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;LXC : 리눅스 컨테이너, 리눅스 커널 레벨에서 제공하는 디렉토리 경로를 격리하는 공간을 의미, 이 가상공간에 OS는 설치할수 없기 때문에 컨테이너라고 부른다. cgroups, namespaces을 기반으로 이미지, 컨테이너 생성 및 관리 기능을 제공&lt;/li&gt;
@@ -260,8 +263,9 @@
 &lt;p&gt;만약 기존이미지에 추가한 파일을 위해서 다시 수백메가의 이미지를 다운받는다면 비효율적이다.&lt;/p&gt;
 
 &lt;p&gt;그래서 도커는 이미지를 통째로 생성하는 것이 아니라, 바뀐 부분만 생성한다음 부모 이미지를 참조하는 방식으로 동작하는데 이를 레이어라고 한다.
-&lt;img src=&quot;http://res.cloudinary.com/dxovdseb3/image/upload/v1515575703/why-docker-28-1024_odms2m.jpg&quot; alt=&quot;2&quot; /&gt;
-그림 5. 도커 이미지(출처 : https://www.slideshare.net/dotCloud/why-docker )&lt;/p&gt;
+&lt;img src=&quot;http://res.cloudinary.com/dxovdseb3/image/upload/v1515575703/why-docker-28-1024_odms2m.jpg&quot; alt=&quot;2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;그림 5. 도커 이미지(출처 : https://www.slideshare.net/dotCloud/why-docker )&lt;/p&gt;
 
 &lt;p&gt;컨테이너는 &lt;strong&gt;이미지를 실행한 상태&lt;/strong&gt; 로 추가되거나 변하는 값은 컨테이너에 저장된다.&lt;/p&gt;
 
@@ -281,8 +285,9 @@
 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://res.cloudinary.com/dxovdseb3/image/upload/v1515659146/docker_search_ddslot.png&quot; alt=&quot;2&quot; /&gt;
-그림 6. 도커 이미지 검색&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://res.cloudinary.com/dxovdseb3/image/upload/v1515659146/docker_search_ddslot.png&quot; alt=&quot;2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;그림 6. 도커 이미지 검색&lt;/p&gt;
 
 &lt;h3 id=&quot;이미지-내려받기&quot;&gt;이미지 내려받기&lt;/h3&gt;
 &lt;p&gt;Docker hub에서 alexeiled/docker-oracle-xe-11g 이미지를 받는다.
@@ -292,22 +297,25 @@ docker pull &lt;이미지이름&gt;:&lt;태그&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo docker pull alexeiled/docker-oracle-xe-11g
 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;http://res.cloudinary.com/dxovdseb3/image/upload/v1515659384/docker_pull_rgfi9w.png&quot; alt=&quot;2&quot; /&gt;
-그림 6. 도커 이미지 pull&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://res.cloudinary.com/dxovdseb3/image/upload/v1515659384/docker_pull_rgfi9w.png&quot; alt=&quot;2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;그림 6. 도커 이미지 pull&lt;/p&gt;
 
 &lt;h3 id=&quot;이미지--컨테이너-목록-확인하기&quot;&gt;이미지 , 컨테이너 목록 확인하기&lt;/h3&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo docker images
 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;http://res.cloudinary.com/dxovdseb3/image/upload/v1515659589/image_svorz2.png&quot; alt=&quot;2&quot; /&gt;
-그림 7. 도커 이미지 목록 확인하기&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://res.cloudinary.com/dxovdseb3/image/upload/v1515659589/image_svorz2.png&quot; alt=&quot;2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;그림 7. 도커 이미지 목록 확인하기&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo docker ps -a
 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;http://res.cloudinary.com/dxovdseb3/image/upload/v1515659384/docker_pull_rgfi9w.png&quot; alt=&quot;2&quot; /&gt;
-그림 8. 도커 컨테이너 목록 확인하기&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://res.cloudinary.com/dxovdseb3/image/upload/v1515659384/docker_pull_rgfi9w.png&quot; alt=&quot;2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;그림 8. 도커 컨테이너 목록 확인하기&lt;/p&gt;
 
 &lt;h3 id=&quot;컨테이너-생성하기&quot;&gt;컨테이너 생성하기&lt;/h3&gt;
 &lt;p&gt;docker run &lt;옵션&gt; &lt;이미지 이름=&quot;&quot;&gt; &lt;실행할 파일=&quot;&quot;&gt;
@@ -340,8 +348,9 @@ $ sudo docker rm 519e0f4da723&lt;/p&gt;
 
 &lt;p&gt;Bash쉘에서 exit, ctrl+D를 통해 컨테이너를 정지할 수 있다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://res.cloudinary.com/dxovdseb3/image/upload/v1515660981/delete_ikfhod.png&quot; alt=&quot;2&quot; /&gt;
-그림 9. 도커 컨테이너 삭제 예&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://res.cloudinary.com/dxovdseb3/image/upload/v1515660981/delete_ikfhod.png&quot; alt=&quot;2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;그림 9. 도커 컨테이너 삭제 예&lt;/p&gt;
 
 &lt;h2 id=&quot;참고자료&quot;&gt;참고자료&lt;/h2&gt;
 &lt;ol&gt;
