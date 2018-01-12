@@ -214,6 +214,8 @@
   @include relative-font-size(2.625);
   letter-spacing: -1px;
   line-height: 1;
+  padding-bottom: 20px;
+  color : lighten($grey-color-dark , 5%);
 
   @include media-query($on-laptop) {
     @include relative-font-size(2.25);
@@ -222,6 +224,17 @@
 .post-content {
   margin-bottom: $spacing-unit;
   line-height: 29px;
+  color : lighten($grey-color-dark , 5%);
+  p {
+    font-size: 16px;
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    padding-bottom: 30px;
+    word-break: keep-all;
+  }
 
   h2 {
     @include relative-font-size(2);
@@ -229,6 +242,8 @@
     @include media-query($on-laptop) {
       @include relative-font-size(1.75);
     }
+    padding-top: 40px;
+    padding-bottom: 20px;
   }
 
   h3 {
@@ -237,6 +252,8 @@
     @include media-query($on-laptop) {
       @include relative-font-size(1.375);
     }
+    padding-top: 40px;
+    padding-bottom: 20px;
   }
 
   h4 {
@@ -245,6 +262,8 @@
     @include media-query($on-laptop) {
       @include relative-font-size(1.125);
     }
+    padding-top: 40px;
+    padding-bottom: 20px;
   }
 }
 
@@ -254,10 +273,22 @@
   }
   .describes {
     float: right;
-    font-size : 10px;
-    max-height: 6em;
+    max-height: 40px;
     text-overflow:ellipsis;
     overflow: hidden;
+    margin-left: 25px;
+    //word-break: keep-all;
+    margin-bottom: 10px;
+
+  }
+  .describes2 {
+    float: right;
+    max-height: 40px;
+    text-overflow:ellipsis;
+    overflow: hidden;
+    //word-break: keep-all;
+    margin-bottom: 10px;
+
   }
   .main-title {
     font-size : 15px;
@@ -268,7 +299,12 @@
   .thumbnails {
     max-height: 6em;
   }
+  .logo {
+    font-size: 15px;
+    margin-left: calc(100%/2 - 139px);
+    margin-right: auto;
 
+  }
 }
 @media screen and (min-width: 481px) {
   .w3-col.images {
@@ -290,38 +326,45 @@
   .main-title {
     font-size: 36px;
   }
+  .sub-title {
+    font-size: 36px;
+  }
+  .logo {
+    font-size: 18px;
+  }
 
 }
 
 .describe {
-  //display: table;
-  //table-layout: fixed;
-  //width: 250px;
+  color : lighten($grey-color-dark , 15%);
+  font-size: 14px;
+  line-height: 20px;
+  word-spacing: 3px;
 }
 
 .about {
-  margin-top: 67px;
+  margin-top: 56px;
   width: 100%;
   height: 200px;
   background: linear-gradient(to bottom right, #33ccff 0%, #003399 100%);
 }
 
 .guestbook {
-  margin-top: 67px;
+  margin-top: 56px;
   width: 100%;
   height: 200px;
   background: linear-gradient(to bottom right, #ff6699 0%, #6666ff 100%);
 }
 
 .main {
-  margin-top: 67px;
+  margin-top: 56px;
   width: 100%;
   height: 200px;
   background: linear-gradient(to bottom right, #ff6600 0%, #cc0066 100%);
 }
 
 .tags {
-  margin-top: 67px;
+  margin-top: 56px;
   width: 100%;
   height: 200px;
   background: linear-gradient(to bottom right, #00ff00 0%, #336600 100%);

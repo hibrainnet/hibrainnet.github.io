@@ -23,22 +23,42 @@ pagination:
         </div>
 
 
+          <!--<div class="w3-col s3 m4 l4 images">-->
+            <!--<p class="images">{% if post.thumbnail %}-->
+              <!--&lt;!&ndash;<img class="w3-image thumbnails" src="{{ post.thumbnail| escape }}" align="center"/>&ndash;&gt;-->
+              <!--<img class="thumbnails" src="{{ post.thumbnail| escape }}" align="center"/>-->
+              <!--{% else %}-->
+              <!---->
+              <!--{% endif %}</p>-->
+          <!--</div>-->
+
+          <!--<div class="w3-col s8 m8 l8 describes">-->
+            <!--<p><a class="describe w3-medium" href="{{ post.url | relative_url }}">{{ post.content | strip_html | truncatewords:25 }}</a></p>-->
+          <!--</div>-->
+
+          {% if post.thumbnail %}
           <div class="w3-col s3 m4 l4 images">
-            <p class="images">{% if post.thumbnail %}
+            <p class="images">
               <!--<img class="w3-image thumbnails" src="{{ post.thumbnail| escape }}" align="center"/>-->
               <img class="thumbnails" src="{{ post.thumbnail| escape }}" align="center"/>
-              {% else %}
-              <img class="thumbnails" src="/images/nothumbnail.jpg" align="center" />
-              {% endif %}</p>
+            </p>
           </div>
 
           <div class="w3-col s8 m8 l8 describes">
             <p><a class="describe w3-medium" href="{{ post.url | relative_url }}">{{ post.content | strip_html | truncatewords:25 }}</a></p>
           </div>
 
+          {% else %}
+
+          <div class="w3-col s12 m12 l12 describes2">
+            <p><a class="describe w3-medium" href="{{ post.url | relative_url }}">{{ post.content | strip_html | truncatewords:25 }}</a></p>
+          </div>
 
 
-          <div class="w3-col s12 m12 l12 w3-margin-top w3-text-grey w3-small">
+          {% endif %}
+
+
+          <div class="w3-col s12 m12 l12 w3-text-grey w3-small">
             <span class="post-meta"><i class="fa fa-clock-o" aria-hidden="true"></i> {{ post.date | date: "%Y.%-m.%-d" }}</span>
 
             {% if post.tags.size > 0 %}

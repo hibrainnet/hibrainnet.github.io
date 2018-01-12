@@ -92,7 +92,7 @@ getTypeValue();
                   $("#mySidebar ").hide();
               }
           });
-     
+
           $('.home, #main-image').on('click', function(e) {
               if($(e.target).closest('#mySidebar').length == 0) {
                   $("#mySidebar").hide();
@@ -103,24 +103,5 @@ getTypeValue();
           });
       });
 
-
-
-      $(document).ready(function() {
-      var windowsize = $(window).width();
-
-      $(window).resize(function() {
-          var windowsize = $(window).width();
-      });
-
-          function checkWidth() {
-          if (windowsize < 500) {
-              $('#logo').removeClass('w3-large').addClass('w3-medium').addClass('w3-center');
-          }
-        }
-          // Execute on load
-          checkWidth();
-          // Bind event listener
-          $(window).resize(checkWidth);
-      });
   </script>
 </head>

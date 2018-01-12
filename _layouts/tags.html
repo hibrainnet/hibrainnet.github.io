@@ -1,20 +1,24 @@
 ---
 layout: default
 ---
-<h1>Posts Tags</h1>
 {% for tag in page.tags %}
     <a href="/tags/{{ tag }}">{{ tag }}</a>
 {% endfor %}
 
+<div class="w3-container">
+    <div class="w3-content" style="max-width:700px">
+        <div class="w3-container w3-padding-48 w3-card">
+            {% assign tags = site.tags | sort %}
+            {% for tag in tags %}
+             <a href="{{ tag | first | slugify }}">
+                 <span class="w3-large w3-margin-right">{{ tag[0] | replace:'-', ' ' }}</span>
+                  <span class="w3-text-gray w3-small">TOTAL</span> <span class="w3-text-black">{{ tag | last | size }}</span><br>
+             </a>
+            <br>
+            {% endfor %}
 
-  <div>
-    {% assign tags = site.tags | sort %}
-    {% for tag in tags %}
-     <span class="site-tag">
-        <a href="{{ tag | first | slugify }}">
-                {{ tag[0] | replace:'-', ' ' }} ({{ tag | last | size }})
-        </a>
-    </span>
-      <br>
-    {% endfor %}
+        </div>
+
+
     </div>
+</div>
