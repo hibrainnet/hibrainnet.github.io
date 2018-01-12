@@ -1,17 +1,4 @@
 <header class="site-header" role="banner">
-  <!-- Navbar (sit on top) -->
-
-  <!--<div class="w3-top">-->
-    <!--<div class="w3-row w3-white w3-padding">-->
-      <!--<div class="w3-half" style="margin:4px 0 6px 0"><a href='https://www.w3schools.com'><img src='/images/w3schools.png' alt='W3Schools.com'></a></div>-->
-      <!--<div class="w3-half w3-margin-top w3-wide w3-hide-medium w3-hide-small"><div class="w3-right">THE WORLD'S LARGEST WEB DEVELOPER SITE</div></div>-->
-    <!--</div>-->
-    <!--<div class="w3-bar w3-theme w3-large" style="z-index:4;">-->
-      <!--<a class="w3-bar-item w3-button w3-left w3-hide-large w3-hover-white w3-large w3-theme w3-padding-16" href="javascript:void(0)" onclick="w3_open()">☰</a>-->
-      <!--<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-white w3-padding-16" href="javascript:void(0)" onclick="w3_show_nav('menuTut')">TUTORIALS</a>-->
-      <!--<a class="w3-bar-item w3-button w3-hide-medium w3-hover-white w3-padding-16" href="javascript:void(0)" onclick="w3_show_nav('menuRef')">REFERENCES</a>-->
-    <!--</div>-->
-  <!--</div>-->
 
   <div class="w3-top">
     <div class="w3-bar w3-white w3-card" id="myNavbar">
@@ -21,7 +8,7 @@
         <i class="fa fa-bars"></i>
       </a>
 
-      <a id="logo" class="w3-bar-item w3-button w3-wide w3-large" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+      <a class="logo w3-bar-item w3-button" href="{{ "/" | relative_url }}"><b>{{ site.title | escape }}</b></a>
 
       <div class="w3-card">
         <form class="w3-bar-item w3-right" action="{{ site.url}}/result/">
@@ -29,12 +16,6 @@
           <a class="w3-bar-item" href="#search"><i class="fa fa-search" aria-hidden="true"></i></a>
         </form>
       </div>
-
-      <!--<div id="search">-->
-        <!--<form action="{{ site.url}}/result/">-->
-          <!--<input type="search" id="q" name="q" type="text" placeholder="검색">-->
-        <!--</form>-->
-      <!--</div>-->
 
 
       <div class="w3-hide-small w3-right">
@@ -51,13 +32,7 @@
         {% endif %}
         {% endfor %}
       </div>
-      <!--search bar and button-->
 
-      <!--<form class="w3-bar-item w3-right w3-margin-top" action="{{ site.url}}/result/">-->
-        <!--<input class="w3-input w3-bar-item" id="q" name="q" type="text" placeholder="검색">-->
-        <!--<input type="hidden" name="filter" value="0" />-->
-        <!--<button class="w3-bar-item" style="background-color: white;"><i class="fa fa-search" aria-hidden="true"></i></button>-->
-      <!--</form>-->
     </div>
 
 
@@ -108,7 +83,8 @@
   {% elsif page.url == "/tags/" %}
   <div class="tags w3-display-container">
     <div class=" w3-display-middle w3-center">
-      <span class=" w3-text-white sub-title"><span class="w3-padding w3-black w3-opacity-min"><b>하이브레인넷</b></span> <span class=" w3-text-light-grey">기술 블로그 태그</span></span>
+      <span class=" w3-text-white sub-title"><span class="w3-padding w3-black w3-opacity-min"><b>하이브레인넷</b></span> <span class=" w3-text-light-grey">기술 블로그
+      </span></span>
     </div>
   </div>
   {% endif %}

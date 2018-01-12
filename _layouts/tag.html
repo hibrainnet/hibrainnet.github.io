@@ -1,16 +1,25 @@
 ---
 layout: default
 ---
-
-
-<h1>tag: {{ page.tag }}</h1>
+<h1>{{ page.tag }} 태그에 대한 결과</h1>
 
 <div id="archive">
-  <ul class="archive-post-list w3-ul">
   {%for post in site.posts %}
     {% if post.tags contains page.tag %}
-      <li><time>{{ post.date | date:"%b %d, %Y" }}</time> » <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+  <div class="w3-row">
+      <div class="w3-col s12 m12 l12 ">
+        <b><a class="w3-xlarge site-title w3-bar-item" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></b>
+      </div>
+      <div class="w3-col s12 m12 l12">
+        <p><a class="describe w3-medium" href="{{ post.url | relative_url }}">{{ post.content | strip_html | truncatewords:25 }}</a></p>
+       </div>
+  </div>
+
+    <div class="w3-col s12 m12 l12 w3-text-grey w3-small">
+        <span class="post-meta"><i class="fa fa-clock-o" aria-hidden="true"></i> {{ post.date | date: "%Y.%-m.%-d" }}</span>
+    </div>
+    <br>
+    <hr>
     {% endif %}
   {% endfor %}
-  </ul>
 </div>
