@@ -106,7 +106,7 @@ getTypeValue();
                   $("#mySidebar ").hide();
               }
           });
-     
+
           $('.home, #main-image').on('click', function(e) {
               if($(e.target).closest('#mySidebar').length == 0) {
                   $("#mySidebar").hide();
@@ -117,25 +117,6 @@ getTypeValue();
           });
       });
 
-
-
-      $(document).ready(function() {
-      var windowsize = $(window).width();
-
-      $(window).resize(function() {
-          var windowsize = $(window).width();
-      });
-
-          function checkWidth() {
-          if (windowsize < 500) {
-              $('#logo').removeClass('w3-large').addClass('w3-medium').addClass('w3-center');
-          }
-        }
-          // Execute on load
-          checkWidth();
-          // Bind event listener
-          $(window).resize(checkWidth);
-      });
   </script>
 </head>
 
@@ -143,19 +124,6 @@ getTypeValue();
   <body>
 
     <header class="site-header" role="banner">
-  <!-- Navbar (sit on top) -->
-
-  <!--<div class="w3-top">-->
-    <!--<div class="w3-row w3-white w3-padding">-->
-      <!--<div class="w3-half" style="margin:4px 0 6px 0"><a href='https://www.w3schools.com'><img src='/images/w3schools.png' alt='W3Schools.com'></a></div>-->
-      <!--<div class="w3-half w3-margin-top w3-wide w3-hide-medium w3-hide-small"><div class="w3-right">THE WORLD'S LARGEST WEB DEVELOPER SITE</div></div>-->
-    <!--</div>-->
-    <!--<div class="w3-bar w3-theme w3-large" style="z-index:4;">-->
-      <!--<a class="w3-bar-item w3-button w3-left w3-hide-large w3-hover-white w3-large w3-theme w3-padding-16" href="javascript:void(0)" onclick="w3_open()">☰</a>-->
-      <!--<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-white w3-padding-16" href="javascript:void(0)" onclick="w3_show_nav('menuTut')">TUTORIALS</a>-->
-      <!--<a class="w3-bar-item w3-button w3-hide-medium w3-hover-white w3-padding-16" href="javascript:void(0)" onclick="w3_show_nav('menuRef')">REFERENCES</a>-->
-    <!--</div>-->
-  <!--</div>-->
 
   <div class="w3-top">
     <div class="w3-bar w3-white w3-card" id="myNavbar">
@@ -165,7 +133,7 @@ getTypeValue();
         <i class="fa fa-bars"></i>
       </a>
 
-      <a id="logo" class="w3-bar-item w3-button w3-wide w3-large" href="/">하이브레인넷 부설연구소</a>
+      <a class="logo w3-bar-item w3-button" href="/"><b>하이브레인넷 부설연구소</b></a>
 
       <div class="w3-card">
         <form class="w3-bar-item w3-right" action="http://blog.hibrainapps.net/result/">
@@ -173,12 +141,6 @@ getTypeValue();
           <a class="w3-bar-item" href="#search"><i class="fa fa-search" aria-hidden="true"></i></a>
         </form>
       </div>
-
-      <!--<div id="search">-->
-        <!--<form action="http://blog.hibrainapps.net/result/">-->
-          <!--<input type="search" id="q" name="q" type="text" placeholder="검색">-->
-        <!--</form>-->
-      <!--</div>-->
 
 
       <div class="w3-hide-small w3-right">
@@ -460,13 +422,7 @@ getTypeValue();
         
         
       </div>
-      <!--search bar and button-->
 
-      <!--<form class="w3-bar-item w3-right w3-margin-top" action="http://blog.hibrainapps.net/result/">-->
-        <!--<input class="w3-input w3-bar-item" id="q" name="q" type="text" placeholder="검색">-->
-        <!--<input type="hidden" name="filter" value="0" />-->
-        <!--<button class="w3-bar-item" style="background-color: white;"><i class="fa fa-search" aria-hidden="true"></i></button>-->
-      <!--</form>-->
     </div>
 
 
@@ -767,40 +723,129 @@ getTypeValue();
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <h1>tag: 인턴십</h1>
+        <h1>인턴십 태그에 대한 결과</h1>
 
 <div id="archive">
-  <ul class="archive-post-list w3-ul">
   
     
-      <li><time>Jan 11, 2018</time> » <a href="/docker/install">Docker 설치</a></li>
-    
-  
-    
-      <li><time>Jan 10, 2018</time> » <a href="/p-docker">docker 연구하기</a></li>
-    
-  
-    
-      <li><time>Jan 08, 2018</time> » <a href="/command">Command 패턴 소개</a></li>
-    
-  
-    
-      <li><time>Jan 08, 2018</time> » <a href="/jekyll/blog/google/cse">[jekyll 블로그] Google CSE 적용하기</a></li>
-    
-  
-    
-      <li><time>Dec 28, 2017</time> » <a href="/command">command pattern</a></li>
+  <div class="w3-row">
+      <div class="w3-col s12 m12 l12 ">
+        <b><a class="w3-xlarge site-title w3-bar-item" href="/docker/install">Docker 설치</a></b>
+      </div>
+      <div class="w3-col s12 m12 l12">
+        <p><a class="describe w3-medium" href="/docker/install">Docker 설치 Docker는 Windows를 위한 “Docker for Windows”를 지원해준다. 하지만, “Docker for Windows”는 Windows OS버전에 따라 지원해주지 않는 경우가 있다. Windows 10을 기준으로 버전 종류는...</a></p>
+       </div>
+  </div>
+
+    <div class="w3-col s12 m12 l12 w3-text-grey w3-small">
+        <span class="post-meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 2018.1.11</span>
+    </div>
+    <br>
+    <hr>
     
   
     
-      <li><time>Dec 28, 2017</time> » <a href="/2017/12/28/sm.woo.html">Observer Pattern에 대해서</a></li>
+  <div class="w3-row">
+      <div class="w3-col s12 m12 l12 ">
+        <b><a class="w3-xlarge site-title w3-bar-item" href="/p-docker">docker 연구하기</a></b>
+      </div>
+      <div class="w3-col s12 m12 l12">
+        <p><a class="describe w3-medium" href="/p-docker">docker 등장 배경 하나의 서버에 여러프로그램을 설치하게 되면, 서로 사용하는 라이브러리의 버전이 다르거나 동일한 포트를 사용하는 경우 설치가 굉장히 까다로워지게 된다. 또한 시간이 흐르면서 서버...</a></p>
+       </div>
+  </div>
+
+    <div class="w3-col s12 m12 l12 w3-text-grey w3-small">
+        <span class="post-meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 2018.1.10</span>
+    </div>
+    <br>
+    <hr>
     
   
     
-      <li><time>Dec 26, 2017</time> » <a href="/2017/12/26/%EC%9A%B0%EC%84%B1%EB%AF%BC.html">Visitor Pattern</a></li>
+  <div class="w3-row">
+      <div class="w3-col s12 m12 l12 ">
+        <b><a class="w3-xlarge site-title w3-bar-item" href="/command">Command 패턴 소개</a></b>
+      </div>
+      <div class="w3-col s12 m12 l12">
+        <p><a class="describe w3-medium" href="/command">Command 패턴은 자바 디자인패턴이다. 자바 디자인패턴은 많은 프로그래머들이 인정한 효율적인 코딩방법 또는 구조로, 모듈을 기능적으로 세분화하여 재사용이 높고 유지보수가 쉽게 코드를 명확하고 단순하게 만들어주는 방법론을...</a></p>
+       </div>
+  </div>
+
+    <div class="w3-col s12 m12 l12 w3-text-grey w3-small">
+        <span class="post-meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 2018.1.8</span>
+    </div>
+    <br>
+    <hr>
     
   
-  </ul>
+    
+  <div class="w3-row">
+      <div class="w3-col s12 m12 l12 ">
+        <b><a class="w3-xlarge site-title w3-bar-item" href="/jekyll/blog/google/cse">[jekyll 블로그] Google CSE 적용하기</a></b>
+      </div>
+      <div class="w3-col s12 m12 l12">
+        <p><a class="describe w3-medium" href="/jekyll/blog/google/cse">Google CSE Google CSE는 구글 맞춤검색 엔진의 약자이다. 실제 우리가 사용하고 있는 구글 검색 기능에서 사용자가 원하는 사이트만 검색하도록 지정할 수 있는 기능이다. 이를 우리...</a></p>
+       </div>
+  </div>
+
+    <div class="w3-col s12 m12 l12 w3-text-grey w3-small">
+        <span class="post-meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 2018.1.8</span>
+    </div>
+    <br>
+    <hr>
+    
+  
+    
+  <div class="w3-row">
+      <div class="w3-col s12 m12 l12 ">
+        <b><a class="w3-xlarge site-title w3-bar-item" href="/command">command pattern</a></b>
+      </div>
+      <div class="w3-col s12 m12 l12">
+        <p><a class="describe w3-medium" href="/command">Command 패턴-명령을 클래스로 만든다 클래스가 일을 수행할 때 자신의 클래스나 다른 클래스의 메소드를 호출한다. 메소드를 호출한 결과는 객체 상태로 반영이 되지만, 일을 수행한 이력은 어디에도...</a></p>
+       </div>
+  </div>
+
+    <div class="w3-col s12 m12 l12 w3-text-grey w3-small">
+        <span class="post-meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 2017.12.28</span>
+    </div>
+    <br>
+    <hr>
+    
+  
+    
+  <div class="w3-row">
+      <div class="w3-col s12 m12 l12 ">
+        <b><a class="w3-xlarge site-title w3-bar-item" href="/2017/12/28/sm.woo.html">Observer Pattern에 대해서</a></b>
+      </div>
+      <div class="w3-col s12 m12 l12">
+        <p><a class="describe w3-medium" href="/2017/12/28/sm.woo.html">관찰자 패턴 Observer란 관찰(Observe)하는 사람, 관찰자를 의미한다. 이 관찰자 패턴은 관찰 대상의 상태가 변하면 관찰자에게 통지되므로 상태 변화에 따른 처리를 기술할 때 유효하다. 관찰자 패턴에...</a></p>
+       </div>
+  </div>
+
+    <div class="w3-col s12 m12 l12 w3-text-grey w3-small">
+        <span class="post-meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 2017.12.28</span>
+    </div>
+    <br>
+    <hr>
+    
+  
+    
+  <div class="w3-row">
+      <div class="w3-col s12 m12 l12 ">
+        <b><a class="w3-xlarge site-title w3-bar-item" href="/2017/12/26/%EC%9A%B0%EC%84%B1%EB%AF%BC.html">Visitor Pattern</a></b>
+      </div>
+      <div class="w3-col s12 m12 l12">
+        <p><a class="describe w3-medium" href="/2017/12/26/%EC%9A%B0%EC%84%B1%EB%AF%BC.html">방문자 패턴(Visitor Pattern)이란? Visitor는 사전적인 의미로 어떤 사람이나 장소를 찾아오는 사람 이라는 의미를 가지고 있다. 방문자 패턴에서는 데이터 구조와 처리를 분리한다. 데이터 구조 안을 돌아다니는...</a></p>
+       </div>
+  </div>
+
+    <div class="w3-col s12 m12 l12 w3-text-grey w3-small">
+        <span class="post-meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 2017.12.26</span>
+    </div>
+    <br>
+    <hr>
+    
+  
 </div>
 
       </div>

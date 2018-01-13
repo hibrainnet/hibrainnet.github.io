@@ -106,7 +106,7 @@ getTypeValue();
                   $("#mySidebar ").hide();
               }
           });
-     
+
           $('.home, #main-image').on('click', function(e) {
               if($(e.target).closest('#mySidebar').length == 0) {
                   $("#mySidebar").hide();
@@ -117,25 +117,6 @@ getTypeValue();
           });
       });
 
-
-
-      $(document).ready(function() {
-      var windowsize = $(window).width();
-
-      $(window).resize(function() {
-          var windowsize = $(window).width();
-      });
-
-          function checkWidth() {
-          if (windowsize < 500) {
-              $('#logo').removeClass('w3-large').addClass('w3-medium').addClass('w3-center');
-          }
-        }
-          // Execute on load
-          checkWidth();
-          // Bind event listener
-          $(window).resize(checkWidth);
-      });
   </script>
 </head>
 
@@ -143,19 +124,6 @@ getTypeValue();
   <body>
 
     <header class="site-header" role="banner">
-  <!-- Navbar (sit on top) -->
-
-  <!--<div class="w3-top">-->
-    <!--<div class="w3-row w3-white w3-padding">-->
-      <!--<div class="w3-half" style="margin:4px 0 6px 0"><a href='https://www.w3schools.com'><img src='/images/w3schools.png' alt='W3Schools.com'></a></div>-->
-      <!--<div class="w3-half w3-margin-top w3-wide w3-hide-medium w3-hide-small"><div class="w3-right">THE WORLD'S LARGEST WEB DEVELOPER SITE</div></div>-->
-    <!--</div>-->
-    <!--<div class="w3-bar w3-theme w3-large" style="z-index:4;">-->
-      <!--<a class="w3-bar-item w3-button w3-left w3-hide-large w3-hover-white w3-large w3-theme w3-padding-16" href="javascript:void(0)" onclick="w3_open()">☰</a>-->
-      <!--<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-white w3-padding-16" href="javascript:void(0)" onclick="w3_show_nav('menuTut')">TUTORIALS</a>-->
-      <!--<a class="w3-bar-item w3-button w3-hide-medium w3-hover-white w3-padding-16" href="javascript:void(0)" onclick="w3_show_nav('menuRef')">REFERENCES</a>-->
-    <!--</div>-->
-  <!--</div>-->
 
   <div class="w3-top">
     <div class="w3-bar w3-white w3-card" id="myNavbar">
@@ -165,7 +133,7 @@ getTypeValue();
         <i class="fa fa-bars"></i>
       </a>
 
-      <a id="logo" class="w3-bar-item w3-button w3-wide w3-large" href="/">하이브레인넷 부설연구소</a>
+      <a class="logo w3-bar-item w3-button" href="/"><b>하이브레인넷 부설연구소</b></a>
 
       <div class="w3-card">
         <form class="w3-bar-item w3-right" action="http://blog.hibrainapps.net/result/">
@@ -173,12 +141,6 @@ getTypeValue();
           <a class="w3-bar-item" href="#search"><i class="fa fa-search" aria-hidden="true"></i></a>
         </form>
       </div>
-
-      <!--<div id="search">-->
-        <!--<form action="http://blog.hibrainapps.net/result/">-->
-          <!--<input type="search" id="q" name="q" type="text" placeholder="검색">-->
-        <!--</form>-->
-      <!--</div>-->
 
 
       <div class="w3-hide-small w3-right">
@@ -460,13 +422,7 @@ getTypeValue();
         
         
       </div>
-      <!--search bar and button-->
 
-      <!--<form class="w3-bar-item w3-right w3-margin-top" action="http://blog.hibrainapps.net/result/">-->
-        <!--<input class="w3-input w3-bar-item" id="q" name="q" type="text" placeholder="검색">-->
-        <!--<input type="hidden" name="filter" value="0" />-->
-        <!--<button class="w3-bar-item" style="background-color: white;"><i class="fa fa-search" aria-hidden="true"></i></button>-->
-      <!--</form>-->
     </div>
 
 
@@ -783,19 +739,33 @@ getTypeValue();
         </div>
 
 
+          <!--<div class="w3-col s3 m4 l4 images">-->
+            <!--<p class="images">-->
+              <!--&lt;!&ndash;<img class="w3-image thumbnails" src="https://farm5.staticflickr.com/4736/39458665392_58cd96143f_b.jpg" align="center"/>&ndash;&gt;-->
+              <!--<img class="thumbnails" src="https://farm5.staticflickr.com/4736/39458665392_58cd96143f_b.jpg" align="center"/>-->
+              <!--</p>-->
+          <!--</div>-->
+
+          <!--<div class="w3-col s8 m8 l8 describes">-->
+            <!--<p><a class="describe w3-medium" href="/2017/12/28/sm.woo.html">관찰자 패턴 Observer란 관찰(Observe)하는 사람, 관찰자를 의미한다. 이 관찰자 패턴은 관찰 대상의 상태가 변하면 관찰자에게 통지되므로 상태 변화에 따른 처리를 기술할 때 유효하다. 관찰자 패턴에...</a></p>-->
+          <!--</div>-->
+
+          
           <div class="w3-col s3 m4 l4 images">
             <p class="images">
-              <img class="thumbnails" src="/images/nothumbnail.jpg" align="center" />
-              </p>
+              <!--<img class="w3-image thumbnails" src="https://farm5.staticflickr.com/4736/39458665392_58cd96143f_b.jpg" align="center"/>-->
+              <img class="thumbnails" src="https://farm5.staticflickr.com/4736/39458665392_58cd96143f_b.jpg" align="center"/>
+            </p>
           </div>
 
           <div class="w3-col s8 m8 l8 describes">
             <p><a class="describe w3-medium" href="/2017/12/28/sm.woo.html">관찰자 패턴 Observer란 관찰(Observe)하는 사람, 관찰자를 의미한다. 이 관찰자 패턴은 관찰 대상의 상태가 변하면 관찰자에게 통지되므로 상태 변화에 따른 처리를 기술할 때 유효하다. 관찰자 패턴에...</a></p>
           </div>
 
+          
 
 
-          <div class="w3-col s12 m12 l12 w3-margin-top w3-text-grey w3-small">
+          <div class="w3-col s12 m12 l12 w3-text-grey w3-small">
             <span class="post-meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 2017.12.28</span>
 
             
@@ -830,20 +800,33 @@ getTypeValue();
         </div>
 
 
+          <!--<div class="w3-col s3 m4 l4 images">-->
+            <!--<p class="images">-->
+              <!--&lt;!&ndash;<img class="w3-image thumbnails" src="https://farm5.staticflickr.com/4738/39312549112_bce2c9b763_b.jpg" align="center"/>&ndash;&gt;-->
+              <!--<img class="thumbnails" src="https://farm5.staticflickr.com/4738/39312549112_bce2c9b763_b.jpg" align="center"/>-->
+              <!--</p>-->
+          <!--</div>-->
+
+          <!--<div class="w3-col s8 m8 l8 describes">-->
+            <!--<p><a class="describe w3-medium" href="/2017/12/26/%EC%9A%B0%EC%84%B1%EB%AF%BC.html">방문자 패턴(Visitor Pattern)이란? Visitor는 사전적인 의미로 어떤 사람이나 장소를 찾아오는 사람 이라는 의미를 가지고 있다. 방문자 패턴에서는 데이터 구조와 처리를 분리한다. 데이터 구조 안을 돌아다니는...</a></p>-->
+          <!--</div>-->
+
+          
           <div class="w3-col s3 m4 l4 images">
             <p class="images">
               <!--<img class="w3-image thumbnails" src="https://farm5.staticflickr.com/4738/39312549112_bce2c9b763_b.jpg" align="center"/>-->
               <img class="thumbnails" src="https://farm5.staticflickr.com/4738/39312549112_bce2c9b763_b.jpg" align="center"/>
-              </p>
+            </p>
           </div>
 
           <div class="w3-col s8 m8 l8 describes">
             <p><a class="describe w3-medium" href="/2017/12/26/%EC%9A%B0%EC%84%B1%EB%AF%BC.html">방문자 패턴(Visitor Pattern)이란? Visitor는 사전적인 의미로 어떤 사람이나 장소를 찾아오는 사람 이라는 의미를 가지고 있다. 방문자 패턴에서는 데이터 구조와 처리를 분리한다. 데이터 구조 안을 돌아다니는...</a></p>
           </div>
 
+          
 
 
-          <div class="w3-col s12 m12 l12 w3-margin-top w3-text-grey w3-small">
+          <div class="w3-col s12 m12 l12 w3-text-grey w3-small">
             <span class="post-meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 2017.12.26</span>
 
             

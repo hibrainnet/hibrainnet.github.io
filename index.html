@@ -106,7 +106,7 @@ getTypeValue();
                   $("#mySidebar ").hide();
               }
           });
-     
+
           $('.home, #main-image').on('click', function(e) {
               if($(e.target).closest('#mySidebar').length == 0) {
                   $("#mySidebar").hide();
@@ -117,25 +117,6 @@ getTypeValue();
           });
       });
 
-
-
-      $(document).ready(function() {
-      var windowsize = $(window).width();
-
-      $(window).resize(function() {
-          var windowsize = $(window).width();
-      });
-
-          function checkWidth() {
-          if (windowsize < 500) {
-              $('#logo').removeClass('w3-large').addClass('w3-medium').addClass('w3-center');
-          }
-        }
-          // Execute on load
-          checkWidth();
-          // Bind event listener
-          $(window).resize(checkWidth);
-      });
   </script>
 </head>
 
@@ -143,19 +124,6 @@ getTypeValue();
   <body>
 
     <header class="site-header" role="banner">
-  <!-- Navbar (sit on top) -->
-
-  <!--<div class="w3-top">-->
-    <!--<div class="w3-row w3-white w3-padding">-->
-      <!--<div class="w3-half" style="margin:4px 0 6px 0"><a href='https://www.w3schools.com'><img src='/images/w3schools.png' alt='W3Schools.com'></a></div>-->
-      <!--<div class="w3-half w3-margin-top w3-wide w3-hide-medium w3-hide-small"><div class="w3-right">THE WORLD'S LARGEST WEB DEVELOPER SITE</div></div>-->
-    <!--</div>-->
-    <!--<div class="w3-bar w3-theme w3-large" style="z-index:4;">-->
-      <!--<a class="w3-bar-item w3-button w3-left w3-hide-large w3-hover-white w3-large w3-theme w3-padding-16" href="javascript:void(0)" onclick="w3_open()">☰</a>-->
-      <!--<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-white w3-padding-16" href="javascript:void(0)" onclick="w3_show_nav('menuTut')">TUTORIALS</a>-->
-      <!--<a class="w3-bar-item w3-button w3-hide-medium w3-hover-white w3-padding-16" href="javascript:void(0)" onclick="w3_show_nav('menuRef')">REFERENCES</a>-->
-    <!--</div>-->
-  <!--</div>-->
 
   <div class="w3-top">
     <div class="w3-bar w3-white w3-card" id="myNavbar">
@@ -165,7 +133,7 @@ getTypeValue();
         <i class="fa fa-bars"></i>
       </a>
 
-      <a id="logo" class="w3-bar-item w3-button w3-wide w3-large" href="/">하이브레인넷 부설연구소</a>
+      <a class="logo w3-bar-item w3-button" href="/"><b>하이브레인넷 부설연구소</b></a>
 
       <div class="w3-card">
         <form class="w3-bar-item w3-right" action="http://blog.hibrainapps.net/result/">
@@ -173,12 +141,6 @@ getTypeValue();
           <a class="w3-bar-item" href="#search"><i class="fa fa-search" aria-hidden="true"></i></a>
         </form>
       </div>
-
-      <!--<div id="search">-->
-        <!--<form action="http://blog.hibrainapps.net/result/">-->
-          <!--<input type="search" id="q" name="q" type="text" placeholder="검색">-->
-        <!--</form>-->
-      <!--</div>-->
 
 
       <div class="w3-hide-small w3-right">
@@ -460,13 +422,7 @@ getTypeValue();
         
         
       </div>
-      <!--search bar and button-->
 
-      <!--<form class="w3-bar-item w3-right w3-margin-top" action="http://blog.hibrainapps.net/result/">-->
-        <!--<input class="w3-input w3-bar-item" id="q" name="q" type="text" placeholder="검색">-->
-        <!--<input type="hidden" name="filter" value="0" />-->
-        <!--<button class="w3-bar-item" style="background-color: white;"><i class="fa fa-search" aria-hidden="true"></i></button>-->
-      <!--</form>-->
     </div>
 
 
@@ -788,20 +744,33 @@ getTypeValue();
         </div>
 
 
+          <!--<div class="w3-col s3 m4 l4 images">-->
+            <!--<p class="images">-->
+              <!--&lt;!&ndash;<img class="w3-image thumbnails" src="http://res.cloudinary.com/degxeqfok/image/upload/v1515658000/gmlsq9pxwdydku3r6dqd.png" align="center"/>&ndash;&gt;-->
+              <!--<img class="thumbnails" src="http://res.cloudinary.com/degxeqfok/image/upload/v1515658000/gmlsq9pxwdydku3r6dqd.png" align="center"/>-->
+              <!--</p>-->
+          <!--</div>-->
+
+          <!--<div class="w3-col s8 m8 l8 describes">-->
+            <!--<p><a class="describe w3-medium" href="/docker/install">Docker 설치 Docker는 Windows를 위한 “Docker for Windows”를 지원해준다. 하지만, “Docker for Windows”는 Windows OS버전에 따라 지원해주지 않는 경우가 있다. Windows 10을 기준으로 버전 종류는...</a></p>-->
+          <!--</div>-->
+
+          
           <div class="w3-col s3 m4 l4 images">
             <p class="images">
               <!--<img class="w3-image thumbnails" src="http://res.cloudinary.com/degxeqfok/image/upload/v1515658000/gmlsq9pxwdydku3r6dqd.png" align="center"/>-->
               <img class="thumbnails" src="http://res.cloudinary.com/degxeqfok/image/upload/v1515658000/gmlsq9pxwdydku3r6dqd.png" align="center"/>
-              </p>
+            </p>
           </div>
 
           <div class="w3-col s8 m8 l8 describes">
             <p><a class="describe w3-medium" href="/docker/install">Docker 설치 Docker는 Windows를 위한 “Docker for Windows”를 지원해준다. 하지만, “Docker for Windows”는 Windows OS버전에 따라 지원해주지 않는 경우가 있다. Windows 10을 기준으로 버전 종류는...</a></p>
           </div>
 
+          
 
 
-          <div class="w3-col s12 m12 l12 w3-margin-top w3-text-grey w3-small">
+          <div class="w3-col s12 m12 l12 w3-text-grey w3-small">
             <span class="post-meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 2018.1.11</span>
 
             
@@ -842,20 +811,33 @@ getTypeValue();
         </div>
 
 
+          <!--<div class="w3-col s3 m4 l4 images">-->
+            <!--<p class="images">-->
+              <!--&lt;!&ndash;<img class="w3-image thumbnails" src="http://res.cloudinary.com/dxovdseb3/image/upload/v1515574736/vm_qgas5q.png" align="center"/>&ndash;&gt;-->
+              <!--<img class="thumbnails" src="http://res.cloudinary.com/dxovdseb3/image/upload/v1515574736/vm_qgas5q.png" align="center"/>-->
+              <!--</p>-->
+          <!--</div>-->
+
+          <!--<div class="w3-col s8 m8 l8 describes">-->
+            <!--<p><a class="describe w3-medium" href="/p-docker">docker 등장 배경 하나의 서버에 여러프로그램을 설치하게 되면, 서로 사용하는 라이브러리의 버전이 다르거나 동일한 포트를 사용하는 경우 설치가 굉장히 까다로워지게 된다. 또한 시간이 흐르면서 서버...</a></p>-->
+          <!--</div>-->
+
+          
           <div class="w3-col s3 m4 l4 images">
             <p class="images">
               <!--<img class="w3-image thumbnails" src="http://res.cloudinary.com/dxovdseb3/image/upload/v1515574736/vm_qgas5q.png" align="center"/>-->
               <img class="thumbnails" src="http://res.cloudinary.com/dxovdseb3/image/upload/v1515574736/vm_qgas5q.png" align="center"/>
-              </p>
+            </p>
           </div>
 
           <div class="w3-col s8 m8 l8 describes">
             <p><a class="describe w3-medium" href="/p-docker">docker 등장 배경 하나의 서버에 여러프로그램을 설치하게 되면, 서로 사용하는 라이브러리의 버전이 다르거나 동일한 포트를 사용하는 경우 설치가 굉장히 까다로워지게 된다. 또한 시간이 흐르면서 서버...</a></p>
           </div>
 
+          
 
 
-          <div class="w3-col s12 m12 l12 w3-margin-top w3-text-grey w3-small">
+          <div class="w3-col s12 m12 l12 w3-text-grey w3-small">
             <span class="post-meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 2018.1.10</span>
 
             
@@ -893,20 +875,33 @@ getTypeValue();
         </div>
 
 
+          <!--<div class="w3-col s3 m4 l4 images">-->
+            <!--<p class="images">-->
+              <!--&lt;!&ndash;<img class="w3-image thumbnails" src="http://res.cloudinary.com/dxovdseb3/image/upload/v1514448751/command_yszmrh.png" align="center"/>&ndash;&gt;-->
+              <!--<img class="thumbnails" src="http://res.cloudinary.com/dxovdseb3/image/upload/v1514448751/command_yszmrh.png" align="center"/>-->
+              <!--</p>-->
+          <!--</div>-->
+
+          <!--<div class="w3-col s8 m8 l8 describes">-->
+            <!--<p><a class="describe w3-medium" href="/command">Command 패턴은 자바 디자인패턴이다. 자바 디자인패턴은 많은 프로그래머들이 인정한 효율적인 코딩방법 또는 구조로, 모듈을 기능적으로 세분화하여 재사용이 높고 유지보수가 쉽게 코드를 명확하고 단순하게 만들어주는 방법론을...</a></p>-->
+          <!--</div>-->
+
+          
           <div class="w3-col s3 m4 l4 images">
             <p class="images">
               <!--<img class="w3-image thumbnails" src="http://res.cloudinary.com/dxovdseb3/image/upload/v1514448751/command_yszmrh.png" align="center"/>-->
               <img class="thumbnails" src="http://res.cloudinary.com/dxovdseb3/image/upload/v1514448751/command_yszmrh.png" align="center"/>
-              </p>
+            </p>
           </div>
 
           <div class="w3-col s8 m8 l8 describes">
             <p><a class="describe w3-medium" href="/command">Command 패턴은 자바 디자인패턴이다. 자바 디자인패턴은 많은 프로그래머들이 인정한 효율적인 코딩방법 또는 구조로, 모듈을 기능적으로 세분화하여 재사용이 높고 유지보수가 쉽게 코드를 명확하고 단순하게 만들어주는 방법론을...</a></p>
           </div>
 
+          
 
 
-          <div class="w3-col s12 m12 l12 w3-margin-top w3-text-grey w3-small">
+          <div class="w3-col s12 m12 l12 w3-text-grey w3-small">
             <span class="post-meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 2018.1.8</span>
 
             
@@ -944,20 +939,33 @@ getTypeValue();
         </div>
 
 
+          <!--<div class="w3-col s3 m4 l4 images">-->
+            <!--<p class="images">-->
+              <!--&lt;!&ndash;<img class="w3-image thumbnails" src="http://res.cloudinary.com/degxeqfok/image/upload/v1515378810/hw5z2ltbtu366je0xwvq.png" align="center"/>&ndash;&gt;-->
+              <!--<img class="thumbnails" src="http://res.cloudinary.com/degxeqfok/image/upload/v1515378810/hw5z2ltbtu366je0xwvq.png" align="center"/>-->
+              <!--</p>-->
+          <!--</div>-->
+
+          <!--<div class="w3-col s8 m8 l8 describes">-->
+            <!--<p><a class="describe w3-medium" href="/jekyll/blog/google/cse">Google CSE Google CSE는 구글 맞춤검색 엔진의 약자이다. 실제 우리가 사용하고 있는 구글 검색 기능에서 사용자가 원하는 사이트만 검색하도록 지정할 수 있는 기능이다. 이를 우리...</a></p>-->
+          <!--</div>-->
+
+          
           <div class="w3-col s3 m4 l4 images">
             <p class="images">
               <!--<img class="w3-image thumbnails" src="http://res.cloudinary.com/degxeqfok/image/upload/v1515378810/hw5z2ltbtu366je0xwvq.png" align="center"/>-->
               <img class="thumbnails" src="http://res.cloudinary.com/degxeqfok/image/upload/v1515378810/hw5z2ltbtu366je0xwvq.png" align="center"/>
-              </p>
+            </p>
           </div>
 
           <div class="w3-col s8 m8 l8 describes">
             <p><a class="describe w3-medium" href="/jekyll/blog/google/cse">Google CSE Google CSE는 구글 맞춤검색 엔진의 약자이다. 실제 우리가 사용하고 있는 구글 검색 기능에서 사용자가 원하는 사이트만 검색하도록 지정할 수 있는 기능이다. 이를 우리...</a></p>
           </div>
 
+          
 
 
-          <div class="w3-col s12 m12 l12 w3-margin-top w3-text-grey w3-small">
+          <div class="w3-col s12 m12 l12 w3-text-grey w3-small">
             <span class="post-meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 2018.1.8</span>
 
             
@@ -998,20 +1006,33 @@ getTypeValue();
         </div>
 
 
+          <!--<div class="w3-col s3 m4 l4 images">-->
+            <!--<p class="images">-->
+              <!--&lt;!&ndash;<img class="w3-image thumbnails" src="http://res.cloudinary.com/dxovdseb3/image/upload/v1514448784/command2_i86s1a.png" align="center"/>&ndash;&gt;-->
+              <!--<img class="thumbnails" src="http://res.cloudinary.com/dxovdseb3/image/upload/v1514448784/command2_i86s1a.png" align="center"/>-->
+              <!--</p>-->
+          <!--</div>-->
+
+          <!--<div class="w3-col s8 m8 l8 describes">-->
+            <!--<p><a class="describe w3-medium" href="/command">Command 패턴-명령을 클래스로 만든다 클래스가 일을 수행할 때 자신의 클래스나 다른 클래스의 메소드를 호출한다. 메소드를 호출한 결과는 객체 상태로 반영이 되지만, 일을 수행한 이력은 어디에도...</a></p>-->
+          <!--</div>-->
+
+          
           <div class="w3-col s3 m4 l4 images">
             <p class="images">
               <!--<img class="w3-image thumbnails" src="http://res.cloudinary.com/dxovdseb3/image/upload/v1514448784/command2_i86s1a.png" align="center"/>-->
               <img class="thumbnails" src="http://res.cloudinary.com/dxovdseb3/image/upload/v1514448784/command2_i86s1a.png" align="center"/>
-              </p>
+            </p>
           </div>
 
           <div class="w3-col s8 m8 l8 describes">
-            <p><a class="describe w3-medium" href="/command">연구내용 Command 패턴-명령을 클래스로 만든다 클래스가 일을 수행할 때 자신의 클래스나 다른 클래스의 메소드를 호출한다. 메소드를 호출한 결과는 객체 상태로 반영이 되지만, 일을 수행한 이력은...</a></p>
+            <p><a class="describe w3-medium" href="/command">Command 패턴-명령을 클래스로 만든다 클래스가 일을 수행할 때 자신의 클래스나 다른 클래스의 메소드를 호출한다. 메소드를 호출한 결과는 객체 상태로 반영이 되지만, 일을 수행한 이력은 어디에도...</a></p>
           </div>
 
+          
 
 
-          <div class="w3-col s12 m12 l12 w3-margin-top w3-text-grey w3-small">
+          <div class="w3-col s12 m12 l12 w3-text-grey w3-small">
             <span class="post-meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 2017.12.28</span>
 
             

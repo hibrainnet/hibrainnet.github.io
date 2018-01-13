@@ -106,7 +106,7 @@ getTypeValue();
                   $("#mySidebar ").hide();
               }
           });
-     
+
           $('.home, #main-image').on('click', function(e) {
               if($(e.target).closest('#mySidebar').length == 0) {
                   $("#mySidebar").hide();
@@ -117,25 +117,6 @@ getTypeValue();
           });
       });
 
-
-
-      $(document).ready(function() {
-      var windowsize = $(window).width();
-
-      $(window).resize(function() {
-          var windowsize = $(window).width();
-      });
-
-          function checkWidth() {
-          if (windowsize < 500) {
-              $('#logo').removeClass('w3-large').addClass('w3-medium').addClass('w3-center');
-          }
-        }
-          // Execute on load
-          checkWidth();
-          // Bind event listener
-          $(window).resize(checkWidth);
-      });
   </script>
 </head>
 
@@ -143,19 +124,6 @@ getTypeValue();
   <body>
 
     <header class="site-header" role="banner">
-  <!-- Navbar (sit on top) -->
-
-  <!--<div class="w3-top">-->
-    <!--<div class="w3-row w3-white w3-padding">-->
-      <!--<div class="w3-half" style="margin:4px 0 6px 0"><a href='https://www.w3schools.com'><img src='/images/w3schools.png' alt='W3Schools.com'></a></div>-->
-      <!--<div class="w3-half w3-margin-top w3-wide w3-hide-medium w3-hide-small"><div class="w3-right">THE WORLD'S LARGEST WEB DEVELOPER SITE</div></div>-->
-    <!--</div>-->
-    <!--<div class="w3-bar w3-theme w3-large" style="z-index:4;">-->
-      <!--<a class="w3-bar-item w3-button w3-left w3-hide-large w3-hover-white w3-large w3-theme w3-padding-16" href="javascript:void(0)" onclick="w3_open()">☰</a>-->
-      <!--<a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-white w3-padding-16" href="javascript:void(0)" onclick="w3_show_nav('menuTut')">TUTORIALS</a>-->
-      <!--<a class="w3-bar-item w3-button w3-hide-medium w3-hover-white w3-padding-16" href="javascript:void(0)" onclick="w3_show_nav('menuRef')">REFERENCES</a>-->
-    <!--</div>-->
-  <!--</div>-->
 
   <div class="w3-top">
     <div class="w3-bar w3-white w3-card" id="myNavbar">
@@ -165,7 +133,7 @@ getTypeValue();
         <i class="fa fa-bars"></i>
       </a>
 
-      <a id="logo" class="w3-bar-item w3-button w3-wide w3-large" href="/">하이브레인넷 부설연구소</a>
+      <a class="logo w3-bar-item w3-button" href="/"><b>하이브레인넷 부설연구소</b></a>
 
       <div class="w3-card">
         <form class="w3-bar-item w3-right" action="http://blog.hibrainapps.net/result/">
@@ -173,12 +141,6 @@ getTypeValue();
           <a class="w3-bar-item" href="#search"><i class="fa fa-search" aria-hidden="true"></i></a>
         </form>
       </div>
-
-      <!--<div id="search">-->
-        <!--<form action="http://blog.hibrainapps.net/result/">-->
-          <!--<input type="search" id="q" name="q" type="text" placeholder="검색">-->
-        <!--</form>-->
-      <!--</div>-->
 
 
       <div class="w3-hide-small w3-right">
@@ -460,13 +422,7 @@ getTypeValue();
         
         
       </div>
-      <!--search bar and button-->
 
-      <!--<form class="w3-bar-item w3-right w3-margin-top" action="http://blog.hibrainapps.net/result/">-->
-        <!--<input class="w3-input w3-bar-item" id="q" name="q" type="text" placeholder="검색">-->
-        <!--<input type="hidden" name="filter" value="0" />-->
-        <!--<button class="w3-bar-item" style="background-color: white;"><i class="fa fa-search" aria-hidden="true"></i></button>-->
-      <!--</form>-->
     </div>
 
 
@@ -767,66 +723,63 @@ getTypeValue();
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <h1>Posts Tags</h1>
-
+        
     <a href="/tags/연구노트">연구노트</a>
 
 
+<div class="w3-container">
+    <div class="w3-content" style="max-width:700px">
+        <div class="w3-container w3-padding-48 w3-card">
+            
+            
+             <a href="cse">
+                 <span class="w3-large w3-margin-right">cse</span>
+                  <span class="w3-text-gray w3-small">TOTAL</span> <span class="w3-text-black">1</span><br>
+             </a>
+            <br>
+            
+             <a href="docker">
+                 <span class="w3-large w3-margin-right">docker</span>
+                  <span class="w3-text-gray w3-small">TOTAL</span> <span class="w3-text-black">2</span><br>
+             </a>
+            <br>
+            
+             <a href="google">
+                 <span class="w3-large w3-margin-right">google</span>
+                  <span class="w3-text-gray w3-small">TOTAL</span> <span class="w3-text-black">1</span><br>
+             </a>
+            <br>
+            
+             <a href="install">
+                 <span class="w3-large w3-margin-right">install</span>
+                  <span class="w3-text-gray w3-small">TOTAL</span> <span class="w3-text-black">1</span><br>
+             </a>
+            <br>
+            
+             <a href="javapattern">
+                 <span class="w3-large w3-margin-right">javapattern</span>
+                  <span class="w3-text-gray w3-small">TOTAL</span> <span class="w3-text-black">2</span><br>
+             </a>
+            <br>
+            
+             <a href="연구노트">
+                 <span class="w3-large w3-margin-right">연구노트</span>
+                  <span class="w3-text-gray w3-small">TOTAL</span> <span class="w3-text-black">7</span><br>
+             </a>
+            <br>
+            
+             <a href="인턴십">
+                 <span class="w3-large w3-margin-right">인턴십</span>
+                  <span class="w3-text-gray w3-small">TOTAL</span> <span class="w3-text-black">7</span><br>
+             </a>
+            <br>
+            
 
-  <div>
-    
-    
-     <span class="site-tag">
-        <a href="cse">
-                cse (1)
-        </a>
-    </span>
-      <br>
-    
-     <span class="site-tag">
-        <a href="docker">
-                docker (2)
-        </a>
-    </span>
-      <br>
-    
-     <span class="site-tag">
-        <a href="google">
-                google (1)
-        </a>
-    </span>
-      <br>
-    
-     <span class="site-tag">
-        <a href="install">
-                install (1)
-        </a>
-    </span>
-      <br>
-    
-     <span class="site-tag">
-        <a href="javapattern">
-                javapattern (2)
-        </a>
-    </span>
-      <br>
-    
-     <span class="site-tag">
-        <a href="연구노트">
-                연구노트 (7)
-        </a>
-    </span>
-      <br>
-    
-     <span class="site-tag">
-        <a href="인턴십">
-                인턴십 (7)
-        </a>
-    </span>
-      <br>
-    
+        </div>
+
+
     </div>
-
+</div>
       </div>
     </main>
 
