@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://blog.hibrainapps.net/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.hibrainapps.net/" rel="alternate" type="text/html" /><updated>2018-01-16T10:06:05+00:00</updated><id>http://blog.hibrainapps.net/</id><title type="html">하이브레인넷 부설연구소</title><subtitle></subtitle><entry><title type="html">Docker 이미지 생성</title><link href="http://blog.hibrainapps.net/docker-image" rel="alternate" type="text/html" title="Docker 이미지 생성" /><published>2018-01-16T10:00:33+00:00</published><updated>2018-01-16T10:00:33+00:00</updated><id>http://blog.hibrainapps.net/jhheo-docker-image-install-oraclexe</id><content type="html" xml:base="http://blog.hibrainapps.net/docker-image">&lt;h2 id=&quot;docker-이미지-및-이미지-생성&quot;&gt;Docker 이미지 및 이미지 생성&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://blog.hibrainapps.net/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.hibrainapps.net/" rel="alternate" type="text/html" /><updated>2018-01-16T12:29:55+00:00</updated><id>http://blog.hibrainapps.net/</id><title type="html">하이브레인넷 부설연구소</title><subtitle></subtitle><entry><title type="html">Docker 이미지 생성</title><link href="http://blog.hibrainapps.net/docker-image" rel="alternate" type="text/html" title="Docker 이미지 생성" /><published>2018-01-16T10:00:33+00:00</published><updated>2018-01-16T10:00:33+00:00</updated><id>http://blog.hibrainapps.net/jhheo-docker-image-install-oraclexe</id><content type="html" xml:base="http://blog.hibrainapps.net/docker-image">&lt;h2 id=&quot;docker-이미지-및-이미지-생성&quot;&gt;Docker 이미지 및 이미지 생성&lt;/h2&gt;
 
 &lt;p&gt;docker의 모든 컨테이너는 이미지로 부터 만들어진다 그러므로 docker에서 이미지에 대한 개념과 관리 방법을 정확히 알고 있어야 한다.&lt;/p&gt;
 
@@ -338,7 +338,73 @@ mkdir Hibrainnet
   &lt;li&gt;https://beomi.github.io/2016/12/28/HowToSetup-Virtualenv-VirtualenvWrapper/, GitHub, accessed 2017-01-15&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://devkyeol.tistory.com/entry/Postman-%EA%B0%9C%EC%9A%94-%EC%84%A4%EC%B9%98-%EC%82%AC%EC%9A%A9%EB%B2%95-%ED%99%9C%EC%9A%A9-%EB%B0%A9%EB%B2%95&quot;&gt;http://devkyeol.tistory.com/entry/Postman-개요-설치-사용법-활용-방법&lt;/a&gt; , kyeolee, accessed 2017-01-15&lt;/li&gt;
   &lt;li&gt;설치 url은 각 공식 홈페이지를 참조, homebrew, virtualenv, visual studio code, atom, nodes, tower, postman, accessed 2017-01-15&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>yl.jung</name></author><category term="[&quot;mac&quot;]" /><category term="연구노트" /><category term="인턴십" /><category term="mac" /><category term="hibrainnet" /><summary type="html">하이브레인넷 맥 개발환경 설정</summary></entry><entry><title type="html">Docker 설치</title><link href="http://blog.hibrainapps.net/docker/install" rel="alternate" type="text/html" title="Docker 설치" /><published>2018-01-11T08:29:00+00:00</published><updated>2018-01-11T08:29:00+00:00</updated><id>http://blog.hibrainapps.net/docker/install-docker</id><content type="html" xml:base="http://blog.hibrainapps.net/docker/install">&lt;h1 id=&quot;docker-설치&quot;&gt;Docker 설치&lt;/h1&gt;
+&lt;/ol&gt;</content><author><name>yl.jung</name></author><category term="[&quot;mac&quot;]" /><category term="연구노트" /><category term="인턴십" /><category term="mac" /><category term="hibrainnet" /><summary type="html">하이브레인넷 맥 개발환경 설정</summary></entry><entry><title type="html">Mac os X 기반 pyenv , virtualenv 연구하기</title><link href="http://blog.hibrainapps.net/pyenv" rel="alternate" type="text/html" title="Mac os X 기반 pyenv , virtualenv 연구하기" /><published>2018-01-16T03:00:11+00:00</published><updated>2018-01-16T03:00:11+00:00</updated><id>http://blog.hibrainapps.net/pyenv,%20virtualenv</id><content type="html" xml:base="http://blog.hibrainapps.net/pyenv">&lt;p&gt;프로젝트를 진행하다보면 프로젝트 별로  파이썬 버전이 달라질 수 있다. 그렇기 때문에 ruby는 rbenv, 자바는 jenv처럼 파이썬의 여러 버전을 관리해주며 사용할 수 있게 해주는 것이 pyenv , virtualenv이다.&lt;/p&gt;
+
+&lt;h2 id=&quot;pyenv-설치하기&quot;&gt;pyenv 설치하기&lt;/h2&gt;
+
+&lt;p&gt;pyenv는 로컬에 다양한 파이썬 버전을 설치하고 사용하게 해주는 것으로 brew 명령어를 통해 설치 할 수 있다. 만약 macOS 용 패키지 관리자 homebrew가 설치되어 있지않다면 다음 명령어를 통해 &lt;a href=&quot;https://brew.sh/index_ko.html&quot;&gt;homebrew&lt;/a&gt;를 설치한다음, pyenv을 설치한다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ /usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot; 
+$ brew update
+$ brew install pyenv
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;다음 명령어로 pyenv로 설치가능한 파이썬 버전을 확인 할 수 있다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ pyenv install -list
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;여기서는 2.7, 3.6버전을 설치한다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ pyenv install 2.7
+$ pyenv install 3.6.0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;다음 명령어로 pyenv으로 설치된 파이썬을 확인 할 수 있다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ pyenv versions
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://res.cloudinary.com/dxovdseb3/image/upload/v1516102681/%E1%84%86%E1%85%AE%E1%84%8C%E1%85%A6_yi9j5d.png&quot; alt=&quot;3&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;그림1. 파이썬 버전 확인&lt;/p&gt;
+
+&lt;h2 id=&quot;virtualenv-설치하기&quot;&gt;virtualenv 설치하기&lt;/h2&gt;
+
+&lt;p&gt;virtualenv은 로컬에 다양한 파이썬 환경을 구축하고 사용할 수 있도록 해주는 것으로 pip를 이용하여 설치한다. 만약 pip가 설치되어있지 않으면 다음 명령어를 통해 설치한다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sudo easy_install pip
+$ pip -V          // 파이썬2.x일경우 버전확인
+$ pip3 -V         // 파이썬3.x일경우 버전확인
+$ sudo pip install virtualenv
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;특정 파이썬 버전으로 가상환경을 만드는 기본 명령어는 다음과 같다.  특정 파이썬 버전은 pyenv으로 로컬에 설치된 버전이어야 한다.&lt;/p&gt;
+
+&lt;p&gt;경로는 파이썬을 설치한 경로로 알맞게 수정해준다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ virtualenv --python=경로 가상환경이름
+예) $ virtualenv --python=/Users/username/.pyenv/versions/2.7/bin/python2.7 python2.7
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;만든 가상환경을 활성화해보자.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ source python2.7/bin/activate
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;deactivate 명령어로 가상환경을 해제 할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://res.cloudinary.com/dxovdseb3/image/upload/v1516104715/virtualenv_jklh6n.png&quot; alt=&quot;3&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;그림3. virtualenv 가상환경 생성 및 해제&lt;/p&gt;
+
+&lt;h2 id=&quot;참고자료&quot;&gt;참고자료&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;Virtualenv/VirtualenvWrapper OS 별 설치&amp;amp;이용법, https://beomi.github.io/2016/12/28/HowToSetup-Virtualenv-VirtualenvWrapper/ (accessed 2018.01.16)&lt;/li&gt;
+  &lt;li&gt;Pyenv + VirtualEnv로 파이썬 가상 개발환경 구축하기, http://throughkim.kr/2016/03/31/pyenv-virtualenv/ (accessed 2018.01.16)&lt;/li&gt;
+  &lt;li&gt;Pyenv로 파이썬 버전 관리하기, http://blog.jeonghwan.net/2016/08/11/pyenv.html (accessed 2018.01.16)&lt;/li&gt;
+  &lt;li&gt;Home-brew, https://brew.sh/index_ko.html (accessed 2018.01.16)&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>gh.park</name></author><category term="연구노트" /><category term="인턴십" /><category term="pyenv" /><category term="virtualenv" /><summary type="html">프로젝트를 진행하다보면 프로젝트 별로 파이썬 버전이 달라질 수 있다. 그렇기 때문에 ruby는 rbenv, 자바는 jenv처럼 파이썬의 여러 버전을 관리해주며 사용할 수 있게 해주는 것이 pyenv , virtualenv이다. pyenv 설치하기 pyenv는 로컬에 다양한 파이썬 버전을 설치하고 사용하게 해주는 것으로 brew 명령어를 통해 설치 할 수 있다. 만약 macOS 용 패키지 관리자 homebrew가 설치되어 있지않다면 다음 명령어를 통해 homebrew를 설치한다음, pyenv을 설치한다. $ /usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot; $ brew update $ brew install pyenv 다음 명령어로 pyenv로 설치가능한 파이썬 버전을 확인 할 수 있다. $ pyenv install -list 여기서는 2.7, 3.6버전을 설치한다. $ pyenv install 2.7 $ pyenv install 3.6.0 다음 명령어로 pyenv으로 설치된 파이썬을 확인 할 수 있다. $ pyenv versions 그림1. 파이썬 버전 확인 virtualenv 설치하기 virtualenv은 로컬에 다양한 파이썬 환경을 구축하고 사용할 수 있도록 해주는 것으로 pip를 이용하여 설치한다. 만약 pip가 설치되어있지 않으면 다음 명령어를 통해 설치한다. $ sudo easy_install pip $ pip -V // 파이썬2.x일경우 버전확인 $ pip3 -V // 파이썬3.x일경우 버전확인 $ sudo pip install virtualenv 특정 파이썬 버전으로 가상환경을 만드는 기본 명령어는 다음과 같다. 특정 파이썬 버전은 pyenv으로 로컬에 설치된 버전이어야 한다. 경로는 파이썬을 설치한 경로로 알맞게 수정해준다. $ virtualenv --python=경로 가상환경이름 예) $ virtualenv --python=/Users/username/.pyenv/versions/2.7/bin/python2.7 python2.7 만든 가상환경을 활성화해보자. $ source python2.7/bin/activate deactivate 명령어로 가상환경을 해제 할 수 있다. 그림3. virtualenv 가상환경 생성 및 해제 참고자료 Virtualenv/VirtualenvWrapper OS 별 설치&amp;amp;이용법, https://beomi.github.io/2016/12/28/HowToSetup-Virtualenv-VirtualenvWrapper/ (accessed 2018.01.16) Pyenv + VirtualEnv로 파이썬 가상 개발환경 구축하기, http://throughkim.kr/2016/03/31/pyenv-virtualenv/ (accessed 2018.01.16) Pyenv로 파이썬 버전 관리하기, http://blog.jeonghwan.net/2016/08/11/pyenv.html (accessed 2018.01.16) Home-brew, https://brew.sh/index_ko.html (accessed 2018.01.16)</summary></entry><entry><title type="html">Docker 설치</title><link href="http://blog.hibrainapps.net/docker/install" rel="alternate" type="text/html" title="Docker 설치" /><published>2018-01-11T08:29:00+00:00</published><updated>2018-01-11T08:29:00+00:00</updated><id>http://blog.hibrainapps.net/docker/install-docker</id><content type="html" xml:base="http://blog.hibrainapps.net/docker/install">&lt;h1 id=&quot;docker-설치&quot;&gt;Docker 설치&lt;/h1&gt;
 
 &lt;p&gt;Docker는 Windows를 위한 “Docker for Windows”를 지원해준다. 하지만, “Docker for Windows”는 Windows OS버전에 따라 지원해주지 않는 경우가 있다. Windows 10을 기준으로 버전 종류는 Home, Pro, Enterprise, Education이 있는데 그 중 Home버전은 “Docker for Windows”설치를 지원하지 않는 버전이다. 반면에 Pro버전의 경우  “Docker for Windows” 설치를 지원한다. 따라서 Home버전일 때와 Pro버전일 때 Docker를 사용하려면 다른 방법으로 설치를 진행해야 한다.&lt;/p&gt;
 
@@ -347,9 +413,7 @@ mkdir Hibrainnet
 &lt;h2 id=&quot;windows-10-home-버전에서의-설치&quot;&gt;Windows 10 Home 버전에서의 설치&lt;/h2&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;Windows 10 Home 버전은 앞에서 말했듯이 “Docker for Windows”가 지원되지 않기 때문에 “Docker toolbox for Windows”를 이용하여 설치를 진행해야 한다.&lt;/p&gt;
-
-  &lt;p&gt;“Docker toolbox for Windows”는&lt;/p&gt;
+  &lt;p&gt;” toolbox for Windows”는&lt;/p&gt;
 
   &lt;ul&gt;
     &lt;li&gt;Docker Engine을 실행하여 이미지와 컨테이너를 만드는 Docker CLI 클라이언트&lt;/li&gt;

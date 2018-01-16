@@ -53,11 +53,11 @@ getTypeValue();
 
   <meta property="fb:app_id" content="147895112528926" />
   <meta property="fb:admins" content="100001627773972"/>
-  <title>하이브레인넷 부설연구소</title>
-  <meta name="description" content="">
+  <title>Mac os X 기반 pyenv , virtualenv 연구하기</title>
+  <meta name="description" content="프로젝트를 진행하다보면 프로젝트 별로 파이썬 버전이 달라질 수 있다. 그렇기 때문에 ruby는 rbenv, 자바는 jenv처럼 파이썬의 여러 버전을 관리해주며 사용할 수 있게 해주는 것이 pyenv , virtualenv이다. pyenv 설치하기 pyenv는 로컬에 다양한 파이썬 ...">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://blog.hibrainapps.net/category/mac/indexs.xml">
+  <link rel="canonical" href="http://blog.hibrainapps.net/pyenv">
   <link rel="alternate" type="application/rss+xml" title="하이브레인넷 부설연구소" href="/feed.xml">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -903,34 +903,176 @@ getTypeValue();
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <h1><b>POST CATEGORIES</b></h1>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-    <a href="/category/mac">mac</a>
+  <header class="post-header">
+    
 
+    <h1 class="post-title" itemprop="name headline">Mac os X 기반 pyenv , virtualenv 연구하기</h1>
+    <p class="post-meta">
+      <time datetime="2018-01-16T03:00:11+00:00" itemprop="datePublished">
+        
+        <span class="post-meta w3-text-grey"><i class="fa fa-clock-o" aria-hidden="true"></i> 2018.1.16</span>
+      </time>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>프로젝트를 진행하다보면 프로젝트 별로  파이썬 버전이 달라질 수 있다. 그렇기 때문에 ruby는 rbenv, 자바는 jenv처럼 파이썬의 여러 버전을 관리해주며 사용할 수 있게 해주는 것이 pyenv , virtualenv이다.</p>
+
+<h2 id="pyenv-설치하기">pyenv 설치하기</h2>
+
+<p>pyenv는 로컬에 다양한 파이썬 버전을 설치하고 사용하게 해주는 것으로 brew 명령어를 통해 설치 할 수 있다. 만약 macOS 용 패키지 관리자 homebrew가 설치되어 있지않다면 다음 명령어를 통해 <a href="https://brew.sh/index_ko.html">homebrew</a>를 설치한다음, pyenv을 설치한다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" 
+$ brew update
+$ brew install pyenv
+</code></pre></div></div>
+
+<p>다음 명령어로 pyenv로 설치가능한 파이썬 버전을 확인 할 수 있다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ pyenv install -list
+</code></pre></div></div>
+
+<p>여기서는 2.7, 3.6버전을 설치한다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ pyenv install 2.7
+$ pyenv install 3.6.0
+</code></pre></div></div>
+
+<p>다음 명령어로 pyenv으로 설치된 파이썬을 확인 할 수 있다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ pyenv versions
+</code></pre></div></div>
+
+<p><img src="http://res.cloudinary.com/dxovdseb3/image/upload/v1516102681/%E1%84%86%E1%85%AE%E1%84%8C%E1%85%A6_yi9j5d.png" alt="3" /></p>
+
+<p>그림1. 파이썬 버전 확인</p>
+
+<h2 id="virtualenv-설치하기">virtualenv 설치하기</h2>
+
+<p>virtualenv은 로컬에 다양한 파이썬 환경을 구축하고 사용할 수 있도록 해주는 것으로 pip를 이용하여 설치한다. 만약 pip가 설치되어있지 않으면 다음 명령어를 통해 설치한다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo easy_install pip
+$ pip -V          // 파이썬2.x일경우 버전확인
+$ pip3 -V         // 파이썬3.x일경우 버전확인
+$ sudo pip install virtualenv
+</code></pre></div></div>
+
+<p>특정 파이썬 버전으로 가상환경을 만드는 기본 명령어는 다음과 같다.  특정 파이썬 버전은 pyenv으로 로컬에 설치된 버전이어야 한다.</p>
+
+<p>경로는 파이썬을 설치한 경로로 알맞게 수정해준다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ virtualenv --python=경로 가상환경이름
+예) $ virtualenv --python=/Users/username/.pyenv/versions/2.7/bin/python2.7 python2.7
+</code></pre></div></div>
+
+<p>만든 가상환경을 활성화해보자.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ source python2.7/bin/activate
+</code></pre></div></div>
+
+<p>deactivate 명령어로 가상환경을 해제 할 수 있다.</p>
+
+<p><img src="http://res.cloudinary.com/dxovdseb3/image/upload/v1516104715/virtualenv_jklh6n.png" alt="3" /></p>
+
+<p>그림3. virtualenv 가상환경 생성 및 해제</p>
+
+<h2 id="참고자료">참고자료</h2>
+<ol>
+  <li>Virtualenv/VirtualenvWrapper OS 별 설치&amp;이용법, https://beomi.github.io/2016/12/28/HowToSetup-Virtualenv-VirtualenvWrapper/ (accessed 2018.01.16)</li>
+  <li>Pyenv + VirtualEnv로 파이썬 가상 개발환경 구축하기, http://throughkim.kr/2016/03/31/pyenv-virtualenv/ (accessed 2018.01.16)</li>
+  <li>Pyenv로 파이썬 버전 관리하기, http://blog.jeonghwan.net/2016/08/11/pyenv.html (accessed 2018.01.16)</li>
+  <li>Home-brew, https://brew.sh/index_ko.html (accessed 2018.01.16)</li>
+</ol>
+
+  </div>
 
   <div>
-    
-    
-     <span class="site-tag">
-        <a href="docker">
-                docker (1)
-        </a>
-    </span>
-    
-     <span class="site-tag">
-        <a href="mac">
-                mac (1)
-        </a>
-    </span>
-    
-     <span class="site-tag">
-        <a href="디자인패턴">
-                디자인패턴 (2)
-        </a>
-    </span>
-    
-    </div>
 
+    
+    <span class="w3-margin-bottom">
+      <i class="fa fa-tags" aria-hidden="true"></i>
+    
+      
+    <a href="/tags/연구노트"><code class=""><nobr>연구노트</nobr></code>&nbsp;</a>
+    
+      
+    <a href="/tags/인턴십"><code class=""><nobr>인턴십</nobr></code>&nbsp;</a>
+    
+      
+    <a href="/tags/pyenv"><code class=""><nobr>pyenv</nobr></code>&nbsp;</a>
+    
+      
+    <a href="/tags/virtualenv"><code class=""><nobr>virtualenv</nobr></code>&nbsp;</a>
+    
+  </span>
+    
+
+    <br><br>
+
+    <div class="w3-padding-24 w3-border-top w3-border-bottom w3-margin-bottom">
+      <a class="post-meta" href="/authors/gh.park">
+  <div class="w3-bar">
+
+    
+    <i class="fa fa-user fa-4x w3-bar-item w3-circle " aria-hidden="true"> </i>
+    
+
+    <div class="w3-bar-item">
+      <span class="w3-large w3-text-black">박가혜</span><br>
+      <span class="w3-medium w3-text-black">하이브레인넷 인턴</span>
+    </div>
+  </div>
+</a>
+    </div>
+    <div class="share-page w3-right w3-margin-bottom">
+    <a class="w3-button w3-tiny w3-padding-small w3-text-white w3-round" style="height : 20px; background-color: #1da1f2" href="https://twitter.com/intent/tweet?text=Mac os X 기반 pyenv , virtualenv 연구하기&url=http://blog.hibrainapps.net/pyenv&via=&related=" rel="nofollow" target="_blank" title="Share on Twitter"><i class="fa fa-twitter" aria-hidden="true"> <b>트윗</b> </i></a>
+    <a class="w3-button w3-tiny w3-padding-small w3-text-white w3-round" style="height : 20px; background-color: #dd4b39" href="https://plus.google.com/share?url=http://blog.hibrainapps.net/pyenv" rel="nofollow" target="_blank" title="Share on Google+"><i class="fa fa-google-plus" aria-hidden="true"> <b>공유하기</b></i></a>
+    <div class="fb-like" data-href="http://blog.hibrainapps.net" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
+</div>
+
+
+  </div>
+
+  
+
+
+
+  
+
+
+
+  
+<div class="fb-comments" data-href="http://blog.hibrainapps.net/pyenv" data-width="100%" ></div>
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = http://blog.hibrainapps.net/pyenv  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+
+var disqus_shortname = 'hibrainappsblog';
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = '//' + 'disqus_shortname' + '.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript
+>
+
+
+
+</article>
       </div>
     </main>
 
