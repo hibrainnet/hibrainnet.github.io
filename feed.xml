@@ -1,4 +1,81 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://blog.hibrainapps.net/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.hibrainapps.net/" rel="alternate" type="text/html" /><updated>2018-01-16T10:03:21+00:00</updated><id>http://blog.hibrainapps.net/</id><title type="html">하이브레인넷 부설연구소</title><subtitle></subtitle><entry><title type="html">하이브레인넷 맥 개발환경 설정</title><link href="http://blog.hibrainapps.net/mac/config" rel="alternate" type="text/html" title="하이브레인넷 맥 개발환경 설정" /><published>2018-01-16T09:57:00+00:00</published><updated>2018-01-16T09:57:00+00:00</updated><id>http://blog.hibrainapps.net/mac/mac-config</id><content type="html" xml:base="http://blog.hibrainapps.net/mac/config">&lt;h1 id=&quot;하이브레인넷-맥-개발환경-설정&quot;&gt;하이브레인넷 맥 개발환경 설정&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://blog.hibrainapps.net/feed.xml" rel="self" type="application/atom+xml" /><link href="http://blog.hibrainapps.net/" rel="alternate" type="text/html" /><updated>2018-01-16T10:06:05+00:00</updated><id>http://blog.hibrainapps.net/</id><title type="html">하이브레인넷 부설연구소</title><subtitle></subtitle><entry><title type="html">Docker 이미지 생성</title><link href="http://blog.hibrainapps.net/docker-image" rel="alternate" type="text/html" title="Docker 이미지 생성" /><published>2018-01-16T10:00:33+00:00</published><updated>2018-01-16T10:00:33+00:00</updated><id>http://blog.hibrainapps.net/jhheo-docker-image-install-oraclexe</id><content type="html" xml:base="http://blog.hibrainapps.net/docker-image">&lt;h2 id=&quot;docker-이미지-및-이미지-생성&quot;&gt;Docker 이미지 및 이미지 생성&lt;/h2&gt;
+
+&lt;p&gt;docker의 모든 컨테이너는 이미지로 부터 만들어진다 그러므로 docker에서 이미지에 대한 개념과 관리 방법을 정확히 알고 있어야 한다.&lt;/p&gt;
+
+&lt;p&gt;yum이나 apt-get이 각자의 레포지터리에서 필요한 패키지를 내려받듯이 도커의 이미지는 도커 허브라는 중앙 이미지 저장소에서 이미지를 내려 받는다. 그리고 기본적으로 무료이며 오픈된 이미지가 주를 이루기 때문에 많은 사람들이게 이미지를 쉽게 공유 할 수 있다. (비공개 레포지터리는 1개까지만 무료) 그리고 도커 사설 레포지터리도 존재한다. 공식 도커 허브는 많은 사람들이 올리기 때문에 official 라벨을 붙여 도커에서 제공 하는 공식 이미지를 구별할 수 있다.&lt;/p&gt;
+
+&lt;h3 id=&quot;docker-이미지-생성&quot;&gt;Docker 이미지 생성&lt;/h3&gt;
+
+&lt;p&gt;먼저 이미지를 생성하기 위해 컨테이너를 먼저 만들었다
+여기서는 ubuntu:16.04 이미지를 통해 컨테이너는 생성하였다. 그리고 변경사항을 발생시키기 위해 파일 하나를 생성 하였다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://preview.ibb.co/cd5Cj6/2018_01_16_5_14_29.png&quot; alt=&quot;docker&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;ubuntu에서 변경 사항을 저장하고 호스트에서 위에서 생성 후 변경 된 commit_test 컨테이너를 commit_test:first라는 이름으로 이미지를 생성하였다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://image.ibb.co/kSCxHR/2018_01_16_5_17_03.png&quot; alt=&quot;docker2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;명령어에서 -a 옵션은 작성자, -m 옵션은 커밋할때 남길 메시지를 의미한다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker images
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;위의 명령어를 실행하면 생성된 이미지를 확인할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://image.ibb.co/csmXZ6/2018_01_16_5_17_21.png&quot; alt=&quot;docker3&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;그 후 변경 후 생성된 commit_test:first 이미지를 통해 새로운 컨테이너를 생성하고 한번도 변경사항을 만든다&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://image.ibb.co/cWqbu6/2018_01_16_6_06_01.png&quot; alt=&quot;docker4&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;이번에 변경 사항은 commit_test:second 라는 이름으로 이미지를 생성하였다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://image.ibb.co/mwT1SR/2018_01_16_6_06_59.png&quot; alt=&quot;docker5&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;다시 한번 images 명령어를 통해 생성한 2개의 이미지를 확인 할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://image.ibb.co/mkkFnR/2018_01_16_6_07_16.png&quot; alt=&quot;docker6&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;이미지의-구조&quot;&gt;이미지의 구조&lt;/h3&gt;
+
+&lt;p&gt;도커의 이미지를 자세히 보기 위해 다음 명령어를 입력한다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker inspect ubuntu:16:04
+docker inspect commit_test:first
+docker inspect commit_test:second
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;실행 후 많은 정보를 출력한다. 여기서 봐야 할 부분은 각 이미지별 Layer에 들어있는 해쉬값들이다.
+아래 이미지로 각 이미지별 해쉬값을 비교해 볼수 있다.&lt;/p&gt;
+
+&lt;p&gt;ubuntu:16.04 layers&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://image.ibb.co/hsYMu6/2018_01_16_6_41_16.png&quot; alt=&quot;lay&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;commit_test:first layers&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://image.ibb.co/g9uN1m/2018_01_16_6_41_42.png&quot; alt=&quot;lay&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;ommit_test:second layers&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://image.ibb.co/iRPN1m/2018_01_16_6_41_54.png&quot; alt=&quot;lay&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;기본적으로 ubuntu:16.04는 5개의 레이어로 이루어져 있고 ubuntu:16.04를 변경하여 이미지를 생성한 commit_test:first 는 5개 이후 아래에 sha:29a955…. 이 추가되고 commit_test:second는 또 다른 레이어 하나가 추가 됫것을 알수 있다.&lt;/p&gt;
+
+&lt;p&gt;쉽게 표현하면 공통부분은 중복 시키고 변경사항만 레이어로 만들어 저장하고 있는것 처럼 보인다.
+하지만 실제는 공통 부분이 되는 ubuntu:16.04는 참조만 하게 되고 변경 사항만 각 이미지에 저장하고 있다.&lt;/p&gt;</content><author><name>jh.heo</name></author><category term="연구노트" /><category term="인턴십" /><summary type="html">Docker 이미지 및 이미지 생성</summary></entry><entry><title type="html">하이브레인넷 맥 개발환경 설정</title><link href="http://blog.hibrainapps.net/mac/config" rel="alternate" type="text/html" title="하이브레인넷 맥 개발환경 설정" /><published>2018-01-16T09:57:00+00:00</published><updated>2018-01-16T09:57:00+00:00</updated><id>http://blog.hibrainapps.net/mac/mac-config</id><content type="html" xml:base="http://blog.hibrainapps.net/mac/config">&lt;h1 id=&quot;하이브레인넷-맥-개발환경-설정&quot;&gt;하이브레인넷 맥 개발환경 설정&lt;/h1&gt;
 
 &lt;p&gt;맥 개발환경 설정을 위해&lt;/p&gt;
 
