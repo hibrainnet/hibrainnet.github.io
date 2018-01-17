@@ -54,7 +54,7 @@ getTypeValue();
   <meta property="fb:app_id" content="147895112528926" />
   <meta property="fb:admins" content="100001627773972"/>
   <title>docker 연구하기</title>
-  <meta name="description" content="docker 등장 배경 하나의 서버에 여러프로그램을 설치하게 되면, 서로 사용하는 라이브러리의 버전이 다르거나 동일한 포트를 사용하는 경우 설치가 굉장히 까다로워지게 된다. 또한 시간이 흐르면서 서버 환경은 계속 변하는데( ex CentOS와 Ubuntu) , 물론 서로 다른 서버...">
+  <meta name="description" content="docker란 무엇인가? 도커는 2013년 3월 산타클라라에서 열린 Pycon Conference에서 dotCloud의 창업자인 Solomon Hykes가 The future of Linux Containers 라는 세션을 발표하면서 처음 세상에 알려진, 컨테이너 기반의 오픈소스 ...">
 
   <link rel="stylesheet" href="/assets/main.css">
   <link rel="canonical" href="http://blog.hibrainapps.net/p-docker">
@@ -186,6 +186,8 @@ getTypeValue();
         
 
         
+        <a class="w3-bar-item w3-button w3-wide " href="/mac/config">하이브레인넷 맥 개발환경 설정</a>
+        
         
         <!--
           my_page.autogen is populated by the pagination logic for all pages
@@ -194,6 +196,8 @@ getTypeValue();
         
         
 
+        
+        <a class="w3-bar-item w3-button w3-wide " href="/command">Command 패턴 소개</a>
         
         
         <!--
@@ -568,6 +572,8 @@ getTypeValue();
       
 
       
+      <a class=" w3-bar-item w3-button w3-wide" style="width: 30%;" href="/mac/config">하이브레인넷 맥 개발환경 설정</a>
+      
       
       <!--
         my_page.autogen is populated by the pagination logic for all pages
@@ -576,6 +582,8 @@ getTypeValue();
       
       
 
+      
+      <a class=" w3-bar-item w3-button w3-wide" style="width: 30%;" href="/command">Command 패턴 소개</a>
       
       
       <!--
@@ -917,7 +925,16 @@ getTypeValue();
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <h2 id="docker-등장-배경">docker 등장 배경</h2>
+    <h2 id="docker란-무엇인가">docker란 무엇인가?</h2>
+<p>도커는 2013년 3월 산타클라라에서 열린 Pycon Conference에서 dotCloud의 창업자인 Solomon Hykes가 The future of Linux Containers 라는 세션을 발표하면서 처음 세상에 알려진, <strong>컨테이너 기반의 오픈소스 가상화 플랫폼</strong> 이다.</p>
+
+<p>일반적으로 수송에 사용하는 컨테이너도 옷, 신발, 전자제품, 술, 과일등 다양한 화물을 넣어 규격화되어 다양한 운송수단으로 옮길 수 있다.</p>
+
+<p>서버에서 이야기하는 컨테이너도 <strong>서비스 운영이 필요한 다양한 프로그램, 실행환경을 컨테이너로 추상화하고 동일한 인터페이스를 제공하여 프로그램의 배포 및 관리를 단순</strong> 하게 해준다.</p>
+
+<p>백엔드프로그램, 데이터베이스 서버등 어떤 프로그램도 컨테이너로 추상화 할 수 있고 조립PC, AWS, Azure등 어디에든 실행 할 수 있다.</p>
+
+<h2 id="docker-등장-배경">docker 등장 배경</h2>
 
 <p>하나의 서버에 여러프로그램을 설치하게 되면, 서로 사용하는 라이브러리의 버전이 다르거나 동일한 포트를 사용하는 경우 설치가 굉장히 까다로워지게 된다. 또한 시간이 흐르면서 <strong>서버 환경은 계속 변하는데( ex CentOS와 Ubuntu)</strong> , 물론 서로 다른 서버에 설치할 수 있으면 좋겠지만 보통 <strong>개발자들이 쓸수 있는 자원은 한정적이다.</strong> <br />
 2010년을 넘어서면서는 사용요금만 내고 가상서버를 빌려쓰게 되는 클라우드 환경으로 변하게 되며, 클라우드 환경에서는 클릭 몇번으로 가상 서버를 만들 수 있게 되었다. 하지만 생성된 가상 서버에 각종 소프트웨어를 설정해야 하는데, 서버가 한두대면 쉽게 가능하지만 서버 갯수가 많아지면 사람이 일일이 설정하기가 어려워 진다. 따라서 <strong>클라우드 환경에서는 서버를 생성하는 것은 쉬워졌지만, 소프트웨어 설치와 배포</strong> 가 큰 어려움으로 다가왔다.<br />
@@ -928,15 +945,6 @@ getTypeValue();
 즉, <strong>서비스 운영환경을 이미지로 생성한 다음, 서버에 배포하여 실행</strong> 한다. 만약 서비스 운영환경이 변경되면 <strong>운영 환경 자체를 수정하는 것이 아니라 버리고 다시 배포</strong> 하는 방식이다.<br />
 복잡한 서버관리 방식을 해결하기 위해 immutable infrastructure을 구현한 docker(도커)가 등장하게 되었다.</li>
 </ul>
-
-<h2 id="docker란-무엇인가">docker란 무엇인가?</h2>
-<p>도커는 2013년 3월 산타클라라에서 열린 Pycon Conference에서 dotCloud의 창업자인 Solomon Hykes가 The future of Linux Containers 라는 세션을 발표하면서 처음 세상에 알려진, <strong>컨테이너 기반의 오픈소스 가상화 플랫폼</strong> 이다.</p>
-
-<p>일반적으로 수송에 사용하는 컨테이너도 옷, 신발, 전자제품, 술, 과일등 다양한 화물을 넣어 규격화되어 다양한 운송수단으로 옮길 수 있다.</p>
-
-<p>서버에서 이야기하는 컨테이너도 <strong>서비스 운영이 필요한 다양한 프로그램, 실행환경을 컨테이너로 추상화하고 동일한 인터페이스를 제공하여 프로그램의 배포 및 관리를 단순</strong> 하게 해준다.</p>
-
-<p>백엔드프로그램, 데이터베이스 서버등 어떤 프로그램도 컨테이너로 추상화 할 수 있고 조립PC, AWS, Azure등 어디에든 실행 할 수 있다.</p>
 
 <h3 id="가상머신과-docker의-차이점">가상머신과 docker의 차이점</h3>
 

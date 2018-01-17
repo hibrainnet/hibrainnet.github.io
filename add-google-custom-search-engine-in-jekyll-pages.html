@@ -53,11 +53,11 @@ getTypeValue();
 
   <meta property="fb:app_id" content="147895112528926" />
   <meta property="fb:admins" content="100001627773972"/>
-  <title>Tag: Mac</title>
-  <meta name="description" content="">
+  <title>Jekyll 기반 Github Pages에 Google CSE(Google Custom Search Engine) 를 사용하여 검색기능 추가하기</title>
+  <meta name="description" content="Google CSE">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://blog.hibrainapps.net/tags/mac/">
+  <link rel="canonical" href="http://blog.hibrainapps.net/add-google-custom-search-engine-in-jekyll-pages">
   <link rel="alternate" type="application/rss+xml" title="하이브레인넷 부설연구소" href="/feed.xml">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -186,6 +186,8 @@ getTypeValue();
         
 
         
+        <a class="w3-bar-item w3-button w3-wide " href="/mac/config">하이브레인넷 맥 개발환경 설정</a>
+        
         
         <!--
           my_page.autogen is populated by the pagination logic for all pages
@@ -194,6 +196,8 @@ getTypeValue();
         
         
 
+        
+        <a class="w3-bar-item w3-button w3-wide " href="/command">Command 패턴 소개</a>
         
         
         <!--
@@ -568,6 +572,8 @@ getTypeValue();
       
 
       
+      <a class=" w3-bar-item w3-button w3-wide" style="width: 30%;" href="/mac/config">하이브레인넷 맥 개발환경 설정</a>
+      
       
       <!--
         my_page.autogen is populated by the pagination logic for all pages
@@ -576,6 +582,8 @@ getTypeValue();
       
       
 
+      
+      <a class=" w3-bar-item w3-button w3-wide" style="width: 30%;" href="/command">Command 패턴 소개</a>
       
       
       <!--
@@ -903,47 +911,274 @@ getTypeValue();
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <h1>mac 태그에 대한 결과</h1>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-<div id="archive">
-  
+  <header class="post-header">
     
-  
-    
-  <div class="w3-row">
-      <div class="w3-col s12 m12 l12 ">
-        <b><a class="w3-xlarge site-title w3-bar-item" href="/mac/config">하이브레인넷 맥 개발환경 설정</a></b>
-      </div>
-      <div class="w3-col s12 m12 l12">
-        <p><a class="describe w3-medium" href="/mac/config">하이브레인넷 맥 개발환경 설정 맥 개발환경 설정을 위해 프로젝트 진행용 디렉토리 만들기 Homebrew 설치(nodenv, rbenv, pyenv, jenv) python2.7과 3.6버전을 사용가능하도록 설치 python3.6의 환경이름 : python3.6...</a></p>
-       </div>
+
+    <h1 class="post-title" itemprop="name headline">Jekyll 기반 Github Pages에 Google CSE(Google Custom Search Engine) 를 사용하여 검색기능 추가하기</h1>
+    <p class="post-meta">
+      <time datetime="2018-01-08T00:00:00+00:00" itemprop="datePublished">
+        
+        <span class="post-meta w3-text-grey"><i class="fa fa-clock-o" aria-hidden="true"></i> 2018.1.8</span>
+      </time>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <h1 id="google-cse">Google CSE</h1>
+
+<p>Google CSE는 구글 맞춤검색 엔진의 약자이다. 실제 우리가 사용하고 있는 구글 검색 기능에서 사용자가 원하는 사이트만 검색하도록 지정할 수 있는 기능이다. 이를 우리 블로그에 적용하여 블로그 자료 검색기능을 적용하고자 한다. 설정 방법으로는 웹에서 제공하는 Control Panel과 XML파일을 만드는 두 가지 방법이 있다. 기본적으로 제공하는 설정을 통해 디자인, 부가적인 검색기능(자동 완성, 동의어 등)도 사용이 가능하다. 좀 더 확장된 부가기능은 통계와 로그가 있는데 Google 애널리틱스와 연동해서 사용이 가능하다. Google CSE를 사용하기 위해서는 적용할 사이트 URL과 구글 계정이 필요하다.</p>
+
+<h2 id="google-cse-만들기">Google CSE 만들기</h2>
+
+<p><img src="http://res.cloudinary.com/degxeqfok/image/upload/v1515378810/hw5z2ltbtu366je0xwvq.png" alt="Screen Shot 2018-01-08 at 11.28.32 AM" /></p>
+
+<ol>
+  <li>Google 계정으로 로그인 한 후 <a href="https://cse.google.com/create/new">Control Panel</a>로 접속한다.</li>
+  <li>검색할 사이트(Sites to search)에 검색 할 사이트 URL을 입력한다. <a href="https://support.google.com/customsearch/answer/71826">URL 패턴 페이지</a>를 참고하여 URL을 등록한다.</li>
+  <li>언어(language)는 검색 엔진에서 사용할 언어를 선택한다. 버튼이나 기타 디자인 요소들이 선택한 언어로 표시된다.</li>
+  <li>검색 엔진 이름(name)은 Control Panel에서 사용자에게 보이는 검색엔진 이름을 입력한다.</li>
+  <li>만들기(Ctrate) 버튼을 클릭하면 새 검색엔진이 만들어진다.</li>
+</ol>
+
+<p><strong>Google CSE 사용</strong></p>
+
+<p><img src="http://res.cloudinary.com/degxeqfok/image/upload/v1515379960/nuspb13xfnhwfdklwz9d.png" alt="Screen Shot 2018-01-08 at 11.49.49 AM" /></p>
+
+<ul>
+  <li>URL을 이용하여 사용자와 공유
+    <ul>
+      <li>생성한 검색 엔진의 Control Panel에서 <strong>설정 -&gt; 기본사항 -&gt; 세부정보 -&gt; 공개 URL</strong></li>
+    </ul>
+  </li>
+  <li>검색 기능을 사용 할 웹사이트에 검색박스를 import</li>
+</ul>
+
+<h2 id="검색박스-import">검색박스 import</h2>
+
+<ol>
+  <li>Control Panel에서 import할 검색 엔진을 선택한다.</li>
+  <li><strong>설정 -&gt; 기본사항 -&gt; 코드 가져오기</strong> 에서 코드를 복사한다.</li>
+  <li>검색박스가 노출되었으면 하는 페이지에(HTML파일) 해당 코드를 붙여넣기 한다.</li>
+</ol>
+
+<p><strong>디자인에 따른 검색박스 코드</strong></p>
+
+<p>Google CSE는 검색박스와 결과 페이지 디자인을 선택하여 사용할 수 있다. 제일 처음 검색엔진을 생성하면 기본적으로 오버레이 디자인으로 설정되어 있다.</p>
+
+<ul>
+  <li>
+    <p>오버레이 디자인</p>
+
+    <p>검색박스에 검색어를 입력하면 modal창으로 결과를 보여주는 디자인</p>
+  </li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+  <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">cx</span> <span class="o">=</span> <span class="s1">'YOUR_ENGINE_ID'</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">gcse</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'script'</span><span class="p">);</span>
+    <span class="nx">gcse</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="s1">'text/javascript'</span><span class="p">;</span>
+    <span class="nx">gcse</span><span class="p">.</span><span class="k">async</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="nx">gcse</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s1">'https://cse.google.com/cse.js?cx='</span> <span class="o">+</span> <span class="nx">cx</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">'script'</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="nx">s</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">gcse</span><span class="p">,</span> <span class="nx">s</span><span class="p">);</span>
+  <span class="p">})();</span>
+<span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span>
+<span class="o">&lt;</span><span class="nx">gcse</span><span class="p">:</span><span class="nx">search</span><span class="o">&gt;&lt;</span><span class="sr">/gcse:search</span><span class="err">&gt;
+</span></code></pre></div></div>
+
+<ul>
+  <li>
+    <p>두 페이지 디자인</p>
+
+    <p>검색박스에 검색어를 입력하면 새 창으로 결과를 보여주는 디자인</p>
+
+    <p><code class="highlighter-rouge">resultUrl=""</code>을 이용하여 결과값을 보여줄 URL을 설정 가능</p>
+  </li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+  <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">cx</span> <span class="o">=</span> <span class="s1">'YOUR_ENGINE_ID'</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">gcse</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'script'</span><span class="p">);</span>
+    <span class="nx">gcse</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="s1">'text/javascript'</span><span class="p">;</span>
+    <span class="nx">gcse</span><span class="p">.</span><span class="k">async</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="nx">gcse</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s1">'https://cse.google.com/cse.js?cx='</span> <span class="o">+</span> <span class="nx">cx</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">'script'</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="nx">s</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">gcse</span><span class="p">,</span> <span class="nx">s</span><span class="p">);</span>
+  <span class="p">})();</span>
+<span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="nx">gcse</span><span class="p">:</span><span class="nx">searchbox</span><span class="o">-</span><span class="nx">only</span> <span class="nx">resultsUrl</span><span class="o">=</span><span class="s2">"YOUR_RESULTS_PAGE_URL"</span><span class="o">&gt;&lt;</span><span class="sr">/gcse:searchbox-only</span><span class="err">&gt;
+</span></code></pre></div></div>
+
+<p>위의 두 디자인 외에도 전체 화면, 두 열, 간단히, Google에서 호스팅 등의 다양한 디자인이 존재한다. 사용자가 구축하는 블로그의 특성에 맞게 원하는 디자인을 적용하여 코드를 사용한다.</p>
+
+<h2 id="검색박스-customising">검색박스 Customising</h2>
+
+<p>Google CSE에서 사용하는 검색박스와 결과 페이지에 대한 디자인은 Control Panel을 이용하여 수정이 가능하다. 하지만, 실제 블로그를 운영하다보면 HTML코드를 이용하여 검색박스를 디자인 하고 싶은 경우가 있다. 해당 경우에 ‘검색 결과만’ 디자인을 이용하여 간단하게 구현이 가능하다.</p>
+
+<p>생성한 검색엔진에서 디자인을 ‘검색결과 만’으로 설정하면 아래와 같은 부가적인 설정이 가능하다.</p>
+
+<p><img src="http://res.cloudinary.com/degxeqfok/image/upload/v1515389717/ojoluzmnhf8zsu25nxqp.png" alt="Screen Shot 2018-01-08 at 2.33.55 PM" /></p>
+
+<p>검색결과 코드 가져오기 페이지에서 검색결과 세부정보를 클릭하면 검색어 매개변수 이름을 설정 할 수 있다.</p>
+
+<p>기본 값은 q이며 사용자가 원하는 값을 지정 가능하다.</p>
+
+<p>웹 상에서 설정이 끝난 후 HTML파일을 수정한다.</p>
+
+<p>이 때 사용자는</p>
+
+<ol>
+  <li>검색박스를 위치 시킬 HTML파일</li>
+  <li>결과를 출력 할 HTML파일  두 개의 파일에 대해서 코드를 작성 해야 한다.</li>
+</ol>
+
+<p><strong>검색박스</strong></p>
+
+<p>검색박스에 대한 모든 코드는 자유롭다. 하지만  <code class="highlighter-rouge">action="결과 페이지 URL"</code>과 <code class="highlighter-rouge">name="검색어 매개변수 이름"</code>은 정확하게 입력하여야 한다. <code class="highlighter-rouge">action</code>은 결과를 보여줄 페이지의 URL이며 <code class="highlighter-rouge">name</code>은 웹 상에서 설정해주었던 검색어 매개변수의 이름을 반드시 입력하여야 한다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">"searchForm"</span> <span class="na">action=</span><span class="s">"결과 페이지 URL"</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"searchtext"</span> <span class="na">name=</span><span class="s">"검색어 매개변수 이름"</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">placeholser=</span><span class="s">"Search..."</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;button&gt;</span>search<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+</code></pre></div></div>
+
+<p><strong>결과</strong></p>
+
+<p>결과는 위의 검색박스에서 설정해준 <code class="highlighter-rouge">action</code>으로 이동 한 페이지에서 나올 검색결과이다.</p>
+
+<p>웹에서 가져온 코드는 디자인 설정이 ‘검색결과 만’이므로 검색박스에서 매개변수로 전달한 검색어의 검색결과를 출력한다.</p>
+
+<p>결과가 나와야 할 페이지에 아래의 코드를 붙여넣기 해준다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+  <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">cx</span> <span class="o">=</span> <span class="s1">'YOUR_ENGINE_ID'</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">gcse</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'script'</span><span class="p">);</span>
+    <span class="nx">gcse</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="s1">'text/javascript'</span><span class="p">;</span>
+    <span class="nx">gcse</span><span class="p">.</span><span class="k">async</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="nx">gcse</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s1">'https://cse.google.com/cse.js?cx='</span> <span class="o">+</span> <span class="nx">cx</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">'script'</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="nx">s</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">gcse</span><span class="p">,</span> <span class="nx">s</span><span class="p">);</span>
+  <span class="p">})();</span>
+<span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="nx">gcse</span><span class="p">:</span><span class="nx">searchresults</span><span class="o">-</span><span class="nx">only</span><span class="o">&gt;&lt;</span><span class="sr">/gcse:searchresults-only</span><span class="err">&gt;
+</span></code></pre></div></div>
+
+<h2 id="google-cse를-적용한-blog-예시">Google CSE를 적용한 Blog 예시</h2>
+
+<p><img src="http://res.cloudinary.com/degxeqfok/image/upload/v1515391380/jnydq8v39zqc7zujyskn.png" alt="Screen Shot 2018-01-08 at 3.01.39 PM" /></p>
+
+<p>오른쪽 상단에 검색박스 Customising을 이용하여 검색박스를 적용하였다.</p>
+
+<p><img src="http://res.cloudinary.com/degxeqfok/image/upload/v1515391568/dtv0qvfni0wmcf5mspbv.png" alt="Screen Shot 2018-01-08 at 3.04.31 PM" /></p>
+
+<p>검색결과가 위와 같이 출력된다.</p>
+
+<h1 id="참고자료">참고자료</h1>
+
+<ol>
+  <li>https://developers.google.com/custom-search/, google developers, accessed 2017-01-08</li>
+  <li>http://digitaldrummerj.me/blogging-on-github-part-7-adding-a-custom-google-search/, 개인블로그, accessed 2017-01-08</li>
+</ol>
+
   </div>
 
-    <div class="w3-col s12 m12 l12 w3-text-grey w3-small">
-        <span class="post-meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 2018.1.16</span>
+  <div>
+
+    
+    <span class="w3-margin-bottom">
+      <i class="fa fa-tags" aria-hidden="true"></i>
+    
+      
+    <a href="/tags/연구노트"><code class=""><nobr>연구노트</nobr></code>&nbsp;</a>
+    
+      
+    <a href="/tags/인턴십"><code class=""><nobr>인턴십</nobr></code>&nbsp;</a>
+    
+      
+    <a href="/tags/google"><code class=""><nobr>google</nobr></code>&nbsp;</a>
+    
+      
+    <a href="/tags/cse"><code class=""><nobr>cse</nobr></code>&nbsp;</a>
+    
+      
+    <a href="/tags/jekyll"><code class=""><nobr>jekyll</nobr></code>&nbsp;</a>
+    
+      
+    <a href="/tags/github"><code class=""><nobr>github</nobr></code>&nbsp;</a>
+    
+  </span>
+    
+
+    <br><br>
+
+    <div class="w3-padding-24 w3-border-top w3-border-bottom w3-margin-bottom">
+      <a class="post-meta" href="/authors/yl.jung">
+  <div class="w3-bar">
+
+    
+    <i class="fa fa-user fa-4x w3-bar-item w3-circle " aria-hidden="true"> </i>
+    
+
+    <div class="w3-bar-item">
+      <span class="w3-large w3-text-black">정예린</span><br>
+      <span class="w3-medium w3-text-black">하이브레인넷 인턴</span>
     </div>
-    <br>
-    <hr>
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
+  </div>
+</a>
+    </div>
+    <div class="share-page w3-right w3-margin-bottom">
+    <a class="w3-button w3-tiny w3-padding-small w3-text-white w3-round" style="height : 20px; background-color: #1da1f2" href="https://twitter.com/intent/tweet?text=Jekyll 기반 Github Pages에 Google CSE(Google Custom Search Engine) 를 사용하여 검색기능 추가하기&url=http://blog.hibrainapps.net/add-google-custom-search-engine-in-jekyll-pages&via=&related=" rel="nofollow" target="_blank" title="Share on Twitter"><i class="fa fa-twitter" aria-hidden="true"> <b>트윗</b> </i></a>
+    <a class="w3-button w3-tiny w3-padding-small w3-text-white w3-round" style="height : 20px; background-color: #dd4b39" href="https://plus.google.com/share?url=http://blog.hibrainapps.net/add-google-custom-search-engine-in-jekyll-pages" rel="nofollow" target="_blank" title="Share on Google+"><i class="fa fa-google-plus" aria-hidden="true"> <b>공유하기</b></i></a>
+    <div class="fb-like" data-href="http://blog.hibrainapps.net" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
 </div>
 
+
+  </div>
+
+  
+
+
+
+  
+
+
+
+  
+<div class="fb-comments" data-href="http://blog.hibrainapps.net/add-google-custom-search-engine-in-jekyll-pages" data-width="100%" ></div>
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = http://blog.hibrainapps.net/add-google-custom-search-engine-in-jekyll-pages  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+
+var disqus_shortname = 'hibrainappsblog';
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = '//' + 'disqus_shortname' + '.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript
+>
+
+
+
+</article>
       </div>
     </main>
 
