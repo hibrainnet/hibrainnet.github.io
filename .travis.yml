@@ -2,6 +2,7 @@ language: ruby
 rvm:
 - 2.3.1
 
+
 before_install:
 - GIT_POST_URL=$(ruby -r "$PWD"/script/config.rb -e "puts @github_post_url")
 - git clone $GIT_POST_URL
